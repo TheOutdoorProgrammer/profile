@@ -1,6 +1,6 @@
 # These icons can be found at: https://icon-sets.iconify.design/
 
 - name: My GPG Key
-  url: https://keyserver.ubuntu.com/pks/lookup?search=11e5dea816a2c899a939940bfafa8e62c123f240&fingerprint=on&hash=on&exact=on&op=index
+  url: https://keyserver.ubuntu.com/pks/lookup?search=0x1830B516B45606F6&fingerprint=on&op=index
   icon: fxemoji:lock
 

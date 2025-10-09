@@ -22,7 +22,7 @@ image:
   alt: logo
 
 gpg:
-  fingerprint: 11E5 DEA8 16A2 C899 A939 940B FAFA 8E62 C123 F240
+  fingerprint: 8E4C D7B8 4024 3BF4 FF54 58B8 1830 B516 B456 06F6
 
 # Verified Badge Configuration
 badge:
