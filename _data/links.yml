@@ -7,7 +7,7 @@ buttons:
     type: list
     items:
       - title: GitHub
-        url: https://www.github.com/apollorion
+        url: https://www.github.com/TheOutdoorProgrammer
         icon: mdi:github
 
       - title: YouTube
@@ -23,7 +23,7 @@ buttons:
         icon: mdi:linkedin
 
       - title: Email
-        url: mailto:joey@apollorion.com
+        url: mailto:joey@theoutdoorprogrammer.com
         icon: ic:round-email
 
   - category: Projects
@@ -42,11 +42,11 @@ buttons:
         icon: emojione:ice-hockey
 
       - title: Fly
-        url: https://github.com/Apollorion/fly
+        url: https://github.com/TheOutdoorProgrammer/fly
         icon: openmoji:space-shuttle
 
       - title: MAAS 2
-        url: https://github.com/Apollorion/MAAS2
+        url: https://github.com/TheOutdoorProgrammer/MAAS2
         icon: game-icons:mars-curiosity
 
   - category: Spacelift
@@ -57,7 +57,7 @@ buttons:
         icon: el:podcast
     
       - title: MRPICKLE
-        url: https://github.com/Apollorion/MRPICKLE
+        url: https://github.com/TheOutdoorProgrammer/MRPICKLE
         icon: token-branded:pickle
 
       - title: Tofusible

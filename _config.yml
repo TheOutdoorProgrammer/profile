@@ -3,13 +3,13 @@ theme: linkhub-jekyll-theme
 
 # Site Configuration
 name: Joey Stout  # Name of your website
-tagline: Apollorion  # Set your preferred page title
+tagline: TheOutdoorProgrammer  # Set your preferred page title
 description: Programmer, Hunter, Hockey Fan, Family Man.  # Also used as a meta description
 favicon:
   path: assets/images/favicon.svg # Path / URL to the favicon of your website (e.g., 'assets/images/favicon.png')
   type: svg # File format of image. Change according to your image. Supported types: https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types
 logo: https://avatars.githubusercontent.com/u/13936290 # Path / URL to the logo (e.g., 'assets/images/logo.png')
-url: https://apollorion.com # URL of your website
+url: https://theoutdoorprogrammer.com # URL of your website
 locale: en_US # The value specifies the locale in which these tags are marked up. It follows the format `language_TERRITORY`.
 ga4: # Google Analytics 4 measurement ID, for e.g. G-XXXXXXX (optional). Remove it if it’s not needed.
 twitter:
