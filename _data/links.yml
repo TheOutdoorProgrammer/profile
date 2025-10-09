@@ -15,11 +15,11 @@ buttons:
         icon: logos:youtube-icon
 
       - title: BlueSky
-        url: https://bsky.app/profile/apollorion.com
+        url: https://bsky.app/profile/theoutdoorprogrammer.com
         icon: logos:bluesky
 
       - title: LinkedIn
-        url: https://www.linkedin.com/in/apollorion/
+        url: https://www.linkedin.com/in/theoutdoorprogrammer/
         icon: mdi:linkedin
 
       - title: Email

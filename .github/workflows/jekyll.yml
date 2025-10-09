@@ -37,7 +37,7 @@ jobs:
         env:
           MAX_POSTS: 5
         run: |
-          curl -sS -H "Accept: application/json" "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=apollorion.com&limit=$MAX_POSTS" | yq -P > _data/posts.yml
+          curl -sS -H "Accept: application/json" "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=theoutdoorprogrammer.com&limit=$MAX_POSTS" | yq -P > _data/posts.yml
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
