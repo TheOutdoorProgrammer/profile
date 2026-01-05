@@ -1,163 +1,168 @@
+---
 feed:
-  - post:
-      uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mapz752ees23
-      cid: bafyreig5qwvnubzavjte3rcsesuuxdvjsj5keujlj6dvczdhjptawbpqcu
-      author:
-        did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-        handle: theoutdoorprogrammer.com
-        displayName: Joey Stout
-        avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
-        associated:
-          activitySubscription:
-            allowSubscriptions: followers
-        labels: []
-        createdAt: "2024-11-20T19:09:51.653Z"
-      record:
-        $type: app.bsky.feed.post
-        createdAt: "2025-12-24T10:04:45.639Z"
-        langs:
-          - en
-        text: |-
-          Hey all you people
-          Hey all you people
-          Hey all you people won't you listen to me
-          I just had a sandwich
-          No ordinary sandwich
-      bookmarkCount: 0
-      replyCount: 0
-      repostCount: 0
-      likeCount: 0
-      quoteCount: 0
-      indexedAt: "2025-12-24T10:04:45.933Z"
+- post:
+    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mapz752ees23
+    cid: bafyreig5qwvnubzavjte3rcsesuuxdvjsj5keujlj6dvczdhjptawbpqcu
+    author:
+      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
+      handle: theoutdoorprogrammer.com
+      displayName: Joey Stout
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
+      associated:
+        activitySubscription:
+          allowSubscriptions: followers
       labels: []
-  - post:
-      uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3m7v6x5kmds2v
-      cid: bafyreibdnkkv3k4zma6ol4d4pjo7e354i6klxqo7lwppfcv3qkvhhcqx4i
-      author:
-        did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-        handle: theoutdoorprogrammer.com
-        displayName: Joey Stout
-        avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
-        associated:
-          activitySubscription:
-            allowSubscriptions: followers
-        labels: []
-        createdAt: "2024-11-20T19:09:51.653Z"
-      record:
-        $type: app.bsky.feed.post
-        createdAt: "2025-12-13T18:05:47.252Z"
-        langs:
-          - en
-        text: Im not big into Joe Rogan Experience, but I watched the Jelly Roll episode last night and it was very inspiring.
-      bookmarkCount: 0
-      replyCount: 0
-      repostCount: 0
-      likeCount: 0
-      quoteCount: 0
-      indexedAt: "2025-12-13T18:05:47.438Z"
+      createdAt: '2024-11-20T19:09:51.653Z'
+    record:
+      "$type": app.bsky.feed.post
+      createdAt: '2025-12-24T10:04:45.639Z'
+      langs:
+      - en
+      text: |-
+        Hey all you people
+        Hey all you people
+        Hey all you people won't you listen to me
+        I just had a sandwich
+        No ordinary sandwich
+    bookmarkCount: 0
+    replyCount: 0
+    repostCount: 0
+    likeCount: 0
+    quoteCount: 0
+    indexedAt: '2025-12-24T10:04:45.933Z'
+    labels: []
+- post:
+    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3m7v6x5kmds2v
+    cid: bafyreibdnkkv3k4zma6ol4d4pjo7e354i6klxqo7lwppfcv3qkvhhcqx4i
+    author:
+      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
+      handle: theoutdoorprogrammer.com
+      displayName: Joey Stout
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
+      associated:
+        activitySubscription:
+          allowSubscriptions: followers
       labels: []
-  - post:
-      uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3m34q3jf2bk24
-      cid: bafyreidrju63mksb43co57iawnbdrq7skixzrf3pgeb6ldmdc5xji5fsh4
-      author:
-        did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-        handle: theoutdoorprogrammer.com
-        displayName: Joey Stout
-        avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
-        associated:
-          activitySubscription:
-            allowSubscriptions: followers
-        labels: []
-        createdAt: "2024-11-20T19:09:51.653Z"
-      record:
-        $type: app.bsky.feed.post
-        createdAt: "2025-10-14T02:55:07.510Z"
-        embed:
-          $type: app.bsky.embed.external
-          external:
-            description: YouTube video by Joey Stout
-            thumb:
-              $type: blob
-              ref:
-                $link: bafkreifq24ivtggpnk5wewcdwsatfom4ydf5h7m5phoqe4mfbdlhd3zszq
-              mimeType: image/jpeg
-              size: 120405
-            title: 'Failed Squirrel Hunt ASMR #squirrel #hunting #fail'
-            uri: https://youtube.com/shorts/6m5rr3TqZAQ?si=wFmbc9kbt81JA8ZZ
-        facets:
-          - features:
-              - $type: app.bsky.richtext.facet#link
-                uri: https://youtube.com/shorts/6m5rr3TqZAQ?si=wFmbc9kbt81JA8ZZ
-            index:
-              byteEnd: 120
-              byteStart: 93
-        langs:
-          - en
-        text: I made my first youtube short, if you are a hunter or a programmer nerd like me check it out youtube.com/shorts/6m5rr...
+      createdAt: '2024-11-20T19:09:51.653Z'
+    record:
+      "$type": app.bsky.feed.post
+      createdAt: '2025-12-13T18:05:47.252Z'
+      langs:
+      - en
+      text: Im not big into Joe Rogan Experience, but I watched the Jelly Roll episode
+        last night and it was very inspiring.
+    bookmarkCount: 0
+    replyCount: 0
+    repostCount: 0
+    likeCount: 0
+    quoteCount: 0
+    indexedAt: '2025-12-13T18:05:47.438Z'
+    labels: []
+- post:
+    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3m34q3jf2bk24
+    cid: bafyreidrju63mksb43co57iawnbdrq7skixzrf3pgeb6ldmdc5xji5fsh4
+    author:
+      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
+      handle: theoutdoorprogrammer.com
+      displayName: Joey Stout
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
+      associated:
+        activitySubscription:
+          allowSubscriptions: followers
+      labels: []
+      createdAt: '2024-11-20T19:09:51.653Z'
+    record:
+      "$type": app.bsky.feed.post
+      createdAt: '2025-10-14T02:55:07.510Z'
       embed:
-        $type: app.bsky.embed.external#view
+        "$type": app.bsky.embed.external
         external:
-          uri: https://youtube.com/shorts/6m5rr3TqZAQ?si=wFmbc9kbt81JA8ZZ
-          title: 'Failed Squirrel Hunt ASMR #squirrel #hunting #fail'
           description: YouTube video by Joey Stout
-          thumb: https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreifq24ivtggpnk5wewcdwsatfom4ydf5h7m5phoqe4mfbdlhd3zszq@jpeg
-      bookmarkCount: 0
-      replyCount: 0
-      repostCount: 0
-      likeCount: 1
-      quoteCount: 0
-      indexedAt: "2025-10-14T02:55:08.823Z"
+          thumb:
+            "$type": blob
+            ref:
+              "$link": bafkreifq24ivtggpnk5wewcdwsatfom4ydf5h7m5phoqe4mfbdlhd3zszq
+            mimeType: image/jpeg
+            size: 120405
+          title: 'Failed Squirrel Hunt ASMR #squirrel #hunting #fail'
+          uri: https://youtube.com/shorts/6m5rr3TqZAQ?si=wFmbc9kbt81JA8ZZ
+      facets:
+      - features:
+        - "$type": app.bsky.richtext.facet#link
+          uri: https://youtube.com/shorts/6m5rr3TqZAQ?si=wFmbc9kbt81JA8ZZ
+        index:
+          byteEnd: 120
+          byteStart: 93
+      langs:
+      - en
+      text: I made my first youtube short, if you are a hunter or a programmer nerd
+        like me check it out youtube.com/shorts/6m5rr...
+    embed:
+      "$type": app.bsky.embed.external#view
+      external:
+        uri: https://youtube.com/shorts/6m5rr3TqZAQ?si=wFmbc9kbt81JA8ZZ
+        title: 'Failed Squirrel Hunt ASMR #squirrel #hunting #fail'
+        description: YouTube video by Joey Stout
+        thumb: https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreifq24ivtggpnk5wewcdwsatfom4ydf5h7m5phoqe4mfbdlhd3zszq@jpeg
+    bookmarkCount: 0
+    replyCount: 0
+    repostCount: 0
+    likeCount: 1
+    quoteCount: 0
+    indexedAt: '2025-10-14T02:55:08.823Z'
+    labels: []
+- post:
+    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3m32u3mw3vc2d
+    cid: bafyreiemaxnnmfo6xifhiyj7ro7wbqlr5nzqi6643g3s4bpbewb3vrvnya
+    author:
+      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
+      handle: theoutdoorprogrammer.com
+      displayName: Joey Stout
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
+      associated:
+        activitySubscription:
+          allowSubscriptions: followers
       labels: []
-  - post:
-      uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3m32u3mw3vc2d
-      cid: bafyreiemaxnnmfo6xifhiyj7ro7wbqlr5nzqi6643g3s4bpbewb3vrvnya
-      author:
-        did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-        handle: theoutdoorprogrammer.com
-        displayName: Joey Stout
-        avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
-        associated:
-          activitySubscription:
-            allowSubscriptions: followers
-        labels: []
-        createdAt: "2024-11-20T19:09:51.653Z"
-      record:
-        $type: app.bsky.feed.post
-        createdAt: "2025-10-13T09:01:26.704Z"
-        langs:
-          - en
-        text: I changed my online handle from apollorion to TheOutdoorProgrammer recently. The username served me well for many years but had a few fallbacks that i hope my own personal "rebrand" will fix.
-      bookmarkCount: 0
-      replyCount: 0
-      repostCount: 0
-      likeCount: 0
-      quoteCount: 0
-      indexedAt: "2025-10-13T09:01:27.179Z"
+      createdAt: '2024-11-20T19:09:51.653Z'
+    record:
+      "$type": app.bsky.feed.post
+      createdAt: '2025-10-13T09:01:26.704Z'
+      langs:
+      - en
+      text: I changed my online handle from apollorion to TheOutdoorProgrammer recently.
+        The username served me well for many years but had a few fallbacks that i
+        hope my own personal "rebrand" will fix.
+    bookmarkCount: 0
+    replyCount: 0
+    repostCount: 0
+    likeCount: 0
+    quoteCount: 0
+    indexedAt: '2025-10-13T09:01:27.179Z'
+    labels: []
+- post:
+    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lztoegt24225
+    cid: bafyreiar4fwlwwixefgzlnglhz4zz64slt7tivm5cxuohlf7ixxfl4kmea
+    author:
+      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
+      handle: theoutdoorprogrammer.com
+      displayName: Joey Stout
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
+      associated:
+        activitySubscription:
+          allowSubscriptions: followers
       labels: []
-  - post:
-      uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lztoegt24225
-      cid: bafyreiar4fwlwwixefgzlnglhz4zz64slt7tivm5cxuohlf7ixxfl4kmea
-      author:
-        did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-        handle: theoutdoorprogrammer.com
-        displayName: Joey Stout
-        avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
-        associated:
-          activitySubscription:
-            allowSubscriptions: followers
-        labels: []
-        createdAt: "2024-11-20T19:09:51.653Z"
-      record:
-        $type: app.bsky.feed.post
-        createdAt: "2025-09-27T19:05:10.056Z"
-        langs:
-          - en
-        text: Moved all my stuff to a homelab cluster lets see how that goes
-      bookmarkCount: 0
-      replyCount: 0
-      repostCount: 0
-      likeCount: 0
-      quoteCount: 0
-      indexedAt: "2025-09-27T19:05:10.481Z"
-      labels: []
-cursor: "2025-09-27T19:05:10.056Z"
+      createdAt: '2024-11-20T19:09:51.653Z'
+    record:
+      "$type": app.bsky.feed.post
+      createdAt: '2025-09-27T19:05:10.056Z'
+      langs:
+      - en
+      text: Moved all my stuff to a homelab cluster lets see how that goes
+    bookmarkCount: 0
+    replyCount: 0
+    repostCount: 0
+    likeCount: 0
+    quoteCount: 0
+    indexedAt: '2025-09-27T19:05:10.481Z'
+    labels: []
+cursor: '2025-09-27T19:05:10.056Z'

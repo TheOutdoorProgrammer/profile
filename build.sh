@@ -1,10 +1,11 @@
 #!/bin/bash
 set -e
 
-# Fetch latest posts from Bluesky
+# Fetch latest posts from Bluesky and convert JSON to YAML
 echo "Fetching posts from Bluesky..."
 MAX_POSTS=5
-curl -sS -H "Accept: application/json" "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=theoutdoorprogrammer.com&limit=$MAX_POSTS" | yq -P > _data/posts.yml
+curl -sS -H "Accept: application/json" "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=theoutdoorprogrammer.com&limit=$MAX_POSTS" | \
+  ruby -rjson -ryaml -e 'puts JSON.parse(STDIN.read).to_yaml' > _data/posts.yml
 
 # Build Jekyll site
 echo "Building Jekyll site..."
