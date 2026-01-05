@@ -1,225 +1,163 @@
 feed:
   - post:
-      uri: at://did:plc:us7zharkwkskpj7d5ltbeyoo/app.bsky.feed.post/3lbd2jv3s5k2v
-      cid: bafyreie2pl5tmj3n3p3vu43l5ct4nfpqeagf7fypgwrvxglkofmprf7yvu
+      uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mapz752ees23
+      cid: bafyreig5qwvnubzavjte3rcsesuuxdvjsj5keujlj6dvczdhjptawbpqcu
       author:
-        did: did:plc:us7zharkwkskpj7d5ltbeyoo
-        handle: chas.bsky.social
-        displayName: Mr. Cait
-        avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:us7zharkwkskpj7d5ltbeyoo/bafkreie7tfus43rpkll4gydihezrlhhjssvhchwtq7ky7gpppbkphykcue@jpeg
+        did: did:plc:7e7cnwumaewg7s2ryywfu3qe
+        handle: theoutdoorprogrammer.com
+        displayName: Joey Stout
+        avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
         associated:
-          chat:
-            allowIncoming: following
-        labels: []
-        createdAt: "2023-05-11T20:01:15.467Z"
-      record:
-        $type: app.bsky.feed.post
-        createdAt: "2024-11-19T18:23:03.079Z"
-        langs:
-          - en
-        text: I think they should nominate Dr Pepper for Surgeon General. It’s time. He’s earned it.
-      replyCount: 194
-      repostCount: 492
-      likeCount: 5464
-      quoteCount: 31
-      indexedAt: "2024-11-19T18:23:03.079Z"
-      labels: []
-    reason:
-      $type: app.bsky.feed.defs#reasonRepost
-      by:
-        did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-        handle: apollorion.com
-        displayName: Joey Stout
-        avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
-        labels: []
-        createdAt: "2024-11-20T19:09:51.653Z"
-      indexedAt: "2024-11-20T23:51:24.591Z"
-  - post:
-      uri: at://did:plc:dvzucmvxelqr6w37suuha4wa/app.bsky.feed.post/3lbecstncyk2b
-      cid: bafyreicbv3gd4j7jtrueoovhnnpjzw2mum4teiqaxfcx4hxixlbefexooe
-      author:
-        did: did:plc:dvzucmvxelqr6w37suuha4wa
-        handle: astronomers.bsky.social
-        displayName: Astronomy pictures
-        avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:dvzucmvxelqr6w37suuha4wa/bafkreieg6q7shxyxyiu5bwzeibwbrtjaceyajwpxuzvv3otnghedtrvmge@jpeg
-        labels: []
-        createdAt: "2024-11-16T06:04:27.773Z"
-      record:
-        $type: app.bsky.feed.post
-        createdAt: "2024-11-20T06:23:53.206Z"
-        embed:
-          $type: app.bsky.embed.images
-          images:
-            - alt: "Orion's Belt:\nThe three prominent stars in a row forming Orion's belt, from left to right, are Alnitak, Alnilam, and Mintaka. \n\nSirius:\nThe dazzling white star below and to the left of Orion's belt, belonging to the constellation Canis Major (the Great Dog). "
-              aspectRatio:
-                height: 2000
-                width: 1600
-              image:
-                $type: blob
-                ref:
-                  $link: bafkreiebynh2auy37zismdjynbpbzvusvvx2fabc4kskypnksqskrvhxba
-                mimeType: image/jpeg
-                size: 564798
-        langs:
-          - en
-        text: Orion and Sirius
-      embed:
-        $type: app.bsky.embed.images#view
-        images:
-          - thumb: https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:dvzucmvxelqr6w37suuha4wa/bafkreiebynh2auy37zismdjynbpbzvusvvx2fabc4kskypnksqskrvhxba@jpeg
-            fullsize: https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:dvzucmvxelqr6w37suuha4wa/bafkreiebynh2auy37zismdjynbpbzvusvvx2fabc4kskypnksqskrvhxba@jpeg
-            alt: "Orion's Belt:\nThe three prominent stars in a row forming Orion's belt, from left to right, are Alnitak, Alnilam, and Mintaka. \n\nSirius:\nThe dazzling white star below and to the left of Orion's belt, belonging to the constellation Canis Major (the Great Dog). "
-            aspectRatio:
-              height: 2000
-              width: 1600
-      replyCount: 16
-      repostCount: 111
-      likeCount: 2014
-      quoteCount: 6
-      indexedAt: "2024-11-20T06:23:53.206Z"
-      labels: []
-    reason:
-      $type: app.bsky.feed.defs#reasonRepost
-      by:
-        did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-        handle: apollorion.com
-        displayName: Joey Stout
-        avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
-        labels: []
-        createdAt: "2024-11-20T19:09:51.653Z"
-      indexedAt: "2024-11-20T23:41:37.133Z"
-  - post:
-      uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lbg4qnij7k26
-      cid: bafyreicwoeddckuqqke3w7h5gxj4pkninobzzgho2lvsldqsjhtvsdys4e
-      author:
-        did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-        handle: apollorion.com
-        displayName: Joey Stout
-        avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
+          activitySubscription:
+            allowSubscriptions: followers
         labels: []
         createdAt: "2024-11-20T19:09:51.653Z"
       record:
         $type: app.bsky.feed.post
-        createdAt: "2024-11-20T23:40:36.686Z"
-        embed:
-          $type: app.bsky.embed.external
-          external:
-            description: YouTube video by VMblog
-            thumb:
-              $type: blob
-              ref:
-                $link: bafkreida6xxiceqkla5bo2ptmtfanafjddcngcab5qyqigu2z7zuekjnrq
-              mimeType: image/jpeg
-              size: 165412
-            title: '#KubeCon 2024 Spotlight Video: Spacelift, Sysdig, Tintri, VictoriaMetrics'
-            uri: https://www.youtube.com/watch?v=6ZoQqKV_a_U
-        facets:
-          - features:
-              - $type: app.bsky.richtext.facet#link
-                uri: https://www.youtube.com/watch?v=6ZoQqKV_a_U
-            index:
-              byteEnd: 107
-              byteStart: 76
+        createdAt: "2025-12-24T10:04:45.639Z"
         langs:
           - en
         text: |-
-          I was in the KubeCon spotlight video VMBlog put out representing Spacelift!
-          www.youtube.com/watch?v=6ZoQ...
-      embed:
-        $type: app.bsky.embed.external#view
-        external:
-          uri: https://www.youtube.com/watch?v=6ZoQqKV_a_U
-          title: '#KubeCon 2024 Spotlight Video: Spacelift, Sysdig, Tintri, VictoriaMetrics'
-          description: YouTube video by VMblog
-          thumb: https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreida6xxiceqkla5bo2ptmtfanafjddcngcab5qyqigu2z7zuekjnrq@jpeg
+          Hey all you people
+          Hey all you people
+          Hey all you people won't you listen to me
+          I just had a sandwich
+          No ordinary sandwich
+      bookmarkCount: 0
       replyCount: 0
       repostCount: 0
       likeCount: 0
       quoteCount: 0
-      indexedAt: "2024-11-20T23:40:36.686Z"
+      indexedAt: "2025-12-24T10:04:45.933Z"
       labels: []
   - post:
-      uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lbfuxetscc2h
-      cid: bafyreiftwiowpvwlvoh5gii2tegbkzjfvwnjintch34pfrlxsbdvekbtee
+      uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3m7v6x5kmds2v
+      cid: bafyreibdnkkv3k4zma6ol4d4pjo7e354i6klxqo7lwppfcv3qkvhhcqx4i
       author:
         did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-        handle: apollorion.com
+        handle: theoutdoorprogrammer.com
         displayName: Joey Stout
         avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
+        associated:
+          activitySubscription:
+            allowSubscriptions: followers
         labels: []
         createdAt: "2024-11-20T19:09:51.653Z"
       record:
         $type: app.bsky.feed.post
-        createdAt: "2024-11-20T21:21:12.565Z"
+        createdAt: "2025-12-13T18:05:47.252Z"
+        langs:
+          - en
+        text: Im not big into Joe Rogan Experience, but I watched the Jelly Roll episode last night and it was very inspiring.
+      bookmarkCount: 0
+      replyCount: 0
+      repostCount: 0
+      likeCount: 0
+      quoteCount: 0
+      indexedAt: "2025-12-13T18:05:47.438Z"
+      labels: []
+  - post:
+      uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3m34q3jf2bk24
+      cid: bafyreidrju63mksb43co57iawnbdrq7skixzrf3pgeb6ldmdc5xji5fsh4
+      author:
+        did: did:plc:7e7cnwumaewg7s2ryywfu3qe
+        handle: theoutdoorprogrammer.com
+        displayName: Joey Stout
+        avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
+        associated:
+          activitySubscription:
+            allowSubscriptions: followers
+        labels: []
+        createdAt: "2024-11-20T19:09:51.653Z"
+      record:
+        $type: app.bsky.feed.post
+        createdAt: "2025-10-14T02:55:07.510Z"
         embed:
           $type: app.bsky.embed.external
           external:
-            description: ""
-            title: x.com
-            uri: https://x.com/k8sfm/status/1859288426136113533?s=46&t=TnLl_Mh8vCUJij3t84QkbA
+            description: YouTube video by Joey Stout
+            thumb:
+              $type: blob
+              ref:
+                $link: bafkreifq24ivtggpnk5wewcdwsatfom4ydf5h7m5phoqe4mfbdlhd3zszq
+              mimeType: image/jpeg
+              size: 120405
+            title: 'Failed Squirrel Hunt ASMR #squirrel #hunting #fail'
+            uri: https://youtube.com/shorts/6m5rr3TqZAQ?si=wFmbc9kbt81JA8ZZ
         facets:
           - features:
               - $type: app.bsky.richtext.facet#link
-                uri: https://x.com/k8sfm/status/1859288426136113533
+                uri: https://youtube.com/shorts/6m5rr3TqZAQ?si=wFmbc9kbt81JA8ZZ
             index:
-              byteEnd: 91
-              byteStart: 70
+              byteEnd: 120
+              byteStart: 93
         langs:
           - en
-        text: 'Is it a sin to link to X on here? Oh well, real cool Spacelift thing: x.com/k8sfm/status...'
+        text: I made my first youtube short, if you are a hunter or a programmer nerd like me check it out youtube.com/shorts/6m5rr...
       embed:
         $type: app.bsky.embed.external#view
         external:
-          uri: https://x.com/k8sfm/status/1859288426136113533?s=46&t=TnLl_Mh8vCUJij3t84QkbA
-          title: x.com
-          description: ""
-      replyCount: 1
+          uri: https://youtube.com/shorts/6m5rr3TqZAQ?si=wFmbc9kbt81JA8ZZ
+          title: 'Failed Squirrel Hunt ASMR #squirrel #hunting #fail'
+          description: YouTube video by Joey Stout
+          thumb: https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreifq24ivtggpnk5wewcdwsatfom4ydf5h7m5phoqe4mfbdlhd3zszq@jpeg
+      bookmarkCount: 0
+      replyCount: 0
       repostCount: 0
-      likeCount: 0
+      likeCount: 1
       quoteCount: 0
-      indexedAt: "2024-11-20T21:21:12.565Z"
+      indexedAt: "2025-10-14T02:55:08.823Z"
       labels: []
   - post:
-      uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lbfp3dftsk27
-      cid: bafyreiea5sbqulb4n3mrt66fcwo7ac6qzycig32o3cbmzuiq2ysv5fdsqq
+      uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3m32u3mw3vc2d
+      cid: bafyreiemaxnnmfo6xifhiyj7ro7wbqlr5nzqi6643g3s4bpbewb3vrvnya
       author:
         did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-        handle: apollorion.com
+        handle: theoutdoorprogrammer.com
         displayName: Joey Stout
         avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
+        associated:
+          activitySubscription:
+            allowSubscriptions: followers
         labels: []
         createdAt: "2024-11-20T19:09:51.653Z"
       record:
         $type: app.bsky.feed.post
-        createdAt: "2024-11-20T19:36:02.827Z"
+        createdAt: "2025-10-13T09:01:26.704Z"
         langs:
           - en
-        text: I made my second post too, just in case.
+        text: I changed my online handle from apollorion to TheOutdoorProgrammer recently. The username served me well for many years but had a few fallbacks that i hope my own personal "rebrand" will fix.
+      bookmarkCount: 0
       replyCount: 0
       repostCount: 0
       likeCount: 0
       quoteCount: 0
-      indexedAt: "2024-11-20T19:36:02.827Z"
+      indexedAt: "2025-10-13T09:01:27.179Z"
       labels: []
   - post:
-      uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lbfnzsdybs2n
-      cid: bafyreiajpbumnn5oof2zyy6uwqgu4jxqc3nk53qn3oldpe6eypyuccnrj4
+      uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lztoegt24225
+      cid: bafyreiar4fwlwwixefgzlnglhz4zz64slt7tivm5cxuohlf7ixxfl4kmea
       author:
         did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-        handle: apollorion.com
+        handle: theoutdoorprogrammer.com
         displayName: Joey Stout
         avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
+        associated:
+          activitySubscription:
+            allowSubscriptions: followers
         labels: []
         createdAt: "2024-11-20T19:09:51.653Z"
       record:
         $type: app.bsky.feed.post
-        createdAt: "2024-11-20T19:17:17.644Z"
+        createdAt: "2025-09-27T19:05:10.056Z"
         langs:
           - en
-        text: Mic check hello hello is this thing on? This is my first post here <3
-      replyCount: 1
+        text: Moved all my stuff to a homelab cluster lets see how that goes
+      bookmarkCount: 0
+      replyCount: 0
       repostCount: 0
-      likeCount: 2
+      likeCount: 0
       quoteCount: 0
-      indexedAt: "2024-11-20T19:17:17.644Z"
+      indexedAt: "2025-09-27T19:05:10.481Z"
       labels: []
+cursor: "2025-09-27T19:05:10.056Z"
