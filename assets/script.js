@@ -16,6 +16,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // ===== Helper: scroll carousel to center a specific item =====
+    function scrollToCenter(carousel, item) {
+        var carouselRect = carousel.getBoundingClientRect();
+        var itemRect = item.getBoundingClientRect();
+        var offset = (itemRect.left - carouselRect.left) + carousel.scrollLeft - (carouselRect.width / 2) + (itemRect.width / 2);
+        carousel.scrollTo({ left: offset, behavior: 'smooth' });
+    }
+
     // ===== Lazy YouTube Video Embeds (Click to Play) =====
     document.querySelectorAll('.video-thumb[data-video-id]').forEach(function (thumb) {
         thumb.addEventListener('click', function () {
@@ -28,6 +36,12 @@ document.addEventListener('DOMContentLoaded', function () {
             this.innerHTML = '';
             this.appendChild(iframe);
             this.style.cursor = 'default';
+            // Center the playing video in the carousel
+            var carouselItem = this.closest('.carousel-item');
+            var carousel = this.closest('.carousel');
+            if (carouselItem && carousel) {
+                scrollToCenter(carousel, carouselItem);
+            }
         });
     });
 
@@ -43,6 +57,12 @@ document.addEventListener('DOMContentLoaded', function () {
             this.innerHTML = '';
             this.appendChild(iframe);
             this.style.cursor = 'default';
+            // Center the playing short in the carousel
+            var carouselItem = this.closest('.carousel-item');
+            var carousel = this.closest('.carousel');
+            if (carouselItem && carousel) {
+                scrollToCenter(carousel, carouselItem);
+            }
         });
     });
 
