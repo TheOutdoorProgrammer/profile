@@ -37,7 +37,7 @@
     <section id="hero" class="hero">
         <div class="hero-content">
             <div class="hero-avatar-wrapper">
-                <img class="hero-avatar" width="180" height="180" src="{{ site.logo }}" alt="{{ site.name }}">
+                <img class="hero-avatar" width="200" height="200" src="{{ site.logo }}" alt="{{ site.name }}">
                 <div class="avatar-glow"></div>
             </div>
             <h1 class="hero-title">{{ site.name }}{% if site.badge.enable == true %}<span class="iconify-inline badge" data-icon="{{ site.badge.icon }}" style="color: {{ site.badge.color }}"></span>{% endif %}</h1>
@@ -62,20 +62,20 @@
                 </a>
             </div>
         </div>
+        <div class="scroll-indicator">
+            <span class="iconify-inline" data-icon="mdi:chevron-double-down"></span>
+        </div>
     </section>
 
     <div class="site-container">
-        <!-- Find Me Links -->
-        {% include links.html %}
-
         <!-- YouTube Videos -->
         {% include videos.html %}
 
-        <!-- Projects / Spacelift / Blog -->
-        {% include cards.html %}
-
         <!-- BlueSky Posts -->
         {% include posts.html %}
+
+        <!-- Projects / Spacelift / Blog -->
+        {% include cards.html %}
 
         {% include footer.html %}
     </div>

@@ -1,7 +1,7 @@
 <section class="section" id="youtube">
     <h2 class="section-title">
         <span class="iconify-inline" data-icon="logos:youtube-icon"></span>
-        My Wilderness Adventures
+        YouTube
     </h2>
     <div class="carousel-wrapper">
         <button class="carousel-btn carousel-btn-left" data-carousel="videos-carousel" aria-label="Scroll left">
@@ -12,9 +12,9 @@
             {% if video.type == 'video' %}
             <div class="carousel-item video-card">
                 <div class="video-thumb" data-video-id="{{ video.id }}">
-                    <img src="https://img.youtube.com/vi/{{ video.id }}/mqdefault.jpg" alt="{{ video.title }}" loading="lazy">
+                    <img src="https://img.youtube.com/vi/{{ video.id }}/mqdefault.jpg" alt="{{ video.title }}" loading="lazy" width="480" height="270">
                     <div class="play-btn">
-                        <span class="iconify-inline" data-icon="mdi:play-circle" style="font-size:3rem;color:#fff"></span>
+                        <span class="iconify-inline" data-icon="mdi:play-circle" style="font-size:3.5rem;color:#fff;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.6))"></span>
                     </div>
                 </div>
                 <div class="video-info">
@@ -50,9 +50,9 @@
             {% if video.type == 'short' %}
             <div class="carousel-item short-card">
                 <div class="video-thumb short-thumb" data-short-id="{{ video.id }}">
-                    <img src="https://img.youtube.com/vi/{{ video.id }}/mqdefault.jpg" alt="{{ video.title }}" loading="lazy">
+                    <img src="https://img.youtube.com/vi/{{ video.id }}/mqdefault.jpg" alt="{{ video.title }}" loading="lazy" width="270" height="480">
                     <div class="play-btn">
-                        <span class="iconify-inline" data-icon="mdi:play-circle" style="font-size:2.5rem;color:#fff"></span>
+                        <span class="iconify-inline" data-icon="mdi:play-circle" style="font-size:2.5rem;color:#fff;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.6))"></span>
                     </div>
                 </div>
                 <div class="video-info">
