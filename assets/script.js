@@ -16,53 +16,59 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ===== Helper: scroll carousel to center a specific item =====
-    function scrollToCenter(carousel, item) {
-        var carouselRect = carousel.getBoundingClientRect();
-        var itemRect = item.getBoundingClientRect();
-        var offset = (itemRect.left - carouselRect.left) + carousel.scrollLeft - (carouselRect.width / 2) + (itemRect.width / 2);
-        carousel.scrollTo({ left: offset, behavior: 'smooth' });
+    // ===== Fullscreen Video Modal =====
+    var modal = document.createElement('div');
+    modal.className = 'video-modal';
+    modal.innerHTML = '<div class="video-modal-backdrop"></div><div class="video-modal-content"><button class="video-modal-close" aria-label="Close">&times;</button><div class="video-modal-player"></div></div>';
+    document.body.appendChild(modal);
+
+    var modalPlayer = modal.querySelector('.video-modal-player');
+    var modalClose = modal.querySelector('.video-modal-close');
+    var modalBackdrop = modal.querySelector('.video-modal-backdrop');
+
+    function openVideoModal(videoId, isShort) {
+        var iframe = document.createElement('iframe');
+        iframe.setAttribute('src', 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&playsinline=1');
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.setAttribute('frameborder', '0');
+        if (isShort) {
+            iframe.classList.add('short-iframe');
+        }
+        modalPlayer.innerHTML = '';
+        modalPlayer.appendChild(iframe);
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
 
-    // ===== Lazy YouTube Video Embeds (Click to Play) =====
+    function closeVideoModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        // Small delay to let animation finish before destroying iframe
+        setTimeout(function() { modalPlayer.innerHTML = ''; }, 300);
+    }
+
+    modalClose.addEventListener('click', closeVideoModal);
+    modalBackdrop.addEventListener('click', closeVideoModal);
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeVideoModal();
+        }
+    });
+
+    // ===== YouTube Video Thumbs → Open in Modal =====
     document.querySelectorAll('.video-thumb[data-video-id]').forEach(function (thumb) {
         thumb.addEventListener('click', function () {
             var videoId = this.getAttribute('data-video-id');
-            var iframe = document.createElement('iframe');
-            iframe.setAttribute('src', 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0');
-            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-            iframe.setAttribute('allowfullscreen', '');
-            iframe.setAttribute('loading', 'lazy');
-            this.innerHTML = '';
-            this.appendChild(iframe);
-            this.style.cursor = 'default';
-            // Center the playing video in the carousel
-            var carouselItem = this.closest('.carousel-item');
-            var carousel = this.closest('.carousel');
-            if (carouselItem && carousel) {
-                scrollToCenter(carousel, carouselItem);
-            }
+            openVideoModal(videoId, false);
         });
     });
 
-    // Lazy YouTube Shorts embeds (click to play)
+    // YouTube Shorts thumbs → Open in Modal
     document.querySelectorAll('.video-thumb[data-short-id]').forEach(function (thumb) {
         thumb.addEventListener('click', function () {
             var videoId = this.getAttribute('data-short-id');
-            var iframe = document.createElement('iframe');
-            iframe.setAttribute('src', 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0');
-            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-            iframe.setAttribute('allowfullscreen', '');
-            iframe.setAttribute('loading', 'lazy');
-            this.innerHTML = '';
-            this.appendChild(iframe);
-            this.style.cursor = 'default';
-            // Center the playing short in the carousel
-            var carouselItem = this.closest('.carousel-item');
-            var carousel = this.closest('.carousel');
-            if (carouselItem && carousel) {
-                scrollToCenter(carousel, carouselItem);
-            }
+            openVideoModal(videoId, true);
         });
     });
 
