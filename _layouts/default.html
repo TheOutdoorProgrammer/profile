@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="{{ site.favicon.path }}" type="image/{{ site.favicon.type }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto:wght@400;500&family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
     <script src="https://code.iconify.design/2/2.0.0/iconify.min.js"></script>
     <meta name="description" content="{{ site.description }}">
@@ -32,21 +32,34 @@
     <meta name="twitter:image" content="{{ site.url }}/{{ site.image.path }}" />
 </head>
 
-<body class="dark">
+<body>
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="hero" class="hero">
         <div class="hero-content">
-            <img class="avatar" width="120" height="120" src="{{ site.logo }}" alt="{{ site.name }}">
-            <h1 class="hero-name">{{ site.name }}{% if site.badge.enable == true %}<span class="iconify-inline badge" data-icon="{{ site.badge.icon }}" style="color: {{ site.badge.color }}"></span>{% endif %}</h1>
-            <p class="hero-tagline">@{{ site.tagline }}</p>
-            <p class="hero-description">{{ site.description }}</p>
+            <div class="hero-avatar-wrapper">
+                <img class="hero-avatar" width="180" height="180" src="{{ site.logo }}" alt="{{ site.name }}">
+                <div class="avatar-glow"></div>
+            </div>
+            <h1 class="hero-title">{{ site.name }}{% if site.badge.enable == true %}<span class="iconify-inline badge" data-icon="{{ site.badge.icon }}" style="color: {{ site.badge.color }}"></span>{% endif %}</h1>
+            <p class="hero-handle"><span class="code-name">{{ site.tagline }}</span></p>
+            <p class="hero-subtitle">DevOps Engineer &amp; Outdoorsman</p>
+            <p class="hero-bio">{{ site.description }}</p>
 
             <!-- Social Icons -->
             {% include social.html %}
 
             <div class="gpg-badge">
                 <span class="iconify-inline" data-icon="mdi:key-variant"></span>
-                <span class="gpg-text">GPG: {{ site.gpg.fingerprint }}</span>
+                <span class="gpg-text">{{ site.gpg.fingerprint }}</span>
+            </div>
+
+            <div class="hero-actions">
+                <a href="#youtube" class="btn btn-primary">
+                    <span class="iconify-inline" data-icon="mdi:play-circle-outline"></span> Watch Videos
+                </a>
+                <a href="#projects" class="btn btn-secondary">
+                    <span class="iconify-inline" data-icon="mdi:rocket-launch-outline"></span> See My Work
+                </a>
             </div>
         </div>
     </section>
@@ -58,7 +71,7 @@
         <!-- YouTube Videos -->
         {% include videos.html %}
 
-        <!-- Projects -->
+        <!-- Projects / Spacelift / Blog -->
         {% include cards.html %}
 
         <!-- BlueSky Posts -->
