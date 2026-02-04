@@ -1,0 +1,33 @@
+{% for button in site.data.links.buttons %}
+{% if button.type == 'dropdown' %}
+<section class="section" id="{{ button.category | slugify }}">
+    <h2 class="section-title">
+        {% if button.category == 'Projects' %}
+        <span class="iconify-inline" data-icon="mdi:rocket-launch"></span>
+        {% elsif button.category == 'Spacelift' %}
+        <span class="iconify-inline" data-icon="mdi:space-station"></span>
+        {% elsif button.category == 'Blog Posts' %}
+        <span class="iconify-inline" data-icon="mdi:post-outline"></span>
+        {% else %}
+        <span class="iconify-inline" data-icon="mdi:folder-open"></span>
+        {% endif %}
+        {{ button.category }}
+    </h2>
+    <div class="card-grid">
+        {% for item in button.items %}
+        <a class="project-card" href="{{ item.url }}" target="_blank">
+            <div class="project-card-icon">
+                {% if item.icon %}
+                <span class="iconify-inline" data-icon="{{ item.icon }}"></span>
+                {% endif %}
+            </div>
+            <div class="project-card-content">
+                <h3 class="project-card-title">{{ item.title }}</h3>
+            </div>
+            <span class="iconify-inline project-card-arrow" data-icon="mdi:open-in-new"></span>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+{% endfor %}

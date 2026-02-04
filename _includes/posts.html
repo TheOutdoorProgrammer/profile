@@ -1,17 +1,55 @@
-<main>
-    <h2 class="text-center"><span class="iconify-inline" data-icon="logos:bluesky" style="margin-left:.5em;margin-right:0"></span> Recent BlueSky Posts</h2>
-    {% for post in site.data.posts.feed %}
-    {% if post.post.record.text != "" %}
-    <div class="row">
-        <div class="col is-center" style="word-break: break-word;">
+<section class="section" id="bluesky">
+    <h2 class="section-title">
+        <span class="iconify-inline" data-icon="logos:bluesky"></span>
+        Recent BlueSky Posts
+    </h2>
+    <div class="carousel-wrapper">
+        <button class="carousel-btn carousel-btn-left" data-carousel="posts-carousel" aria-label="Scroll left">
+            <span class="iconify-inline" data-icon="mdi:chevron-left"></span>
+        </button>
+        <div class="carousel" id="posts-carousel">
+            {% for post in site.data.posts.feed %}
+            {% if post.post.record.text != "" %}
             {% assign link = post.post.uri | split: "/app.bsky.feed.post/" %}
-            <a class="button outline secondary" style="width:50%" href="https://bsky.app/profile/{{ post.post.author.handle }}/post/{{ link[1] }}" target="_blank">
-                {% if post.post.author.handle != "theoutdoorprogrammer.com" %}<span style="color: grey;">Repost from @{{ post.post.author.handle }}</span><br/>{% endif %}{{ post.post.record.text | replace:'\n',' ' }}
-                <br/>
-                <span style="font-size: 0.5em">Published {{ post.post.record.createdAt | date: "%-d %B %Y" }}</span>
-            </a>
+            <div class="carousel-item">
+                <a class="bsky-card" href="https://bsky.app/profile/{{ post.post.author.handle }}/post/{{ link[1] }}" target="_blank">
+                    <div class="bsky-card-header">
+                        <img class="bsky-avatar" src="{{ post.post.author.avatar }}" alt="{{ post.post.author.displayName }}" width="36" height="36" loading="lazy">
+                        <div class="bsky-author">
+                            <span class="bsky-author-name">{{ post.post.author.displayName }}</span>
+                            <span class="bsky-author-handle">@{{ post.post.author.handle }}</span>
+                        </div>
+                    </div>
+                    <p class="bsky-text">{{ post.post.record.text | newline_to_br }}</p>
+                    {% if post.post.embed.external %}
+                    <div class="bsky-embed-preview">
+                        {% if post.post.embed.external.thumb %}
+                        <img class="bsky-embed-thumb" src="{{ post.post.embed.external.thumb }}" alt="" loading="lazy">
+                        {% endif %}
+                        <span class="bsky-embed-title">{{ post.post.embed.external.title }}</span>
+                    </div>
+                    {% endif %}
+                    <div class="bsky-meta">
+                        <span class="bsky-date">{{ post.post.record.createdAt | date: "%b %-d, %Y" }}</span>
+                        <div class="bsky-stats">
+                            {% if post.post.likeCount > 0 %}
+                            <span><span class="iconify-inline" data-icon="mdi:heart"></span> {{ post.post.likeCount }}</span>
+                            {% endif %}
+                            {% if post.post.repostCount > 0 %}
+                            <span><span class="iconify-inline" data-icon="mdi:repeat-variant"></span> {{ post.post.repostCount }}</span>
+                            {% endif %}
+                            {% if post.post.replyCount > 0 %}
+                            <span><span class="iconify-inline" data-icon="mdi:comment-outline"></span> {{ post.post.replyCount }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+            {% endfor %}
         </div>
+        <button class="carousel-btn carousel-btn-right" data-carousel="posts-carousel" aria-label="Scroll right">
+            <span class="iconify-inline" data-icon="mdi:chevron-right"></span>
+        </button>
     </div>
-    {% endif %}
-    {% endfor %}
-</main>
+</section>

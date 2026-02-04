@@ -1,12 +1,7 @@
-<nav class="nav">
-    <div class="nav-center">
-        {% for social in site.data.social %}
-        <a class="brand" href="{{ social.url }}" target="_blank" aria-label="{{ social.name }}"
-           style="flex-direction: column; margin: 0 3px 0 3px; text-align: center;">
-            <span class="iconify-inline" data-icon="{{ social.icon }}"
-                  style="margin: auto;"></span>
-            <span style="font-size: 0.5em !important;">{{ social.name }}</span>
-        </a>
-        {% endfor %}
-    </div>
-</nav>
+<div class="social-links">
+    {% for social in site.data.social %}
+    <a class="social-icon" href="{{ social.url }}" target="_blank" aria-label="{{ social.name }}" title="{{ social.name }}">
+        <span class="iconify-inline" data-icon="{{ social.icon }}"></span>
+    </a>
+    {% endfor %}
+</div>
