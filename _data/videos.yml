@@ -1,7 +1,4 @@
 videos:
-  - id: LFJ2sBdxcPo
-    title: Snow Time Lapse
-    type: video
   - id: weN9tja0Woo
     title: OpenTofu and Target Shooting
     type: video
@@ -20,12 +17,6 @@ videos:
   - id: RFDbEWgB8m4
     title: Unboxing Firewalla Gold Pro
     type: video
-  - id: 9I_E51fB14k
-    title: Hacking an LED Moon
-    type: video
   - id: 6m5rr3TqZAQ
     title: Failed Squirrel Hunt ASMR
-    type: short
-  - id: Dvgk9pGYLyY
-    title: Short
     type: short
