@@ -1,0 +1,34 @@
+name: Update Bluesky posts data
+
+on:
+  # Manually from Actions tab or via webhook
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-posts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch latest Bluesky posts RSS
+        run: |
+          curl -sS https://bsky.app/profile/did:plc:7e7cnwumaewg7s2ryywfu3qe/rss \
+            | yq -p=xml '.rss.channel' -o yaml > _data/posts.yml
+
+      - name: Commit and push changes (if any)
+        run: |
+          if git diff --quiet _data/posts.yml; then
+            echo "No changes to posts.yml; skipping commit";
+            exit 0;
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add _data/posts.yml
+          git commit -m "chore: update Bluesky posts feed"
+          git push
