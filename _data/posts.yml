@@ -5,6 +5,12 @@ description: |-
 link: https://bsky.app/profile/theoutdoorprogrammer.com
 title: '@theoutdoorprogrammer.com - Joey Stout'
 item:
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3mebhes6uk22r
+    description: Hopefully going ice fishing today for the first time. Should be a good time.
+    pubDate: 07 Feb 2026 12:49 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mebhes6uk22r
+      +@isPermaLink: "false"
   - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3mea76ddl4k2n
     description: I want to put more thoughts here. I originally started using bluesky because my friends told me I have the strangest thoughts and when I have one I want to share it. So Im going to try it again.
     pubDate: 07 Feb 2026 00:49 +0000
@@ -188,10 +194,4 @@ item:
     pubDate: 30 Mar 2025 09:28 +0000
     guid:
       +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3llljqfxb6k2o
-      +@isPermaLink: "false"
-  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lkrmcmb2e22u
-    description: Would you cut off a finger of your choice to never pay a tax again?
-    pubDate: 20 Mar 2025 02:05 +0000
-    guid:
-      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lkrmcmb2e22u
       +@isPermaLink: "false"
