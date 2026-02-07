@@ -15,11 +15,11 @@ ga4: # Google Analytics 4 measurement ID, for e.g. G-XXXXXXX (optional). Remove 
 twitter:
   username: UserName # Used for SEO
 image:
-  path: assets/images/example.jpg # Used for SEO (og:image, twitter:image)
-  type: jpeg # File format of image.
+  path: assets/images/the-outdoor-programmer-logo.svg # Used for SEO (og:image, twitter:image)
+  type: svg # File format of image.
   height: 100 # Pixels
   width: 100
-  alt: logo
+  alt: The Outdoor Programmer logo
 
 gpg:
   fingerprint: 8E4C D7B8 4024 3BF4 FF54 58B8 1830 B516 B456 06F6
