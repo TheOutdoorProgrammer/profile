@@ -44,10 +44,10 @@ cluster:
 
 2. **DNS matters more than you think** — split-horizon DNS with Pi-hole took a few iterations to get right.
 
-3. **Backup everything** — I learned this when a failed firmware update bricked one of my NUCs. Having Velero configured saved me hours of reconfiguration.
+3. **Backups are non‑negotiable** — a firmware update bricked one of my NUCs. Velero turned that from a panic into a restore job.
 
 ## What's Next
 
-I'm planning to add GPU passthrough for some local LLM inference. Stay tuned for that writeup.
+I want to add GPU passthrough for some local LLM work and a bit of fun “overkill homelab” experimentation.
 
-If you're thinking about building your own homelab cluster — just do it. The learning experience alone is worth it.
+If you're thinking about building your own homelab cluster, honestly: go for it. The learning experience alone is worth it.

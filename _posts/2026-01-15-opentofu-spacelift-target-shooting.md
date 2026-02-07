@@ -7,7 +7,7 @@ tags: [opentofu, spacelift, outdoors]
 layout: post
 ---
 
-Sometimes the best way to explain DevOps concepts is to step away from the keyboard entirely. That's exactly what I did in my latest YouTube video where I talk through OpenTofu and Spacelift concepts while doing some target shooting.
+Sometimes the best way to explain DevOps concepts is to step away from the keyboard entirely. In this video I talk through OpenTofu and Spacelift while I’m out doing some target shooting.
 
 ## Why Mix the Two?
 
