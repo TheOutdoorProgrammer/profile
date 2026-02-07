@@ -1,168 +1,197 @@
----
-feed:
-- post:
-    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mapz752ees23
-    cid: bafyreig5qwvnubzavjte3rcsesuuxdvjsj5keujlj6dvczdhjptawbpqcu
-    author:
-      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-      handle: theoutdoorprogrammer.com
-      displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
-      associated:
-        activitySubscription:
-          allowSubscriptions: followers
-      labels: []
-      createdAt: '2024-11-20T19:09:51.653Z'
-    record:
-      "$type": app.bsky.feed.post
-      createdAt: '2025-12-24T10:04:45.639Z'
-      langs:
-      - en
-      text: |-
-        Hey all you people
-        Hey all you people
-        Hey all you people won't you listen to me
-        I just had a sandwich
-        No ordinary sandwich
-    bookmarkCount: 0
-    replyCount: 0
-    repostCount: 0
-    likeCount: 0
-    quoteCount: 0
-    indexedAt: '2025-12-24T10:04:45.933Z'
-    labels: []
-- post:
-    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3m7v6x5kmds2v
-    cid: bafyreibdnkkv3k4zma6ol4d4pjo7e354i6klxqo7lwppfcv3qkvhhcqx4i
-    author:
-      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-      handle: theoutdoorprogrammer.com
-      displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
-      associated:
-        activitySubscription:
-          allowSubscriptions: followers
-      labels: []
-      createdAt: '2024-11-20T19:09:51.653Z'
-    record:
-      "$type": app.bsky.feed.post
-      createdAt: '2025-12-13T18:05:47.252Z'
-      langs:
-      - en
-      text: Im not big into Joe Rogan Experience, but I watched the Jelly Roll episode
-        last night and it was very inspiring.
-    bookmarkCount: 0
-    replyCount: 0
-    repostCount: 0
-    likeCount: 0
-    quoteCount: 0
-    indexedAt: '2025-12-13T18:05:47.438Z'
-    labels: []
-- post:
-    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3m34q3jf2bk24
-    cid: bafyreidrju63mksb43co57iawnbdrq7skixzrf3pgeb6ldmdc5xji5fsh4
-    author:
-      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-      handle: theoutdoorprogrammer.com
-      displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
-      associated:
-        activitySubscription:
-          allowSubscriptions: followers
-      labels: []
-      createdAt: '2024-11-20T19:09:51.653Z'
-    record:
-      "$type": app.bsky.feed.post
-      createdAt: '2025-10-14T02:55:07.510Z'
-      embed:
-        "$type": app.bsky.embed.external
-        external:
-          description: YouTube video by Joey Stout
-          thumb:
-            "$type": blob
-            ref:
-              "$link": bafkreifq24ivtggpnk5wewcdwsatfom4ydf5h7m5phoqe4mfbdlhd3zszq
-            mimeType: image/jpeg
-            size: 120405
-          title: 'Failed Squirrel Hunt ASMR #squirrel #hunting #fail'
-          uri: https://youtube.com/shorts/6m5rr3TqZAQ?si=wFmbc9kbt81JA8ZZ
-      facets:
-      - features:
-        - "$type": app.bsky.richtext.facet#link
-          uri: https://youtube.com/shorts/6m5rr3TqZAQ?si=wFmbc9kbt81JA8ZZ
-        index:
-          byteEnd: 120
-          byteStart: 93
-      langs:
-      - en
-      text: I made my first youtube short, if you are a hunter or a programmer nerd
-        like me check it out youtube.com/shorts/6m5rr...
-    embed:
-      "$type": app.bsky.embed.external#view
-      external:
-        uri: https://youtube.com/shorts/6m5rr3TqZAQ?si=wFmbc9kbt81JA8ZZ
-        title: 'Failed Squirrel Hunt ASMR #squirrel #hunting #fail'
-        description: YouTube video by Joey Stout
-        thumb: https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreifq24ivtggpnk5wewcdwsatfom4ydf5h7m5phoqe4mfbdlhd3zszq@jpeg
-    bookmarkCount: 0
-    replyCount: 0
-    repostCount: 0
-    likeCount: 1
-    quoteCount: 0
-    indexedAt: '2025-10-14T02:55:08.823Z'
-    labels: []
-- post:
-    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3m32u3mw3vc2d
-    cid: bafyreiemaxnnmfo6xifhiyj7ro7wbqlr5nzqi6643g3s4bpbewb3vrvnya
-    author:
-      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-      handle: theoutdoorprogrammer.com
-      displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
-      associated:
-        activitySubscription:
-          allowSubscriptions: followers
-      labels: []
-      createdAt: '2024-11-20T19:09:51.653Z'
-    record:
-      "$type": app.bsky.feed.post
-      createdAt: '2025-10-13T09:01:26.704Z'
-      langs:
-      - en
-      text: I changed my online handle from apollorion to TheOutdoorProgrammer recently.
-        The username served me well for many years but had a few fallbacks that i
-        hope my own personal "rebrand" will fix.
-    bookmarkCount: 0
-    replyCount: 0
-    repostCount: 0
-    likeCount: 0
-    quoteCount: 0
-    indexedAt: '2025-10-13T09:01:27.179Z'
-    labels: []
-- post:
-    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lztoegt24225
-    cid: bafyreiar4fwlwwixefgzlnglhz4zz64slt7tivm5cxuohlf7ixxfl4kmea
-    author:
-      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-      handle: theoutdoorprogrammer.com
-      displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
-      associated:
-        activitySubscription:
-          allowSubscriptions: followers
-      labels: []
-      createdAt: '2024-11-20T19:09:51.653Z'
-    record:
-      "$type": app.bsky.feed.post
-      createdAt: '2025-09-27T19:05:10.056Z'
-      langs:
-      - en
-      text: Moved all my stuff to a homelab cluster lets see how that goes
-    bookmarkCount: 0
-    replyCount: 0
-    repostCount: 0
-    likeCount: 0
-    quoteCount: 0
-    indexedAt: '2025-09-27T19:05:10.481Z'
-    labels: []
-cursor: '2025-09-27T19:05:10.056Z'
+description: |-
+  Programmer, Hunter, Hockey Fan, Family Man.
+
+  The Outdoor Programmer
+link: https://bsky.app/profile/theoutdoorprogrammer.com
+title: '@theoutdoorprogrammer.com - Joey Stout'
+item:
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3mea76ddl4k2n
+    description: I want to put more thoughts here. I originally started using bluesky because my friends told me I have the strangest thoughts and when I have one I want to share it. So Im going to try it again.
+    pubDate: 07 Feb 2026 00:49 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mea76ddl4k2n
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3mapz752ees23
+    description: |-
+      Hey all you people
+      Hey all you people
+      Hey all you people won't you listen to me
+      I just had a sandwich
+      No ordinary sandwich
+    pubDate: 24 Dec 2025 10:04 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mapz752ees23
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3m7v6x5kmds2v
+    description: Im not big into Joe Rogan Experience, but I watched the Jelly Roll episode last night and it was very inspiring.
+    pubDate: 13 Dec 2025 18:05 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3m7v6x5kmds2v
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3m34q3jf2bk24
+    description: I made my first youtube short, if you are a hunter or a programmer nerd like me check it out https://youtube.com/shorts/6m5rr3TqZAQ?si=wFmbc9kbt81JA8ZZ
+    pubDate: 14 Oct 2025 02:55 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3m34q3jf2bk24
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3m32u3mw3vc2d
+    description: I changed my online handle from apollorion to TheOutdoorProgrammer recently. The username served me well for many years but had a few fallbacks that i hope my own personal "rebrand" will fix.
+    pubDate: 13 Oct 2025 09:01 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3m32u3mw3vc2d
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lztoegt24225
+    description: Moved all my stuff to a homelab cluster lets see how that goes
+    pubDate: 27 Sep 2025 19:05 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lztoegt24225
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lyvyxraud22t
+    description: The new iOS reminds me of the first time I learned how to make a div with a blurry background.
+    pubDate: 15 Sep 2025 23:55 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lyvyxraud22t
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lydrmnoxwk2b
+    description: My wife and I started a fish wall, this is fish art from columbus, seattle, and myrtle beach so far.
+    pubDate: 08 Sep 2025 17:55 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lydrmnoxwk2b
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lxqnr5dkzs2z
+    description: You forgot the pickles!!!
+    pubDate: 01 Sep 2025 03:26 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lxqnr5dkzs2z
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lxgcelevcs2x
+    description: the good news about running into a bear with rabies is you probably dont need to worry about contracting rabies.
+    pubDate: 28 Aug 2025 00:35 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lxgcelevcs2x
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lxck5jbrr22b
+    description: Sleep is a way to time travel to breakfast
+    pubDate: 26 Aug 2025 12:44 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lxck5jbrr22b
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lwncclhp7s2e
+    description: if youre ever traveling abroad and theres a string behind a toilet, dont pull it. apparently it sets off an alarm
+    pubDate: 18 Aug 2025 01:57 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lwncclhp7s2e
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lwld7bq5p22w
+    description: I feel like the german language was created by someone who just loved the letter Z
+    pubDate: 17 Aug 2025 07:08 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lwld7bq5p22w
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3ls2g4iczwc2x
+    description: Im at the hospital waiting room because my wife is getting her tonsils removed and this guy next to me looked at his wife and said "im so sleepy, my hands are just feeling so thick, you know?" what? your hands are thick?
+    pubDate: 20 Jun 2025 16:04 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3ls2g4iczwc2x
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lrzb6ukzis2a
+    description: |-
+      Im starting a youtube channel "The Outdoor Programmer" where I do outdoor things like fishing/shooting while talking about programming related topics.
+
+      This first video is just me fishing I gotta get the hang of the cameras and mics and stuff so this was really just a test run.
+
+      youtu.be/sFalcWeK6ss
+      https://youtu.be/sFalcWeK6ss?si=Wh48smghmdXA4ktl
+    pubDate: 20 Jun 2025 05:03 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lrzb6ukzis2a
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lrr6u45za22x
+    description: If you were given hypothetical perfect general anesthesia and your limp body was placed into a machine that moved you as if you were running full sprint, would your heart rate increase?
+    pubDate: 17 Jun 2025 00:00 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lrr6u45za22x
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lr77hlaf6k2l
+    description: "Is Walmart on here? \U0001F602"
+    pubDate: 09 Jun 2025 20:23 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lr77hlaf6k2l
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lqdqi3p3xk2n
+    description: I like chewing my OJ with pulp
+    pubDate: 29 May 2025 22:13 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lqdqi3p3xk2n
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lowpnxb5rc2t
+    description: Do animals not have taste buds? How does a shark eat a rotting whale and think "this is gourmet as fuck?"
+    pubDate: 12 May 2025 00:29 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lowpnxb5rc2t
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lnoksvr7bk23
+    description: People in pet subreddits ask the silliest questions "why is my cat making this noise while I pet her?" like what? you mean the purring?
+    pubDate: 26 Apr 2025 01:16 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lnoksvr7bk23
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lmiwdl7ddk2b
+    description: did dodo bird taste good?
+    pubDate: 11 Apr 2025 02:01 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lmiwdl7ddk2b
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lmipjxtvsc22
+    description: A girl telling me she doesn't know who the president is in high school over 10 years ago lives rent free in my head
+    pubDate: 10 Apr 2025 23:59 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lmipjxtvsc22
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lmb4k4ftx22u
+    description: |-
+      https://youtu.be/pIz2K3ArrWk?si=mb6WvZmNa8jb1muw
+
+      I miss OG Owl City
+    pubDate: 07 Apr 2025 23:30 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lmb4k4ftx22u
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lmaykqmsf226
+    description: What is the conversion rate from horsepower to elephantpower?
+    pubDate: 07 Apr 2025 22:19 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lmaykqmsf226
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lm3xsy5zdk2k
+    description: "Fishing tourney was today, got less than last place \U0001F602. Im not a bad fisherman, the fish are just bad at biting my hook."
+    pubDate: 05 Apr 2025 22:22 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lm3xsy5zdk2k
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lls4rmub5s2t
+    description: Why did pineapple pizza lovers stop at pineapple? Are they fruitist against other fruit based pizzas? Wheres the strawberry pizza?
+    pubDate: 02 Apr 2025 00:25 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lls4rmub5s2t
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3llrgulpiac2b
+    description: |-
+      Q: How many K8s engineers does it take to change a light bulb?
+      A: None - you should declare how many light bulbs there should be and let the room update itself to match.
+    pubDate: 01 Apr 2025 17:52 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3llrgulpiac2b
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3llljqfxb6k2o
+    description: Jared Keeso is my man crush
+    pubDate: 30 Mar 2025 09:28 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3llljqfxb6k2o
+      +@isPermaLink: "false"
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3lkrmcmb2e22u
+    description: Would you cut off a finger of your choice to never pay a tax again?
+    pubDate: 20 Mar 2025 02:05 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lkrmcmb2e22u
+      +@isPermaLink: "false"
