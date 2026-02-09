@@ -5,6 +5,12 @@ description: |-
 link: https://bsky.app/profile/theoutdoorprogrammer.com
 title: '@theoutdoorprogrammer.com - Joey Stout'
 item:
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3megxliv7422y
+    description: https://github.com/TheOutdoorProgrammer/githubcommits2profile
+    pubDate: 09 Feb 2026 17:22 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3megxliv7422y
+      +@isPermaLink: "false"
   - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3mebhes6uk22r
     description: Hopefully going ice fishing today for the first time. Should be a good time.
     pubDate: 07 Feb 2026 12:49 +0000
