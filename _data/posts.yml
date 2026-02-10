@@ -5,6 +5,12 @@ description: |-
 link: https://bsky.app/profile/theoutdoorprogrammer.com
 title: '@theoutdoorprogrammer.com - Joey Stout'
 item:
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3mehvkwn3xs2m
+    description: As a dad, I have to say I love my kids. But Im so excited for the day I never have to see feces of another human ever again.
+    pubDate: 10 Feb 2026 02:19 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mehvkwn3xs2m
+      +@isPermaLink: "false"
   - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3megxliv7422y
     description: https://github.com/TheOutdoorProgrammer/githubcommits2profile
     pubDate: 09 Feb 2026 17:22 +0000
@@ -194,10 +200,4 @@ item:
     pubDate: 01 Apr 2025 17:52 +0000
     guid:
       +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3llrgulpiac2b
-      +@isPermaLink: "false"
-  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3llljqfxb6k2o
-    description: Jared Keeso is my man crush
-    pubDate: 30 Mar 2025 09:28 +0000
-    guid:
-      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3llljqfxb6k2o
       +@isPermaLink: "false"
