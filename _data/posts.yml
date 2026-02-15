@@ -5,6 +5,12 @@ description: |-
 link: https://bsky.app/profile/theoutdoorprogrammer.com
 title: '@theoutdoorprogrammer.com - Joey Stout'
 item:
+  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3mevingkt722e
+    description: "Mark Robers cameo in Michael Reeves latest video was 10/10 \U0001F602 \n\nRober: \"You're not putting anything biological in it are you?\"\nReeves: \"F*** s*** f***\""
+    pubDate: 15 Feb 2026 12:05 +0000
+    guid:
+      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mevingkt722e
+      +@isPermaLink: "false"
   - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3mehvkwn3xs2m
     description: As a dad, I have to say I love my kids. But Im so excited for the day I never have to see feces of another human ever again.
     pubDate: 10 Feb 2026 02:19 +0000
@@ -192,12 +198,4 @@ item:
     pubDate: 02 Apr 2025 00:25 +0000
     guid:
       +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3lls4rmub5s2t
-      +@isPermaLink: "false"
-  - link: https://bsky.app/profile/theoutdoorprogrammer.com/post/3llrgulpiac2b
-    description: |-
-      Q: How many K8s engineers does it take to change a light bulb?
-      A: None - you should declare how many light bulbs there should be and let the room update itself to match.
-    pubDate: 01 Apr 2025 17:52 +0000
-    guid:
-      +content: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3llrgulpiac2b
       +@isPermaLink: "false"
