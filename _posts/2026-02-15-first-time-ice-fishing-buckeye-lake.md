@@ -105,3 +105,8 @@ And I'd do it all again tomorrow.
 The boys are already asking when we're going back. That's a win in my book. Next time we'll have a bigger shelter, dry sled, pilot holes for the stakes, and maybe, just maybe, we'll actually catch something.
 
 But even if we don't, that's alright too.
+
+<figure style="margin: 24px 0; text-align: center;">
+  <img src="/assets/images/blogposts/ice-fishing/buckeye-lake-panorama.jpg" alt="Panoramic view of Buckeye Lake with anglers and shanties on the ice" style="max-width: 100%; width: 100%; height: auto; border-radius: 16px;" />
+  <figcaption style="opacity: 0.8; font-size: 0.9rem; margin-top: 8px;">Panorama from our first day out on the ice.</figcaption>
+</figure>
