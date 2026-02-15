@@ -7,7 +7,7 @@ tags: [fishing, ohio, ice-fishing, outdoors, family]
 icon: "twemoji:fishing-pole"
 ---
 
-I've been wanting to try ice fishing for a while now. Last weekend I finally pulled the trigger and took my boys, Julian (9) and Emery (6), out on Buckeye Lake for all three of our first time ice fishing.
+I've been wanting to try ice fishing for a while now. Last weekend I finally pulled the trigger and took my boys, Julian (9) and Emery (7), out on Buckeye Lake for all three of our first time ice fishing.
 
 Spoiler: we didn't catch a single fish. Not even close. Still one of the best days I've had with them in a long time.
 
@@ -46,7 +46,7 @@ Once I got the tent set up and the holes drilled, we got settled in. The Garmin 
 
 Julian was pretty focused on the actual fishing. He'd watch the fish finder, jig his rod, and check the tip-ups. He also loved grabbing minnows out of the livewell and handing them to me. Kid was locked in.
 
-Emery? Emery was more excited about being *on the ice* than anything involving a fishing rod. He kept escaping the tent to slide around out there. You could tell from his face he was absolutely freezing, but he just kept playing anyway. Six-year-old energy is unreal.
+Emery? Emery was more excited about being *on the ice* than anything involving a fishing rod. He kept escaping the tent to slide around out there. You could tell from his face he was absolutely freezing, but he just kept playing anyway. Seven-year-old energy is unreal.
 
 <figure style="margin: 24px 0; text-align: center;">
   <img src="/assets/images/blogposts/ice-fishing/joey-and-emery.jpg" alt="Joey in DUX Waterfowl hat with Emery in the shelter" style="max-width: 600px; width: 100%; height: auto; border-radius: 16px;" />
@@ -98,7 +98,7 @@ One thing that genuinely pissed me off. There were cigarette butts frozen into t
 
 ## We'll Be Back
 
-Zero fish. Frozen livewell. Cramped tent. A 6-year-old who couldn't sit still for more than 30 seconds.
+Zero fish. Frozen livewell. Cramped tent. A 7-year-old who couldn't sit still for more than 30 seconds.
 
 And I'd do it all again tomorrow.
 
