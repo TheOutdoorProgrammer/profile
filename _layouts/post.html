@@ -88,6 +88,22 @@
             <p>&copy; {{ "now" | date: "%Y" }} {{ site.name }} &middot; Built with <a href="https://jekyllrb.com" target="_blank">Jekyll</a></p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.post-content a[href]').forEach(function (link) {
+                try {
+                    var url = new URL(link.getAttribute('href'), window.location.origin);
+                    if ((url.protocol === 'http:' || url.protocol === 'https:') && url.origin !== window.location.origin) {
+                        link.setAttribute('target', '_blank');
+                        link.setAttribute('rel', 'noopener noreferrer');
+                    }
+                } catch (e) {
+                    // Ignore invalid URLs.
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

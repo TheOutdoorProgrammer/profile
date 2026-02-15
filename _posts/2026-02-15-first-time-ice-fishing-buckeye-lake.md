@@ -18,7 +18,7 @@ Spoiler: we didn't catch a single fish. Not even close. Still one of the best da
 
 ## The Setup
 
-We launched from the main boat ramp area at [Buckeye Lake State Park, Fairfield Beach side](https://www.google.com/maps/place/Buckeye+Lake+State+Park+-+Fairfield+Beach/@39.9336,-82.4748,15z). There were already a bunch of other ice fishermen out there when we showed up, which made me feel a lot better about the ice. It ended up being about a foot thick, plenty solid.
+We launched from the main boat ramp area at <a href="https://www.google.com/maps/place/Buckeye+Lake+State+Park+-+Fairfield+Beach/@39.9336,-82.4748,15z" target="_blank" rel="noopener noreferrer">Buckeye Lake State Park, Fairfield Beach side</a>. There were already a bunch of other ice fishermen out there when we showed up, which made me feel a lot better about the ice. It ended up being about a foot thick, plenty solid.
 
 Here's what I was working with:
 - Pop-up 2-man ice fishing shelter (black and red)

@@ -13,6 +13,7 @@ When creating a new blog post in `_posts/`:
   - Example: `icon: "twemoji:fish"` for the FishID post.
 - Keep titles short but descriptive (they show up in OG cards & lists).
 - If the post has a primary image/screenshot, include it in the body; OG/Twitter image defaults to the site logo.
+- External links in post bodies are auto-upgraded to open in a new tab (`target="_blank"` + `rel="noopener noreferrer"`) by `_layouts/post.html`; internal links stay unchanged.
 
 ## OG / Meta Notes
 
