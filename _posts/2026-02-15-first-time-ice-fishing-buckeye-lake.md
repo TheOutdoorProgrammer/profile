@@ -7,7 +7,7 @@ categories: [fishing, ohio, ice-fishing, outdoors, family]
 icon: "twemoji:fishing-pole"
 ---
 
-I've been wanting to try ice fishing for a while now. Last weekend I finally pulled the trigger and took my boys — Julian (9) and Emery (6) — out on Buckeye Lake for all three of our first time ice fishing.
+I've been wanting to try ice fishing for a while now. Last weekend I finally pulled the trigger and took my boys, Julian (9) and Emery (6), out on Buckeye Lake for all three of our first time ice fishing.
 
 Spoiler: we didn't catch a single fish. Not even close. But honestly? It was still one of the best days I've had with them in a while.
 
@@ -55,7 +55,7 @@ Emery? Emery was more excited about being *on the ice* than anything involving a
 
 ## The Waiting Game
 
-We jigged. We waited. We checked the tip-ups. We'd see fish pop up on the finder every now and then, which kept things exciting — but nobody wanted what we were offering. Not the jigs, not the tip-ups, nothing.
+We jigged. We waited. We checked the tip-ups. We'd see fish pop up on the finder every now and then, which kept things exciting, but nobody wanted what we were offering. Not the jigs, not the tip-ups, nothing.
 
 <figure style="margin: 24px 0; text-align: center;">
   <img src="/assets/images/blogposts/ice-fishing/jigging-in-shelter.jpg" alt="Jigging with a Shakespeare ice rod inside the shelter" style="max-width: 600px; width: 100%; height: auto; border-radius: 16px;" />
@@ -79,17 +79,17 @@ But you know what? It didn't really matter. The boys were having a good time. Ju
 First time doing anything, you're gonna learn some stuff the hard way. Here's what I'm taking into next time:
 
 **1. Bring a drill bit for tent stake pilot holes.**
-Getting ice stakes into solid ice without a pilot hole is absolutely brutal. Learned pretty quick that hammering wasn't the move — the trick was using all my weight with both hands while spinning the screw of the stakes down. It worked, but a quick pilot hole with a drill bit would make it way easier next time.
+Getting ice stakes into solid ice without a pilot hole is absolutely brutal. Learned pretty quick that hammering wasn't the move. The trick was using all my weight with both hands while spinning the screw of the stakes down. It worked, but a quick pilot hole with a drill bit would make it way easier next time.
 
 **2. A 2-man tent with 1 adult and 2 kids is tight.**
-It *worked*, but barely. We were elbow to elbow the whole time. If we stick with this (and we will), I'm upgrading to at least a 3-man shelter. More room for gear, more room for kids to fidget, and just more comfortable overall.
+It *worked*, but barely. We were elbow to elbow the whole time. If we stick with this (and we will), I'm upgrading to at least a 3-man shelter. More room for gear and more room for kids who can't sit still.
 
 **3. Do NOT put the livewell in the sled when pulling it on ice.**
-This was the big one. I had the minnow bucket in the sled while pulling everything out to our spot. Water sloshed out, froze into the sled, and basically turned it into a bathtub of ice. If I'd kept the sled dry, we could have stored extra gear on it — coats, bags, whatever — and had way more room inside the tent. Lesson learned.
+This was the big one. I had the minnow bucket in the sled while pulling everything out to our spot. Water sloshed out, froze into the sled, and basically turned it into a bathtub of ice. If I'd kept the sled dry, we could have stored extra gear on it (coats, bags, whatever) and had way more room inside the tent. Lesson learned.
 
 ## Leave No Trace
 
-One thing that genuinely pissed me off — there were cigarette butts frozen into the ice around where we set up. Seriously? You're out on this beautiful frozen lake and you can't be bothered to put your butts in your pocket? Disgusting. I'm out here trying to teach my kids to respect the outdoors and people are using the lake as an ashtray. Pack your stuff out. It's not hard.
+One thing that genuinely pissed me off. There were cigarette butts frozen into the ice around where we set up. Seriously? You're out on this beautiful frozen lake and you can't be bothered to put your butts in your pocket? Disgusting. I'm out here trying to teach my kids to respect the outdoors and people are using the lake as an ashtray. Pack your stuff out. It's not hard.
 
 <figure style="margin: 24px 0; text-align: center;">
   <img src="/assets/images/blogposts/ice-fishing/leave-no-trace.jpg" alt="Cigarette butts frozen into the ice surface on Buckeye Lake" style="max-width: 600px; width: 100%; height: auto; border-radius: 16px;" />
@@ -102,6 +102,6 @@ Zero fish. Frozen livewell. Cramped tent. A 6-year-old who couldn't sit still fo
 
 And I'd do it all again tomorrow.
 
-The boys are already asking when we're going back. That's a win in my book. Next time we'll have a bigger shelter, dry sled, pilot holes for the stakes, and maybe — just maybe — we'll actually catch something.
+The boys are already asking when we're going back. That's a win in my book. Next time we'll have a bigger shelter, dry sled, pilot holes for the stakes, and maybe, just maybe, we'll actually catch something.
 
 But even if we don't, that's alright too.
