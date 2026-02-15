@@ -18,7 +18,7 @@ Spoiler: we didn't catch a single fish. Not even close. But honestly? It was sti
 
 ## The Setup
 
-We launched from the main boat ramp area at Buckeye Lake State Park (Fairfield Beach side). There were already a bunch of other ice fishermen out there when we showed up, which made me feel a lot better about the ice. It ended up being about a foot thick — plenty solid.
+We launched from the main boat ramp area at [Buckeye Lake State Park, Fairfield Beach side](https://www.google.com/maps/place/Buckeye+Lake+State+Park+-+Fairfield+Beach/@39.9336,-82.4748,15z). There were already a bunch of other ice fishermen out there when we showed up, which made me feel a lot better about the ice. It ended up being about a foot thick — plenty solid.
 
 Here's what I was working with:
 - Pop-up 2-man ice fishing shelter (black and red)
@@ -28,7 +28,7 @@ Here's what I was working with:
 - Crappie minnows for live bait (first time using live bait — I felt a little bad about it, but it is what it is)
 - Snacks and hot cocoa in a thermos
 
-I pulled everything out on a sled. All of it. By myself. Roughly 100 lbs of gear across the ice because the boys decided they didn't want to help carry anything. Can't blame them though — they were too busy being excited about walking on a frozen lake. Dad-powered sled service it is. 😂
+I pulled everything out on a sled. All of it. By myself. Roughly 100 lbs of gear across the ice because the boys decided they didn't want to help carry anything. Dad's sled pulling service, at your service. 🥸
 
 ## On the Ice
 
@@ -46,7 +46,7 @@ Once I got the tent set up and the holes drilled, we got settled in. The Garmin 
 
 Julian was pretty focused on the actual fishing. He'd watch the fish finder, jig his rod, check the tip-ups. He was into it.
 
-Emery? Emery was more excited about being *on the ice* than anything involving a fishing rod. He kept escaping the tent to slide around out there. You could tell from the look on his face that he was absolutely freezing, but he just sucked it up and kept playing. Six-year-old energy is unreal.
+Emery? Emery was more excited about being *on the ice* than anything involving a fishing rod. He kept escaping the tent to slide around out there. He also loved pulling minnows out of the livewell and handing them to me. You could tell from the look on his face that he was absolutely freezing, but he just sucked it up and kept playing. Six-year-old energy is unreal.
 
 <figure style="margin: 24px 0; text-align: center;">
   <img src="/assets/images/blogposts/ice-fishing/joey-and-emery.jpg" alt="Joey in DUX Waterfowl hat with Emery in the shelter" style="max-width: 600px; width: 100%; height: auto; border-radius: 16px;" />
