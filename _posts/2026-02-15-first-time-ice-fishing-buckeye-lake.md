@@ -44,9 +44,9 @@ Once I got the tent set up and the holes drilled, we got settled in. The Garmin 
   <figcaption style="opacity: 0.8; font-size: 0.9rem; margin-top: 8px;">The Garmin Striker doing its thing. 4.3 feet of water. Not a lot of room down there.</figcaption>
 </figure>
 
-Julian was pretty focused on the actual fishing. He'd watch the fish finder, jig his rod, check the tip-ups. He was into it.
+Julian was pretty focused on the actual fishing. He'd watch the fish finder, jig his rod, check the tip-ups. He also loved pulling minnows out of the livewell and handing them to me. He was into it.
 
-Emery? Emery was more excited about being *on the ice* than anything involving a fishing rod. He kept escaping the tent to slide around out there. He also loved pulling minnows out of the livewell and handing them to me. You could tell from the look on his face that he was absolutely freezing, but he just sucked it up and kept playing. Six-year-old energy is unreal.
+Emery? Emery was more excited about being *on the ice* than anything involving a fishing rod. He kept escaping the tent to slide around out there. You could tell from the look on his face that he was absolutely freezing, but he just sucked it up and kept playing. Six-year-old energy is unreal.
 
 <figure style="margin: 24px 0; text-align: center;">
   <img src="/assets/images/blogposts/ice-fishing/joey-and-emery.jpg" alt="Joey in DUX Waterfowl hat with Emery in the shelter" style="max-width: 600px; width: 100%; height: auto; border-radius: 16px;" />
