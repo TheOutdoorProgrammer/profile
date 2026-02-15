@@ -6,7 +6,7 @@ echo "Fetching posts from Bluesky..."
 MAX_POSTS=5
 # Cloudflare may run with US-ASCII locale; force UTF-8 so emoji bytes parse correctly.
 LANG=C.UTF-8 LC_ALL=C.UTF-8 curl -sS -H "Accept: application/json" "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=theoutdoorprogrammer.com&limit=$MAX_POSTS" | \
-  ruby -E UTF-8:UTF-8 -rjson -ryaml -e 'input = STDIN.read.force_encoding("UTF-8").encode("UTF-8", invalid: :replace, undef: :replace); puts JSON.parse(input).to_yaml' > _data/posts.yml
+ruby -E UTF-8:UTF-8 -rjson -ryaml -e 'input = STDIN.read.force_encoding("UTF-8").encode("UTF-8", invalid: :replace, undef: :replace); puts JSON.parse(input).to_yaml' > _data/posts.yml
 
 # Ensure gems are installed (Cloudflare build images don't include project gems by default)
 echo "Installing Ruby gems..."

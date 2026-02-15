@@ -15,9 +15,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Fetch latest Bluesky posts RSS
+        env:
+          MAX_POSTS: 5
         run: |
-          curl -sS https://bsky.app/profile/did:plc:7e7cnwumaewg7s2ryywfu3qe/rss \
-            | yq -p=xml '.rss.channel' -o yaml > _data/posts.yml
+          LANG=C.UTF-8 LC_ALL=C.UTF-8 curl -sS -H "Accept: application/json" "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=theoutdoorprogrammer.com&limit=$MAX_POSTS" | \
+          ruby -E UTF-8:UTF-8 -rjson -ryaml -e 'input = STDIN.read.force_encoding("UTF-8").encode("UTF-8", invalid: :replace, undef: :replace); puts JSON.parse(input).to_yaml' > _data/posts.yml
 
       - name: Commit and push changes (if any)
         run: |

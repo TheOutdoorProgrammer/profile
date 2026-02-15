@@ -22,6 +22,9 @@
             </div>
             <div class="project-card-content">
                 <h3 class="project-card-title">{{ item.title }}</h3>
+                {% if item.description %}
+                <p class="project-card-desc">{{ item.description }}</p>
+                {% endif %}
             </div>
             <span class="iconify-inline project-card-arrow" data-icon="mdi:arrow-top-right"></span>
         </a>
