@@ -9,7 +9,7 @@ icon: "twemoji:fishing-pole"
 
 I've been wanting to try ice fishing for a while now. Last weekend I finally pulled the trigger and took my boys, Julian (9) and Emery (6), out on Buckeye Lake for all three of our first time ice fishing.
 
-Spoiler: we didn't catch a single fish. Not even close. But honestly? It was still one of the best days I've had with them in a while.
+Spoiler: we didn't catch a single fish. Not even close. Still one of the best days I've had with them in a long time.
 
 <figure style="margin: 24px 0; text-align: center;">
   <img src="/assets/images/blogposts/ice-fishing/boys-on-ice.jpg" alt="Julian and Emery standing on frozen Buckeye Lake" style="max-width: 600px; width: 100%; height: auto; border-radius: 16px;" />
@@ -18,21 +18,21 @@ Spoiler: we didn't catch a single fish. Not even close. But honestly? It was sti
 
 ## The Setup
 
-We launched from the main boat ramp area at [Buckeye Lake State Park, Fairfield Beach side](https://www.google.com/maps/place/Buckeye+Lake+State+Park+-+Fairfield+Beach/@39.9336,-82.4748,15z). There were already a bunch of other ice fishermen out there when we showed up, which made me feel a lot better about the ice. It ended up being about a foot thick — plenty solid.
+We launched from the main boat ramp area at [Buckeye Lake State Park, Fairfield Beach side](https://www.google.com/maps/place/Buckeye+Lake+State+Park+-+Fairfield+Beach/@39.9336,-82.4748,15z). There were already a bunch of other ice fishermen out there when we showed up, which made me feel a lot better about the ice. It ended up being about a foot thick, plenty solid.
 
 Here's what I was working with:
 - Pop-up 2-man ice fishing shelter (black and red)
 - Garmin Striker fish finder
 - A couple Ugly Stik ice fishing rods
 - Two tip-ups
-- Crappie minnows for live bait (first time using live bait — I felt a little bad about it, but it is what it is)
+- Crappie minnows for live bait (first time using live bait, and yeah, I felt a little bad about it)
 - Snacks and hot cocoa in a thermos
 
 I pulled everything out on a sled. All of it. By myself. Roughly 100 lbs of gear across the ice because the boys decided they didn't want to help carry anything. Dad's sled pulling service, at your service. 🥸
 
 ## On the Ice
 
-Once I got the tent set up and the holes drilled, we got settled in. The Garmin was showing about 4.3 feet of depth — pretty shallow, which is typical for Buckeye Lake. We set up the two tip-ups outside the tent and started jigging inside.
+Once I got the tent set up and the holes drilled, we got settled in. The Garmin was showing about 4.3 feet of depth. Pretty shallow, which is normal for Buckeye Lake. We set up the two tip-ups outside the tent and started jigging inside.
 
 <figure style="margin: 24px 0; text-align: center;">
   <img src="/assets/images/blogposts/ice-fishing/shelter-selfie.jpg" alt="Joey with Julian and Emery inside the ice fishing shelter" style="max-width: 600px; width: 100%; height: auto; border-radius: 16px;" />
@@ -44,9 +44,9 @@ Once I got the tent set up and the holes drilled, we got settled in. The Garmin 
   <figcaption style="opacity: 0.8; font-size: 0.9rem; margin-top: 8px;">The Garmin Striker doing its thing. 4.3 feet of water. Not a lot of room down there.</figcaption>
 </figure>
 
-Julian was pretty focused on the actual fishing. He'd watch the fish finder, jig his rod, check the tip-ups. He also loved pulling minnows out of the livewell and handing them to me. He was into it.
+Julian was pretty focused on the actual fishing. He'd watch the fish finder, jig his rod, and check the tip-ups. He also loved grabbing minnows out of the livewell and handing them to me. Kid was locked in.
 
-Emery? Emery was more excited about being *on the ice* than anything involving a fishing rod. He kept escaping the tent to slide around out there. You could tell from the look on his face that he was absolutely freezing, but he just sucked it up and kept playing. Six-year-old energy is unreal.
+Emery? Emery was more excited about being *on the ice* than anything involving a fishing rod. He kept escaping the tent to slide around out there. You could tell from his face he was absolutely freezing, but he just kept playing anyway. Six-year-old energy is unreal.
 
 <figure style="margin: 24px 0; text-align: center;">
   <img src="/assets/images/blogposts/ice-fishing/joey-and-emery.jpg" alt="Joey in DUX Waterfowl hat with Emery in the shelter" style="max-width: 600px; width: 100%; height: auto; border-radius: 16px;" />
@@ -55,7 +55,7 @@ Emery? Emery was more excited about being *on the ice* than anything involving a
 
 ## The Waiting Game
 
-We jigged. We waited. We checked the tip-ups. We'd see fish pop up on the finder every now and then, which kept things exciting, but nobody wanted what we were offering. Not the jigs, not the tip-ups, nothing.
+We jigged. We waited. We checked tip-ups. We'd see fish pop up on the finder every now and then, which kept things exciting, but nobody wanted what we were offering. Not the jigs, not the tip-ups, nothing.
 
 <figure style="margin: 24px 0; text-align: center;">
   <img src="/assets/images/blogposts/ice-fishing/jigging-in-shelter.jpg" alt="Jigging with a Shakespeare ice rod inside the shelter" style="max-width: 600px; width: 100%; height: auto; border-radius: 16px;" />
