@@ -1,0 +1,28 @@
+Privacy Policy
+TheOutdoorProgrammer SMS Service
+Last updated: February 16, 2026
+
+This privacy policy applies to the SMS forwarding service operated by
+TheOutdoorProgrammer (theoutdoorprogrammer.com).
+
+What We Collect
+- Phone numbers you register with the service
+- SMS message content received and forwarded by the service
+
+How We Use It
+- Solely to forward incoming SMS messages to your configured phone numbers
+- We do not store message content beyond what is needed for delivery
+
+What We Don't Do
+- We do not sell, share, or distribute your data to third parties
+- We do not use your phone number or message content for marketing
+- We do not send promotional or advertising messages
+- We do not share your information with advertisers or data brokers
+
+Data Retention
+- Message content is not retained after forwarding
+- Phone number configuration is stored only as needed to operate the service
+
+Contact
+For questions about this privacy policy, contact:
+joey@theoutdoorprogrammer.com

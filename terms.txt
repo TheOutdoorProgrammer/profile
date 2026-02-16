@@ -1,0 +1,30 @@
+Terms and Conditions
+TheOutdoorProgrammer SMS Forwarding Service
+Last updated: February 16, 2026
+
+Program Name: TheOutdoorProgrammer SMS Forwarding Service
+
+Description: This service receives SMS messages sent to a shared Twilio
+phone number and forwards them to pre-configured personal phone numbers.
+It is designed for household use, enabling multiple family members to
+receive shared two-factor authentication codes and service notifications.
+
+Message Frequency: Message frequency varies. You will receive forwarded
+messages only when an SMS is sent to the shared Twilio number. No
+recurring or scheduled messages are sent.
+
+Message and Data Rates: Message and data rates may apply. Check with your
+wireless carrier for details about your messaging plan.
+
+Opt-Out: Text **STOP** to the Twilio number at any time to stop receiving
+forwarded messages. You will receive a confirmation and no further
+messages will be sent to your number.
+
+Help: Text **HELP** to the Twilio number for support information. You may
+also contact us at joey@theoutdoorprogrammer.com for assistance.
+
+Support Contact:
+Email: joey@theoutdoorprogrammer.com
+Website: https://theoutdoorprogrammer.com
+
+By using this service, you agree to these terms and conditions.
