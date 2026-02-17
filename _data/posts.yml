@@ -1,6 +1,33 @@
 ---
 feed:
 - post:
+    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mezszxgyhc2u
+    cid: bafyreibzk4ucdistzvz2xddlyrkdmgcilm7knovm4rl7tn6izqmy45t2uu
+    author:
+      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
+      handle: theoutdoorprogrammer.com
+      displayName: Joey Stout
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
+      associated:
+        activitySubscription:
+          allowSubscriptions: followers
+      labels: []
+      createdAt: '2024-11-20T19:09:51.653Z'
+    record:
+      "$type": app.bsky.feed.post
+      createdAt: '2026-02-17T05:21:53.434Z'
+      langs:
+      - en
+      text: Elon emailing epstein and saying, and I quote, "Girls FTW" is imprinted
+        on my brain in a way that I will never be able to forget it.
+    bookmarkCount: 0
+    replyCount: 0
+    repostCount: 0
+    likeCount: 0
+    quoteCount: 0
+    indexedAt: '2026-02-17T05:21:53.651Z'
+    labels: []
+- post:
     uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mezsou4ymc26
     cid: bafyreibe43m2zyit4dqfedj3ntvittpv3fs35ywrmaut3pxv4w4yrmef3u
     author:
@@ -283,57 +310,4 @@ feed:
     quoteCount: 0
     indexedAt: '2025-12-13T18:05:47.438Z'
     labels: []
-- post:
-    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3m34q3jf2bk24
-    cid: bafyreidrju63mksb43co57iawnbdrq7skixzrf3pgeb6ldmdc5xji5fsh4
-    author:
-      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-      handle: theoutdoorprogrammer.com
-      displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
-      associated:
-        activitySubscription:
-          allowSubscriptions: followers
-      labels: []
-      createdAt: '2024-11-20T19:09:51.653Z'
-    record:
-      "$type": app.bsky.feed.post
-      createdAt: '2025-10-14T02:55:07.510Z'
-      embed:
-        "$type": app.bsky.embed.external
-        external:
-          description: YouTube video by Joey Stout
-          thumb:
-            "$type": blob
-            ref:
-              "$link": bafkreifq24ivtggpnk5wewcdwsatfom4ydf5h7m5phoqe4mfbdlhd3zszq
-            mimeType: image/jpeg
-            size: 120405
-          title: 'Failed Squirrel Hunt ASMR #squirrel #hunting #fail'
-          uri: https://youtube.com/shorts/6m5rr3TqZAQ?si=wFmbc9kbt81JA8ZZ
-      facets:
-      - features:
-        - "$type": app.bsky.richtext.facet#link
-          uri: https://youtube.com/shorts/6m5rr3TqZAQ?si=wFmbc9kbt81JA8ZZ
-        index:
-          byteEnd: 120
-          byteStart: 93
-      langs:
-      - en
-      text: I made my first youtube short, if you are a hunter or a programmer nerd
-        like me check it out youtube.com/shorts/6m5rr...
-    embed:
-      "$type": app.bsky.embed.external#view
-      external:
-        uri: https://youtube.com/shorts/6m5rr3TqZAQ?si=wFmbc9kbt81JA8ZZ
-        title: 'Failed Squirrel Hunt ASMR #squirrel #hunting #fail'
-        description: YouTube video by Joey Stout
-        thumb: https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreifq24ivtggpnk5wewcdwsatfom4ydf5h7m5phoqe4mfbdlhd3zszq@jpeg
-    bookmarkCount: 0
-    replyCount: 0
-    repostCount: 0
-    likeCount: 1
-    quoteCount: 0
-    indexedAt: '2025-10-14T02:55:08.823Z'
-    labels: []
-cursor: '2025-10-14T02:55:07.51Z'
+cursor: '2025-12-13T18:05:47.252Z'
