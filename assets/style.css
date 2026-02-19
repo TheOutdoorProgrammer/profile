@@ -1804,6 +1804,34 @@ img {
     font-family: var(--font-code);
 }
 
+/* ===== SPEAKER BIO ===== */
+.speaker-bio-card {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    text-align: center;
+}
+
+.speaker-bio-section .section-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+}
+
+.speaker-bio-section .section-title::after {
+    display: none;
+}
+
+.speaker-bio-text {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+}
+
 /* ===== ICONIFY OVERRIDE ===== */
 .iconify-inline {
     vertical-align: -0.125em;
