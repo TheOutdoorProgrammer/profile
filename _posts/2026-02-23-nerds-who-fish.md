@@ -4,7 +4,7 @@ title: "I Started a Fishing Club for People in Tech"
 date: 2026-02-23
 description: "Nerds Who Fish is a private, membership-based community for people who work in tech and love the outdoors. Here's why I built it and what it is."
 tags: [fishing, tech, community, nerds-who-fish]
-icon: "twemoji:fishing-pole"
+icon: "twemoji:fish"
 ---
 
 I've been a software engineer for over a decade. I've also been fishing since I was a kid. For most of that time, those two parts of my life didn't really overlap. My fishing buddies don't care about Kubernetes. My coworkers don't care about crankbait patterns. And that's fine, but I always thought there had to be other people out there who sit in the same weird overlap.
