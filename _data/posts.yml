@@ -1,6 +1,56 @@
 ---
 feed:
 - post:
+    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mfkwyx4gh22j
+    cid: bafyreidfhtmzpbrpq6eyzuolzexptshtqrbh3ng2ymiptsea7wgfavsv5q
+    author:
+      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
+      handle: theoutdoorprogrammer.com
+      displayName: Joey Stout
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
+      associated:
+        activitySubscription:
+          allowSubscriptions: followers
+      labels: []
+      createdAt: '2024-11-20T19:09:51.653Z'
+    record:
+      "$type": app.bsky.feed.post
+      createdAt: '2026-02-24T00:48:10.051Z'
+      embed:
+        "$type": app.bsky.embed.external
+        external:
+          description: A private, invite-only fishing club for engineers, developers,
+            and tech folks who love the outdoors.
+          title: Nerds Who Fish — Where Engineering Meets the Outdoors
+          uri: https://nerdswhofish.org
+      facets:
+      - features:
+        - "$type": app.bsky.richtext.facet#link
+          uri: https://nerdswhofish.org
+        index:
+          byteEnd: 290
+          byteStart: 274
+      langs:
+      - en
+      text: Im starting a small online community for people who work in tech and also
+        love the outdoors. We talk about fishing, hunting, gear, and just as much
+        about software, devops, IT, hardware, home labs, and whatever else. If that
+        sounds like your thing, check it out and apply at nerdswhofish.org
+    embed:
+      "$type": app.bsky.embed.external#view
+      external:
+        uri: https://nerdswhofish.org
+        title: Nerds Who Fish — Where Engineering Meets the Outdoors
+        description: A private, invite-only fishing club for engineers, developers,
+          and tech folks who love the outdoors.
+    bookmarkCount: 0
+    replyCount: 0
+    repostCount: 0
+    likeCount: 0
+    quoteCount: 0
+    indexedAt: '2026-02-24T00:48:10.657Z'
+    labels: []
+- post:
     uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mezszxgyhc2u
     cid: bafyreibzk4ucdistzvz2xddlyrkdmgcilm7knovm4rl7tn6izqmy45t2uu
     author:
@@ -283,31 +333,4 @@ feed:
     quoteCount: 0
     indexedAt: '2025-12-24T10:04:45.933Z'
     labels: []
-- post:
-    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3m7v6x5kmds2v
-    cid: bafyreibdnkkv3k4zma6ol4d4pjo7e354i6klxqo7lwppfcv3qkvhhcqx4i
-    author:
-      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-      handle: theoutdoorprogrammer.com
-      displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
-      associated:
-        activitySubscription:
-          allowSubscriptions: followers
-      labels: []
-      createdAt: '2024-11-20T19:09:51.653Z'
-    record:
-      "$type": app.bsky.feed.post
-      createdAt: '2025-12-13T18:05:47.252Z'
-      langs:
-      - en
-      text: Im not big into Joe Rogan Experience, but I watched the Jelly Roll episode
-        last night and it was very inspiring.
-    bookmarkCount: 0
-    replyCount: 0
-    repostCount: 0
-    likeCount: 0
-    quoteCount: 0
-    indexedAt: '2025-12-13T18:05:47.438Z'
-    labels: []
-cursor: '2025-12-13T18:05:47.252Z'
+cursor: '2025-12-24T10:04:45.639Z'
