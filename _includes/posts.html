@@ -9,7 +9,11 @@
         </button>
         <div class="carousel" id="posts-carousel">
             {% for post in site.data.posts.feed %}
-            {% if post.post.record.text != "" %}
+            {% assign has_text = false %}
+            {% assign has_images = false %}
+            {% if post.post.record.text != "" %}{% assign has_text = true %}{% endif %}
+            {% if post.post.embed.images %}{% assign has_images = true %}{% endif %}
+            {% if has_text or has_images %}
             {% assign link = post.post.uri | split: "/app.bsky.feed.post/" %}
             <div class="carousel-item">
                 <a class="bsky-card" href="https://bsky.app/profile/{{ post.post.author.handle }}/post/{{ link[1] }}" target="_blank">
@@ -20,7 +24,16 @@
                             <span class="bsky-author-handle">@{{ post.post.author.handle }}</span>
                         </div>
                     </div>
+                    {% if has_text %}
                     <p class="bsky-text">{{ post.post.record.text | newline_to_br }}</p>
+                    {% endif %}
+                    {% if has_images %}
+                    <div class="bsky-embed-images {% if post.post.embed.images.size > 1 %}bsky-embed-images-grid{% endif %}">
+                        {% for image in post.post.embed.images %}
+                        <img class="bsky-embed-image" src="{{ image.thumb }}" alt="{{ image.alt }}" loading="lazy">
+                        {% endfor %}
+                    </div>
+                    {% endif %}
                     {% if post.post.embed.external %}
                     <div class="bsky-embed-preview">
                         {% if post.post.embed.external.thumb %}

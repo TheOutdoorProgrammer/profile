@@ -648,6 +648,31 @@ img {
     overflow: hidden;
 }
 
+.bsky-embed-images {
+    margin-bottom: 0.75rem;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.bsky-embed-images-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+}
+
+.bsky-embed-image {
+    width: 100%;
+    max-height: 240px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+}
+
+.bsky-embed-images-grid .bsky-embed-image {
+    border-radius: 0;
+    max-height: 160px;
+}
+
 .bsky-meta {
     display: flex;
     justify-content: space-between;
