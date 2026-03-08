@@ -9,9 +9,6 @@ videos:
 - id: LFJ2sBdxcPo
   title: Snow Time Lapse
   type: video
-- id: z4mmTo3m7Y4
-  title: Joey Stout Live Stream
-  type: video
 - id: weN9tja0Woo
   title: OpenTofu and Target Shooting
   type: video
@@ -29,6 +26,9 @@ videos:
   type: video
 - id: RFDbEWgB8m4
   title: Unboxing Firewalla Gold Pro
+  type: video
+- id: 9I_E51fB14k
+  title: Hacking an LED moon
   type: video
 - id: NN9cyW3LlDs
   title: 'New Camera Goofin #newcamera #fishing #fishingvideo #outdoors #outdoor #programmer'
