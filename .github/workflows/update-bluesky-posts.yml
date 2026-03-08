@@ -27,7 +27,7 @@ jobs:
           curl -sS "https://www.youtube.com/feeds/videos.xml?channel_id=UC_qK4g_mSlBNZ6Ht5adZ5zw" > /tmp/yt_feed.xml
 
           # Parse RSS feed, use YouTube innertube API to detect live videos
-          ruby -rrexml/document -ryaml -rjson -e '
+          ruby -rrexml/document -ryaml -rjson -rshellwords -e '
             doc = REXML::Document.new(File.read("/tmp/yt_feed.xml"))
             candidates = []
             doc.elements.each("feed/entry") do |entry|
