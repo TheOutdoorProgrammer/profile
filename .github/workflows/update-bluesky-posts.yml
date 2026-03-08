@@ -26,7 +26,11 @@ jobs:
           # Fetch RSS feed
           curl -sS "https://www.youtube.com/feeds/videos.xml?channel_id=UC_qK4g_mSlBNZ6Ht5adZ5zw" > /tmp/yt_feed.xml
 
-          # Check each video for live content using curl (handles bot detection better than ruby open-uri)
+          # Debug: show feed contents
+          echo "=== RSS Feed ==="
+          cat /tmp/yt_feed.xml | head -50
+
+          # Check each video for live content
           ruby -rrexml/document -ryaml -e '
             doc = REXML::Document.new(File.read("/tmp/yt_feed.xml"))
             candidates = []
@@ -39,17 +43,28 @@ jobs:
               candidates << {id: id, title: title, short: is_short}
             end
 
+            STDERR.puts "=== Candidates (#{candidates.size}) ==="
+            candidates.each { |c| STDERR.puts "  #{c[:id]} | #{c[:short] ? "short" : "video"} | #{c[:title]}" }
+
             # Filter out live content
             filtered = candidates.select do |c|
-              page = `curl -sS -H "User-Agent: Mozilla/5.0" "https://www.youtube.com/watch?v=#{c[:id]}"` rescue ""
-              !page.include?("\"isLiveContent\":true")
+              page = `curl -sS -L -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" -H "Accept-Language: en-US,en;q=0.9" -b "CONSENT=YES+" "https://www.youtube.com/watch?v=#{c[:id]}" 2>/dev/null`
+              has_live = page.include?("\"isLiveContent\":true")
+              STDERR.puts "  #{c[:id]} | page_size=#{page.length} | isLiveContent=#{has_live}"
+              !has_live
             end
+
+            STDERR.puts "=== Filtered (#{filtered.size}) ==="
+            filtered.each { |c| STDERR.puts "  #{c[:id]} | #{c[:title]}" }
 
             shorts = filtered.select { |c| c[:short] }.first(10)
             vids = filtered.reject { |c| c[:short] }.first(10)
             all = (vids + shorts).map { |c| {"id" => c[:id], "title" => c[:title], "type" => c[:short] ? "short" : "video"} }
             puts({"videos" => all}.to_yaml)
           ' > _data/videos.yml
+
+          echo "=== Generated videos.yml ==="
+          cat _data/videos.yml
 
       - name: Commit and push changes (if any)
         run: |
