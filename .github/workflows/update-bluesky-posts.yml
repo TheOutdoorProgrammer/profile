@@ -26,12 +26,8 @@ jobs:
           # Fetch RSS feed
           curl -sS "https://www.youtube.com/feeds/videos.xml?channel_id=UC_qK4g_mSlBNZ6Ht5adZ5zw" > /tmp/yt_feed.xml
 
-          # Debug: show feed contents
-          echo "=== RSS Feed ==="
-          cat /tmp/yt_feed.xml | head -50
-
-          # Check each video for live content
-          ruby -rrexml/document -ryaml -e '
+          # Parse RSS feed, then use yt-dlp to detect live videos
+          ruby -rrexml/document -ryaml -rjson -e '
             doc = REXML::Document.new(File.read("/tmp/yt_feed.xml"))
             candidates = []
             doc.elements.each("feed/entry") do |entry|
@@ -44,18 +40,18 @@ jobs:
             end
 
             STDERR.puts "=== Candidates (#{candidates.size}) ==="
-            candidates.each { |c| STDERR.puts "  #{c[:id]} | #{c[:short] ? "short" : "video"} | #{c[:title]}" }
 
-            # Filter out live content
+            # Use yt-dlp to check live_status for each video
             filtered = candidates.select do |c|
-              page = `curl -sS -L -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" -H "Accept-Language: en-US,en;q=0.9" -b "CONSENT=YES+" "https://www.youtube.com/watch?v=#{c[:id]}" 2>/dev/null`
-              has_live = page.include?("\"isLiveContent\":true")
-              STDERR.puts "  #{c[:id]} | page_size=#{page.length} | isLiveContent=#{has_live}"
-              !has_live
+              json_str = `yt-dlp --dump-json --no-download --skip-download "https://www.youtube.com/watch?v=#{c[:id]}" 2>/dev/null`
+              meta = JSON.parse(json_str) rescue {}
+              live_status = meta["live_status"] || "none"
+              was_live = live_status == "was_live" || live_status == "is_live"
+              STDERR.puts "  #{c[:id]} | live_status=#{live_status} | was_live=#{was_live} | #{c[:title]}"
+              !was_live
             end
 
             STDERR.puts "=== Filtered (#{filtered.size}) ==="
-            filtered.each { |c| STDERR.puts "  #{c[:id]} | #{c[:title]}" }
 
             shorts = filtered.select { |c| c[:short] }.first(10)
             vids = filtered.reject { |c| c[:short] }.first(10)
