@@ -8,29 +8,45 @@ permissions:
   contents: write
 
 jobs:
-  update-posts:
+  update-site-data:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Fetch latest Bluesky posts RSS
+      - name: Fetch latest Bluesky posts
         env:
           MAX_POSTS: 10
         run: |
           LANG=C.UTF-8 LC_ALL=C.UTF-8 curl -sS -H "Accept: application/json" "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=theoutdoorprogrammer.com&limit=$MAX_POSTS" | \
           ruby -E UTF-8:UTF-8 -rjson -ryaml -e 'input = STDIN.read.force_encoding("UTF-8").encode("UTF-8", invalid: :replace, undef: :replace); puts JSON.parse(input).to_yaml' > _data/posts.yml
 
+      - name: Fetch latest YouTube videos
+        run: |
+          curl -sS "https://www.youtube.com/feeds/videos.xml?channel_id=UC_qK4g_mSlBNZ6Ht5adZ5zw" | \
+          ruby -rrexml/document -ryaml -e '
+            doc = REXML::Document.new(STDIN.read)
+            videos = []
+            doc.elements.each("feed/entry") do |entry|
+              id = entry.elements["yt:videoId"].text
+              title = entry.elements["title"].text
+              link = entry.elements["link[@rel=alternate]"].attributes["href"]
+              type = link.include?("/shorts/") ? "short" : "video"
+              videos << {"id" => id, "title" => title, "type" => type}
+            end
+            puts({"videos" => videos}.to_yaml)
+          ' > _data/videos.yml
+
       - name: Commit and push changes (if any)
         run: |
-          if git diff --quiet _data/posts.yml; then
-            echo "No changes to posts.yml; skipping commit";
+          if git diff --quiet _data/posts.yml _data/videos.yml; then
+            echo "No changes; skipping commit";
             exit 0;
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add _data/posts.yml
-          git commit -m "chore: update Bluesky posts feed"
+          git add _data/posts.yml _data/videos.yml
+          git commit -m "chore: update site data (Bluesky posts + YouTube videos)"
           git push
