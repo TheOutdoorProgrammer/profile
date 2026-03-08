@@ -23,9 +23,12 @@ jobs:
 
       - name: Fetch latest YouTube videos
         run: |
-          curl -sS "https://www.youtube.com/feeds/videos.xml?channel_id=UC_qK4g_mSlBNZ6Ht5adZ5zw" | \
-          ruby -rrexml/document -ryaml -ropen-uri -e '
-            doc = REXML::Document.new(STDIN.read)
+          # Fetch RSS feed
+          curl -sS "https://www.youtube.com/feeds/videos.xml?channel_id=UC_qK4g_mSlBNZ6Ht5adZ5zw" > /tmp/yt_feed.xml
+
+          # Check each video for live content using curl (handles bot detection better than ruby open-uri)
+          ruby -rrexml/document -ryaml -e '
+            doc = REXML::Document.new(File.read("/tmp/yt_feed.xml"))
             candidates = []
             doc.elements.each("feed/entry") do |entry|
               id = entry.elements["yt:videoId"].text
@@ -36,9 +39,9 @@ jobs:
               candidates << {id: id, title: title, short: is_short}
             end
 
-            # Filter out live content by checking each video page
+            # Filter out live content
             filtered = candidates.select do |c|
-              page = URI.open("https://www.youtube.com/watch?v=#{c[:id]}").read rescue ""
+              page = `curl -sS -H "User-Agent: Mozilla/5.0" "https://www.youtube.com/watch?v=#{c[:id]}"` rescue ""
               !page.include?("\"isLiveContent\":true")
             end
 
