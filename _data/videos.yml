@@ -6,9 +6,6 @@ videos:
 - id: weN9tja0Woo
   title: 'OpenTofu and Target Shooting'
   type: video
-- id: 6m5rr3TqZAQ
-  title: 'Failed Squirrel Hunt ASMR #squirrel #hunting #fail'
-  type: video
 - id: IziXsyuRchY
   title: 'AnsibleFest - Spacelift - 2025'
   type: video
@@ -23,4 +20,7 @@ videos:
   type: video
 - id: NN9cyW3LlDs
   title: 'New Camera Goofin #newcamera #fishing #fishingvideo #outdoors #outdoor #programmer'
+  type: short
+- id: 6m5rr3TqZAQ
+  title: 'Failed Squirrel Hunt ASMR #squirrel #hunting #fail'
   type: short
