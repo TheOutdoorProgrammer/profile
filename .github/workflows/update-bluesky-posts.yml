@@ -43,16 +43,14 @@ jobs:
 
             # Use YouTube innertube API to check isLiveContent (no auth needed)
             filtered = candidates.select do |c|
-              payload = {videoId: c[:id], context: {client: {clientName: "WEB", clientVersion: "2.20230101.00.00"}}}.to_json
+              payload = {videoId: c[:id], context: {client: {clientName: "WEB", clientVersion: "2.20240101.00.00"}}}.to_json
               resp = `curl -sS "https://www.youtube.com/youtubei/v1/player" -H "Content-Type: application/json" -d #{payload.shellescape} 2>/dev/null`
               data = JSON.parse(resp) rescue {}
               details = data["videoDetails"] || {}
               is_live = details["isLiveContent"] == true
               length = (details["lengthSeconds"] || "0").to_i
-              # Filter: live content OR suspiciously short videos (failed live streams)
-              skip = is_live || length < 5
-              STDERR.puts "  #{c[:id]} | isLiveContent=#{is_live} | length=#{length}s | skip=#{skip} | #{c[:title]}"
-              !skip
+              STDERR.puts "  #{c[:id]} | isLive=#{is_live} | len=#{length}s | skip=#{is_live} | #{c[:title]}"
+              !is_live
             end
 
             STDERR.puts "=== Filtered (#{filtered.size}) ==="
