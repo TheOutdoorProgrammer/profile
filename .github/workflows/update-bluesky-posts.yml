@@ -26,7 +26,7 @@ jobs:
           # Fetch RSS feed
           curl -sS "https://www.youtube.com/feeds/videos.xml?channel_id=UC_qK4g_mSlBNZ6Ht5adZ5zw" > /tmp/yt_feed.xml
 
-          # Parse RSS feed, then use yt-dlp to detect live videos
+          # Parse RSS feed, use YouTube innertube API to detect live videos
           ruby -rrexml/document -ryaml -rjson -e '
             doc = REXML::Document.new(File.read("/tmp/yt_feed.xml"))
             candidates = []
@@ -41,14 +41,15 @@ jobs:
 
             STDERR.puts "=== Candidates (#{candidates.size}) ==="
 
-            # Use yt-dlp to check live_status for each video
+            # Use YouTube innertube API to check isLiveContent (no auth needed)
             filtered = candidates.select do |c|
-              json_str = `yt-dlp --dump-json --no-download --skip-download "https://www.youtube.com/watch?v=#{c[:id]}" 2>/dev/null`
-              meta = JSON.parse(json_str) rescue {}
-              live_status = meta["live_status"] || "none"
-              was_live = live_status == "was_live" || live_status == "is_live"
-              STDERR.puts "  #{c[:id]} | live_status=#{live_status} | was_live=#{was_live} | #{c[:title]}"
-              !was_live
+              payload = {videoId: c[:id], context: {client: {clientName: "WEB", clientVersion: "2.20230101.00.00"}}}.to_json
+              resp = `curl -sS "https://www.youtube.com/youtubei/v1/player" -H "Content-Type: application/json" -d #{payload.shellescape} 2>/dev/null`
+              data = JSON.parse(resp) rescue {}
+              details = data["videoDetails"] || {}
+              is_live = details["isLiveContent"] == true
+              STDERR.puts "  #{c[:id]} | isLiveContent=#{is_live} | #{c[:title]}"
+              !is_live
             end
 
             STDERR.puts "=== Filtered (#{filtered.size}) ==="
