@@ -33,6 +33,7 @@ jobs:
           import urllib.error
           import urllib.parse
           import urllib.request
+          import xml.etree.ElementTree as ET
           from pathlib import Path
 
           import os
@@ -63,6 +64,26 @@ jobs:
             mi = int(m.group(2) or 0)
             s = int(m.group(3) or 0)
             return h * 3600 + mi * 60 + s
+
+          # Build short/video map from channel RSS (reliable for Shorts detection)
+          rss_url = f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}"
+          rss_xml = urllib.request.urlopen(rss_url, timeout=30).read().decode("utf-8", errors="replace")
+          root = ET.fromstring(rss_xml)
+          ns = {
+            "atom": "http://www.w3.org/2005/Atom",
+            "yt": "http://www.youtube.com/xml/schemas/2015",
+          }
+          short_by_id = {}
+          for entry in root.findall("atom:entry", ns):
+            vid_el = entry.find("yt:videoId", ns)
+            if vid_el is None or not vid_el.text:
+              continue
+            href = ""
+            for link in entry.findall("atom:link", ns):
+              if link.attrib.get("rel") == "alternate":
+                href = link.attrib.get("href", "")
+                break
+            short_by_id[vid_el.text] = "/shorts/" in href
 
           # Pull recent channel uploads (up to 50)
           search_qs = urllib.parse.urlencode({
@@ -112,7 +133,8 @@ jobs:
               continue
 
             item = {"id": c["id"], "title": c["title"]}
-            if duration <= 70:
+            is_short = short_by_id.get(c["id"], duration <= 70)
+            if is_short:
               item["type"] = "short"
               if len(shorts) < 10:
                 shorts.append(item)
