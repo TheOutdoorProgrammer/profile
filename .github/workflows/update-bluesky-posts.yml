@@ -124,8 +124,6 @@ jobs:
           shorts, videos = [], []
           for c in candidates:
             meta = details_by_id.get(c["id"], {})
-            cd = meta.get("contentDetails", {})
-            duration = duration_seconds(cd.get("duration", ""))
             has_live_details = "liveStreamingDetails" in meta
 
             # Exclude live/stream content
@@ -133,7 +131,7 @@ jobs:
               continue
 
             item = {"id": c["id"], "title": c["title"]}
-            is_short = short_by_id.get(c["id"], duration <= 70)
+            is_short = short_by_id.get(c["id"], False)
             if is_short:
               item["type"] = "short"
               if len(shorts) < 10:
