@@ -24,18 +24,28 @@ jobs:
       - name: Fetch latest YouTube videos
         run: |
           curl -sS "https://www.youtube.com/feeds/videos.xml?channel_id=UC_qK4g_mSlBNZ6Ht5adZ5zw" | \
-          ruby -rrexml/document -ryaml -e '
+          ruby -rrexml/document -ryaml -ropen-uri -e '
             doc = REXML::Document.new(STDIN.read)
-            videos = []
+            candidates = []
             doc.elements.each("feed/entry") do |entry|
               id = entry.elements["yt:videoId"].text
               title = entry.elements["title"].text
               link_el = entry.elements.to_a("link").find { |l| l.attributes["rel"] == "alternate" }
               href = link_el ? link_el.attributes["href"] : ""
-              type = href.include?("/shorts/") ? "short" : "video"
-              videos << {"id" => id, "title" => title, "type" => type}
+              is_short = href.include?("/shorts/")
+              candidates << {id: id, title: title, short: is_short}
             end
-            puts({"videos" => videos}.to_yaml)
+
+            # Filter out live content by checking each video page
+            filtered = candidates.select do |c|
+              page = URI.open("https://www.youtube.com/watch?v=#{c[:id]}").read rescue ""
+              !page.include?("\"isLiveContent\":true")
+            end
+
+            shorts = filtered.select { |c| c[:short] }.first(10)
+            vids = filtered.reject { |c| c[:short] }.first(10)
+            all = (vids + shorts).map { |c| {"id" => c[:id], "title" => c[:title], "type" => c[:short] ? "short" : "video"} }
+            puts({"videos" => all}.to_yaml)
           ' > _data/videos.yml
 
       - name: Commit and push changes (if any)
