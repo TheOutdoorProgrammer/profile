@@ -1,4 +1,4 @@
-name: Update site data
+name: Update Bluesky posts data
 
 on:
   # Manually from Actions tab or via webhook
