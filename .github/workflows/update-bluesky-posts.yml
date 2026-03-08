@@ -48,8 +48,11 @@ jobs:
               data = JSON.parse(resp) rescue {}
               details = data["videoDetails"] || {}
               is_live = details["isLiveContent"] == true
-              STDERR.puts "  #{c[:id]} | isLiveContent=#{is_live} | #{c[:title]}"
-              !is_live
+              length = (details["lengthSeconds"] || "0").to_i
+              # Filter: live content OR suspiciously short videos (failed live streams)
+              skip = is_live || length < 5
+              STDERR.puts "  #{c[:id]} | isLiveContent=#{is_live} | length=#{length}s | skip=#{skip} | #{c[:title]}"
+              !skip
             end
 
             STDERR.puts "=== Filtered (#{filtered.size}) ==="
