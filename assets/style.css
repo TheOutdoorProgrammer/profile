@@ -232,6 +232,12 @@ img {
     line-height: 1.7;
 }
 
+.hero-flags {
+    font-size: 1.5rem;
+    letter-spacing: 0.3rem;
+    margin: 0 auto var(--spacing-md);
+}
+
 /* Social Icons in Hero */
 .social-links {
     display: flex;

@@ -44,6 +44,7 @@
             <p class="hero-handle"><span class="code-name">{{ site.tagline }}</span></p>
             <p class="hero-subtitle">DevOps Engineer &amp; Outdoorsman</p>
             <p class="hero-bio">{{ site.description }}</p>
+            {% if site.flags %}<p class="hero-flags">{{ site.flags }}</p>{% endif %}
 
             <!-- Social Icons -->
             {% include social.html %}

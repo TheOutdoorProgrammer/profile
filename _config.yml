@@ -5,6 +5,7 @@ theme: linkhub-jekyll-theme
 name: Joey Stout  # Name of your website
 tagline: TheOutdoorProgrammer  # Set your preferred page title
 description: Programmer, Hunter, Hockey Fan, Family Man.  # Also used as a meta description
+flags: 🇵🇸 🇺🇸 🇺🇦
 favicon:
   path: assets/images/favicon.svg # Path / URL to the favicon of your website (e.g., 'assets/images/favicon.png')
   type: svg # File format of image. Change according to your image. Supported types: https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types
