@@ -27,7 +27,7 @@ buttons:
         icon: ic:round-email
 
       - title: Nerds Who Fish
-        url: https://nerdswhofish.org
+        url: https://nerdswhofish.com
         icon: mdi:fish
 
   - category: Projects

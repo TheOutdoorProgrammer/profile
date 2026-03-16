@@ -98,11 +98,11 @@ feed:
           description: A private, invite-only fishing club for engineers, developers,
             and tech folks who love the outdoors.
           title: Nerds Who Fish — Where Engineering Meets the Outdoors
-          uri: https://nerdswhofish.org
+          uri: https://nerdswhofish.com
       facets:
       - features:
         - "$type": app.bsky.richtext.facet#link
-          uri: https://nerdswhofish.org
+          uri: https://nerdswhofish.com
         index:
           byteEnd: 290
           byteStart: 274
@@ -111,11 +111,11 @@ feed:
       text: Im starting a small online community for people who work in tech and also
         love the outdoors. We talk about fishing, hunting, gear, and just as much
         about software, devops, IT, hardware, home labs, and whatever else. If that
-        sounds like your thing, check it out and apply at nerdswhofish.org
+        sounds like your thing, check it out and apply at nerdswhofish.com
     embed:
       "$type": app.bsky.embed.external#view
       external:
-        uri: https://nerdswhofish.org
+        uri: https://nerdswhofish.com
         title: Nerds Who Fish — Where Engineering Meets the Outdoors
         description: A private, invite-only fishing club for engineers, developers,
           and tech folks who love the outdoors.
