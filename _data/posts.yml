@@ -1,13 +1,69 @@
 ---
 feed:
 - post:
+    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mh6mzgojys2z
+    cid: bafyreidmjgpg56x46t5t4usxq4kws65vaia7ptifjsanoh4xykoik2cg5m
+    author:
+      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
+      handle: theoutdoorprogrammer.com
+      displayName: Joey Stout
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
+      associated:
+        activitySubscription:
+          allowSubscriptions: followers
+      labels: []
+      createdAt: '2024-11-20T19:09:51.653Z'
+    record:
+      "$type": app.bsky.feed.post
+      createdAt: '2026-03-16T14:07:55.346Z'
+      embed:
+        "$type": app.bsky.embed.images
+        images:
+        - alt: ''
+          aspectRatio:
+            height: 2000
+            width: 1500
+          image:
+            "$type": blob
+            ref:
+              "$link": bafkreifglzduiu62hva2ftkd2qm5dmbydyvanglskbo74mavdji3hmhdny
+            mimeType: image/jpeg
+            size: 989459
+      facets:
+      - "$type": app.bsky.richtext.facet
+        features:
+        - "$type": app.bsky.richtext.facet#mention
+          did: did:plc:s3hevc4q2j2it4xphqblbef7
+        index:
+          byteEnd: 52
+          byteStart: 27
+      langs:
+      - en
+      text: Fit check, free palestine. @wearthepeace.bsky.social
+    embed:
+      "$type": app.bsky.embed.images#view
+      images:
+      - thumb: https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreifglzduiu62hva2ftkd2qm5dmbydyvanglskbo74mavdji3hmhdny
+        fullsize: https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreifglzduiu62hva2ftkd2qm5dmbydyvanglskbo74mavdji3hmhdny
+        alt: ''
+        aspectRatio:
+          height: 2000
+          width: 1500
+    bookmarkCount: 0
+    replyCount: 0
+    repostCount: 0
+    likeCount: 0
+    quoteCount: 0
+    indexedAt: '2026-03-16T14:07:58.363Z'
+    labels: []
+- post:
     uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mgi4slpzc22t
     cid: bafyreihydlm2rhl4xxnlggk7xmwcuhs55kceosdx7o7qw53x3nrudskme4
     author:
       did: did:plc:7e7cnwumaewg7s2ryywfu3qe
       handle: theoutdoorprogrammer.com
       displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
       associated:
         activitySubscription:
           allowSubscriptions: followers
@@ -35,8 +91,8 @@ feed:
     embed:
       "$type": app.bsky.embed.images#view
       images:
-      - thumb: https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreif673pmkrekhbf4tgqk4uswaj4c3cop3dm34uyeilhdz2btesijde@jpeg
-        fullsize: https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreif673pmkrekhbf4tgqk4uswaj4c3cop3dm34uyeilhdz2btesijde@jpeg
+      - thumb: https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreif673pmkrekhbf4tgqk4uswaj4c3cop3dm34uyeilhdz2btesijde
+        fullsize: https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreif673pmkrekhbf4tgqk4uswaj4c3cop3dm34uyeilhdz2btesijde
         alt: ''
         aspectRatio:
           height: 1999
@@ -55,7 +111,7 @@ feed:
       did: did:plc:7e7cnwumaewg7s2ryywfu3qe
       handle: theoutdoorprogrammer.com
       displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
       associated:
         activitySubscription:
           allowSubscriptions: followers
@@ -83,7 +139,7 @@ feed:
       did: did:plc:7e7cnwumaewg7s2ryywfu3qe
       handle: theoutdoorprogrammer.com
       displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
       associated:
         activitySubscription:
           allowSubscriptions: followers
@@ -98,11 +154,11 @@ feed:
           description: A private, invite-only fishing club for engineers, developers,
             and tech folks who love the outdoors.
           title: Nerds Who Fish — Where Engineering Meets the Outdoors
-          uri: https://nerdswhofish.com
+          uri: https://nerdswhofish.org
       facets:
       - features:
         - "$type": app.bsky.richtext.facet#link
-          uri: https://nerdswhofish.com
+          uri: https://nerdswhofish.org
         index:
           byteEnd: 290
           byteStart: 274
@@ -111,11 +167,11 @@ feed:
       text: Im starting a small online community for people who work in tech and also
         love the outdoors. We talk about fishing, hunting, gear, and just as much
         about software, devops, IT, hardware, home labs, and whatever else. If that
-        sounds like your thing, check it out and apply at nerdswhofish.com
+        sounds like your thing, check it out and apply at nerdswhofish.org
     embed:
       "$type": app.bsky.embed.external#view
       external:
-        uri: https://nerdswhofish.com
+        uri: https://nerdswhofish.org
         title: Nerds Who Fish — Where Engineering Meets the Outdoors
         description: A private, invite-only fishing club for engineers, developers,
           and tech folks who love the outdoors.
@@ -133,7 +189,7 @@ feed:
       did: did:plc:7e7cnwumaewg7s2ryywfu3qe
       handle: theoutdoorprogrammer.com
       displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
       associated:
         activitySubscription:
           allowSubscriptions: followers
@@ -160,7 +216,7 @@ feed:
       did: did:plc:7e7cnwumaewg7s2ryywfu3qe
       handle: theoutdoorprogrammer.com
       displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
       associated:
         activitySubscription:
           allowSubscriptions: followers
@@ -186,7 +242,7 @@ feed:
       did: did:plc:7e7cnwumaewg7s2ryywfu3qe
       handle: theoutdoorprogrammer.com
       displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
       associated:
         activitySubscription:
           allowSubscriptions: followers
@@ -215,7 +271,7 @@ feed:
       did: did:plc:7e7cnwumaewg7s2ryywfu3qe
       handle: theoutdoorprogrammer.com
       displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
       associated:
         activitySubscription:
           allowSubscriptions: followers
@@ -243,7 +299,7 @@ feed:
       did: did:plc:7e7cnwumaewg7s2ryywfu3qe
       handle: theoutdoorprogrammer.com
       displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
       associated:
         activitySubscription:
           allowSubscriptions: followers
@@ -270,7 +326,7 @@ feed:
       did: did:plc:7e7cnwumaewg7s2ryywfu3qe
       handle: theoutdoorprogrammer.com
       displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
       associated:
         activitySubscription:
           allowSubscriptions: followers
@@ -315,7 +371,7 @@ feed:
         description: I hate that clicking someones username in github on a commit
           takes me to all the commits that user has on that specific repo instead
           of taking me to their profile. This fixes that. - TheOutdoorProg...
-        thumb: https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreiefqw7fg2c7dzklfrat65kbkgd7rpomh4iqksgf4njg2d7jzswyfu@jpeg
+        thumb: https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreiefqw7fg2c7dzklfrat65kbkgd7rpomh4iqksgf4njg2d7jzswyfu
     bookmarkCount: 0
     replyCount: 0
     repostCount: 0
@@ -323,31 +379,4 @@ feed:
     quoteCount: 0
     indexedAt: '2026-02-09T17:22:43.454Z'
     labels: []
-- post:
-    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mebhes6uk22r
-    cid: bafyreia2e5xxxgncude4nlhc54sjiysrm3msnxmmqnmzwlpoyo6y3bb26q
-    author:
-      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-      handle: theoutdoorprogrammer.com
-      displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu@jpeg
-      associated:
-        activitySubscription:
-          allowSubscriptions: followers
-      labels: []
-      createdAt: '2024-11-20T19:09:51.653Z'
-    record:
-      "$type": app.bsky.feed.post
-      createdAt: '2026-02-07T12:49:18.397Z'
-      langs:
-      - en
-      text: Hopefully going ice fishing today for the first time. Should be a good
-        time.
-    bookmarkCount: 0
-    replyCount: 0
-    repostCount: 0
-    likeCount: 0
-    quoteCount: 0
-    indexedAt: '2026-02-07T12:49:18.748Z'
-    labels: []
-cursor: '2026-02-07T12:49:18.397Z'
+cursor: '2026-02-09T17:22:42.085Z'
