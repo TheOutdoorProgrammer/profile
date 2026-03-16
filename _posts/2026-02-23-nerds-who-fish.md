@@ -13,7 +13,7 @@ Turns out there are. A lot of them, actually.
 
 ## What is Nerds Who Fish?
 
-[Nerds Who Fish](https://nerdswhofish.org) is a private community for people who work in tech and love the outdoors. Fishing, hunting, trapping, whatever gets you outside. The whole point is having one place where you can talk about both sides of your life without context-switching between two completely different groups of people.
+[Nerds Who Fish](https://nerdswhofish.com) is a private community for people who work in tech and love the outdoors. Fishing, hunting, trapping, whatever gets you outside. The whole point is having one place where you can talk about both sides of your life without context-switching between two completely different groups of people.
 
 We run on a self-hosted Mattermost instance we call Haven. It's got channels for fishing, hunting, gear talk, DIY projects, home labs, code, devops, hardware, AI, and more. We built a custom profile plugin so members can share what they're into on both sides. It's small and intentional, and we'd like to keep it that way.
 
@@ -37,7 +37,7 @@ I'll probably write a separate post about the technical side at some point. Ther
 
 ## Come fish with us
 
-If any of this sounds like your thing, go check out [nerdswhofish.org](https://nerdswhofish.org) and apply. It takes about 30 seconds. We're not looking for a specific type of person, just people who are genuinely into both worlds.
+If any of this sounds like your thing, go check out [nerdswhofish.com](https://nerdswhofish.com) and apply. It takes about 30 seconds. We're not looking for a specific type of person, just people who are genuinely into both worlds.
 
 Also, if you want to see what I'm up to outdoors, check out my [YouTube channel](https://youtube.com/@TheOutdoorProgrammer). I post fishing, hunting, and outdoor content there.
 
