@@ -96,13 +96,21 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.appendChild(overlay);
     });
 
+    function closeAllBadgeModals() {
+        document.querySelectorAll('.badge-modal-overlay.active').forEach(function (overlay) {
+            overlay.classList.remove('active');
+        });
+        document.body.classList.remove('badge-modal-open');
+    }
+
     document.querySelectorAll('.badge-pill[data-modal]').forEach(function (pill) {
         pill.addEventListener('click', function () {
             var modalId = this.getAttribute('data-modal');
             var overlay = document.getElementById(modalId);
             if (overlay) {
+                closeAllBadgeModals();
                 overlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
+                document.body.classList.add('badge-modal-open');
             }
         });
     });
@@ -110,11 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Close modal on X button
     document.querySelectorAll('.badge-modal-close').forEach(function (btn) {
         btn.addEventListener('click', function () {
-            var overlay = this.closest('.badge-modal-overlay');
-            if (overlay) {
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
+            closeAllBadgeModals();
         });
     });
 
@@ -122,8 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.badge-modal-overlay').forEach(function (overlay) {
         overlay.addEventListener('click', function (e) {
             if (e.target === this) {
-                this.classList.remove('active');
-                document.body.style.overflow = '';
+                closeAllBadgeModals();
             }
         });
     });
@@ -131,11 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Close modal on Escape
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
-            var activeModal = document.querySelector('.badge-modal-overlay.active');
-            if (activeModal) {
-                activeModal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
+            closeAllBadgeModals();
         }
     });
 
