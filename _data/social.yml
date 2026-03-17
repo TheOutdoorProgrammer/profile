@@ -1,6 +1,2 @@
 # These icons can be found at: https://icon-sets.iconify.design/
-
-- name: My GPG Key
-  url: https://keyserver.ubuntu.com/pks/lookup?search=0x1830B516B45606F6&fingerprint=on&op=index
-  icon: fxemoji:lock
-
+# GPG key moved to hero badge pills section

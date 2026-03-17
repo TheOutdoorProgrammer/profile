@@ -26,10 +26,6 @@ buttons:
         url: mailto:joey@theoutdoorprogrammer.com
         icon: ic:round-email
 
-      - title: Nerds Who Fish
-        url: https://nerdswhofish.com
-        icon: mdi:fish
-
   - category: Projects
     type: dropdown
     items:

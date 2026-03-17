@@ -90,6 +90,71 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // ===== Badge Pill Modals =====
+    document.querySelectorAll('.badge-pill[data-modal]').forEach(function (pill) {
+        pill.addEventListener('click', function () {
+            var modalId = this.getAttribute('data-modal');
+            var overlay = document.getElementById(modalId);
+            if (overlay) {
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    // Close modal on X button
+    document.querySelectorAll('.badge-modal-close').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var overlay = this.closest('.badge-modal-overlay');
+            if (overlay) {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Close modal on overlay click
+    document.querySelectorAll('.badge-modal-overlay').forEach(function (overlay) {
+        overlay.addEventListener('click', function (e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Close modal on Escape
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            var activeModal = document.querySelector('.badge-modal-overlay.active');
+            if (activeModal) {
+                activeModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+    });
+
+    // ===== Copy Buttons =====
+    document.querySelectorAll('.copy-btn[data-copy]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var text = this.getAttribute('data-copy');
+            var button = this;
+            navigator.clipboard.writeText(text).then(function () {
+                button.classList.add('copied');
+                var icon = button.querySelector('.iconify-inline');
+                if (icon) {
+                    icon.setAttribute('data-icon', 'mdi:check');
+                }
+                setTimeout(function () {
+                    button.classList.remove('copied');
+                    if (icon) {
+                        icon.setAttribute('data-icon', 'mdi:content-copy');
+                    }
+                }, 2000);
+            });
+        });
+    });
+
     // ===== Hide scroll indicator on scroll =====
     var scrollIndicator = document.querySelector('.scroll-indicator');
     if (scrollIndicator) {
