@@ -91,6 +91,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ===== Badge Pill Modals =====
+    // Move badge modal overlays to <body> so they are never clipped by hero overflow on mobile Safari
+    document.querySelectorAll('.badge-modal-overlay').forEach(function (overlay) {
+        document.body.appendChild(overlay);
+    });
+
     document.querySelectorAll('.badge-pill[data-modal]').forEach(function (pill) {
         pill.addEventListener('click', function () {
             var modalId = this.getAttribute('data-modal');
