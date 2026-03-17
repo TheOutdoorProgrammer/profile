@@ -232,12 +232,6 @@ img {
     line-height: 1.7;
 }
 
-.hero-flags {
-    font-size: 1.5rem;
-    letter-spacing: 0.3rem;
-    margin: 0 auto var(--spacing-md);
-}
-
 /* Social Icons in Hero */
 .social-links {
     display: flex;
@@ -273,24 +267,405 @@ img {
     margin: 0;
 }
 
-/* GPG Badge */
-.gpg-badge {
+/* ===== BADGE PILLS ===== */
+.badge-pills {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.badge-pill {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.4rem 1rem;
+    gap: 0.4rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    line-height: 1;
+}
+
+.badge-pill:hover {
+    background: var(--color-accent-cyan-dim);
+    border-color: var(--color-accent-cyan);
+    color: var(--color-accent-cyan);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow-cyan);
+}
+
+.badge-pill .iconify-inline {
+    margin: 0;
+    font-size: 1.1em;
+}
+
+/* ===== BADGE MODALS ===== */
+.badge-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: var(--spacing-sm);
+}
+
+.badge-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.badge-modal {
     background: var(--color-bg-secondary);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    font-family: var(--font-code);
-    font-size: 0.7rem;
-    color: var(--color-text-muted);
-    margin-bottom: var(--spacing-md);
+    padding: 2rem;
+    max-width: 520px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(0.92) translateY(10px);
+    transition: transform 0.3s ease;
+    box-shadow: var(--shadow-lg);
 }
 
-.gpg-badge .iconify-inline {
+.badge-modal-wide {
+    max-width: 640px;
+}
+
+.badge-modal-overlay.active .badge-modal {
+    transform: scale(1) translateY(0);
+}
+
+.badge-modal-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+    line-height: 1;
+}
+
+.badge-modal-close:hover {
+    background: var(--color-bg-primary);
+    border-color: var(--color-accent-cyan);
+    color: var(--color-accent-cyan);
+}
+
+.badge-modal-title {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    padding-right: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.badge-modal-title .iconify-inline {
     margin: 0;
+    color: var(--color-accent-cyan);
+}
+
+.badge-modal p {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.badge-modal a {
+    color: var(--color-accent-cyan);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: rgba(60, 202, 224, 0.3);
+}
+
+.badge-modal a:hover {
     color: var(--color-accent-amber);
+    text-decoration-color: var(--color-accent-amber);
+}
+
+/* Modal links section */
+.badge-modal-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+}
+
+.badge-modal-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.4rem 0.85rem;
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-accent-cyan);
+    font-size: 0.8rem;
+    font-family: var(--font-heading);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+
+.badge-modal-links a:hover {
+    border-color: var(--color-accent-cyan);
+    background: var(--color-accent-cyan-dim);
+    color: var(--color-accent-cyan);
+}
+
+.badge-modal-links .btn {
+    min-width: auto;
+    text-decoration: none;
+}
+
+/* GPG modal specifics */
+.gpg-fingerprint {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.gpg-fingerprint-label {
+    display: block;
+    font-size: 0.7rem;
+    font-family: var(--font-code);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+}
+
+.gpg-fingerprint code {
+    font-family: var(--font-code);
+    font-size: 0.95rem;
+    color: var(--color-accent-amber);
+    letter-spacing: 0.05em;
+}
+
+.gpg-command-block {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+}
+
+.gpg-command-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.gpg-command-comment {
+    font-family: var(--font-code);
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+.copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-size: 0.9rem;
+}
+
+.copy-btn:hover {
+    background: var(--color-bg-tertiary);
+    border-color: var(--color-border);
+    color: var(--color-accent-cyan);
+}
+
+.copy-btn.copied {
+    color: var(--color-accent-amber);
+}
+
+.copy-btn .iconify-inline {
+    margin: 0;
+}
+
+.gpg-command {
+    display: block;
+    padding: 0.6rem 0.75rem;
+    font-family: var(--font-code);
+    font-size: 0.78rem;
+    color: var(--color-text-primary);
+    overflow-x: auto;
+    white-space: pre;
+}
+
+/* CKAD modal specifics */
+.ckad-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.ckad-badge-img {
+    width: 120px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: var(--radius-sm);
+}
+
+.ckad-details p {
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+}
+
+.ckad-details code {
+    font-family: var(--font-code);
+    font-size: 0.85em;
+    background: var(--color-bg-primary);
+    padding: 0.1rem 0.35rem;
+    border-radius: var(--radius-sm);
+    color: var(--color-accent-cyan);
+    border: 1px solid var(--color-border);
+}
+
+.ckad-certificate {
+    margin-top: 1rem;
+}
+
+.ckad-certificate iframe {
+    width: 100%;
+    height: 360px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.75rem;
+    background: #fff;
+}
+
+.ckad-certificate .btn {
+    min-width: auto;
+    margin-top: 0.5rem;
+}
+
+/* USA modal issues */
+.usa-issues {
+    margin: 1rem 0;
+}
+
+.usa-issue {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.usa-issue:last-child {
+    border-bottom: none;
+}
+
+.usa-issue h4 {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 0.35rem;
+}
+
+.usa-issue p {
+    font-size: 0.88rem;
+    margin-bottom: 0;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+/* Small button variant */
+.btn-sm {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.85rem;
+    min-width: auto;
+}
+
+/* Modal responsive */
+@media (max-width: 767px) {
+    .badge-pill {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.7rem;
+    }
+
+    .badge-modal {
+        padding: 1.5rem;
+        max-height: 90vh;
+        margin: 0.5rem;
+    }
+
+    .badge-modal-title {
+        font-size: 1.15rem;
+    }
+
+    .ckad-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .ckad-certificate iframe {
+        height: 280px;
+    }
+
+    .gpg-command {
+        font-size: 0.7rem;
+    }
+}
+
+/* ===== BADGE MODAL SCROLLBAR ===== */
+.badge-modal::-webkit-scrollbar {
+    width: 6px;
+}
+
+.badge-modal::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.badge-modal::-webkit-scrollbar-thumb {
+    background: rgba(60, 202, 224, 0.2);
+    border-radius: 3px;
 }
 
 /* Hero CTA Buttons */
@@ -1337,9 +1712,6 @@ img {
         display: none;
     }
 
-    .gpg-badge {
-        font-size: 0.6rem;
-    }
 }
 
 @media (max-width: 480px) {
@@ -1359,11 +1731,6 @@ img {
 
     .card-grid {
         grid-template-columns: 1fr;
-    }
-
-    .gpg-badge {
-        font-size: 0.55rem;
-        padding: 0.3rem 0.65rem;
     }
 
     .btn {
