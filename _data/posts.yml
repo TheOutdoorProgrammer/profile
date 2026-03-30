@@ -1,6 +1,34 @@
 ---
 feed:
 - post:
+    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3micdps6vlk2z
+    cid: bafyreifcby3u3szc2za5nebruya3bi4g3sw6pfo4tf5mcdit7jojgym6ay
+    author:
+      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
+      handle: theoutdoorprogrammer.com
+      displayName: Joey Stout
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
+      associated:
+        activitySubscription:
+          allowSubscriptions: followers
+      labels: []
+      createdAt: '2024-11-20T19:09:51.653Z'
+    record:
+      "$type": app.bsky.feed.post
+      createdAt: '2026-03-30T18:57:18.782Z'
+      langs:
+      - en
+      text: When carvana emails me and says "Joseph we have a surprise for you". I
+        feel like I should be able to sue them for not giving me a free car and instead
+        "surprising" me with a $900/month truck payment.....
+    bookmarkCount: 0
+    replyCount: 0
+    repostCount: 0
+    likeCount: 0
+    quoteCount: 0
+    indexedAt: '2026-03-30T18:57:18.965Z'
+    labels: []
+- post:
     uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mi4r26qegs2o
     cid: bafyreiccta7nvlcoac3zzottaigpcher6k5vsiif4rtsyku5kdvn3rccom
     author:
@@ -391,31 +419,4 @@ feed:
     quoteCount: 0
     indexedAt: '2026-02-24T00:48:10.657Z'
     labels: []
-- post:
-    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mezszxgyhc2u
-    cid: bafyreibzk4ucdistzvz2xddlyrkdmgcilm7knovm4rl7tn6izqmy45t2uu
-    author:
-      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-      handle: theoutdoorprogrammer.com
-      displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
-      associated:
-        activitySubscription:
-          allowSubscriptions: followers
-      labels: []
-      createdAt: '2024-11-20T19:09:51.653Z'
-    record:
-      "$type": app.bsky.feed.post
-      createdAt: '2026-02-17T05:21:53.434Z'
-      langs:
-      - en
-      text: Elon emailing epstein and saying, and I quote, "Girls FTW" is imprinted
-        on my brain in a way that I will never be able to forget it.
-    bookmarkCount: 0
-    replyCount: 0
-    repostCount: 0
-    likeCount: 0
-    quoteCount: 0
-    indexedAt: '2026-02-17T05:21:53.651Z'
-    labels: []
-cursor: '2026-02-17T05:21:53.434Z'
+cursor: '2026-02-24T00:48:10.051Z'
