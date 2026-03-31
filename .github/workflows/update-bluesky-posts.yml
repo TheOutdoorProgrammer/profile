@@ -161,6 +161,15 @@ jobs:
 
       - name: Commit and push changes (if any)
         run: |
+          # Guard: if videos.yml only lost lines (Shorts dropped from API), revert it
+          if ! git diff --quiet _data/videos.yml; then
+            additions=$(git diff --numstat _data/videos.yml | awk '{print $1}')
+            if [ "$additions" = "0" ]; then
+              echo "::warning::videos.yml has only removals — likely Shorts dropped from API; reverting"
+              git checkout _data/videos.yml
+            fi
+          fi
+
           if git diff --quiet _data/posts.yml _data/videos.yml; then
             echo "No changes; skipping commit";
             exit 0;
