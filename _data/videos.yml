@@ -1,5 +1,8 @@
 ---
 videos:
+- id: 0LxyoVvqELg
+  title: 'The Anatomy of a Meltdown: A Deep-Dive into MCP via Selective Sabotage'
+  type: video
 - id: XjLZNLu1wRM
   title: 'IaC Flow'
   type: video
