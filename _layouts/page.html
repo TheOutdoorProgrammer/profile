@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include posthog.html %}
+    <title>{{ page.title }} - {{ site.name }}</title>
+    <link rel="shortcut icon" href="/{{ site.favicon.path }}" type="image/{{ site.favicon.type }}">
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto:wght@400;500&family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/style.css">
+    <script defer src="https://code.iconify.design/2/2.0.0/iconify.min.js"></script>
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    <meta property="og:title" content="{{ page.title }} - {{ site.name }}" />
+    <meta property="og:description" content="{{ page.description | default: site.description }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+    <meta property="og:locale" content="{{ site.locale }}" />
+    <meta property="og:image" content="{{ site.url }}/{{ site.image.path }}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ page.title }} - {{ site.name }}" />
+    <meta name="twitter:description" content="{{ page.description | default: site.description }}" />
+</head>
+
+<body>
+    {% include nav.html %}
+
+    <main style="max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem;">
+        {{ content }}
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Nerds Who Fish, LLC &middot; Built with <a href="https://jekyllrb.com" target="_blank">Jekyll</a></p>
+        </div>
+    </footer>
+
+    <script src="/assets/script.js"></script>
+</body>
+
+</html>
