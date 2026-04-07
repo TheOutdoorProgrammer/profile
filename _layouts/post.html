@@ -119,18 +119,18 @@
 
             <hr style="border: none; border-top: 1px solid var(--color-border); margin: 2.5rem 0;">
 
-            <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border);">
+            <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border);">
                 {% if page.previous %}
-                <a href="{{ page.previous.url }}" class="btn btn-secondary">
-                    <span class="iconify-inline" data-icon="mdi:arrow-left"></span> {{ page.previous.title | truncate: 30 }}
+                <a href="{{ page.previous.url }}" class="btn btn-secondary" style="font-size: 0.85rem;">
+                    <span class="iconify-inline" data-icon="mdi:arrow-left"></span> {{ page.previous.title | truncate: 25 }}
                 </a>
                 {% endif %}
-                <a href="/blog/" class="btn btn-secondary">
+                <a href="/blog/" class="btn btn-secondary" style="font-size: 0.85rem;">
                     <span class="iconify-inline" data-icon="mdi:post-outline"></span> All Posts
                 </a>
                 {% if page.next %}
-                <a href="{{ page.next.url }}" class="btn btn-secondary">
-                    {{ page.next.title | truncate: 30 }} <span class="iconify-inline" data-icon="mdi:arrow-right"></span>
+                <a href="{{ page.next.url }}" class="btn btn-secondary" style="font-size: 0.85rem;">
+                    {{ page.next.title | truncate: 25 }} <span class="iconify-inline" data-icon="mdi:arrow-right"></span>
                 </a>
                 {% endif %}
             </div>
