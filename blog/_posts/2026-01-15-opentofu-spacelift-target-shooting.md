@@ -2,7 +2,7 @@
 title: "OpenTofu, Spacelift, and Target Shooting"
 date: 2026-01-15
 description: "Combining two of my favorite things — infrastructure as code and a day at the range."
-icon: "vscode-icons:file-type-opentofu"
+image: /assets/images/blogposts/2026-01-15-opentofu-title.png
 tags: [opentofu, spacelift, outdoors]
 layout: post
 ---

@@ -2,7 +2,7 @@
 title: "Redesigning My GitHub Profile README with Bash, YAML, and Way Too Many APIs"
 date: 2026-03-08
 description: "I rebuilt my GitHub profile README from scratch with auto-generated badges, live BlueSky posts, and a Dracula color scheme, all from a single shell script."
-icon: "mdi:github"
+image: /assets/images/blogposts/2026-03-08-github-readme-title.jpg
 tags: [github, devops, side-projects, bash]
 layout: post
 ---

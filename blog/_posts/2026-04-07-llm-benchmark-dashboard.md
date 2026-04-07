@@ -3,7 +3,7 @@ layout: post
 title: "How I Pick Models for My Specialized AI Agents"
 date: 2026-04-07
 description: "I built specialized agents for specific tasks - then figured out which models actually work for each one. Here's the framework I use."
-icon: "mdi:chart-bar"
+image: /assets/images/blogposts/2026-04-07-llm-benchmark-title.jpg
 tags: [llm, ai, opencode, agents, openclaw]
 ---
 
