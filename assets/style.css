@@ -2243,6 +2243,151 @@ body.badge-modal-open {
     color: var(--color-text-muted);
 }
 
+/* ===== SYNTAX HIGHLIGHTING — DRACULA ===== */
+/* Rouge token colors mapped to draculatheme.com/spec */
+.post-content .highlighter-rouge,
+.prose .highlighter-rouge {
+    margin: var(--spacing-md) 0;
+}
+
+.post-content .highlight,
+.prose .highlight {
+    background: #282a36;
+    color: #f8f8f2;
+}
+
+.post-content .highlight pre,
+.prose .highlight pre {
+    background: #282a36;
+    border-color: #44475a;
+}
+
+.post-content .highlight pre code,
+.prose .highlight pre code {
+    color: #f8f8f2;
+}
+
+/* Comments */
+.highlight .c,
+.highlight .ch,
+.highlight .cd,
+.highlight .cpf,
+.highlight .cm,
+.highlight .c1 { color: #6272a4; font-style: italic; }
+.highlight .cp { color: #6272a4; font-weight: bold; }
+.highlight .cs { color: #6272a4; font-weight: bold; font-style: italic; }
+
+/* Keywords */
+.highlight .k,
+.highlight .kv,
+.highlight .kc,
+.highlight .kd,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt,
+.highlight .kn { color: #ff79c6; }
+
+/* Operators */
+.highlight .o,
+.highlight .ow { color: #ff79c6; }
+
+/* Numbers */
+.highlight .m,
+.highlight .mb,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo,
+.highlight .mx,
+.highlight .il { color: #bd93f9; }
+
+/* Strings */
+.highlight .s,
+.highlight .dl,
+.highlight .sa,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .s2,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .sr,
+.highlight .s1,
+.highlight .ss { color: #f1fa8c; }
+.highlight .se { color: #ff79c6; }
+
+/* Functions & methods */
+.highlight .nf,
+.highlight .fm { color: #50fa7b; }
+
+/* Decorators */
+.highlight .nd { color: #50fa7b; }
+
+/* Class names */
+.highlight .nc { color: #8be9fd; font-style: italic; }
+
+/* Exceptions */
+.highlight .ne { color: #8be9fd; }
+
+/* Attributes (HTML/CSS/etc) */
+.highlight .na { color: #50fa7b; }
+
+/* Constants */
+.highlight .no { color: #bd93f9; }
+
+/* Builtins */
+.highlight .nb,
+.highlight .bp { color: #8be9fd; font-style: italic; }
+
+/* Tags (HTML) */
+.highlight .nt { color: #ff79c6; }
+
+/* Namespace / module names */
+.highlight .nn { color: #f8f8f2; }
+
+/* Variables */
+.highlight .nv,
+.highlight .vm,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi { color: #f8f8f2; }
+
+/* Name label */
+.highlight .nl { color: #8be9fd; }
+
+/* Punctuation */
+.highlight .p { color: #f8f8f2; }
+
+/* Whitespace */
+.highlight .w { color: #f8f8f2; }
+
+/* Errors */
+.highlight .err { color: #ff5555; }
+
+/* Generic diff */
+.highlight .gi { color: #50fa7b; background: rgba(80, 250, 123, 0.1); }
+.highlight .gd { color: #ff5555; background: rgba(255, 85, 85, 0.1); }
+.highlight .ge { font-style: italic; }
+.highlight .gs { font-weight: bold; }
+.highlight .gh { color: #bd93f9; }
+.highlight .gu { color: #6272a4; }
+.highlight .go { color: #6272a4; }
+.highlight .gp { color: #6272a4; }
+.highlight .gr,
+.highlight .gt { color: #ff5555; }
+
+/* Line numbers */
+.highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gl { background: #44475a; }
+.highlight .lineno {
+    color: #6272a4;
+    padding-right: 0.75rem;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
 /* ===== ICONIFY OVERRIDE ===== */
 .iconify-inline {
     vertical-align: -0.125em;
