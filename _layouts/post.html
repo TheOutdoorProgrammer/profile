@@ -53,6 +53,7 @@
 </head>
 
 <body>
+    {% include nav.html %}
 
     <!-- Minimal Hero / Nav Header -->
     <section id="hero" class="hero" style="min-height: unset; padding: 2rem 0;">
@@ -64,22 +65,6 @@
             </a>
             <h1 class="hero-title" style="font-size: 1.5rem;">{{ site.name }}</h1>
             <p class="hero-handle"><span class="code-name">{{ site.tagline }}</span></p>
-
-            <!-- Nav Buttons -->
-            <div class="hero-actions">
-                <a href="https://shop.theoutdoorprogrammer.com" class="btn btn-primary">
-                    <span class="iconify-inline" data-icon="mdi:shopping-outline"></span> Shop
-                </a>
-                <a href="/#youtube" class="btn btn-secondary">
-                    <span class="iconify-inline" data-icon="mdi:play-circle-outline"></span> Watch Videos
-                </a>
-                <a href="/#projects" class="btn btn-secondary">
-                    <span class="iconify-inline" data-icon="mdi:rocket-launch-outline"></span> See My Work
-                </a>
-                <a href="/blog/" class="btn btn-secondary">
-                    <span class="iconify-inline" data-icon="mdi:post-outline"></span> Blog
-                </a>
-            </div>
         </div>
     </section>
 

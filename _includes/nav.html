@@ -1,0 +1,198 @@
+<!-- Reusable Navigation Bar -->
+<style>
+.site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(19, 24, 30, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(60, 202, 224, 0.15);
+}
+
+.site-nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+}
+
+.site-nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: inherit;
+}
+
+.site-nav-logo img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(60, 202, 224, 0.3);
+}
+
+.site-nav-logo-text {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.site-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.site-nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.site-nav-link:hover {
+    color: var(--color-text-primary);
+    background: rgba(60, 202, 224, 0.08);
+    border-color: rgba(60, 202, 224, 0.15);
+}
+
+.site-nav-link.active {
+    color: var(--color-accent-cyan);
+    background: rgba(60, 202, 224, 0.1);
+    border-color: rgba(60, 202, 224, 0.25);
+}
+
+.site-nav-link-primary {
+    color: var(--color-accent-amber);
+    border-color: rgba(223, 178, 33, 0.3);
+    background: rgba(223, 178, 33, 0.08);
+}
+
+.site-nav-link-primary:hover {
+    background: rgba(223, 178, 33, 0.15);
+    border-color: rgba(223, 178, 33, 0.4);
+    color: var(--color-accent-amber);
+}
+
+.site-nav-link .iconify-inline {
+    font-size: 1.1rem;
+}
+
+/* Mobile: collapse to hamburger */
+.site-nav-mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.site-nav-mobile-menu {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: rgba(19, 24, 30, 0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(60, 202, 224, 0.15);
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.site-nav-mobile-menu.open {
+    display: flex;
+}
+
+.site-nav-mobile-menu .site-nav-link {
+    padding: 0.75rem 1rem;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .site-nav-links {
+        display: none;
+    }
+    
+    .site-nav-mobile-toggle {
+        display: block;
+    }
+    
+    .site-nav-inner {
+        padding: 0 1rem;
+    }
+}
+</style>
+
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="site-nav-inner">
+        <a href="/" class="site-nav-logo">
+            <div style="position: relative; width: 36px; height: 36px;">
+                <div style="position: absolute; top: 50%; left: 50%; width: 36px; height: 36px; border-radius: 50%; transform: translate(-50%, -50%); background: var(--color-accent-cyan); opacity: 0.4; z-index: 1; animation: pulse-glow 3s infinite ease-in-out;"></div>
+                <img src="{{ site.logo }}" alt="{{ site.name }}" style="position: relative; z-index: 2; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(60, 202, 224, 0.3);">
+            </div>
+            <span class="site-nav-logo-text">{{ site.name }} <span style="font-weight: 400; opacity: 0.6;">— @TheOutdoorProgrammer</span></span>
+        </a>
+        
+        <div class="site-nav-links">
+            <a href="https://shop.theoutdoorprogrammer.com" class="site-nav-link site-nav-link-primary">
+                <span class="iconify-inline" data-icon="mdi:shopping-outline"></span> Shop
+            </a>
+            <a href="/#youtube" class="site-nav-link">
+                <span class="iconify-inline" data-icon="mdi:play-circle-outline"></span> YouTube
+            </a>
+            <a href="/#bluesky" class="site-nav-link">
+                <span class="iconify-inline" data-icon="logos:bluesky"></span> BlueSky
+            </a>
+            <a href="/blog/" class="site-nav-link {% if page.url contains '/blog/' %}active{% endif %}">
+                <span class="iconify-inline" data-icon="mdi:post-outline"></span> Blog
+            </a>
+            <a href="/#projects" class="site-nav-link">
+                <span class="iconify-inline" data-icon="mdi:rocket-launch-outline"></span> Projects
+            </a>
+            <a href="/about/" class="site-nav-link">
+                <span class="iconify-inline" data-icon="mdi:account-outline"></span> About
+            </a>
+        </div>
+        
+        <button class="site-nav-mobile-toggle" aria-label="Toggle menu" onclick="this.nextElementSibling.classList.toggle('open')">
+            <span class="iconify-inline" data-icon="mdi:menu"></span>
+        </button>
+        
+        <div class="site-nav-mobile-menu">
+            <a href="https://shop.theoutdoorprogrammer.com" class="site-nav-link site-nav-link-primary">
+                <span class="iconify-inline" data-icon="mdi:shopping-outline"></span> Shop
+            </a>
+            <a href="/#youtube" class="site-nav-link">
+                <span class="iconify-inline" data-icon="mdi:play-circle-outline"></span> YouTube
+            </a>
+            <a href="/#bluesky" class="site-nav-link">
+                <span class="iconify-inline" data-icon="logos:bluesky"></span> BlueSky
+            </a>
+            <a href="/blog/" class="site-nav-link">
+                <span class="iconify-inline" data-icon="mdi:post-outline"></span> Blog
+            </a>
+            <a href="/#projects" class="site-nav-link">
+                <span class="iconify-inline" data-icon="mdi:rocket-launch-outline"></span> Projects
+            </a>
+            <a href="/about/" class="site-nav-link">
+                <span class="iconify-inline" data-icon="mdi:account-outline"></span> About
+            </a>
+        </div>
+    </div>
+</nav>
