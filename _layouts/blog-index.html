@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include posthog.html %}
+    <title>{{ page.title }} - {{ site.name }}</title>
+    <link rel="shortcut icon" href="/{{ site.favicon.path }}" type="image/{{ site.favicon.type }}">
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto:wght@400;500&family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/style.css">
+    <script defer src="https://code.iconify.design/2/2.0.0/iconify.min.js"></script>
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    <meta property="og:title" content="{{ page.title }} - {{ site.name }}" />
+    <meta property="og:description" content="{{ page.description | default: site.description }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+    <meta property="og:locale" content="{{ site.locale }}" />
+    <meta property="og:image" content="{{ site.url }}/{{ site.image.path }}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ page.title }} - {{ site.name }}" />
+    <meta name="twitter:description" content="{{ page.description | default: site.description }}" />
+</head>
+
+<body>
+
+    <!-- Minimal Hero / Nav Header -->
+    <section id="hero" class="hero" style="min-height: unset; padding: 2rem 0;">
+        <div class="hero-content">
+            <div class="hero-avatar-wrapper" style="width: 80px; height: 80px;">
+                <img class="hero-avatar" style="width: 80px; height: 80px;" src="{{ site.logo }}" alt="{{ site.name }}">
+            </div>
+            <h1 class="hero-title" style="font-size: 1.5rem;">{{ site.name }}</h1>
+            <p class="hero-handle"><span class="code-name">{{ site.tagline }}</span></p>
+
+            <!-- Nav Buttons -->
+            <div class="hero-actions">
+                <a href="/blog/" class="btn btn-primary">
+                    <span class="iconify-inline" data-icon="mdi:post-outline"></span> Blog
+                </a>
+                <a href="https://shop.theoutdoorprogrammer.com" class="btn btn-primary">
+                    <span class="iconify-inline" data-icon="mdi:shopping-outline"></span> Shop
+                </a>
+                <a href="/#youtube" class="btn btn-secondary">
+                    <span class="iconify-inline" data-icon="mdi:play-circle-outline"></span> Watch Videos
+                </a>
+                <a href="/#projects" class="btn btn-secondary">
+                    <span class="iconify-inline" data-icon="mdi:rocket-launch-outline"></span> See My Work
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Content -->
+    {{ content }}
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Nerds Who Fish, LLC &middot; Built with <a href="https://jekyllrb.com" target="_blank">Jekyll</a></p>
+        </div>
+    </footer>
+
+    <script src="/assets/script.js"></script>
+</body>
+
+</html>
