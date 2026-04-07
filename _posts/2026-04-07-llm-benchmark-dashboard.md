@@ -1,19 +1,21 @@
 ---
 layout: post
-title: "I built a live LLM benchmark dashboard because I was tired of guessing"
+title: "How I Pick Models for My Specialized AI Agents"
 date: 2026-04-07
-description: "I use OpenCode and OpenClaw every day. I got tired of not knowing which model to actually reach for, so I built something to answer that."
+description: "I built specialized agents for specific tasks — then figured out which models actually work for each one. Here's the framework I use."
 icon: "mdi:chart-bar"
-tags: [llm, ai, python, side-projects, opencode]
+tags: [llm, ai, opencode, agents, openclaw]
 ---
 
-I use [OpenCode](https://opencode.ai) for coding sessions and [OpenClaw](https://github.com/openclaw/openclaw) for agentic workflows. Every few weeks a new model drops and the discourse is the same: incredible, overhyped, beats GPT-4o on X, worse than Claude on Y.
+I use [OpenCode](https://opencode.ai) for coding sessions and [OpenClaw](https://github.com/openclaw/openclaw) for agentic workflows. After a few months of that, I started building specialized agents for specific things — one for debugging, one for writing tests, one for kicking off CI pipelines.
 
-None of that tells me what I need to know. For the specific things I'm doing right now, which model should I be using?
+Each agent had different needs. The debugging one needed raw reasoning chops. The test writer needed to understand context across a whole file. The CI agent mostly needed to format JSON correctly and not hallucinate curl commands.
 
-So I built a dashboard. It pulls from five trusted third-party benchmark sources, normalizes everything into one dataset, and gives me charts I can actually use to make a decision.
+Generic leaderboard rankings didn't help me there. "Best overall" is a fine headline for a benchmark post, but not useful when your debugging agent is stuck in a loop because you grabbed the wrong model.
 
-The dropdown below controls all three charts at once. Pick a task type and everything updates. The stars in the label tell you how directly the benchmark maps to that task before you look at anything else. ★★★ means the benchmark actually measures that skill. ★☆☆ means it's a rough proxy and you should treat it as a signal, not a verdict.
+So I built a way to actually look at this stuff — benchmark data filtered by task type, with price and speed factored in so I'm not just grabbing the "best" model for a job where 2x worse but 10x cheaper gets the job done just as well.
+
+The dropdown below controls all three charts. Pick a task type and everything updates. The stars in the label tell you how directly the benchmark maps to that task. ★★★ means it actually measures that skill. ★☆☆ means it's a rough proxy — treat it as a signal, not a verdict.
 
 <div id="benchag-charts" style="margin: 2rem 0;">
 
@@ -231,4 +233,8 @@ def get_task_bucket_quality_col(df, bucket_name, task_mappings):
     return None
 ```
 
-The task config is plain JSON. If you think a bucket should map to a different benchmark, change the JSON and re-run. The confidence stars show up in the dropdown labels so you always know how much to trust a given view before you look at the data.
+Stop blindly casting. Look at the data.
+
+*— if you're fishing for which model to tie your agent to, the data's right there.*
+
+> **Before you publish:** Verify current API pricing for MiniMax M2.7 ($0.525/1M), GPT-5.4-Mini ($1.688/1M), Kimi K2 Thinking ($1.075/1M), and Gemini 3.1 Pro ($4.50/1M). Also name at least 2-3 benchmark sources (e.g., LMSYS Chatbot Arena, Aider Polyglot leaderboard).
