@@ -1,70 +1,36 @@
-<section class="section" id="youtube">
+<section id="videos" class="section">
     <h2 class="section-title">
         <span class="iconify-inline" data-icon="logos:youtube-icon"></span>
         YouTube
     </h2>
-    <div class="carousel-wrapper">
-        <button class="carousel-btn carousel-btn-left" data-carousel="videos-carousel" aria-label="Scroll left">
-            <span class="iconify-inline" data-icon="mdi:chevron-left"></span>
-        </button>
-        <div class="carousel" id="videos-carousel">
-            {% for video in site.data.videos.videos %}
-            {% if video.type == 'video' %}
-            <div class="carousel-item video-card">
-                <div class="video-thumb" data-video-id="{{ video.id }}">
-                    <img src="https://img.youtube.com/vi/{{ video.id }}/mqdefault.jpg" alt="{{ video.title }}" loading="lazy" width="480" height="270">
-                    <div class="play-btn">
-                        <span class="iconify-inline" data-icon="mdi:play-circle" style="font-size:3.5rem;color:#fff;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.6))"></span>
-                    </div>
-                </div>
-                <div class="video-info">
-                    <h3 class="video-title">{{ video.title }}</h3>
-                </div>
+    
+    <div class="card-grid">
+        {% for video in site.data.videos.videos limit:6 %}
+        {% if video.type == 'video' or video.type == 'short' %}
+        <a class="blog-card" href="https://www.youtube.com{% if video.type == 'short' %}/shorts/{{ video.id }}{% else %}/watch?v={{ video.id }}{% endif %}" target="_blank" rel="noopener">
+            <div style="position: relative; margin-bottom: 0.75rem; border-radius: var(--radius-sm); overflow: hidden;">
+                <img src="https://img.youtube.com/vi/{{ video.id }}/maxresdefault.jpg" alt="{{ video.title }}" style="width: 100%; display: block;">
+                {% if video.type == 'short' %}
+                <span style="position: absolute; bottom: 8px; left: 8px; background: #ff0000; color: white; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 4px;">SHORT</span>
+                {% else %}
+                <span class="iconify-inline" data-icon="mdi:play-circle" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 2.5rem; opacity: 0.85;"></span>
+                {% endif %}
             </div>
+            <div class="blog-card-header">
+                <h3 class="blog-card-title">{{ video.title }}</h3>
+            </div>
+            {% if video.description %}
+            <p class="blog-card-desc">{{ video.description }}</p>
             {% endif %}
-            {% endfor %}
-        </div>
-        <button class="carousel-btn carousel-btn-right" data-carousel="videos-carousel" aria-label="Scroll right">
-            <span class="iconify-inline" data-icon="mdi:chevron-right"></span>
-        </button>
+            <div class="blog-card-meta">
+                <span class="blog-card-date">{{ video.date | date: "%b %-d, %Y" }}</span>
+            </div>
+        </a>
+        {% endif %}
+        {% endfor %}
     </div>
 
-    {% assign has_shorts = false %}
-    {% for video in site.data.videos.videos %}
-    {% if video.type == 'short' %}
-    {% assign has_shorts = true %}
-    {% endif %}
-    {% endfor %}
-
-    {% if has_shorts %}
-    <h3 class="subsection-title">
-        <span class="iconify-inline" data-icon="mdi:cellphone-play"></span>
-        Shorts
-    </h3>
-    <div class="carousel-wrapper">
-        <button class="carousel-btn carousel-btn-left" data-carousel="shorts-carousel" aria-label="Scroll left">
-            <span class="iconify-inline" data-icon="mdi:chevron-left"></span>
-        </button>
-        <div class="carousel" id="shorts-carousel">
-            {% for video in site.data.videos.videos %}
-            {% if video.type == 'short' %}
-            <div class="carousel-item short-card">
-                <div class="video-thumb short-thumb" data-short-id="{{ video.id }}">
-                    <img src="https://img.youtube.com/vi/{{ video.id }}/mqdefault.jpg" alt="{{ video.title }}" loading="lazy" width="270" height="480">
-                    <div class="play-btn">
-                        <span class="iconify-inline" data-icon="mdi:play-circle" style="font-size:2.5rem;color:#fff;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.6))"></span>
-                    </div>
-                </div>
-                <div class="video-info">
-                    <h3 class="video-title">{{ video.title }}</h3>
-                </div>
-            </div>
-            {% endif %}
-            {% endfor %}
-        </div>
-        <button class="carousel-btn carousel-btn-right" data-carousel="shorts-carousel" aria-label="Scroll right">
-            <span class="iconify-inline" data-icon="mdi:chevron-right"></span>
-        </button>
+    <div style="text-align: center; margin-top: 2rem;">
+        <a href="https://www.youtube.com/@TheOutdoorProgrammer" target="_blank" rel="noopener" class="btn btn-primary">See All Videos &rarr;</a>
     </div>
-    {% endif %}
 </section>

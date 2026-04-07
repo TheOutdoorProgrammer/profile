@@ -2,34 +2,55 @@
 videos:
 - id: 0LxyoVvqELg
   title: 'The Anatomy of a Meltdown: A Deep-Dive into MCP via Selective Sabotage'
+  date: 2026-04-03
+  description: 'What happens when an AI agent loses its senses one by one? In this talk from MCP Dev Summit 2026, Joey builds a live ...'
   type: video
 - id: XjLZNLu1wRM
   title: 'IaC Flow'
+  date: 2026-03-31
+  description: 'I''m a Solutions Architect at Spacelift by day and apparently a rapper by... also day. This track is about what I do, why I love ...'
   type: video
 - id: ory-ejmNtBo
   title: 'My Zombie Apocalypse Go Bag Has a Raspberry Pi In It'
-  type: video
-- id: LFJ2sBdxcPo
-  title: 'Snow Time Lapse'
-  type: video
-- id: weN9tja0Woo
-  title: 'OpenTofu and Target Shooting'
-  type: video
-- id: IziXsyuRchY
-  title: 'AnsibleFest - Spacelift - 2025'
-  type: video
-- id: dtdICOSqyAA
-  title: 'Slip and Slide'
-  type: video
-- id: RFDbEWgB8m4
-  title: 'Unboxing Firewalla Gold Pro'
-  type: video
-- id: 9I_E51fB14k
-  title: 'Hacking an LED moon'
+  date: 2026-03-30
+  description: 'What would you grab if the world ended tomorrow? Most preppers pack beans and bullets — I packed a Raspberry Pi. I tour my go ...'
   type: video
 - id: NN9cyW3LlDs
   title: 'New Camera Goofin #newcamera #fishing #fishingvideo #outdoors #outdoor #programmer'
+  date: 2026-03-08
   type: short
+- id: LFJ2sBdxcPo
+  title: 'Snow Time Lapse'
+  date: 2026-01-25
+  description: 'I took a timelapse from my security cameras of "Snowmageddon" in Columbus Ohio Jan 25, 2026.'
+  type: video
+- id: weN9tja0Woo
+  title: 'OpenTofu and Target Shooting'
+  date: 2025-10-23
+  description: 'Discussing OpenTofu, what is is how it came to be and just general knowledge sharing about the tool while shooting at a range.'
+  type: video
 - id: 6m5rr3TqZAQ
   title: 'Failed Squirrel Hunt ASMR #squirrel #hunting #fail'
+  date: 2025-10-14
+  description: 'I went squirrel hunting and got skunked but made a quick highlight clip.'
   type: short
+- id: IziXsyuRchY
+  title: 'AnsibleFest - Spacelift - 2025'
+  date: 2025-06-17
+  description: 'Spacelift went to AnsibleFest 2025 this is my entire day that happened with some sweet tunes to go with.'
+  type: video
+- id: dtdICOSqyAA
+  title: 'Slip and Slide'
+  date: 2025-06-04
+  description: 'Slip and Slide with the boys.'
+  type: video
+- id: RFDbEWgB8m4
+  title: 'Unboxing Firewalla Gold Pro'
+  date: 2024-07-19
+  description: 'I just got my Firewalla Gold Pro, wanted to do an unboxing video. Never done one before. Firewalla is a cyber security device for ...'
+  type: video
+- id: 9I_E51fB14k
+  title: 'Hacking an LED moon'
+  date: 2020-05-25
+  description: 'Changed an LED moon to show the current moon phase based on the date.'
+  type: video

@@ -1,19 +1,17 @@
+{% assign combined_items = '' | split: '' %}
 {% for button in site.data.links.buttons %}
-{% if button.type == 'dropdown' %}
-{% unless button.category == 'Blog Posts' %}
-<section class="section" id="{{ button.category | slugify }}">
+{% if button.category == 'Projects' or button.category == 'Spacelift' %}
+{% assign combined_items = combined_items | concat: button.items %}
+{% endif %}
+{% endfor %}
+
+<section class="section" id="projects">
     <h2 class="section-title">
-        {% if button.category == 'Projects' %}
         <span class="iconify-inline" data-icon="mdi:rocket-launch"></span>
-        {% elsif button.category == 'Spacelift' %}
-        <span class="iconify-inline" data-icon="mdi:space-station"></span>
-        {% else %}
-        <span class="iconify-inline" data-icon="mdi:folder-open"></span>
-        {% endif %}
-        {{ button.category }}
+        Projects
     </h2>
     <div class="card-grid">
-        {% for item in button.items %}
+        {% for item in combined_items %}
         <a class="project-card" href="{{ item.url }}" target="_blank">
             <div class="project-card-icon">
                 {% if item.icon %}
@@ -31,6 +29,3 @@
         {% endfor %}
     </div>
 </section>
-{% endunless %}
-{% endif %}
-{% endfor %}
