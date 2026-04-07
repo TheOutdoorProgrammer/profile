@@ -1,34 +1,65 @@
-<section id="bluesky" class="section">
-    <div class="section-header">
-        <h2 class="section-title"><span class="iconify-inline" data-icon="fa6-brands:bluesky"></span> BlueSky</h2>
-    </div>
+<section class="section" id="bluesky">
+    <h2 class="section-title">
+        <span class="iconify-inline" data-icon="logos:bluesky"></span>
+        BlueSky
+    </h2>
     
     <div class="card-grid">
         {% for item in site.data.posts.feed limit:6 %}
         {% assign post = item.post %}
+        {% assign has_text = false %}
+        {% assign has_images = false %}
+        {% if post.record.text != "" %}{% assign has_text = true %}{% endif %}
+        {% if post.embed.images %}{% assign has_images = true %}{% endif %}
+        {% if has_text or has_images %}
         {% assign uri_parts = post.uri | split: "/" %}
         {% assign post_id = uri_parts | last %}
-        <div class="blog-card" style="display: flex; flex-direction: column; background: var(--bg-card); border-radius: 8px; overflow: hidden; padding: 16px; border: 1px solid var(--border-color);">
-            <a href="https://bsky.app/profile/theoutdoorprogrammer.com/post/{{ post_id }}" target="_blank" rel="noopener" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%;">
-                <div class="bsky-author" style="display: flex; align-items: center; margin-bottom: 12px;">
-                    <img src="{{ post.author.avatar }}" alt="{{ post.author.displayName }}" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 12px;">
-                    <div>
-                        <div style="font-weight: 600; font-size: 0.9rem;">{{ post.author.displayName }}</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted);">@{{ post.author.handle }}</div>
-                    </div>
+        <a class="bsky-card" href="https://bsky.app/profile/{{ post.author.handle }}/post/{{ post_id }}" target="_blank" rel="noopener">
+            <div class="bsky-card-header">
+                <img class="bsky-avatar" src="{{ post.author.avatar }}" alt="{{ post.author.displayName }}" width="36" height="36" loading="lazy">
+                <div class="bsky-author">
+                    <span class="bsky-author-name">{{ post.author.displayName }}</span>
+                    <span class="bsky-author-handle">@{{ post.author.handle }}</span>
                 </div>
-                <div class="bsky-text" style="font-size: 0.95rem; line-height: 1.5; margin-bottom: 12px; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                    {{ post.record.text }}
+            </div>
+            {% if has_text %}
+            <p class="bsky-text">{{ post.record.text | newline_to_br }}</p>
+            {% endif %}
+            {% if has_images %}
+            <div class="bsky-embed-images {% if post.embed.images.size > 1 %}bsky-embed-images-grid{% endif %}">
+                {% for image in post.embed.images %}
+                <img class="bsky-embed-image" src="{{ image.thumb }}" alt="{{ image.alt }}" loading="lazy">
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% if post.embed.external %}
+            <div class="bsky-embed-preview">
+                {% if post.embed.external.thumb %}
+                <img class="bsky-embed-thumb" src="{{ post.embed.external.thumb }}" alt="" loading="lazy">
+                {% endif %}
+                <span class="bsky-embed-title">{{ post.embed.external.title }}</span>
+            </div>
+            {% endif %}
+            <div class="bsky-meta">
+                <span class="bsky-date">{{ post.record.createdAt | date: "%b %-d, %Y" }}</span>
+                <div class="bsky-stats">
+                    {% if post.likeCount > 0 %}
+                    <span><span class="iconify-inline" data-icon="mdi:heart"></span> {{ post.likeCount }}</span>
+                    {% endif %}
+                    {% if post.repostCount > 0 %}
+                    <span><span class="iconify-inline" data-icon="mdi:repeat-variant"></span> {{ post.repostCount }}</span>
+                    {% endif %}
+                    {% if post.replyCount > 0 %}
+                    <span><span class="iconify-inline" data-icon="mdi:comment-outline"></span> {{ post.replyCount }}</span>
+                    {% endif %}
                 </div>
-                <div class="bsky-meta" style="font-size: 0.8rem; color: var(--text-muted); margin-top: auto;">
-                    {{ post.record.createdAt | date: "%B %d, %Y" }}
-                </div>
-            </a>
-        </div>
+            </div>
+        </a>
+        {% endif %}
         {% endfor %}
     </div>
 
-    <div class="section-footer" style="text-align: center; margin-top: 24px;">
-        <a href="https://bsky.app/profile/theoutdoorprogrammer.com" target="_blank" rel="noopener" class="btn btn-secondary">See All Posts &rarr;</a>
+    <div style="text-align: center; margin-top: 2rem;">
+        <a href="https://bsky.app/profile/theoutdoorprogrammer.com" target="_blank" rel="noopener" class="btn btn-primary">See All Posts &rarr;</a>
     </div>
 </section>
