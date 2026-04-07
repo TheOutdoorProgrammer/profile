@@ -1,4 +1,6 @@
-// ===== Intersection Observer for Fade-in Animation =====
+document.addEventListener('DOMContentLoaded', function () {
+
+    // ===== Intersection Observer for Fade-in Animation =====
     if ('IntersectionObserver' in window) {
         var observer = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
@@ -97,4 +99,5 @@
             }
         }, { passive: true });
     }
+
 });
