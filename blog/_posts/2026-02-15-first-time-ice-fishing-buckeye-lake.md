@@ -4,6 +4,7 @@ title: "First Time Ice Fishing on Buckeye Lake with My Boys"
 date: 2026-02-15
 description: "I took my two boys ice fishing for the first time on Buckeye Lake in Ohio. We didn't catch a thing — but we learned a lot and we're already planning the next trip."
 tags: [fishing, ohio, ice-fishing, outdoors, family]
+image: /assets/images/blogposts/2026-02-15-ice-fishing-title.jpeg
 icon: "twemoji:fishing-pole"
 ---
 

@@ -3,6 +3,10 @@ theme: linkhub-jekyll-theme
 
 plugins:
   - jekyll-sitemap
+  - jekyll-paginate
+
+paginate: 10
+paginate_path: "/blog/page:num/"
 
 # Site Configuration
 name: Joey Stout  # Name of your website
@@ -39,7 +43,7 @@ defaults:
     values:
       layout: "default"
   - scope:
-      path: "_posts"
+      path: "blog/_posts"
       type: "posts"
     values:
       layout: "post"

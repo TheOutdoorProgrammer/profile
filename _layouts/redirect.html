@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url={{ page.redirect_to }}">
+    <link rel="canonical" href="{{ page.redirect_to }}">
+    <title>Redirecting to {{ page.title }}...</title>
+    <style>
+        body { background: #13181E; color: #D1D5DA; font-family: system-ui, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; text-align: center; }
+        a { color: #3CCAE0; }
+    </style>
+</head>
+<body>
+    <div>
+        <p>Redirecting to <a href="{{ page.redirect_to }}">{{ page.title }}</a>...</p>
+        <p><a href="{{ page.redirect_to }}">Click here if you're not redirected.</a></p>
+    </div>
+</body>
+</html>
