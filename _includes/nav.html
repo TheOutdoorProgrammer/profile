@@ -143,20 +143,20 @@
     <div class="site-nav-inner">
         <a href="/" class="site-nav-logo">
             <img src="{{ site.logo }}" alt="{{ site.name }}">
-            <span class="site-nav-logo-text">{{ site.name }}</span>
+            <span class="site-nav-logo-text">{{ site.name }} <span style="font-weight: 400; opacity: 0.6;">— @TheOutdoorProgrammer</span></span>
         </a>
         
         <div class="site-nav-links">
             <a href="https://shop.theoutdoorprogrammer.com" class="site-nav-link site-nav-link-primary">
                 <span class="iconify-inline" data-icon="mdi:shopping-outline"></span> Shop
             </a>
-            <a href="/#youtube" class="site-nav-link {% if page.url == '/' %}active{% endif %}">
+            <a href="/#youtube" class="site-nav-link">
                 <span class="iconify-inline" data-icon="mdi:play-circle-outline"></span> Watch Videos
             </a>
             <a href="/#projects" class="site-nav-link">
                 <span class="iconify-inline" data-icon="mdi:rocket-launch-outline"></span> See My Work
             </a>
-            <a href="/blog/" class="site-nav-link">
+            <a href="/blog/" class="site-nav-link {% if page.url contains '/blog/' %}active{% endif %}">
                 <span class="iconify-inline" data-icon="mdi:post-outline"></span> Blog
             </a>
         </div>
