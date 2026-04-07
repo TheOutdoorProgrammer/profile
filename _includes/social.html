@@ -1,16 +1,27 @@
 <div class="social-links">
-    {% for button in site.data.links.buttons %}
-    {% if button.type == 'list' %}
-    {% for item in button.items %}
-    <a class="social-icon" href="{{ item.url }}" target="_blank" aria-label="{{ item.title }}" title="{{ item.title }}">
-        <span class="iconify-inline" data-icon="{{ item.icon }}"></span>
+    {% if site.data.social.github %}
+    <a class="social-icon" href="{{ site.data.social.github }}" target="_blank" aria-label="GitHub" title="GitHub">
+        <span class="iconify-inline" data-icon="mdi:github"></span>
     </a>
-    {% endfor %}
     {% endif %}
-    {% endfor %}
-    {% for social in site.data.social %}
-    <a class="social-icon" href="{{ social.url }}" target="_blank" aria-label="{{ social.name }}" title="{{ social.name }}">
-        <span class="iconify-inline" data-icon="{{ social.icon }}"></span>
+    {% if site.data.social.youtube %}
+    <a class="social-icon" href="{{ site.data.social.youtube }}" target="_blank" aria-label="YouTube" title="YouTube">
+        <span class="iconify-inline" data-icon="logos:youtube-icon"></span>
     </a>
-    {% endfor %}
+    {% endif %}
+    {% if site.data.social.bluesky %}
+    <a class="social-icon" href="{{ site.data.social.bluesky }}" target="_blank" aria-label="BlueSky" title="BlueSky">
+        <span class="iconify-inline" data-icon="logos:bluesky"></span>
+    </a>
+    {% endif %}
+    {% if site.data.social.linkedin %}
+    <a class="social-icon" href="{{ site.data.social.linkedin }}" target="_blank" aria-label="LinkedIn" title="LinkedIn">
+        <span class="iconify-inline" data-icon="mdi:linkedin"></span>
+    </a>
+    {% endif %}
+    {% if site.data.social.email %}
+    <a class="social-icon" href="{{ site.data.social.email }}" target="_blank" aria-label="Email" title="Email">
+        <span class="iconify-inline" data-icon="ic:round-email"></span>
+    </a>
+    {% endif %}
 </div>
