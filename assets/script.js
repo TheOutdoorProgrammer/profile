@@ -87,6 +87,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // ===== Mobile nav: close menu when a link is clicked =====
+    document.querySelectorAll('.site-nav-mobile-menu .site-nav-link').forEach(function (link) {
+        link.addEventListener('click', function () {
+            var menu = document.querySelector('.site-nav-mobile-menu');
+            if (menu) menu.classList.remove('open');
+        });
+    });
+
     // ===== Homepage Nav: hide logo at top, show on scroll =====
     var nav = document.querySelector('.site-nav');
     var isHomePage = window.location.pathname === '/' || window.location.pathname === '/index.html';
