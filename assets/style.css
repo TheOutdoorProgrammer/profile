@@ -944,7 +944,7 @@ body.badge-modal-open {
 .bsky-card {
     display: flex;
     flex-direction: column;
-    width: 340px;
+
     padding: 1.25rem;
     background: var(--color-bg-secondary);
     border: 1px solid var(--color-border);
