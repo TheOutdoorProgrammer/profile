@@ -2,7 +2,7 @@
 title: "Building My Homelab Kubernetes Cluster"
 date: 2026-02-04
 description: "How I moved all my self-hosted services to a homelab K8s cluster running on bare metal."
-image: /assets/images/blogposts/2026-02-04-homelab-title.png
+image: /assets/images/blogposts/2026-02-04-homelab-title.jpeg
 icon: "devicon:kubernetes"
 tags: [kubernetes, homelab, devops]
 layout: post

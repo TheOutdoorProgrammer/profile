@@ -9,14 +9,12 @@
         {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
         {% for post in sorted_posts limit:6 %}
         <a class="blog-card" href="{{ post.url | relative_url }}">
+            {% if post.image %}
+            <div class="blog-card-image" style="margin-bottom: 0.75rem; border-radius: var(--radius-sm); overflow: hidden;">
+                <img src="{{ post.image }}" alt="{{ post.title }}" style="width: 100%; height: 140px; object-fit: cover; display: block;">
+            </div>
+            {% endif %}
             <div class="blog-card-header">
-                <div class="blog-card-icon">
-                    {% if post.icon %}
-                    <span class="iconify-inline" data-icon="{{ post.icon }}"></span>
-                    {% else %}
-                    <span class="iconify-inline" data-icon="mdi:file-document-outline"></span>
-                    {% endif %}
-                </div>
                 <h3 class="blog-card-title">{{ post.title }}</h3>
             </div>
             {% if post.description %}
