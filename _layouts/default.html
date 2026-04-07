@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% include posthog.html %}
     <title>{{ site.tagline }} - {{ site.name }}</title>
-    <link rel="shortcut icon" href="/{{ site.favicon.path }}" type="image/{{ site.favicon.type }}">
+    <link rel="shortcut icon" href="{{ site.favicon.path }}" type="image/{{ site.favicon.type }}">
     <link rel="canonical" href="{{ site.url }}{{ page.url }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto:wght@400;500&family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="assets/style.css">
     <script defer src="https://code.iconify.design/2/2.0.0/iconify.min.js"></script>
     <meta name="description" content="{{ site.description }}">
     <meta property="og:title" content="{{ site.name }}" />
@@ -73,8 +73,195 @@
             <p class="hero-handle"><span class="code-name">{{ site.tagline }}</span></p>
             <p class="hero-subtitle">DevOps Engineer &amp; Outdoorsman</p>
             <p class="hero-bio">{{ site.description }}</p>
-            <!-- Nav moved to global nav bar -->
-</section>
+            <!-- Social Icons -->
+
+            <!-- Badge Pills -->
+            <div class="badge-pills">
+                <button class="badge-pill" data-modal="modal-nwf" aria-label="Nerds Who Fish">
+                    <span class="iconify-inline" data-icon="mdi:fish"></span>
+                </button>
+                <button class="badge-pill" data-modal="modal-gpg" aria-label="GPG Key">
+                    <span class="iconify-inline" data-icon="mdi:key-variant"></span>
+                </button>
+                <button class="badge-pill" data-modal="modal-ckad" aria-label="CKA Certified Kubernetes Administrator">
+                    <span class="iconify-inline" data-icon="devicon:kubernetes"></span>
+                </button>
+                <button class="badge-pill" data-modal="modal-palestine">
+                    <span>🇵🇸</span>
+                </button>
+                <button class="badge-pill" data-modal="modal-usa">
+                    <span>🇺🇸</span>
+                </button>
+                <button class="badge-pill" data-modal="modal-ukraine">
+                    <span>🇺🇦</span>
+                </button>
+            </div>
+
+            <!-- Badge Modals -->
+            <div class="badge-modal-overlay" id="modal-nwf">
+                <div class="badge-modal">
+                    <button class="badge-modal-close" aria-label="Close">&times;</button>
+                    <h3 class="badge-modal-title">
+                        <span class="iconify-inline" data-icon="mdi:fish"></span>
+                        Nerds Who Fish
+                    </h3>
+                    <p>Nerds Who Fish is my consulting company. I build and manage web solutions for small businesses, bringing enterprise-level expertise at small-business prices. No sales reps, no offshore teams. Just a local nerd who knows his stuff and actually picks up the phone.</p>
+                    <div class="badge-modal-links">
+                        <a href="https://nerdswhofish.com" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Visit nerdswhofish.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="badge-modal-overlay" id="modal-gpg">
+                <div class="badge-modal badge-modal-wide">
+                    <button class="badge-modal-close" aria-label="Close">&times;</button>
+                    <h3 class="badge-modal-title">
+                        <span class="iconify-inline" data-icon="mdi:key-variant"></span>
+                        GPG / PGP Key
+                    </h3>
+                    <div class="gpg-fingerprint">
+                        <span class="gpg-fingerprint-label">Fingerprint</span>
+                        <code>8E4C D7B8 4024 3BF4 FF54 58B8 1830 B516 B456 06F6</code>
+                    </div>
+                    <p><a href="https://keyserver.ubuntu.com/pks/lookup?search=0x1830B516B45606F6&fingerprint=on&op=index" target="_blank" rel="noopener">View on Ubuntu Keyserver →</a></p>
+                    <div class="gpg-command-block">
+                        <div class="gpg-command-header">
+                            <span class="gpg-command-comment"># Import my key</span>
+                            <button class="copy-btn" data-copy="gpg --keyserver keyserver.ubuntu.com --recv-keys 0x1830B516B45606F6" aria-label="Copy command">
+                                <span class="iconify-inline" data-icon="mdi:content-copy"></span>
+                            </button>
+                        </div>
+                        <code class="gpg-command">gpg --keyserver keyserver.ubuntu.com --recv-keys 0x1830B516B45606F6</code>
+                    </div>
+                    <div class="gpg-command-block">
+                        <div class="gpg-command-header">
+                            <span class="gpg-command-comment"># Encrypt a message for me</span>
+                            <button class="copy-btn" data-copy='echo "your message" | gpg --encrypt --armor --recipient 0x1830B516B45606F6' aria-label="Copy command">
+                                <span class="iconify-inline" data-icon="mdi:content-copy"></span>
+                            </button>
+                        </div>
+                        <code class="gpg-command">echo "your message" | gpg --encrypt --armor --recipient 0x1830B516B45606F6</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="badge-modal-overlay" id="modal-ckad">
+                <div class="badge-modal">
+                    <button class="badge-modal-close" aria-label="Close">&times;</button>
+                    <h3 class="badge-modal-title">
+                        <span class="iconify-inline" data-icon="devicon:kubernetes"></span>
+                        Kubernetes Certifications
+                    </h3>
+                    <div class="ckad-content">
+                        <img src="/assets/images/ckad-badge.png" alt="Kubernetes Certification Badge" class="ckad-badge-img" width="150" height="150">
+                        <div class="ckad-details">
+                            <div class="cert-entry">
+                                <h4>CKA Certified Kubernetes Administrator</h4>
+                                <p><strong>What this cert is:</strong> Demonstrates hands-on Kubernetes cluster administration and operations skills.</p>
+                                <p><strong>Cert ID:</strong> <code>LF-y7m6yi5kq4</code></p>
+                                <p><strong>Issued:</strong> August 2023</p>
+                                <p><strong>Expiration status:</strong> Date/status not yet confirmed.</p>
+                                <div class="badge-modal-links">
+                                    <a href="/assets/ckad-certificate.pdf" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
+                                        <span class="iconify-inline" data-icon="mdi:file-pdf-box"></span> View CKA PDF
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="cert-entry">
+                                <h4>The Inclusive Speaker Orientation (LFC101)</h4>
+                                <p><strong>What this cert is:</strong> Linux Foundation orientation for inclusive speaker practices and event participation standards.</p>
+                                <p><strong>Holder:</strong> Joseph A Stout</p>
+                                <p><strong>Cert ID:</strong> <code>LF-f9r7c5xl90</code></p>
+                                <p><strong>Issued:</strong> March 24, 2026</p>
+                                <p><strong>Expiration status:</strong> No expiration date provided on record.</p>
+                                <div class="badge-modal-links">
+                                    <a href="/assets/lfc101-certificate.pdf" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
+                                        <span class="iconify-inline" data-icon="mdi:file-pdf-box"></span> View LFC101 PDF
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="badge-modal-overlay" id="modal-palestine">
+                <div class="badge-modal">
+                    <button class="badge-modal-close" aria-label="Close">&times;</button>
+                    <h3 class="badge-modal-title">Free Palestine 🇵🇸</h3>
+                    <p>I stand with the Palestinian people in their right to self-determination, dignity, and peace. The ongoing humanitarian crisis demands our attention and action. Silence is complicity, and I refuse to be silent.</p>
+                    <div class="badge-modal-links">
+                        <a href="https://www.unrwa.org/" target="_blank" rel="noopener">UNRWA</a>
+                        <a href="https://www.map.org.uk/" target="_blank" rel="noopener">Medical Aid for Palestinians</a>
+                        <a href="https://bdsmovement.net/" target="_blank" rel="noopener">BDS Movement</a>
+                        <a href="https://wearthepeace.com/" target="_blank" rel="noopener">Wear The Peace</a>
+                        <a href="https://www.amnesty.org/en/latest/campaigns/2022/02/israels-system-of-apartheid/" target="_blank" rel="noopener">Amnesty International Report</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="badge-modal-overlay" id="modal-usa">
+                <div class="badge-modal badge-modal-wide">
+                    <button class="badge-modal-close" aria-label="Close">&times;</button>
+                    <h3 class="badge-modal-title">Proud American, Critical Citizen 🇺🇸</h3>
+                    <p>I love this country. That's exactly why I refuse to stay quiet when its government acts against the values it claims to stand for. Patriotism is not blind loyalty. It's holding your country to a higher standard.</p>
+                    <div class="usa-issues">
+                        <div class="usa-issue">
+                            <h4>🏔️ Greenland</h4>
+                            <p>Greenland is a self-governing territory of Denmark. Its people have the right to self-determination, not to be treated as a real estate acquisition. Sovereignty is not for sale.</p>
+                        </div>
+                        <div class="usa-issue">
+                            <h4>🛂 Immigration &amp; the Border</h4>
+                            <p>Immigration reform is long overdue, but dehumanizing policies are not reform. They are cruelty. People fleeing violence and poverty deserve to be treated with basic human dignity.</p>
+                        </div>
+                        <div class="usa-issue">
+                            <h4>🕊️ Israel &amp; Palestine</h4>
+                            <p>I do not support the conflict in Gaza and the West Bank. The U.S. should not be providing unconditional military aid while civilians are being killed. Foreign policy should prioritize human life over geopolitics.</p>
+                        </div>
+                        <div class="usa-issue">
+                            <h4>🇺🇦 Ukraine</h4>
+                            <p>Weakening support for Ukraine against Russian aggression undermines global security and emboldens authoritarianism. Democracies should stand together.</p>
+                        </div>
+                    </div>
+                    <div class="badge-modal-links">
+                        <a href="https://www.aclu.org/issues/immigrants-rights" target="_blank" rel="noopener">ACLU Immigration Rights</a>
+                        <a href="https://www.hrw.org/world-report/2024" target="_blank" rel="noopener">Human Rights Watch</a>
+                        <a href="https://www.cfr.org/" target="_blank" rel="noopener">Council on Foreign Relations</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="badge-modal-overlay" id="modal-ukraine">
+                <div class="badge-modal">
+                    <button class="badge-modal-close" aria-label="Close">&times;</button>
+                    <h3 class="badge-modal-title">Stand With Ukraine 🇺🇦</h3>
+                    <p>Ukraine's fight is a fight for democracy and international order. The world cannot stand by while a sovereign nation is invaded. Russia's war of aggression is an assault on the rules-based order that keeps us all safe.</p>
+                    <p>Supporting Ukraine is not charity. It is an investment in global stability and a message that imperialism has no place in the 21st century.</p>
+                    <div class="badge-modal-links">
+                        <a href="https://u24.gov.ua/" target="_blank" rel="noopener">United24 - Official Ukraine Support</a>
+                        <a href="https://www.savethechildren.org/us/where-we-work/ukraine" target="_blank" rel="noopener">Save the Children Ukraine</a>
+                        <a href="https://www.icrc.org/en/where-we-work/europe-central-asia/ukraine" target="_blank" rel="noopener">ICRC Ukraine</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-actions">
+                <a href="https://shop.theoutdoorprogrammer.com" class="btn btn-primary">
+                    <span class="iconify-inline" data-icon="mdi:shopping-outline"></span> Shop
+                </a>
+                <a href="#youtube" class="btn btn-secondary">
+                    <span class="iconify-inline" data-icon="mdi:play-circle-outline"></span> Watch Videos
+                </a>
+                <a href="#projects" class="btn btn-secondary">
+                    <span class="iconify-inline" data-icon="mdi:rocket-launch-outline"></span> See My Work
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span class="iconify-inline" data-icon="mdi:chevron-double-down"></span>
+        </div>
+    </section>
 
     <div class="site-container">
         <!-- YouTube Videos -->
@@ -89,11 +276,12 @@
         <!-- Projects / Spacelift -->
         {% include cards.html %}
 
+        {% include speaker-bio.html %}
 
         {% include footer.html %}
     </div>
 
-    <script src="/assets/script.js"></script>
+    <script src="assets/script.js"></script>
 </body>
 
 </html>
