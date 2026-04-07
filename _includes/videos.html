@@ -17,6 +17,12 @@
                 {% endif %}
             </div>
             <h3 class="blog-card-title">{{ video.title }}</h3>
+            {% if video.date %}
+            <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 0.25rem;">{{ video.date | date: "%B %-d, %Y" }}</div>
+            {% endif %}
+            {% if video.description %}
+            <p style="font-size: 0.85rem; color: var(--color-text-secondary); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0;">{{ video.description }}</p>
+            {% endif %}
         </a>
         {% endif %}
         {% endfor %}
