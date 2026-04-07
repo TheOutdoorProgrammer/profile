@@ -37,7 +37,7 @@ projects:
     description: "Live stream page for pet lizards swimming around."
     icon: twemoji:lizard
 
-  - title: Hooked: Crestwater Bay
+  - title: 'Hooked: Crestwater Bay'
     url: https://crestwaterbay.com/
     description: "A relaxing fishing adventure game with realistic mechanics, unique Hudson Bay fish species, and dynamic weather systems."
     icon: twemoji:fishing-pole
