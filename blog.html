@@ -1,0 +1,22 @@
+---
+layout: default
+title: Blog
+permalink: /blog/
+---
+<section style="max-width: 900px; margin: 3rem auto; padding: 0 1.5rem;">
+  <h1 style="font-size: 2rem; margin-bottom: 0.5rem;">Blog</h1>
+  <p style="color: var(--color-text-muted); margin-bottom: 2rem;">Thoughts on DevOps, fishing, outdoor adventures, and tech projects.</p>
+  <ul style="list-style: none; padding: 0;">
+    {% for post in site.posts %}
+    <li style="margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--color-border);">
+      <a href="{{ post.url }}" style="text-decoration: none; color: inherit; display: block;">
+        <h2 style="font-size: 1.4rem; margin: 0 0 0.5rem; font-family: var(--font-heading);">{{ post.title }}</h2>
+      </a>
+      <div style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0.5rem;">{{ post.date | date: "%B %-d, %Y" }}</div>
+      {% if post.description %}
+      <p style="color: var(--color-text-secondary); line-height: 1.6;">{{ post.description }}</p>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
