@@ -1,11 +1,10 @@
-<!-- Blog Posts: internal _posts/ + external links from links.yml -->
+<!-- Blog Posts: internal blog/_posts/ only -->
 <section class="section" id="blog-posts">
     <h2 class="section-title">
         <span class="iconify-inline" data-icon="mdi:post-outline"></span>
         Blog Posts
     </h2>
     <div class="card-grid">
-        <!-- Internal blog posts from blog/_posts/ directory -->
         {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
         {% for post in sorted_posts limit:6 %}
         <a class="blog-card" href="{{ post.url | relative_url }}">
@@ -34,42 +33,6 @@
             </div>
         </a>
         {% endfor %}
-
-        <!-- External blog posts from links.yml -->
-        {% for button in site.data.links.buttons %}
-        {% if button.category == 'Blog Posts' and button.type == 'dropdown' %}
-        {% for item in button.items %}
-        <a class="blog-card" href="{{ item.url }}" target="_blank">
-            <div class="blog-card-header">
-                <div class="blog-card-icon">
-                    {% if item.icon %}
-                    <span class="iconify-inline" data-icon="{{ item.icon }}"></span>
-                    {% else %}
-                    <span class="iconify-inline" data-icon="mdi:file-document-outline"></span>
-                    {% endif %}
-                </div>
-                <h3 class="blog-card-title">{{ item.title }}</h3>
-            </div>
-            {% if item.description %}
-            <p class="blog-card-desc">{{ item.description }}</p>
-            {% elsif item.excerpt %}
-            <p class="blog-card-desc">{{ item.excerpt | strip_html | truncate: 120 }}</p>
-            {% endif %}
-            <div class="blog-card-meta">
-                <span class="blog-card-date">{{ item.date | date: "%b %-d, %Y" }}</span>
-                {% if item.tags.size > 0 %}
-                <div class="blog-card-tags">
-                    {% for tag in item.tags limit:3 %}
-                    <span class="blog-card-tag">{{ tag }}</span>
-                    {% endfor %}
-                </div>
-                {% endif %}
-            </div>
-        </a>
-        {% endfor %}
-        {% endif %}
-        {% endfor %}
-
     </div>
     <div style="text-align: center; margin-top: 2rem;">
         <a href="/blog/" class="btn btn-primary">Read more on the Blog</a>
