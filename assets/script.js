@@ -87,6 +87,22 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // ===== Homepage Nav: hide logo at top, show on scroll =====
+    var nav = document.querySelector('.site-nav');
+    var isHomePage = window.location.pathname === '/' || window.location.pathname === '/index.html';
+    if (nav && isHomePage) {
+        nav.classList.add('home-nav');
+        var heroSection = document.getElementById('hero');
+        var scrollThreshold = heroSection ? heroSection.offsetHeight * 0.3 : 200;
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > scrollThreshold) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+        }, { passive: true });
+    }
+
     // ===== Hide scroll indicator on scroll =====
     var scrollIndicator = document.querySelector('.scroll-indicator');
     if (scrollIndicator) {

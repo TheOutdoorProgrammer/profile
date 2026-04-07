@@ -282,13 +282,13 @@ img {
     align-items: center;
     justify-content: center;
     gap: 0;
-    padding: 0.5rem 0.6rem;
+    padding: 0.85rem 1rem;
     border-radius: var(--radius-lg);
     background: var(--color-bg-secondary);
     border: 1px solid var(--color-border);
     color: var(--color-text-secondary);
     font-family: var(--font-heading);
-    font-size: 0.8rem;
+    font-size: 1.4rem;
     font-weight: 500;
     cursor: pointer;
     transition: all var(--transition-normal);
@@ -643,8 +643,8 @@ body.badge-modal-open {
 /* Modal responsive */
 @media (max-width: 767px) {
     .badge-pill {
-        font-size: 0.85rem;
-        padding: 0.45rem 0.55rem;
+        font-size: 1.25rem;
+        padding: 0.75rem 0.9rem;
     }
 
     .badge-modal {

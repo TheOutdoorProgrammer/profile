@@ -137,6 +137,28 @@
         padding: 0 1rem;
     }
 }
+/* Homepage nav: hide logo, center links at top */
+.site-nav.home-nav .site-nav-logo {
+    opacity: 0;
+    pointer-events: none;
+    max-width: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-width 0.3s ease;
+}
+
+.site-nav.home-nav .site-nav-inner {
+    justify-content: center;
+}
+
+.site-nav.home-nav.nav-scrolled .site-nav-logo {
+    opacity: 1;
+    pointer-events: auto;
+    max-width: 400px;
+}
+
+.site-nav.home-nav.nav-scrolled .site-nav-inner {
+    justify-content: space-between;
+}
 </style>
 
 <nav class="site-nav" role="navigation" aria-label="Main navigation">
