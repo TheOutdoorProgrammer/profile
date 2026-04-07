@@ -114,6 +114,76 @@
         margin-top: 0.5rem;
         font-family: var(--font-body);
     }
+    .cert-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.25rem;
+        margin-top: 1rem;
+    }
+    .cert-card {
+        display: flex;
+        gap: 1rem;
+        background: var(--color-bg-secondary);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        padding: 1.25rem;
+    }
+    .cert-icon {
+        font-size: 1.8rem;
+        color: var(--color-accent-cyan);
+        flex-shrink: 0;
+    }
+    .cert-info h3 {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+    }
+    .cert-info p {
+        font-size: 0.85rem;
+        line-height: 1.6;
+        margin-bottom: 0.25rem;
+    }
+    .cert-info code {
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--color-accent-cyan);
+    }
+    .gpg-command-block {
+        background: var(--color-bg-secondary);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-sm);
+        margin-top: 0.75rem;
+        overflow: hidden;
+    }
+    .gpg-command-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.4rem 0.75rem;
+        background: rgba(60, 202, 224, 0.05);
+        border-bottom: 1px solid var(--color-border);
+    }
+    .gpg-command-comment {
+        font-size: 0.8rem;
+        color: var(--color-text-muted);
+    }
+    .copy-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--color-text-muted);
+        padding: 0.2rem;
+        font-size: 0.85rem;
+        transition: color 0.2s;
+    }
+    .copy-btn:hover { color: var(--color-accent-cyan); }
+    .gpg-command {
+        display: block;
+        padding: 0.6rem 0.75rem;
+        font-family: var(--font-mono);
+        font-size: 0.82rem;
+        color: var(--color-text-secondary);
+        word-break: break-all;
+    }
     .about-cta {
         text-align: center;
         padding-top: 2rem;
@@ -146,7 +216,7 @@
         <div class="about-section">
             <h2>What I'm Working On</h2>
             <p><strong>Open Source Projects:</strong> I maintain a handful of open source tools ranging from Kubernetes documentation browsers to fishing games. You can find them all on GitHub.</p>
-            <p><strong>Consulting:</strong> Through Nerds Who Fish, LLC, I help small businesses get enterprise-level DevOps infrastructure at small-business prices. No sales reps, no offshore teams — just a local engineer who actually picks up the phone.</p>
+            <p><strong>Consulting — <a href="https://nerdswhofish.com" target="_blank" rel="noopener" style="color: var(--color-accent-cyan);">Nerds Who Fish, LLC</a>:</strong> I help small businesses get enterprise-level DevOps infrastructure at small-business prices. Kubernetes, Terraform, Spacelift, CI/CD — the works. No sales reps, no offshore teams. Just a local engineer who actually picks up the phone.</p>
             <p><strong>Content:</strong> I make videos about DevOps, infrastructure as code, and outdoor adventures. Subscribe on YouTube if that sounds interesting.</p>
         </div>
 
@@ -159,6 +229,30 @@
                 <li>Automation: GitHub Actions, CI/CD pipelines</li>
                 <li>Home Lab: Raspberry Pi cluster, homelab Kubernetes</li>
             </ul>
+        </div>
+
+        <div class="about-section">
+            <h2>Certifications</h2>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-icon"><span class="iconify-inline" data-icon="devicon:kubernetes"></span></div>
+                    <div class="cert-info">
+                        <h3>CKA — Certified Kubernetes Administrator</h3>
+                        <p><strong>What it is:</strong> Demonstrates hands-on Kubernetes cluster administration and operations skills.</p>
+                        <p><strong>Cert ID:</strong> <code>LF-y7m6yi5kq4</code></p>
+                        <p><strong>Issued:</strong> August 2023</p>
+                    </div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon"><span class="iconify-inline" data-icon="mdi:certificate"></span></div>
+                    <div class="cert-info">
+                        <h3>LFC101 — Inclusive Speaker Orientation</h3>
+                        <p><strong>What it is:</strong> Linux Foundation orientation for inclusive speaker practices and event participation standards.</p>
+                        <p><strong>Cert ID:</strong> <code>LF-f9r7c5xl90</code></p>
+                        <p><strong>Issued:</strong> March 24, 2026</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="about-section">
@@ -181,9 +275,25 @@
                 </a>
             </div>
             <div class="about-pgp">
-                <div>PGP Key fingerprint:</div>
-                <code>8E4C D7B8 4024 3BF4 FF54 58B8 1830 B516 B456 06F6</code>
-                <p class="about-pgp-note">Linux keyserver: <a href="https://keyserver.ubuntu.com/pks/lookup?search=0x1830B516B45606F6" target="_blank" rel="noopener" style="color: var(--color-accent-cyan);">View on Ubuntu Keyserver →</a></p>
+                <div><strong>PGP Key fingerprint:</strong></div>
+                <code style="font-size: 0.9rem;">8E4C D7B8 4024 3BF4 FF54 58B8 1830 B516 B456 06F6</code>
+                <p class="about-pgp-note">
+                    Linux keyserver: <a href="https://keyserver.ubuntu.com/pks/lookup?search=0x1830B516B45606F6" target="_blank" rel="noopener" style="color: var(--color-accent-cyan);">View on Ubuntu Keyserver →</a>
+                </p>
+                <div class="gpg-command-block">
+                    <div class="gpg-command-header">
+                        <span class="gpg-command-comment"># Import my key</span>
+                        <button class="copy-btn" data-copy="gpg --keyserver keyserver.ubuntu.com --recv-keys 0x1830B516B45606F6" aria-label="Copy command"><span class="iconify-inline" data-icon="mdi:content-copy"></span></button>
+                    </div>
+                    <code class="gpg-command">gpg --keyserver keyserver.ubuntu.com --recv-keys 0x1830B516B45606F6</code>
+                </div>
+                <div class="gpg-command-block">
+                    <div class="gpg-command-header">
+                        <span class="gpg-command-comment"># Encrypt a message for me</span>
+                        <button class="copy-btn" data-copy="echo \"your message\" | gpg --encrypt --armor --recipient 0x1830B516B45606F6" aria-label="Copy command"><span class="iconify-inline" data-icon="mdi:content-copy"></span></button>
+                    </div>
+                    <code class="gpg-command">echo "your message" | gpg --encrypt --armor --recipient 0x1830B516B45606F6</code>
+                </div>
             </div>
         </div>
     </main>
