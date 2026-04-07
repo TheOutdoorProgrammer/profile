@@ -1,9 +1,4 @@
-{% assign combined_items = '' | split: '' %}
-{% for button in site.data.links.buttons %}
-{% if button.category == 'Projects' or button.category == 'Spacelift' %}
-{% assign combined_items = combined_items | concat: button.items %}
-{% endif %}
-{% endfor %}
+{% assign items = site.data.projects.projects %}
 
 <section class="section" id="projects">
     <h2 class="section-title">
@@ -11,7 +6,7 @@
         Projects
     </h2>
     <div class="card-grid">
-        {% for item in combined_items %}
+        {% for item in items %}
         <a class="project-card" href="{{ item.url }}" target="_blank">
             <div class="project-card-icon">
                 {% if item.icon %}
