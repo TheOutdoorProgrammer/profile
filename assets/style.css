@@ -849,9 +849,7 @@ body.badge-modal-open {
 }
 
 /* ===== VIDEO CARDS ===== */
-.video-card {
-    width: 340px;
-}
+
 
 .video-thumb {
     position: relative;
@@ -1655,13 +1653,6 @@ body.badge-modal-open {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .video-card {
-        width: 380px;
-    }
-
-    .bsky-card {
-        width: 380px;
-    }
 }
 
 @media (min-width: 1024px) {
@@ -1707,19 +1698,7 @@ body.badge-modal-open {
         margin-bottom: var(--spacing-md);
     }
 
-    .video-card {
-        width: 85vw;
-        max-width: 320px;
-    }
 
-    .short-card {
-        width: 150px;
-    }
-
-    .bsky-card {
-        width: 85vw;
-        max-width: 320px;
-    }
 
     .carousel-btn {
         display: none;
