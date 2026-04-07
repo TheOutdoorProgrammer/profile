@@ -1,8 +1,15 @@
-<section id="projects" class="section">
-    <div class="section-header">
-        <h2 class="section-title"><span class="iconify-inline" data-icon="mdi:rocket-launch"></span> Projects</h2>
-    </div>
-    
+---
+layout: default
+title: All Projects
+---
+
+<div class="site-container" style="padding-top: 40px; padding-bottom: 40px;">
+    <a href="/" class="back-link" style="display: inline-block; margin-bottom: 24px; text-decoration: none; color: var(--text-muted); font-size: 0.9rem;">
+        <span class="iconify-inline" data-icon="mdi:arrow-left"></span> Back to Home
+    </a>
+
+    <h1 style="margin-bottom: 32px;"><span class="iconify-inline" data-icon="mdi:rocket-launch" style="color: var(--accent-color);"></span> All Projects</h1>
+
     <div class="card-grid">
         {% for cat in site.data.links.buttons %}
             {% if cat.category != 'Blog Posts' and cat.category != 'Where You Can Find Me' %}
@@ -17,7 +24,7 @@
                             <span class="iconify-inline" data-icon="mdi:open-in-new" style="margin-left: auto; color: var(--text-muted); font-size: 0.9rem;"></span>
                         </div>
                         {% if item.description %}
-                        <div class="project-desc" style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                        <div class="project-desc" style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
                             {{ item.description }}
                         </div>
                         {% endif %}
@@ -27,8 +34,4 @@
             {% endif %}
         {% endfor %}
     </div>
-
-    <div class="section-footer" style="text-align: center; margin-top: 24px;">
-        <a href="/projects/" class="btn btn-secondary">See All Projects &rarr;</a>
-    </div>
-</section>
+</div>
