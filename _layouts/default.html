@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% include posthog.html %}
     <title>{{ site.tagline }} - {{ site.name }}</title>
-    <link rel="shortcut icon" href="{{ site.favicon.path }}" type="image/{{ site.favicon.type }}">
+    <link rel="shortcut icon" href="/{{ site.favicon.path }}" type="image/{{ site.favicon.type }}">
     <link rel="canonical" href="{{ site.url }}{{ page.url }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,6 +77,10 @@
 
             <!-- Badge Pills -->
             <div class="badge-pills">
+                    <span class="iconify-inline" data-icon="mdi:fish"></span>
+                </button>
+                    <span class="iconify-inline" data-icon="mdi:key-variant"></span>
+                </button>
                     <span class="iconify-inline" data-icon="devicon:kubernetes"></span>
                 </button>
                 <button class="badge-pill" data-modal="modal-palestine">
@@ -91,9 +95,6 @@
             </div>
 
             <!-- Badge Modals -->
-
-
-
             <div class="badge-modal-overlay" id="modal-palestine">
                 <div class="badge-modal">
                     <button class="badge-modal-close" aria-label="Close">&times;</button>
@@ -152,8 +153,7 @@
                         <a href="https://www.icrc.org/en/where-we-work/europe-central-asia/ukraine" target="_blank" rel="noopener">ICRC Ukraine</a>
                     </div>
                 </div>
-            </div>
-
+</div>
         </div>
         <div class="scroll-indicator">
             <span class="iconify-inline" data-icon="mdi:chevron-double-down"></span>
@@ -172,7 +172,6 @@
 
         <!-- Projects / Spacelift -->
         {% include cards.html %}
-
 
         {% include footer.html %}
     </div>
