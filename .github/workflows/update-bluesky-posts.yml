@@ -14,17 +14,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Fetch latest Bluesky posts
+      - name: Fetch latest YouTube videos and bluesky posts
         env:
           MAX_POSTS: 10
-        run: |
-          LANG=C.UTF-8 LC_ALL=C.UTF-8 curl -sS -H "Accept: application/json" "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=theoutdoorprogrammer.com&limit=$MAX_POSTS" | \
-          ruby -E UTF-8:UTF-8 -rjson -ryaml -e 'input = STDIN.read.force_encoding("UTF-8").encode("UTF-8", invalid: :replace, undef: :replace); puts JSON.parse(input).to_yaml' > _data/posts.yml
-
-      - name: Fetch latest YouTube videos
-        env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-        run: python3 scripts/fetch_youtube_videos.py
+          IS_CLOUDFLARE_PAGES: false
+        run: ./build.sh
 
       - name: Commit and push changes (if any)
         run: |

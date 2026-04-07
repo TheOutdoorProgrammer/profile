@@ -27,7 +27,6 @@ buttons:
         icon: ic:round-email
 
   - category: Projects
-    type: dropdown
     items:
       - title: Manifests.io
         url: https://www.manifests.io/
@@ -99,23 +98,23 @@ buttons:
         description: "Data visualization of FDIC bank failures by state using Python and US shapefiles."
         icon: mdi:map-marker-multiple
 
-  - category: Spacelift
-    type: dropdown
-    items:
       - title: Day2DevOps Podcast
         url: https://packetpushers.net/podcasts/day-two-devops/0423-d2do270-spacelift-is-your-infrastructure-glue-sponsored/
+        description: "I was on a podcast about Spacelift and how it's used to glue infrastructure together."
         icon: el:podcast
-    
+
       - title: MRPICKLE
         url: https://github.com/TheOutdoorProgrammer/MRPICKLE
+        description: "An Opentofu module that manages login policies in Spacelift."
         icon: token-branded:pickle
 
       - title: Tofusible
         url: https://github.com/spacelift-solutions/tofusible
+        description: "An ansible dynamic inventory that can be used with Spacelift stack dependencies."
         icon: vscode-icons:file-type-opentofu
 
+
   - category: Blog Posts
-    type: dropdown
     items:
       - title: Autoscaling Spacelift Workers In K8s
         url: https://spacelift.io/blog/autoscaling-native-kubernetes-workers

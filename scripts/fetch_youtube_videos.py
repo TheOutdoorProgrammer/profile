@@ -110,6 +110,7 @@ def fetch_youtube_videos(
             "title": title,
             "publishedAt": published_at,
             "liveFlag": live_flag,
+            "description": snippet.get("description", ""),
         })
         ids.append(vid)
 
@@ -136,14 +137,7 @@ def fetch_youtube_videos(
         if c["liveFlag"] != "none" or has_live_details:
             continue
 
-        # Get description from snippet (already fetched in search)
-        snippet = meta.get("snippet", {})
-        description = c.get("title", "")  # fallback to title
-        # Try to get description from video details if available
-        desc_from_meta = snippet.get("description", "")
-        if desc_from_meta:
-            description = desc_from_meta
-
+        description = c.get("description", c.get("title", ""))  # fallback to title
         published_at = c.get("publishedAt", "")
         # Format date as YYYY-MM-DD
         date_str = ""
@@ -171,7 +165,10 @@ def fetch_youtube_videos(
         if len(shorts) >= max_shorts and len(videos) >= max_videos:
             break
 
-    return {"videos": videos + shorts}
+    # sort videos and shorts togeter by date field in reverse
+    v = videos + shorts
+    v.sort(key=lambda x: x.get("date", ""), reverse=True)
+    return {"videos": v}
 
 
 def write_videos_yaml(data: dict, output_path: str):
