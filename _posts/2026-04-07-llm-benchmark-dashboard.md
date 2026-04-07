@@ -2,20 +2,20 @@
 layout: post
 title: "How I Pick Models for My Specialized AI Agents"
 date: 2026-04-07
-description: "I built specialized agents for specific tasks — then figured out which models actually work for each one. Here's the framework I use."
+description: "I built specialized agents for specific tasks - then figured out which models actually work for each one. Here's the framework I use."
 icon: "mdi:chart-bar"
 tags: [llm, ai, opencode, agents, openclaw]
 ---
 
-I use [OpenCode](https://opencode.ai) for coding sessions and [OpenClaw](https://github.com/openclaw/openclaw) for agentic workflows. After a few months of that, I started building specialized agents for specific things — one for debugging, one for writing tests, one for kicking off CI pipelines.
+I use [OpenCode](https://opencode.ai) for coding sessions and [OpenClaw](https://github.com/openclaw/openclaw) for agentic workflows. After a few months of that, I started building specialized agents for specific things - one for debugging, one for writing tests, one for kicking off CI pipelines.
 
 Each agent had different needs. The debugging one needed raw reasoning chops. The test writer needed to understand context across a whole file. The CI agent mostly needed to format JSON correctly and not hallucinate curl commands.
 
 Generic leaderboard rankings didn't help me there. "Best overall" is a fine headline for a benchmark post, but not useful when your debugging agent is stuck in a loop because you grabbed the wrong model.
 
-So I built a way to actually look at this stuff — benchmark data filtered by task type, with price and speed factored in so I'm not just grabbing the "best" model for a job where 2x worse but 10x cheaper gets the job done just as well.
+So I built a way to actually look at this stuff - benchmark data filtered by task type, with price and speed factored in so I'm not just grabbing the "best" model for a job where 2x worse but 10x cheaper gets the job done just as well.
 
-The dropdown below controls all three charts. Pick a task type and everything updates. The stars in the label tell you how directly the benchmark maps to that task. ★★★ means it actually measures that skill. ★☆☆ means it's a rough proxy — treat it as a signal, not a verdict.
+The dropdown below controls all three charts. Pick a task type and everything updates. The stars in the label tell you how directly the benchmark maps to that task. ★★★ means it actually measures that skill. ★☆☆ means it's a rough proxy - treat it as a signal, not a verdict.
 
 <div id="benchag-charts" style="margin: 2rem 0;">
 
@@ -233,6 +233,4 @@ def get_task_bucket_quality_col(df, bucket_name, task_mappings):
     return None
 ```
 
-Stop blindly casting. Look at the data.
-
-*— if you're fishing for which model to tie your agent to, the data's right there.*
+*Pick a task, look at the data - that's the whole point.*
