@@ -236,5 +236,3 @@ def get_task_bucket_quality_col(df, bucket_name, task_mappings):
 Stop blindly casting. Look at the data.
 
 *— if you're fishing for which model to tie your agent to, the data's right there.*
-
-> **Before you publish:** Verify current API pricing for MiniMax M2.7 ($0.525/1M), GPT-5.4-Mini ($1.688/1M), Kimi K2 Thinking ($1.075/1M), and Gemini 3.1 Pro ($4.50/1M). Also name at least 2-3 benchmark sources (e.g., LMSYS Chatbot Arena, Aider Polyglot leaderboard).
