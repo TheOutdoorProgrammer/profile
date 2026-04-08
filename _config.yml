@@ -11,7 +11,7 @@ paginate_path: "/blog/page:num/"
 # Site Configuration
 name: Joey Stout  # Name of your website
 tagline: "@TheOutdoorProgrammer"  # Set your preferred page title
-description: Programmer, Hunter, Hockey Fan, Family Man.  # Also used as a meta description
+description: ""  # Also used as a meta description
 flags: 🇵🇸 🇺🇸 🇺🇦
 favicon:
   path: /assets/images/favicon.svg # Path / URL to the favicon of your website (e.g., 'assets/images/favicon.png')
