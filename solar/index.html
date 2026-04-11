@@ -218,6 +218,7 @@
               <button id="launchBtn" class="btn primary">Launch</button>
               <button id="playBtn" class="btn">Pause</button>
               <button id="thrusterBtn" class="btn">Thrusters</button>
+              <button id="retroThrusterBtn" class="btn">Retro Thrusters</button>
               <button id="aimLineBtn" class="btn">Hide Aim Line</button>
             </div>
 
@@ -226,12 +227,15 @@
 
             <div class="row"><label>Launch speed (× Earth escape velocity)</label><strong id="launchSpeedVal">1.00×</strong></div>
             <input id="launchSpeed" type="range" min="0" max="3" step="0.01" value="1" />
+            <div class="small" id="launchSpeedReadout" style="margin-top:-4px;">= 11.2 km/s</div>
 
             <div class="row"><label>Launch direction angle (°)</label><strong id="launchAngleVal">180°</strong></div>
             <input id="launchAngle" type="range" min="0" max="360" step="1" value="180" />
+            <div class="small" id="launchAngleDirLabel" style="margin-top:-4px;">↑ away from Sun</div>
 
             <div class="row"><label>Retro-burn (% tangential cancel)</label><strong id="retroVal">0%</strong></div>
             <input id="retroBurn" type="range" min="0" max="100" step="1" value="0" />
+            <div class="small" id="retroBurnReadout" style="margin-top:-4px;">= -0.0 km/s</div>
 
             <div class="row">
               <label>Earth gravity after launch</label>
@@ -312,6 +316,7 @@
         launchArrow: null,
         launchArrowFrames: 0,
         thrusting: false,
+        retroThrusting: false,
       };
 
       const el = {
@@ -321,6 +326,10 @@
         earthGravityBtn: document.getElementById('earthGravityBtn'),
         playBtn: document.getElementById('playBtn'),
         thrusterBtn: document.getElementById('thrusterBtn'),
+        retroThrusterBtn: document.getElementById('retroThrusterBtn'),
+        launchSpeedReadout: document.getElementById('launchSpeedReadout'),
+        launchAngleDirLabel: document.getElementById('launchAngleDirLabel'),
+        retroBurnReadout: document.getElementById('retroBurnReadout'),
         launchBtn: document.getElementById('launchBtn'),
         autoVenusBtn: document.getElementById('autoVenusBtn'),
         aimLineBtn: document.getElementById('aimLineBtn'),
@@ -587,6 +596,15 @@
           if (thrustDvPerFrame > 0) {
             const dir = v2.norm(state.ship.v);
             state.ship.v = v2.add(state.ship.v, v2.mul(dir, kmpsToAUday(thrustDvPerFrame)));
+            applyFuel(thrustDvPerFrame);
+          }
+        }
+        // Retro thruster impulse
+        if (state.retroThrusting && state.ship && state.fuelLeft > 0) {
+          const thrustDvPerFrame = Math.min(0.5, state.fuelLeft);
+          if (thrustDvPerFrame > 0) {
+            const dir = v2.norm(state.ship.v);
+            state.ship.v = v2.sub(state.ship.v, v2.mul(dir, kmpsToAUday(thrustDvPerFrame)));
             applyFuel(thrustDvPerFrame);
           }
         }
@@ -867,7 +885,32 @@
           el.thrusterBtn.style.background = '';
           el.thrusterBtn.style.color = '';
         }
-        if (noFuel) state.thrusting = false;
+        if (noFuel) { state.thrusting = false; state.retroThrusting = false; }
+        // Retro thruster button state
+        el.retroThrusterBtn.disabled = noFuel;
+        el.retroThrusterBtn.style.opacity = noFuel ? '0.4' : '1';
+        if (state.retroThrusting && !noFuel) {
+          el.retroThrusterBtn.textContent = 'Retro ON';
+          el.retroThrusterBtn.style.background = 'var(--bad)';
+          el.retroThrusterBtn.style.color = '#fff';
+        } else {
+          el.retroThrusterBtn.textContent = 'Retro Thrusters';
+          el.retroThrusterBtn.style.background = '';
+          el.retroThrusterBtn.style.color = '';
+        }
+        // Slider speed readouts
+        const lsKms = state.launchSpeedMult * 11.2;
+        el.launchSpeedReadout.textContent = `= ${lsKms.toFixed(1)} km/s`;
+        const retroKms = BASE_EARTH_SPEED * state.earthMult * (state.retroPct / 100);
+        el.retroBurnReadout.textContent = `= -${retroKms.toFixed(1)} km/s`;
+        // Direction label
+        const deg = state.launchAngleDeg % 360;
+        let dirLabel;
+        if (deg >= 315 || deg < 45) dirLabel = '↙ toward Sun';
+        else if (deg >= 45 && deg < 135) dirLabel = '→ prograde';
+        else if (deg >= 135 && deg < 225) dirLabel = '↗ away from Sun';
+        else dirLabel = '← retrograde';
+        el.launchAngleDirLabel.textContent = dirLabel;
       }
 
       // Events
@@ -889,6 +932,14 @@
       el.thrusterBtn.addEventListener('mouseup', thrustOff);
       el.thrusterBtn.addEventListener('mouseleave', thrustOff);
       el.thrusterBtn.addEventListener('touchend', thrustOff);
+      // Retro thruster button
+      function retroOn() { state.retroThrusting = true; syncControls(); }
+      function retroOff() { state.retroThrusting = false; syncControls(); }
+      el.retroThrusterBtn.addEventListener('mousedown', retroOn);
+      el.retroThrusterBtn.addEventListener('touchstart', (e) => { e.preventDefault(); retroOn(); });
+      el.retroThrusterBtn.addEventListener('mouseup', retroOff);
+      el.retroThrusterBtn.addEventListener('mouseleave', retroOff);
+      el.retroThrusterBtn.addEventListener('touchend', retroOff);
       el.earthGravityBtn.addEventListener('click', () => { state.useEarthGravity = !state.useEarthGravity; syncControls(); state.ghost = generateGhost(); });
       el.unitBtn.addEventListener('click', () => { state.showMph = !state.showMph; syncControls(); updateReadout(); });
       el.autoVenusBtn.addEventListener('click', () => {
