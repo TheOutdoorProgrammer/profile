@@ -725,7 +725,7 @@
         }
 
         // ghost
-        if (state.ghost.length > 1) {
+        if ((state.showAimLine || state.isThrustHeld) && state.ghost.length > 1) {
           ctx.strokeStyle = 'rgba(255,255,255,0.25)';
           ctx.setLineDash([4, 4]);
           ctx.beginPath();
