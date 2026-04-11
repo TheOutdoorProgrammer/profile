@@ -144,6 +144,7 @@
     }
 
     .small { color: var(--muted); font-size: 0.85rem; }
+    .hint { font-size: 0.7rem; opacity: 0.7; margin-top: -4px; }
 
     .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
     .chips .btn { font-size: 0.84rem; padding: 8px 10px; }
@@ -224,23 +225,28 @@
 
             <div class="row"><label>Earth orbital speed multiplier</label><strong id="earthMultVal">1.00×</strong></div>
             <input id="earthMult" type="range" min="0.5" max="1.5" step="0.01" value="1" />
+            <div class="small hint">Earth's speed around the Sun</div>
 
             <div class="row"><label>Launch speed (× Earth escape velocity)</label><strong id="launchSpeedVal">1.00×</strong></div>
             <input id="launchSpeed" type="range" min="0" max="3" step="0.01" value="1" />
             <div class="small" id="launchSpeedReadout" style="margin-top:-4px;">= 11.2 km/s</div>
+            <div class="small hint">Speed relative to Earth's escape velocity</div>
 
             <div class="row"><label>Launch direction angle (°)</label><strong id="launchAngleVal">180°</strong></div>
             <input id="launchAngle" type="range" min="0" max="360" step="1" value="180" />
             <div class="small" id="launchAngleDirLabel" style="margin-top:-4px;">↑ away from Sun</div>
+            <div class="small hint">Which way you're aiming from Earth</div>
 
             <div class="row"><label>Retro-burn (% tangential cancel)</label><strong id="retroVal">0%</strong></div>
             <input id="retroBurn" type="range" min="0" max="100" step="1" value="0" />
             <div class="small" id="retroBurnReadout" style="margin-top:-4px;">= -0.0 km/s</div>
+            <div class="small hint">Cancel sideways speed to fall toward Sun</div>
 
             <div class="row">
               <label>Earth gravity after launch</label>
               <button id="earthGravityBtn" class="btn">ON</button>
             </div>
+            <div class="small hint">Include Earth's pull after you leave</div>
 
             <div class="row">
               <label>Toggle Venus</label>
