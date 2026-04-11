@@ -290,7 +290,8 @@
       const MU_EARTH = 398600.4418 * (DAY_S * DAY_S) / (AU_KM * AU_KM * AU_KM);
       const EARTH_ORBIT_AU = 1;
       const VENUS_ORBIT_AU = 0.723;
-      const SUN_COLLIDE_R = 0.035; // enlarged visual/goal radius
+      const SUN_VIS_R = 14; // visual-only sun radius (CSS px), decoupled from collide radius
+      const SUN_COLLIDE_R = 0.035; // physics collision radius (AU), separate from visual size
       const NEAR_MISS_R = 0.08;
       const BASE_EARTH_SPEED = 29.78;
       const ESCAPE_EARTH_SPEED = 11.2;
@@ -572,7 +573,7 @@
         const w = el.canvas.width, h = el.canvas.height;
         ctx.clearRect(0, 0, w, h);
         const cx = w / 2, cy = h / 2;
-        const scale = Math.min(w, h) * 0.33;
+        const scale = Math.min(w, h) * 0.35;
         const toPx = (p) => ({ x: cx + p.x * scale, y: cy + p.y * scale });
 
         // Orbit guide rings
@@ -581,9 +582,15 @@
         ctx.beginPath(); ctx.arc(cx, cy, EARTH_ORBIT_AU * scale, 0, Math.PI * 2); ctx.stroke();
         ctx.beginPath(); ctx.arc(cx, cy, VENUS_ORBIT_AU * scale, 0, Math.PI * 2); ctx.stroke();
 
-        // Sun
+        // Sun — small visual disk so orbit ring reads clearly
         ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--sun');
-        ctx.beginPath(); ctx.arc(cx, cy, SUN_COLLIDE_R * scale, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(cx, cy, 14, 0, Math.PI * 2); ctx.fill();
+        // Subtle glow
+        const grd = ctx.createRadialGradient(cx, cy, 14, cx, cy, 36);
+        grd.addColorStop(0, 'rgba(255,215,0,0.35)');
+        grd.addColorStop(1, 'rgba(255,215,0,0)');
+        ctx.fillStyle = grd;
+        ctx.beginPath(); ctx.arc(cx, cy, 36, 0, Math.PI * 2); ctx.fill();
 
         const earth = earthStateAt(state.tDays);
         const venus = venusStateAt(state.tDays);
