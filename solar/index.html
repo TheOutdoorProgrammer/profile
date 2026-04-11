@@ -266,18 +266,17 @@
         </details>
 
         <details class="panel" open>
-          <summary>Challenge Mode</summary>
+          <summary>Quick Presets</summary>
           <div class="content">
             <div class="small">Fuel budget (Δv): <span id="fuelLabel">35.0 km/s left</span></div>
             <div class="fuel"><span id="fuelBar" style="width:100%"></span></div>
-            <div class="small" style="margin-top:8px;">Goal: hit the Sun with minimal fuel usage.</div>
+            <div class="small" style="margin-top:8px;">Pick a scenario to set the sliders, then hit Launch.</div>
             <div class="chips">
-              <button class="btn preset" data-preset="standing">Standing on Earth</button>
-              <button class="btn preset" data-preset="escape">Escape Earth Only</button>
-              <button class="btn preset" data-preset="straight">Launch Straight at Sun</button>
-              <button class="btn preset" data-preset="retro">Retrograde Burn</button>
-              <button class="btn preset" data-preset="parker">Parker-like Strategy</button>
-              <button class="btn preset" data-preset="zeroTan">Zero Tangential Velocity</button>
+              <button class="btn preset" data-preset="hitSun">☀️ Hit the Sun</button>
+              <button class="btn preset" data-preset="orbitSun">🪐 Orbit Sun</button>
+              <button class="btn preset" data-preset="escape">🚀 Escape Solar System</button>
+              <button class="btn preset" data-preset="slowDown">🔻 Slow Down</button>
+              <button class="btn preset" data-preset="return">🔄 Return Trajectory</button>
             </div>
             <div class="small" id="scoreOut" style="margin-top:8px;">Score: —</div>
           </div>
@@ -555,23 +554,19 @@
       }
 
       function applyPreset(name) {
-        if (name === 'standing') {
-          state.launchSpeedMult = 0; state.launchAngleDeg = 180; state.retroPct = 0;
+        if (name === 'hitSun') {
+          state.launchSpeedMult = 0.3; state.launchAngleDeg = 0; state.retroPct = 0;
+        } else if (name === 'orbitSun') {
+          state.launchSpeedMult = 1.0; state.launchAngleDeg = 90; state.retroPct = 0;
         } else if (name === 'escape') {
-          state.launchSpeedMult = 1.0; state.launchAngleDeg = 180; state.retroPct = 0;
-        } else if (name === 'straight') {
-          state.launchSpeedMult = 1.2; state.launchAngleDeg = 0; state.retroPct = 0;
-        } else if (name === 'retro') {
-          state.launchSpeedMult = 1.1; state.launchAngleDeg = 270; state.retroPct = 35;
-        } else if (name === 'parker') {
-          state.launchSpeedMult = 0.8; state.launchAngleDeg = 270; state.retroPct = 18;
-        } else if (name === 'zeroTan') {
-          state.launchSpeedMult = 0.2; state.launchAngleDeg = 180; state.retroPct = 100;
+          state.launchSpeedMult = 2.5; state.launchAngleDeg = 180; state.retroPct = 0;
+        } else if (name === 'slowDown') {
+          state.launchSpeedMult = 1.0; state.launchAngleDeg = 270; state.retroPct = 50;
+        } else if (name === 'return') {
+          state.launchSpeedMult = 0.8; state.launchAngleDeg = 180; state.retroPct = 30;
         }
         syncControls();
-        reset(false);
-        launch();
-        if (name === 'parker') { venusAssist(); venusAssist(); }
+        state.ghost = generateGhost();
       }
 
       function updatePhysics() {
