@@ -326,6 +326,7 @@
         retroThrusting: false,
         thrustStartMs: null,
         retroThrustStartMs: null,
+        lastFrameMs: null,
       };
 
       const el = {
@@ -562,8 +563,28 @@
 
 
 
+      const THRUST_DV_PER_SEC = 0.5;
       function updatePhysics() {
         if (!state.running) return;
+        const now = performance.now();
+        const realDeltaSec = state.lastFrameMs ? Math.min((now - state.lastFrameMs) / 1000, 0.1) : (1/60);
+        state.lastFrameMs = now;
+        const isThrusting = state.thrusting || state.retroThrusting;
+        // When thrusting: 1 real second = 10 simulated minutes = 1/144 day
+        const simDt = isThrusting ? realDeltaSec * (1/144) : state.dt;
+        // Apply thrust dv incrementally while held
+        if (isThrusting && state.ship && state.fuelLeft > 0) {
+          const dvKmS = Math.min(realDeltaSec * THRUST_DV_PER_SEC, state.fuelLeft);
+          if (dvKmS > 0) {
+            const dir = v2.norm(state.ship.v);
+            if (state.retroThrusting) {
+              state.ship.v = v2.sub(state.ship.v, v2.mul(dir, kmpsToAUday(dvKmS)));
+            } else {
+              state.ship.v = v2.add(state.ship.v, v2.mul(dir, kmpsToAUday(dvKmS)));
+            }
+            applyFuel(dvKmS);
+          }
+        }
         const t0 = state.tDays;
         if (state.ship) {
           // Auto Venus assist
@@ -580,7 +601,7 @@
             const distToVenus = v2.mag(v2.sub(state.ship.r, vState.r));
             if (distToVenus > 0.25) state.venusAssistFired = false;
           }
-          const next = rk4(state.ship, t0, state.dt);
+          const next = rk4(state.ship, t0, simDt);
           // Check collision BEFORE committing the new position
           if (v2.mag(next.r) <= SUN_COLLIDE_R) {
             state.trail.push({ ...next.r });
@@ -603,7 +624,7 @@
           setStatus(computeStatus());
         }
         // Thruster impulse — applied on button release, not per-frame
-        state.tDays = t0 + state.dt;
+        state.tDays = t0 + simDt;
         updateAimLine();
       }
 
@@ -923,8 +944,7 @@
       el.playBtn.addEventListener('click', () => { state.running = !state.running; syncControls(); });
       el.resetBtn.addEventListener('click', () => { reset(true); syncControls(); });
 
-      // Thruster button — real-time: 1 real sec held = 0.5 km/s Δv
-      const THRUST_DV_PER_SEC = 0.5;
+      // Thruster button — real-time: 1 real sec held = 0.5 km/s Δv (applied per-frame in updatePhysics)
       function applyThrustImpulse(startMs, retro) {
         if (!startMs || !state.ship || state.fuelLeft <= 0) return;
         const durationSec = (Date.now() - startMs) / 1000;
@@ -941,7 +961,7 @@
       }
       function thrustOn() { state.thrusting = true; state.thrustStartMs = Date.now(); syncControls(); }
       function thrustOff() {
-        if (state.thrusting) applyThrustImpulse(state.thrustStartMs, false);
+        // Thrust is now applied incrementally per-frame, no batch impulse on release
         state.thrusting = false; state.thrustStartMs = null; syncControls();
       }
       el.thrusterBtn.addEventListener('mousedown', thrustOn);
@@ -952,7 +972,7 @@
       // Retro thruster button
       function retroOn() { state.retroThrusting = true; state.retroThrustStartMs = Date.now(); syncControls(); }
       function retroOff() {
-        if (state.retroThrusting) applyThrustImpulse(state.retroThrustStartMs, true);
+        // Thrust is now applied incrementally per-frame, no batch impulse on release
         state.retroThrusting = false; state.retroThrustStartMs = null; syncControls();
       }
       el.retroThrusterBtn.addEventListener('mousedown', retroOn);
