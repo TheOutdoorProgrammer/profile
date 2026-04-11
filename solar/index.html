@@ -1,0 +1,742 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Solar Escape Explainer</title>
+  <style>
+    :root {
+      color-scheme: dark light;
+      --bg: #0a0a12;
+      --panel: #141424;
+      --panel-2: #1a1a2e;
+      --text: #eef2ff;
+      --muted: #b8bfd8;
+      --accent: #7aa2ff;
+      --sun: #ffd700;
+      --earth: #4a90d9;
+      --venus: #d4a574;
+      --ship: #ffffff;
+      --good: #62d48f;
+      --warn: #ffd166;
+      --bad: #ff6b6b;
+      --radial: #ffd166;
+      --forward: #62d48f;
+      --retro: #ff6b6b;
+      --border: #2a2a3f;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f6f8ff;
+        --panel: #ffffff;
+        --panel-2: #f1f4ff;
+        --text: #0f1324;
+        --muted: #4c5574;
+        --accent: #355cc9;
+        --border: #d7def8;
+      }
+    }
+
+    html, body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100%;
+    }
+
+    .app {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
+      background: color-mix(in srgb, var(--bg) 80%, transparent);
+      backdrop-filter: blur(8px);
+      padding: 8px 2px;
+    }
+
+    h1 {
+      font-size: 1.05rem;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .btn, button, select {
+      min-height: 44px;
+      min-width: 44px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      padding: 10px 12px;
+      font-size: 0.95rem;
+      touch-action: manipulation;
+    }
+
+    .btn.primary { background: var(--accent); color: white; border-color: transparent; }
+
+    .canvas-wrap {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin: 8px 0 10px;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: radial-gradient(circle at 50% 50%, #17172a 0%, #0a0a12 70%);
+      touch-action: none;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    details > summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 12px;
+      font-weight: 600;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+
+    details > summary::-webkit-details-marker { display: none; }
+
+    .content { padding: 10px 12px 14px; background: var(--panel-2); }
+
+    .grid { display: grid; gap: 10px; }
+
+    .row {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      font-size: 0.92rem;
+    }
+
+    .row label { color: var(--muted); }
+
+    input[type="range"] {
+      width: 100%;
+      min-height: 44px;
+      margin: 0;
+      accent-color: var(--accent);
+    }
+
+    .small { color: var(--muted); font-size: 0.85rem; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .chips .btn { font-size: 0.84rem; padding: 8px 10px; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      font-size: 0.9rem;
+    }
+
+    .stat {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px;
+    }
+
+    .status { font-weight: 700; }
+    .status.ORBITING { color: var(--good); }
+    .status.ESCAPING { color: var(--warn); }
+    .status.COLLIDING { color: var(--bad); }
+    .status.NEAR\ MISS { color: var(--warn); }
+
+    .fuel {
+      height: 10px;
+      border-radius: 999px;
+      background: #2b324f;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-top: 6px;
+    }
+
+    .fuel > span { display: block; height: 100%; background: linear-gradient(90deg, #62d48f, #ffd166, #ff6b6b); }
+
+    .callouts p { margin: 7px 0; }
+
+    @media (min-width: 900px) {
+      .two-col { display: grid; grid-template-columns: 1.2fr 1fr; gap: 10px; align-items: start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="topbar">
+      <h1>Why Escaping Earth Is NOT Enough to Hit the Sun</h1>
+      <div style="display:flex;gap:8px;">
+        <button id="unitBtn" class="btn">km/s</button>
+        <button id="resetBtn" class="btn primary">Reset</button>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="canvas-wrap panel">
+          <canvas id="sim" width="900" height="650" aria-label="Orbital simulation"></canvas>
+        </div>
+      </div>
+
+      <div>
+        <details class="panel" open>
+          <summary>Controls</summary>
+          <div class="content grid">
+            <div class="row"><label>Earth orbital speed multiplier</label><strong id="earthMultVal">1.00×</strong></div>
+            <input id="earthMult" type="range" min="0.5" max="1.5" step="0.01" value="1" />
+
+            <div class="row"><label>Launch speed (× Earth escape velocity)</label><strong id="launchSpeedVal">1.00×</strong></div>
+            <input id="launchSpeed" type="range" min="0" max="3" step="0.01" value="1" />
+
+            <div class="row"><label>Launch direction angle (°)</label><strong id="launchAngleVal">180°</strong></div>
+            <input id="launchAngle" type="range" min="0" max="360" step="1" value="180" />
+
+            <div class="row"><label>Retro-burn (% tangential cancel)</label><strong id="retroVal">0%</strong></div>
+            <input id="retroBurn" type="range" min="0" max="100" step="1" value="0" />
+
+            <div class="row">
+              <label>Earth gravity after launch</label>
+              <button id="earthGravityBtn" class="btn">ON</button>
+            </div>
+
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <button id="launchBtn" class="btn primary">Launch</button>
+              <button id="playBtn" class="btn">Pause</button>
+              <button id="stepBtn" class="btn">Step</button>
+              <button id="venusAssistBtn" class="btn">Venus Assist</button>
+            </div>
+            <div class="small">Tip: Angle 180° points toward the Sun from Earth.</div>
+          </div>
+        </details>
+
+        <details class="panel" open>
+          <summary>Readout</summary>
+          <div class="content">
+            <div class="stats">
+              <div class="stat"><div class="small">Earth orbital speed</div><div id="earthSpeedOut">29.78 km/s</div></div>
+              <div class="stat"><div class="small">Spacecraft speed (Sun frame)</div><div id="shipSpeedOut">—</div></div>
+              <div class="stat"><div class="small">Tangential component</div><div id="tanOut">—</div></div>
+              <div class="stat"><div class="small">Radial component</div><div id="radOut">—</div></div>
+              <div class="stat"><div class="small">Perihelion estimate</div><div id="periOut">—</div></div>
+              <div class="stat"><div class="small">Status</div><div id="statusOut" class="status ORBITING">ORBITING</div></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="panel" open>
+          <summary>Explanation</summary>
+          <div class="content callouts small">
+            <p>• You're launching from Earth — you already have Earth's ~30 km/s sideways speed.</p>
+            <p>• Escaping Earth ≠ stopping relative to the Sun.</p>
+            <p>• If you keep sideways speed, you MISS the Sun.</p>
+            <p>• To hit the Sun: cancel the tangential velocity.</p>
+            <p>• This is why Parker Solar Probe needed multiple Venus flybys.</p>
+            <p>• Going into the Sun can be harder than leaving the solar system entirely.</p>
+          </div>
+        </details>
+
+        <details class="panel" open>
+          <summary>Challenge Mode</summary>
+          <div class="content">
+            <div class="small">Fuel budget (Δv): <span id="fuelLabel">35.0 km/s left</span></div>
+            <div class="fuel"><span id="fuelBar" style="width:100%"></span></div>
+            <div class="small" style="margin-top:8px;">Goal: hit the Sun with minimal fuel usage.</div>
+            <div class="chips">
+              <button class="btn preset" data-preset="standing">Standing on Earth</button>
+              <button class="btn preset" data-preset="escape">Escape Earth Only</button>
+              <button class="btn preset" data-preset="straight">Launch Straight at Sun</button>
+              <button class="btn preset" data-preset="retro">Retrograde Burn</button>
+              <button class="btn preset" data-preset="parker">Parker-like Strategy</button>
+              <button class="btn preset" data-preset="zeroTan">Zero Tangential Velocity</button>
+            </div>
+            <div class="small" id="scoreOut" style="margin-top:8px;">Score: —</div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const AU_KM = 149597870.7;
+      const DAY_S = 86400;
+      const K = 0.01720209895; // Gaussian grav. constant
+      const MU_SUN = K * K; // AU^3/day^2
+      const MU_EARTH = 398600.4418 * (DAY_S * DAY_S) / (AU_KM * AU_KM * AU_KM);
+      const EARTH_ORBIT_AU = 1;
+      const VENUS_ORBIT_AU = 0.723;
+      const SUN_COLLIDE_R = 0.035; // enlarged visual/goal radius
+      const NEAR_MISS_R = 0.08;
+      const BASE_EARTH_SPEED = 29.78;
+      const ESCAPE_EARTH_SPEED = 11.2;
+
+      const state = {
+        running: true,
+        showMph: false,
+        useEarthGravity: true,
+        earthMult: 1,
+        launchSpeedMult: 1,
+        launchAngleDeg: 180,
+        retroPct: 0,
+        tDays: 0,
+        dt: 0.25,
+        ship: null,
+        trail: [],
+        ghost: [],
+        minR: Infinity,
+        status: 'ORBITING',
+        fuelBudget: 35,
+        fuelLeft: 35,
+        usedVenusAssists: 0,
+        score: null,
+      };
+
+      const el = {
+        canvas: document.getElementById('sim'),
+        unitBtn: document.getElementById('unitBtn'),
+        resetBtn: document.getElementById('resetBtn'),
+        earthGravityBtn: document.getElementById('earthGravityBtn'),
+        playBtn: document.getElementById('playBtn'),
+        stepBtn: document.getElementById('stepBtn'),
+        launchBtn: document.getElementById('launchBtn'),
+        venusAssistBtn: document.getElementById('venusAssistBtn'),
+        earthMult: document.getElementById('earthMult'),
+        launchSpeed: document.getElementById('launchSpeed'),
+        launchAngle: document.getElementById('launchAngle'),
+        retroBurn: document.getElementById('retroBurn'),
+        earthMultVal: document.getElementById('earthMultVal'),
+        launchSpeedVal: document.getElementById('launchSpeedVal'),
+        launchAngleVal: document.getElementById('launchAngleVal'),
+        retroVal: document.getElementById('retroVal'),
+        earthSpeedOut: document.getElementById('earthSpeedOut'),
+        shipSpeedOut: document.getElementById('shipSpeedOut'),
+        tanOut: document.getElementById('tanOut'),
+        radOut: document.getElementById('radOut'),
+        periOut: document.getElementById('periOut'),
+        statusOut: document.getElementById('statusOut'),
+        fuelLabel: document.getElementById('fuelLabel'),
+        fuelBar: document.getElementById('fuelBar'),
+        scoreOut: document.getElementById('scoreOut'),
+      };
+      const ctx = el.canvas.getContext('2d');
+
+      function fmtSpeed(kms) {
+        return state.showMph ? `${(kms * 2.23694).toFixed(1)} mph` : `${kms.toFixed(2)} km/s`;
+      }
+      function kmpsToAUday(v) { return v * DAY_S / AU_KM; }
+      function AUdayToKmps(v) { return v * AU_KM / DAY_S; }
+      const v2 = {
+        add: (a,b) => ({x:a.x+b.x,y:a.y+b.y}),
+        sub: (a,b) => ({x:a.x-b.x,y:a.y-b.y}),
+        mul: (a,s) => ({x:a.x*s,y:a.y*s}),
+        mag: (a) => Math.hypot(a.x,a.y),
+        norm: (a) => { const m=Math.hypot(a.x,a.y)||1; return {x:a.x/m,y:a.y/m}; },
+        dot: (a,b) => a.x*b.x+a.y*b.y,
+        perp: (a) => ({x:-a.y,y:a.x}),
+      };
+
+      function earthStateAt(t) {
+        const omega = (2 * Math.PI / 365.25) * state.earthMult;
+        const th = omega * t;
+        const r = { x: Math.cos(th) * EARTH_ORBIT_AU, y: Math.sin(th) * EARTH_ORBIT_AU };
+        const speed = BASE_EARTH_SPEED * state.earthMult;
+        const tang = v2.norm(v2.perp(r));
+        const v = v2.mul(tang, kmpsToAUday(speed));
+        return { r, v, tang, omega };
+      }
+
+      function venusStateAt(t) {
+        const omega = 2 * Math.PI / 224.7;
+        const th = omega * t + 0.7;
+        const r = { x: Math.cos(th) * VENUS_ORBIT_AU, y: Math.sin(th) * VENUS_ORBIT_AU };
+        const tang = v2.norm(v2.perp(r));
+        const speed = BASE_EARTH_SPEED * Math.sqrt(1 / VENUS_ORBIT_AU);
+        const v = v2.mul(tang, kmpsToAUday(speed));
+        return { r, v, tang };
+      }
+
+      function acceleration(pos, t) {
+        const r = v2.mag(pos);
+        const sun = v2.mul(pos, -MU_SUN / (r * r * r + 1e-12));
+        if (!state.useEarthGravity) return sun;
+        const e = earthStateAt(t).r;
+        const rel = v2.sub(pos, e);
+        const d = v2.mag(rel);
+        const earth = v2.mul(rel, -MU_EARTH / (d * d * d + 1e-14));
+        return v2.add(sun, earth);
+      }
+
+      function rk4(ship, t, dt) {
+        const p1 = ship.r, v1 = ship.v;
+        const a1 = acceleration(p1, t);
+
+        const p2 = v2.add(p1, v2.mul(v1, dt/2));
+        const v2m = v2.add(v1, v2.mul(a1, dt/2));
+        const a2 = acceleration(p2, t + dt/2);
+
+        const p3 = v2.add(p1, v2.mul(v2m, dt/2));
+        const v3 = v2.add(v1, v2.mul(a2, dt/2));
+        const a3 = acceleration(p3, t + dt/2);
+
+        const p4 = v2.add(p1, v2.mul(v3, dt));
+        const v4 = v2.add(v1, v2.mul(a3, dt));
+        const a4 = acceleration(p4, t + dt);
+
+        const p = v2.add(p1, v2.mul(v2.add(v2.add(v1, v2.mul(v2m,2)), v2.add(v2.mul(v3,2), v4)), dt/6));
+        const v = v2.add(v1, v2.mul(v2.add(v2.add(a1, v2.mul(a2,2)), v2.add(v2.mul(a3,2), a4)), dt/6));
+        return { r: p, v };
+      }
+
+      function perihelionEstimate(ship) {
+        const r = ship.r;
+        const v = ship.v;
+        const R = v2.mag(r), V = v2.mag(v);
+        const h = Math.abs(r.x * v.y - r.y * v.x);
+        const eps = (V*V/2) - MU_SUN / R;
+        const e = Math.sqrt(Math.max(0, 1 + (2 * eps * h*h) / (MU_SUN*MU_SUN)));
+        if (eps >= 0) return { q: Infinity, escaping: true };
+        const a = -MU_SUN / (2*eps);
+        const q = a * (1 - e);
+        return { q, escaping: false };
+      }
+
+      function computeStatus() {
+        if (!state.ship) return 'ORBITING';
+        const r = v2.mag(state.ship.r);
+        if (r <= SUN_COLLIDE_R) return 'COLLIDING';
+        if (r <= NEAR_MISS_R || state.minR <= NEAR_MISS_R) return 'NEAR MISS';
+        const p = perihelionEstimate(state.ship);
+        if (p.escaping) return 'ESCAPING';
+        return 'ORBITING';
+      }
+
+      function setStatus(s) {
+        state.status = s;
+        el.statusOut.textContent = s;
+        el.statusOut.className = `status ${s}`;
+      }
+
+      function applyFuel(dvKmS) {
+        state.fuelLeft = Math.max(0, state.fuelLeft - Math.max(0, dvKmS));
+      }
+
+      function launch() {
+        const e = earthStateAt(state.tDays);
+        const radialIn = v2.mul(v2.norm(e.r), -1);
+        const tang = v2.norm(v2.perp(e.r));
+        const theta = (state.launchAngleDeg * Math.PI) / 180;
+        const dir = v2.norm(v2.add(v2.mul(radialIn, Math.cos(theta - Math.PI)), v2.mul(tang, Math.sin(theta - Math.PI))));
+        const relLaunchKmS = ESCAPE_EARTH_SPEED * state.launchSpeedMult;
+        let v = v2.add(e.v, v2.mul(dir, kmpsToAUday(relLaunchKmS)));
+
+        const tanComp = v2.dot(v, tang);
+        const cancel = tanComp * (state.retroPct / 100);
+        if (cancel > 0) {
+          v = v2.sub(v, v2.mul(tang, cancel));
+          applyFuel(AUdayToKmps(Math.abs(cancel)));
+        }
+        applyFuel(relLaunchKmS * 0.2);
+
+        state.ship = { r: { ...e.r }, v };
+        state.trail = [];
+        state.minR = v2.mag(e.r);
+        state.ghost = generateGhost();
+        state.score = null;
+      }
+
+      function venusAssist() {
+        if (!state.ship || state.fuelLeft <= 0) return;
+        const r = state.ship.r;
+        const tang = v2.norm(v2.perp(r));
+        const dvKmS = Math.min(2.2, state.fuelLeft); // demo assist step
+        const dv = kmpsToAUday(dvKmS);
+        state.ship.v = v2.sub(state.ship.v, v2.mul(tang, dv));
+        state.usedVenusAssists += 1;
+        applyFuel(dvKmS * 0.4);
+        state.ghost = generateGhost();
+      }
+
+      function generateGhost() {
+        if (!state.ship) return [];
+        let s = { r: { ...state.ship.r }, v: { ...state.ship.v } };
+        let t = state.tDays;
+        const pts = [];
+        for (let i = 0; i < 1200; i++) {
+          s = rk4(s, t, 0.35);
+          t += 0.35;
+          if (i % 6 === 0) pts.push({ ...s.r });
+          if (v2.mag(s.r) < SUN_COLLIDE_R) break;
+          if (v2.mag(s.r) > 2.5) break;
+        }
+        return pts;
+      }
+
+      function reset(full = true) {
+        state.tDays = 0;
+        state.running = true;
+        state.ship = null;
+        state.trail = [];
+        state.ghost = [];
+        state.minR = Infinity;
+        setStatus('ORBITING');
+        if (full) {
+          state.fuelLeft = state.fuelBudget;
+          state.usedVenusAssists = 0;
+          state.score = null;
+        }
+      }
+
+      function applyPreset(name) {
+        if (name === 'standing') {
+          state.launchSpeedMult = 0; state.launchAngleDeg = 180; state.retroPct = 0;
+        } else if (name === 'escape') {
+          state.launchSpeedMult = 1.0; state.launchAngleDeg = 180; state.retroPct = 0;
+        } else if (name === 'straight') {
+          state.launchSpeedMult = 1.2; state.launchAngleDeg = 180; state.retroPct = 0;
+        } else if (name === 'retro') {
+          state.launchSpeedMult = 1.1; state.launchAngleDeg = 220; state.retroPct = 35;
+        } else if (name === 'parker') {
+          state.launchSpeedMult = 0.8; state.launchAngleDeg = 250; state.retroPct = 18;
+        } else if (name === 'zeroTan') {
+          state.launchSpeedMult = 0.2; state.launchAngleDeg = 180; state.retroPct = 100;
+        }
+        syncControls();
+        reset(false);
+        launch();
+        if (name === 'parker') { venusAssist(); venusAssist(); }
+      }
+
+      function updatePhysics() {
+        if (!state.running) return;
+        state.tDays += state.dt;
+        if (state.ship) {
+          state.ship = rk4(state.ship, state.tDays, state.dt);
+          state.trail.push({ ...state.ship.r });
+          if (state.trail.length > 1400) state.trail.shift();
+          const rNow = v2.mag(state.ship.r);
+          state.minR = Math.min(state.minR, rNow);
+          setStatus(computeStatus());
+          if (state.status === 'COLLIDING' && state.score === null) {
+            const used = state.fuelBudget - state.fuelLeft;
+            state.score = Math.max(0, Math.round(1000 - used * 18 + state.fuelLeft * 8));
+          }
+        }
+      }
+
+      function drawArrow(from, vec, color, scale, label) {
+        const to = { x: from.x + vec.x * scale, y: from.y + vec.y * scale };
+        ctx.strokeStyle = color;
+        ctx.fillStyle = color;
+        ctx.lineWidth = 1.8;
+        ctx.beginPath(); ctx.moveTo(from.x, from.y); ctx.lineTo(to.x, to.y); ctx.stroke();
+        const ang = Math.atan2(to.y - from.y, to.x - from.x);
+        const h = 8;
+        ctx.beginPath();
+        ctx.moveTo(to.x, to.y);
+        ctx.lineTo(to.x - h*Math.cos(ang - 0.35), to.y - h*Math.sin(ang - 0.35));
+        ctx.lineTo(to.x - h*Math.cos(ang + 0.35), to.y - h*Math.sin(ang + 0.35));
+        ctx.closePath();
+        ctx.fill();
+        if (label) {
+          ctx.font = '12px sans-serif';
+          ctx.fillText(label, to.x + 5, to.y + 5);
+        }
+      }
+
+      function draw() {
+        const w = el.canvas.width, h = el.canvas.height;
+        ctx.clearRect(0, 0, w, h);
+        const cx = w / 2, cy = h / 2;
+        const scale = Math.min(w, h) * 0.33;
+        const toPx = (p) => ({ x: cx + p.x * scale, y: cy + p.y * scale });
+
+        // Orbit guide rings
+        ctx.strokeStyle = 'rgba(180,190,255,.18)';
+        ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.arc(cx, cy, EARTH_ORBIT_AU * scale, 0, Math.PI * 2); ctx.stroke();
+        ctx.beginPath(); ctx.arc(cx, cy, VENUS_ORBIT_AU * scale, 0, Math.PI * 2); ctx.stroke();
+
+        // Sun
+        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--sun');
+        ctx.beginPath(); ctx.arc(cx, cy, SUN_COLLIDE_R * scale, 0, Math.PI * 2); ctx.fill();
+
+        const earth = earthStateAt(state.tDays);
+        const venus = venusStateAt(state.tDays);
+        const ep = toPx(earth.r), vp = toPx(venus.r);
+
+        // Venus
+        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--venus');
+        ctx.beginPath(); ctx.arc(vp.x, vp.y, 7, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = 'rgba(255,255,255,.8)';
+        ctx.font = '12px sans-serif'; ctx.fillText('Venus', vp.x + 8, vp.y - 6);
+
+        // Earth
+        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--earth');
+        ctx.beginPath(); ctx.arc(ep.x, ep.y, 8, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = 'rgba(255,255,255,.9)';
+        ctx.fillText('Earth', ep.x + 9, ep.y + 2);
+
+        // Earth velocity arrow
+        const earthVecPx = v2.mul(earth.v, 850);
+        drawArrow(ep, earthVecPx, getComputedStyle(document.documentElement).getPropertyValue('--forward'), 1, 'Earth tangential ~30 km/s');
+
+        // radial direction from ship/earth toward sun
+        drawArrow(ep, v2.mul(v2.norm(v2.mul(earth.r,-1)), 42), getComputedStyle(document.documentElement).getPropertyValue('--radial'), 1, 'radial in');
+
+        // ghost
+        if (state.ghost.length > 1) {
+          ctx.strokeStyle = 'rgba(255,255,255,0.25)';
+          ctx.setLineDash([4, 4]);
+          ctx.beginPath();
+          state.ghost.forEach((p, i) => { const pp = toPx(p); if (i === 0) ctx.moveTo(pp.x, pp.y); else ctx.lineTo(pp.x, pp.y); });
+          ctx.stroke();
+          ctx.setLineDash([]);
+        }
+
+        // ship trail
+        if (state.trail.length > 1) {
+          ctx.strokeStyle = 'rgba(122,162,255,0.9)';
+          ctx.lineWidth = 1.4;
+          ctx.beginPath();
+          state.trail.forEach((p, i) => { const pp = toPx(p); if (i === 0) ctx.moveTo(pp.x, pp.y); else ctx.lineTo(pp.x, pp.y); });
+          ctx.stroke();
+        }
+
+        // ship
+        if (state.ship) {
+          const sp = toPx(state.ship.r);
+          ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--ship');
+          ctx.beginPath(); ctx.arc(sp.x, sp.y, 4.5, 0, Math.PI * 2); ctx.fill();
+
+          drawArrow(sp, v2.mul(state.ship.v, 800), 'white', 1, 'v_ship');
+          const sTang = v2.norm(v2.perp(state.ship.r));
+          drawArrow(sp, v2.mul(sTang, 40), getComputedStyle(document.documentElement).getPropertyValue('--forward'), 1, 'tangential');
+          drawArrow(sp, v2.mul(v2.norm(v2.mul(state.ship.r,-1)), 38), getComputedStyle(document.documentElement).getPropertyValue('--radial'), 1, 'toward Sun');
+        }
+
+        // HUD text
+        ctx.fillStyle = 'rgba(255,255,255,.8)';
+        ctx.font = '12px sans-serif';
+        ctx.fillText(`Day ${state.tDays.toFixed(1)}`, 12, 18);
+      }
+
+      function updateReadout() {
+        const earthSpeed = BASE_EARTH_SPEED * state.earthMult;
+        el.earthSpeedOut.textContent = `${earthSpeed.toFixed(2)} km/s (${(earthSpeed * 2.23694).toFixed(0)} mph)`;
+
+        if (!state.ship) {
+          el.shipSpeedOut.textContent = '—';
+          el.tanOut.textContent = '—';
+          el.radOut.textContent = '—';
+          el.periOut.textContent = '—';
+        } else {
+          const rhat = v2.norm(state.ship.r);
+          const that = v2.norm(v2.perp(rhat));
+          const vr = v2.dot(state.ship.v, rhat);
+          const vt = v2.dot(state.ship.v, that);
+          const speed = AUdayToKmps(v2.mag(state.ship.v));
+          const peri = perihelionEstimate(state.ship);
+          el.shipSpeedOut.textContent = fmtSpeed(speed);
+          el.tanOut.textContent = fmtSpeed(AUdayToKmps(vt));
+          el.radOut.textContent = fmtSpeed(Math.abs(AUdayToKmps(vr))) + (vr < 0 ? ' inward' : ' outward');
+          if (peri.escaping) {
+            el.periOut.textContent = 'Unbound (escaping)';
+          } else {
+            el.periOut.textContent = `${peri.q.toFixed(3)} AU (${(peri.q*AU_KM/1e6).toFixed(1)} million km)`;
+          }
+        }
+
+        el.fuelLabel.textContent = `${state.fuelLeft.toFixed(1)} km/s left`;
+        el.fuelBar.style.width = `${(state.fuelLeft / state.fuelBudget) * 100}%`;
+        if (state.score !== null) {
+          el.scoreOut.textContent = `Score: ${state.score} (Sun impact, fuel-efficient = higher)`;
+        } else {
+          el.scoreOut.textContent = `Score: — ${state.status === 'COLLIDING' ? 'Success!' : 'Try to collide with the Sun.'}`;
+        }
+      }
+
+      function resizeCanvas() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const cssW = Math.max(330, Math.min(900, el.canvas.parentElement.clientWidth - 2));
+        const cssH = Math.round(cssW * 0.72);
+        el.canvas.style.width = cssW + 'px';
+        el.canvas.style.height = cssH + 'px';
+        el.canvas.width = Math.round(cssW * dpr);
+        el.canvas.height = Math.round(cssH * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function syncControls() {
+        el.earthMult.value = state.earthMult;
+        el.launchSpeed.value = state.launchSpeedMult;
+        el.launchAngle.value = state.launchAngleDeg;
+        el.retroBurn.value = state.retroPct;
+        el.earthMultVal.textContent = `${state.earthMult.toFixed(2)}×`;
+        el.launchSpeedVal.textContent = `${state.launchSpeedMult.toFixed(2)}×`;
+        el.launchAngleVal.textContent = `${state.launchAngleDeg.toFixed(0)}°`;
+        el.retroVal.textContent = `${state.retroPct.toFixed(0)}%`;
+        el.earthGravityBtn.textContent = state.useEarthGravity ? 'ON' : 'OFF';
+        el.playBtn.textContent = state.running ? 'Pause' : 'Play';
+        el.unitBtn.textContent = state.showMph ? 'mph' : 'km/s';
+      }
+
+      // Events
+      el.earthMult.addEventListener('input', e => { state.earthMult = +e.target.value; syncControls(); state.ghost = generateGhost(); });
+      el.launchSpeed.addEventListener('input', e => { state.launchSpeedMult = +e.target.value; syncControls(); state.ghost = generateGhost(); });
+      el.launchAngle.addEventListener('input', e => { state.launchAngleDeg = +e.target.value; syncControls(); state.ghost = generateGhost(); });
+      el.retroBurn.addEventListener('input', e => { state.retroPct = +e.target.value; syncControls(); state.ghost = generateGhost(); });
+
+      el.launchBtn.addEventListener('click', launch);
+      el.playBtn.addEventListener('click', () => { state.running = !state.running; syncControls(); });
+      el.stepBtn.addEventListener('click', () => { updatePhysics(); draw(); updateReadout(); });
+      el.resetBtn.addEventListener('click', () => { reset(true); syncControls(); });
+      el.earthGravityBtn.addEventListener('click', () => { state.useEarthGravity = !state.useEarthGravity; syncControls(); state.ghost = generateGhost(); });
+      el.unitBtn.addEventListener('click', () => { state.showMph = !state.showMph; syncControls(); updateReadout(); });
+      el.venusAssistBtn.addEventListener('click', venusAssist);
+
+      document.querySelectorAll('.preset').forEach(btn => {
+        btn.addEventListener('click', () => applyPreset(btn.dataset.preset));
+      });
+
+      window.addEventListener('resize', resizeCanvas);
+
+      function loop() {
+        updatePhysics();
+        draw();
+        updateReadout();
+        requestAnimationFrame(loop);
+      }
+
+      syncControls();
+      resizeCanvas();
+      reset(true);
+      loop();
+    })();
+  </script>
+</body>
+</html>
