@@ -784,7 +784,7 @@
           if (state.launchArrow && state.launchArrowFrames > 0) {
             const alpha = Math.min(1, state.launchArrowFrames / 30);
             const launchSpeed = AUdayToKmps(v2.mag(state.launchArrow.vel));
-            drawArrow(sp, v2.mul(state.launchArrow.vel, 800), `rgba(255,200,80,${alpha})`, 1, state.launchArrowFrames > 15 ? `${launchSpeed.toFixed(1)} km/s` : '');
+            drawArrow(sp, v2.mul(state.launchArrow.vel, 800), `rgba(255,200,80,${alpha})`, 1, state.launchArrowFrames > 15 ? fmtSpeed(launchSpeed) : '');
             if (state.running) state.launchArrowFrames--;
           }
 
@@ -805,7 +805,7 @@
         const earthSpeed = BASE_EARTH_SPEED * state.earthMult;
         let leftY = 34;
         const lx = 12, lineH = 15;
-        ctx.fillText(`Earth orbital: ${earthSpeed.toFixed(2)} km/s`, lx, leftY); leftY += lineH;
+        ctx.fillText(`Earth orbital: ${fmtSpeed(earthSpeed)}`, lx, leftY); leftY += lineH;
         if (state.ship) {
           const rhat = v2.norm(state.ship.r);
           const that = v2.norm(v2.perp(rhat));
@@ -861,7 +861,7 @@
 
       function updateReadout() {
         const earthSpeed = BASE_EARTH_SPEED * state.earthMult;
-        el.earthSpeedOut.textContent = `${earthSpeed.toFixed(2)} km/s (${(earthSpeed * 2.23694).toFixed(0)} mph)`;
+        el.earthSpeedOut.textContent = fmtSpeed(earthSpeed);
 
         if (!state.ship) {
           el.shipSpeedOut.textContent = '—';
@@ -885,7 +885,7 @@
           }
         }
 
-        el.fuelLabel.textContent = `${state.fuelLeft.toFixed(1)} km/s left`;
+        el.fuelLabel.textContent = `${fmtSpeed(state.fuelLeft)} left`;
         el.fuelBar.style.width = `${(state.fuelLeft / state.fuelBudget) * 100}%`;
         if (state.score !== null) {
           el.scoreOut.textContent = `Score: ${state.score} (Sun impact, fuel-efficient = higher)`;
@@ -953,8 +953,8 @@
         }
         // Slider speed readouts
         const lsKms = state.launchSpeedMult * 11.2;
-        el.launchSpeedReadout.innerHTML = `Speed relative to Earth's escape velocity — <strong>${state.launchSpeedMult.toFixed(2)}×</strong> = ${lsKms.toFixed(1)} km/s`;
-        el.retroBurnReadout.textContent = `= -${state.retroKmS.toFixed(1)} km/s`;
+        el.launchSpeedReadout.innerHTML = `Speed relative to Earth's escape velocity — <strong>${state.launchSpeedMult.toFixed(2)}×</strong> = ${fmtSpeed(lsKms)}`;
+        el.retroBurnReadout.textContent = `= -${fmtSpeed(state.retroKmS)}`;
         // Direction label
         const deg = state.launchAngleDeg % 360;
         let dirLabel;
