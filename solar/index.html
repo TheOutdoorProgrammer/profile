@@ -545,22 +545,31 @@
         let t = state.tDays;
         const dt = 0.5;
         const pts = [];
-        // Pure Keplerian (Sun-only) RK4 — no calls to acceleration(), no Earth, no Venus, no flags.
+        // Decide whether to include Earth gravity in the aim line.
+        // Before launch or within 5 real seconds of launch: Sun-only (so the
+        // aim line isn't yanked around by Earth while the player is aiming).
+        // After 5 seconds: include Earth gravity so the prediction is accurate.
+        const graceActive = state.launchTimeMs === null || (Date.now() - state.launchTimeMs) < 5000;
+        // Pure Keplerian (Sun-only) helper
         function sunAcc(p) {
           const r = v2.mag(p);
           return v2.mul(p, -MU_SUN / (r * r * r + 1e-12));
         }
+        // Pick acceleration function based on grace period
+        function aimAcc(p, tStep) {
+          return graceActive ? sunAcc(p) : acceleration(p, tStep, false);
+        }
         for (let i = 0; i < 600; i++) {
-          const a1 = sunAcc(pr);
+          const a1 = aimAcc(pr, t);
           const p2 = v2.add(pr, v2.mul(pv, dt/2));
           const v2m = v2.add(pv, v2.mul(a1, dt/2));
-          const a2 = sunAcc(p2);
+          const a2 = aimAcc(p2, t + dt/2);
           const p3 = v2.add(pr, v2.mul(v2m, dt/2));
           const v3 = v2.add(pv, v2.mul(a2, dt/2));
-          const a3 = sunAcc(p3);
+          const a3 = aimAcc(p3, t + dt/2);
           const p4 = v2.add(pr, v2.mul(v3, dt));
           const v4 = v2.add(pv, v2.mul(a3, dt));
-          const a4 = sunAcc(p4);
+          const a4 = aimAcc(p4, t + dt);
           pr = v2.add(pr, v2.mul(v2.add(v2.add(pv, v2.mul(v2m,2)), v2.add(v2.mul(v3,2), v4)), dt/6));
           pv = v2.add(pv, v2.mul(v2.add(v2.add(a1, v2.mul(a2,2)), v2.add(v2.mul(a3,2), a4)), dt/6));
           t += dt;
