@@ -3,6 +3,7 @@ layout: post
 title: "Why Is It Harder to Hit the Sun Than Leave the Solar System?"
 date: 2026-04-11
 description: "Built an interactive orbital sim to answer this, and the answer is weirder than I expected."
+image: /assets/images/blogposts/2026-04-11-hitting-the-sun-title.jpg
 icon: "mdi:white-balance-sunny"
 tags: [physics, simulation, space, javascript, ai]
 ---
@@ -26,3 +27,5 @@ There were bugs. The aim prediction line had a race condition where it was compu
 The thing that still gets me is the scale. Earth's tangential velocity is 29.78 km/s. That's enormous. We don't experience it because we're locked into the same motion, but launch something and suddenly you have to deal with it. The Sun looks close in diagrams. It's not. And hitting it means having to deal with all that sideways momentum you didn't ask for.
 
 Anyway. Built it in an evening with some AI help. The code is messy and probably has more bugs I haven't found. It works well enough to show the concept, and that's what I was after.
+
+You can play with it here: [theoutdoorprogrammer.com/solar/](https://theoutdoorprogrammer.com/solar/)
