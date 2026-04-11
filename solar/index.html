@@ -86,6 +86,7 @@
 
     .btn.primary { background: var(--accent); color: white; border-color: transparent; }
 
+    /* On mobile: canvas full-width, controls below */
     .canvas-wrap {
       background: var(--panel);
       border: 1px solid var(--border);
@@ -96,10 +97,21 @@
 
     canvas {
       display: block;
+      /* Square-ish canvas so Sun sits in the center of the viewport */
       width: 100%;
-      height: auto;
+      aspect-ratio: 1 / 1;
+      max-height: 78vw;
       background: radial-gradient(circle at 50% 50%, #17172a 0%, #0a0a12 70%);
       touch-action: none;
+    }
+
+
+    @media (min-width: 768px) {
+      canvas {
+        max-height: none;
+        aspect-ratio: auto;
+        height: auto;
+      }
     }
 
     .panel {
@@ -290,8 +302,8 @@
       const MU_EARTH = 398600.4418 * (DAY_S * DAY_S) / (AU_KM * AU_KM * AU_KM);
       const EARTH_ORBIT_AU = 1;
       const VENUS_ORBIT_AU = 0.723;
-      const SUN_VIS_R = 14; // visual-only sun radius (CSS px), decoupled from collide radius
-      const SUN_COLLIDE_R = 0.035; // physics collision radius (AU), separate from visual size
+      const SUN_VIS_R = 16; // visual sun radius (CSS px)
+      const SUN_COLLIDE_R = 0.035; // physics collision radius (AU)
       const NEAR_MISS_R = 0.08;
       const BASE_EARTH_SPEED = 29.78;
       const ESCAPE_EARTH_SPEED = 11.2;
@@ -573,7 +585,8 @@
         const w = el.canvas.width, h = el.canvas.height;
         ctx.clearRect(0, 0, w, h);
         const cx = w / 2, cy = h / 2;
-        const scale = Math.min(w, h) * 0.35;
+        // Square canvas → cx === cy → orbit ring fills the view
+        const scale = Math.min(w, h) * 0.43;
         const toPx = (p) => ({ x: cx + p.x * scale, y: cy + p.y * scale });
 
         // Orbit guide rings
@@ -582,15 +595,15 @@
         ctx.beginPath(); ctx.arc(cx, cy, EARTH_ORBIT_AU * scale, 0, Math.PI * 2); ctx.stroke();
         ctx.beginPath(); ctx.arc(cx, cy, VENUS_ORBIT_AU * scale, 0, Math.PI * 2); ctx.stroke();
 
-        // Sun — small visual disk so orbit ring reads clearly
+        // Sun — small visual disk centered
         ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--sun');
-        ctx.beginPath(); ctx.arc(cx, cy, 14, 0, Math.PI * 2); ctx.fill();
-        // Subtle glow
-        const grd = ctx.createRadialGradient(cx, cy, 14, cx, cy, 36);
-        grd.addColorStop(0, 'rgba(255,215,0,0.35)');
+        ctx.beginPath(); ctx.arc(cx, cy, 16, 0, Math.PI * 2); ctx.fill();
+        // Soft glow
+        const grd = ctx.createRadialGradient(cx, cy, 16, cx, cy, 42);
+        grd.addColorStop(0, 'rgba(255,215,0,0.4)');
         grd.addColorStop(1, 'rgba(255,215,0,0)');
         ctx.fillStyle = grd;
-        ctx.beginPath(); ctx.arc(cx, cy, 36, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(cx, cy, 42, 0, Math.PI * 2); ctx.fill();
 
         const earth = earthStateAt(state.tDays);
         const venus = venusStateAt(state.tDays);
