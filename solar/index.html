@@ -583,10 +583,12 @@
         }
         // Thruster impulse
         if (state.thrusting && state.ship && state.fuelLeft > 0) {
-          const thrustDvPerFrame = 0.5;
-          const dir = v2.norm(state.ship.v);
-          state.ship.v = v2.add(state.ship.v, v2.mul(dir, kmpsToAUday(thrustDvPerFrame)));
-          applyFuel(thrustDvPerFrame);
+          const thrustDvPerFrame = Math.min(0.5, state.fuelLeft);
+          if (thrustDvPerFrame > 0) {
+            const dir = v2.norm(state.ship.v);
+            state.ship.v = v2.add(state.ship.v, v2.mul(dir, kmpsToAUday(thrustDvPerFrame)));
+            applyFuel(thrustDvPerFrame);
+          }
         }
         state.tDays = t0 + state.dt;
         updateAimLine();
