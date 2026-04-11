@@ -224,6 +224,11 @@
               <button id="earthGravityBtn" class="btn">ON</button>
             </div>
 
+            <div class="row">
+              <label>Auto Venus Assist</label>
+              <button id="autoVenusBtn" class="btn">ON</button>
+            </div>
+
             <div style="display:flex;gap:8px;flex-wrap:wrap;">
               <button id="launchBtn" class="btn primary">Launch</button>
               <button id="playBtn" class="btn">Pause</button>
@@ -317,6 +322,9 @@
         usedVenusAssists: 0,
         score: null,
         showAimLine: true,
+        showVenus: true,
+        autoVenusAssist: true,
+        venusAssistFired: false,
         aimPrediction: [],
         launchArrow: null,
         launchArrowFrames: 0,
@@ -331,6 +339,7 @@
         stepBtn: document.getElementById('stepBtn'),
         launchBtn: document.getElementById('launchBtn'),
         venusAssistBtn: document.getElementById('venusAssistBtn'),
+        autoVenusBtn: document.getElementById('autoVenusBtn'),
         aimLineBtn: document.getElementById('aimLineBtn'),
         earthMult: document.getElementById('earthMult'),
         launchSpeed: document.getElementById('launchSpeed'),
@@ -390,12 +399,14 @@
       function acceleration(pos, t) {
         const r = v2.mag(pos);
         const sun = v2.mul(pos, -MU_SUN / (r * r * r + 1e-12));
-        if (!state.useEarthGravity) return sun;
-        const e = earthStateAt(t).r;
-        const rel = v2.sub(pos, e);
-        const d = v2.mag(rel);
-        const earth = v2.mul(rel, -MU_EARTH / (d * d * d + 1e-14));
-        return v2.add(sun, earth);
+        if (state.useEarthGravity === true) {
+          const e = earthStateAt(t).r;
+          const rel = v2.sub(pos, e);
+          const d = v2.mag(rel);
+          const earth = v2.mul(rel, -MU_EARTH / (d * d * d + 1e-14));
+          return v2.add(sun, earth);
+        }
+        return sun;
       }
 
       function rk4(ship, t, dt) {
@@ -535,6 +546,7 @@
         state.minR = Infinity;
         state.launchArrow = null;
         state.launchArrowFrames = 0;
+        state.venusAssistFired = false;
         state.aimPrediction = [];
         setStatus('ORBITING');
         if (full) {
@@ -568,6 +580,20 @@
         if (!state.running) return;
         state.tDays += state.dt;
         if (state.ship) {
+          // Auto Venus assist
+          if (state.autoVenusAssist && !state.venusAssistFired) {
+            const vState = venusStateAt(state.tDays);
+            const distToVenus = v2.mag(v2.sub(state.ship.r, vState.r));
+            if (distToVenus < 0.15) {
+              venusAssist();
+              state.venusAssistFired = true;
+            }
+          }
+          if (state.venusAssistFired) {
+            const vState = venusStateAt(state.tDays);
+            const distToVenus = v2.mag(v2.sub(state.ship.r, vState.r));
+            if (distToVenus > 0.25) state.venusAssistFired = false;
+          }
           const next = rk4(state.ship, state.tDays, state.dt);
           // Check collision BEFORE committing the new position
           if (v2.mag(next.r) <= SUN_COLLIDE_R) {
@@ -643,17 +669,21 @@
         const venus = venusStateAt(state.tDays);
         const ep = toPx(earth.r), vp = toPx(venus.r);
 
-        // Venus
-        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--venus');
-        ctx.beginPath(); ctx.arc(vp.x, vp.y, 7, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = 'rgba(255,255,255,.8)';
-        ctx.font = '12px sans-serif'; ctx.fillText('Venus', vp.x + 8, vp.y - 6);
+        // Venus (conditional)
+        if (state.showVenus) {
+          ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--venus');
+          ctx.beginPath(); ctx.arc(vp.x, vp.y, 7, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = 'rgba(255,255,255,.8)';
+          ctx.font = '12px sans-serif'; ctx.fillText('Venus', vp.x + 8, vp.y - 6);
+        }
 
-        // Earth
-        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--earth');
-        ctx.beginPath(); ctx.arc(ep.x, ep.y, 8, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = 'rgba(255,255,255,.9)';
-        ctx.fillText('Earth', ep.x + 9, ep.y + 2);
+        // Earth (always before launch; after launch only if Earth gravity ON)
+        if (!state.ship || state.useEarthGravity) {
+          ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--earth');
+          ctx.beginPath(); ctx.arc(ep.x, ep.y, 8, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = 'rgba(255,255,255,.9)';
+          ctx.fillText('Earth', ep.x + 9, ep.y + 2);
+        }
 
         // Earth velocity arrow
         const earthVecPx = v2.mul(earth.v, 850);
@@ -802,6 +832,11 @@
       el.earthGravityBtn.addEventListener('click', () => { state.useEarthGravity = !state.useEarthGravity; syncControls(); state.ghost = generateGhost(); });
       el.unitBtn.addEventListener('click', () => { state.showMph = !state.showMph; syncControls(); updateReadout(); });
       el.venusAssistBtn.addEventListener('click', venusAssist);
+      el.autoVenusBtn.addEventListener('click', () => {
+        state.autoVenusAssist = !state.autoVenusAssist;
+        state.showVenus = state.autoVenusAssist;
+        el.autoVenusBtn.textContent = state.autoVenusAssist ? 'ON' : 'OFF';
+      });
       el.aimLineBtn.addEventListener('click', () => { state.showAimLine = !state.showAimLine; el.aimLineBtn.textContent = state.showAimLine ? 'Hide Aim Line' : 'Show Aim Line'; });
 
       document.querySelectorAll('.preset').forEach(btn => {
