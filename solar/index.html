@@ -568,16 +568,27 @@
         if (!state.running) return;
         state.tDays += state.dt;
         if (state.ship) {
-          state.ship = rk4(state.ship, state.tDays, state.dt);
+          const next = rk4(state.ship, state.tDays, state.dt);
+          // Check collision BEFORE committing the new position
+          if (v2.mag(next.r) <= SUN_COLLIDE_R) {
+            state.trail.push({ ...next.r });
+            state.ship = next;
+            state.minR = Math.min(state.minR, v2.mag(next.r));
+            setStatus('COLLIDING');
+            if (state.score === null) {
+              const used = state.fuelBudget - state.fuelLeft;
+              state.score = Math.max(0, Math.round(1000 - used * 18 + state.fuelLeft * 8));
+            }
+            state.running = false;
+            updateAimLine();
+            return;
+          }
+          state.ship = next;
           state.trail.push({ ...state.ship.r });
           if (state.trail.length > 1400) state.trail.shift();
           const rNow = v2.mag(state.ship.r);
           state.minR = Math.min(state.minR, rNow);
           setStatus(computeStatus());
-          if (state.status === 'COLLIDING' && state.score === null) {
-            const used = state.fuelBudget - state.fuelLeft;
-            state.score = Math.max(0, Math.round(1000 - used * 18 + state.fuelLeft * 8));
-          }
         }
         updateAimLine();
       }
