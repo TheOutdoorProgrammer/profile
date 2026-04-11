@@ -207,6 +207,12 @@
         <details class="panel" open>
           <summary>Controls</summary>
           <div class="content grid">
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <button id="launchBtn" class="btn primary">Launch</button>
+              <button id="playBtn" class="btn">Pause</button>
+              <button id="stepBtn" class="btn">Step</button>
+              <button id="aimLineBtn" class="btn">Hide Aim Line</button>
+
             <div class="row"><label>Earth orbital speed multiplier</label><strong id="earthMultVal">1.00×</strong></div>
             <input id="earthMult" type="range" min="0.5" max="1.5" step="0.01" value="1" />
 
@@ -228,12 +234,6 @@
               <label>Toggle Venus</label>
               <button id="autoVenusBtn" class="btn">ON</button>
             </div>
-
-            <div style="display:flex;gap:8px;flex-wrap:wrap;">
-              <button id="launchBtn" class="btn primary">Launch</button>
-              <button id="playBtn" class="btn">Pause</button>
-              <button id="stepBtn" class="btn">Step</button>
-              <button id="aimLineBtn" class="btn">Hide Aim Line</button>
             </div>
             <div class="small">Tip: 0°=toward Sun, 90°=prograde, 180°=away from Sun, 270°=retrograde</div>
           </div>
@@ -472,10 +472,9 @@
 
         const tanComp = v2.dot(vel, tang);
         const cancel = tanComp * (state.retroPct / 100);
-        if (cancel > 0) {
-          vel = v2.sub(vel, v2.mul(tang, cancel));
-        }
-        return { r: { ...e.r }, v: vel, dir, relLaunchKmS, cancelKmS: cancel > 0 ? AUdayToKmps(Math.abs(cancel)) : 0 };
+        // Cancel a fraction of tangential velocity toward zero (works for either sign).
+        vel = v2.sub(vel, v2.mul(tang, cancel));
+        return { r: { ...e.r }, v: vel, dir, relLaunchKmS, cancelKmS: AUdayToKmps(Math.abs(cancel)) };
       }
 
       function computeAimPrediction() {
@@ -494,8 +493,9 @@
 
       function launch() {
         const ls = computeLaunchState();
+        // Consume fuel equal to modeled impulsive Δv used at launch.
         applyFuel(ls.cancelKmS);
-        applyFuel(ls.relLaunchKmS * 0.2);
+        applyFuel(ls.relLaunchKmS);
 
         state.ship = { r: ls.r, v: ls.v };
         state.trail = [];
@@ -576,7 +576,7 @@
 
       function updatePhysics() {
         if (!state.running) return;
-        state.tDays += state.dt;
+        const t0 = state.tDays;
         if (state.ship) {
           // Auto Venus assist
           if (state.autoVenusAssist && !state.venusAssistFired) {
@@ -592,7 +592,7 @@
             const distToVenus = v2.mag(v2.sub(state.ship.r, vState.r));
             if (distToVenus > 0.25) state.venusAssistFired = false;
           }
-          const next = rk4(state.ship, state.tDays, state.dt);
+          const next = rk4(state.ship, t0, state.dt);
           // Check collision BEFORE committing the new position
           if (v2.mag(next.r) <= SUN_COLLIDE_R) {
             state.trail.push({ ...next.r });
@@ -614,6 +614,7 @@
           state.minR = Math.min(state.minR, rNow);
           setStatus(computeStatus());
         }
+        state.tDays = t0 + state.dt;
         updateAimLine();
       }
 
