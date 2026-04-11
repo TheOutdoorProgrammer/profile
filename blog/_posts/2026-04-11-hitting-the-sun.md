@@ -28,7 +28,7 @@ It takes less than half the effort to abandon our star than it does to touch it.
 
 Look at the Parker Solar Probe. NASA wanted to get it close to the Sun. They did not build a rocket big enough to kill 30 km/s of orbital velocity. That ship does not exist. Instead, they designed a mission that used seven separate Venus flybys over the course of seven years. They used the gravity of a whole different planet to slowly bleed off their speed, inching closer with each pass. It is an absurd piece of engineering, but it exists because the physics of simply pointing at the target are impossible.
 
-I couldn't let this go. I fired up my editor, grabbed a beer, and leaned on some AI to help me quickly scaffold a simulator. I needed to interact with the physics directly to make it feel real in my head. 
+I couldn't let this go. I fired up my editor and leaned on some AI to help me quickly scaffold a simulator. I needed to interact with the physics directly to make it feel real in my head. 
 
 The result is a single HTML file canvas app. I built it mobile-first because I figured I would want to mess with it on my phone later. The physics engine uses 2D Newtonian mechanics with an RK4 integrator to keep the orbits stable over time. I hardcoded the real orbital speeds into the system. Earth gets 29.78 km/s. Venus sits closer at 35 km/s. 
 
@@ -36,7 +36,7 @@ You can play with it live right now at [theoutdoorprogrammer.com/solar/](https:/
 
 Building it humbled me quickly. I ran into two bugs that made me question if I should even be allowed near a keyboard. The first was a nasty race condition. The prediction logic was computing the entire ghost trajectory of the probe before launchTimeMs was even set in the state. The aim line was practically a random number generator on the first frame. 
 
-The second bug was even dumber. I wrote a fmtSpeed() function to convert the internal km/s values to mph for the UI. The conversion factor is 2236.94. I accidentally typed 2.23694. Everything was off by a factor of exactly one thousand. My spacecraft appeared to be crawling through the void at the speed of a riding lawnmower. I spent thirty minutes debugging the physics integrator, convinced my math was wrong, before I looked at the string formatting for the text label.
+The second bug was a dumb typo in my `fmtSpeed()` function that made the spacecraft appear to crawl through the void at the speed of a riding lawnmower.
 
 I finally got it working right around 2 AM. The sim proves the math on the screen. You burn retrograde, watch your fuel gauge empty instantly, and you barely dent your orbit. You burn prograde, and your trajectory line shoots off the screen and never comes back.
 
