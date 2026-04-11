@@ -217,6 +217,7 @@
             <div style="display:flex;gap:8px;flex-wrap:wrap;">
               <button id="launchBtn" class="btn primary">Launch</button>
               <button id="playBtn" class="btn">Pause</button>
+              <button id="thrusterBtn" class="btn">Thrusters</button>
               <button id="aimLineBtn" class="btn">Hide Aim Line</button>
             </div>
 
@@ -323,6 +324,7 @@
         aimPrediction: [],
         launchArrow: null,
         launchArrowFrames: 0,
+        thrusting: false,
       };
 
       const el = {
@@ -331,6 +333,7 @@
         resetBtn: document.getElementById('resetBtn'),
         earthGravityBtn: document.getElementById('earthGravityBtn'),
         playBtn: document.getElementById('playBtn'),
+        thrusterBtn: document.getElementById('thrusterBtn'),
         launchBtn: document.getElementById('launchBtn'),
         autoVenusBtn: document.getElementById('autoVenusBtn'),
         aimLineBtn: document.getElementById('aimLineBtn'),
@@ -607,6 +610,13 @@
           state.minR = Math.min(state.minR, rNow);
           setStatus(computeStatus());
         }
+        // Thruster impulse
+        if (state.thrusting && state.ship && state.fuelLeft > 0) {
+          const thrustDvPerFrame = 0.5;
+          const dir = v2.norm(state.ship.v);
+          state.ship.v = v2.add(state.ship.v, v2.mul(dir, kmpsToAUday(thrustDvPerFrame)));
+          applyFuel(thrustDvPerFrame);
+        }
         state.tDays = t0 + state.dt;
         updateAimLine();
       }
@@ -871,6 +881,20 @@
         el.earthGravityBtn.textContent = state.useEarthGravity ? 'ON' : 'OFF';
         el.playBtn.textContent = state.running ? 'Pause' : 'Play';
         el.unitBtn.textContent = state.showMph ? 'mph' : 'km/s';
+        // Thruster button state
+        const noFuel = state.fuelLeft <= 0;
+        el.thrusterBtn.disabled = noFuel;
+        el.thrusterBtn.style.opacity = noFuel ? '0.4' : '1';
+        if (state.thrusting && !noFuel) {
+          el.thrusterBtn.textContent = 'Thrusters ON';
+          el.thrusterBtn.style.background = 'var(--good)';
+          el.thrusterBtn.style.color = '#000';
+        } else {
+          el.thrusterBtn.textContent = 'Thrusters';
+          el.thrusterBtn.style.background = '';
+          el.thrusterBtn.style.color = '';
+        }
+        if (noFuel) state.thrusting = false;
       }
 
       // Events
@@ -883,6 +907,15 @@
       el.launchBtn.addEventListener('click', launch);
       el.playBtn.addEventListener('click', () => { state.running = !state.running; syncControls(); });
       el.resetBtn.addEventListener('click', () => { reset(true); syncControls(); });
+
+      // Thruster button
+      function thrustOn() { state.thrusting = true; syncControls(); }
+      function thrustOff() { state.thrusting = false; syncControls(); }
+      el.thrusterBtn.addEventListener('mousedown', thrustOn);
+      el.thrusterBtn.addEventListener('touchstart', (e) => { e.preventDefault(); thrustOn(); });
+      el.thrusterBtn.addEventListener('mouseup', thrustOff);
+      el.thrusterBtn.addEventListener('mouseleave', thrustOff);
+      el.thrusterBtn.addEventListener('touchend', thrustOff);
       el.earthGravityBtn.addEventListener('click', () => { state.useEarthGravity = !state.useEarthGravity; syncControls(); state.ghost = generateGhost(); });
       el.unitBtn.addEventListener('click', () => { state.showMph = !state.showMph; syncControls(); updateReadout(); });
       el.autoVenusBtn.addEventListener('click', () => {
