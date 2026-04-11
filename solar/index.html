@@ -223,24 +223,21 @@
               <button id="aimLineBtn" class="btn">Hide Aim Line</button>
             </div>
 
-            <div class="row"><label>Earth orbital speed multiplier</label><strong id="earthMultVal">1.00×</strong></div>
+            <div class="row"><label>Earth orbital speed multiplier</label></div>
             <input id="earthMult" type="range" min="0.5" max="1.5" step="0.01" value="1" />
-            <div class="small hint">Earth's speed around the Sun</div>
+            <div class="small hint">Earth's speed around the Sun — <strong id="earthMultVal">1.00×</strong></div>
 
-            <div class="row"><label>Launch speed (× Earth escape velocity)</label><strong id="launchSpeedVal">1.00×</strong></div>
+            <div class="row"><label>Launch speed (× Earth escape velocity)</label></div>
             <input id="launchSpeed" type="range" min="0" max="3" step="0.01" value="1" />
-            <div class="small" id="launchSpeedReadout" style="margin-top:-4px;">= 11.2 km/s</div>
-            <div class="small hint">Speed relative to Earth's escape velocity</div>
+            <div class="small hint" id="launchSpeedReadout">Speed relative to Earth's escape velocity — <strong id="launchSpeedVal">1.00×</strong> = 11.2 km/s</div>
 
-            <div class="row"><label>Launch direction angle (°)</label><strong id="launchAngleVal">180°</strong></div>
-            <input id="launchAngle" type="range" min="0" max="360" step="1" value="180" />
-            <div class="small" id="launchAngleDirLabel" style="margin-top:-4px;">↑ away from Sun</div>
-            <div class="small hint">Which way you're aiming from Earth</div>
+            <div class="row"><label>Launch direction angle</label></div>
+            <input id="launchAngle" type="range" min="0" max="360" step="1" value="245" />
+            <div class="small hint" id="launchAngleDirLabel">Which way you're aiming from Earth — <strong id="launchAngleVal">245°</strong> ← retrograde</div>
 
-            <div class="row"><label>Retro-burn (% tangential cancel)</label><strong id="retroVal">0%</strong></div>
-            <input id="retroBurn" type="range" min="0" max="100" step="1" value="0" />
-            <div class="small" id="retroBurnReadout" style="margin-top:-4px;">= -0.0 km/s</div>
-            <div class="small hint">Cancel sideways speed to fall toward Sun</div>
+            <div class="row"><label>Retro-burn</label></div>
+            <input id="retroBurn" type="range" min="0" max="30" step="0.1" value="0" />
+            <div class="small hint" id="retroBurnHint">Cancel <strong id="retroVal">0.0</strong> km/s of sideways speed to fall toward Sun — <span id="retroBurnReadout">= -0.0 km/s</span></div>
 
             <div class="row">
               <label>Earth gravity after launch</label>
@@ -301,8 +298,8 @@
         useEarthGravity: true,
         earthMult: 1,
         launchSpeedMult: 1,
-        launchAngleDeg: 180,
-        retroPct: 0,
+        launchAngleDeg: 245,
+        retroKmS: 0,
         tDays: 0,
         dt: 0.25,
         ship: null,
@@ -471,7 +468,8 @@
         let vel = v2.add(e.v, v2.mul(dir, kmpsToAUday(relLaunchKmS)));
 
         const tanComp = v2.dot(vel, tang);
-        const cancel = tanComp * (state.retroPct / 100);
+        const retroFrac = (BASE_EARTH_SPEED * state.earthMult > 0) ? state.retroKmS / (BASE_EARTH_SPEED * state.earthMult) : 0;
+        const cancel = tanComp * Math.min(1, retroFrac);
         // Cancel a fraction of tangential velocity toward zero (works for either sign).
         vel = v2.sub(vel, v2.mul(tang, cancel));
         return { r: { ...e.r }, v: vel, dir, relLaunchKmS, cancelKmS: AUdayToKmps(Math.abs(cancel)) };
@@ -870,11 +868,11 @@
         el.earthMult.value = state.earthMult;
         el.launchSpeed.value = state.launchSpeedMult;
         el.launchAngle.value = state.launchAngleDeg;
-        el.retroBurn.value = state.retroPct;
+        el.retroBurn.value = state.retroKmS;
         el.earthMultVal.textContent = `${state.earthMult.toFixed(2)}×`;
         el.launchSpeedVal.textContent = `${state.launchSpeedMult.toFixed(2)}×`;
         el.launchAngleVal.textContent = `${state.launchAngleDeg.toFixed(0)}°`;
-        el.retroVal.textContent = `${state.retroPct.toFixed(0)}%`;
+        el.retroVal.textContent = `${state.retroKmS.toFixed(1)}`;
         el.earthGravityBtn.textContent = state.useEarthGravity ? 'ON' : 'OFF';
         el.playBtn.textContent = state.running ? 'Pause' : 'Play';
         el.unitBtn.textContent = state.showMph ? 'mph' : 'km/s';
@@ -906,9 +904,8 @@
         }
         // Slider speed readouts
         const lsKms = state.launchSpeedMult * 11.2;
-        el.launchSpeedReadout.textContent = `= ${lsKms.toFixed(1)} km/s`;
-        const retroKms = BASE_EARTH_SPEED * state.earthMult * (state.retroPct / 100);
-        el.retroBurnReadout.textContent = `= -${retroKms.toFixed(1)} km/s`;
+        el.launchSpeedReadout.innerHTML = `Speed relative to Earth's escape velocity — <strong>${state.launchSpeedMult.toFixed(2)}×</strong> = ${lsKms.toFixed(1)} km/s`;
+        el.retroBurnReadout.textContent = `= -${state.retroKmS.toFixed(1)} km/s`;
         // Direction label
         const deg = state.launchAngleDeg % 360;
         let dirLabel;
@@ -916,7 +913,7 @@
         else if (deg >= 45 && deg < 135) dirLabel = '→ prograde';
         else if (deg >= 135 && deg < 225) dirLabel = '↗ away from Sun';
         else dirLabel = '← retrograde';
-        el.launchAngleDirLabel.textContent = dirLabel;
+        el.launchAngleDirLabel.innerHTML = `Which way you're aiming from Earth — <strong>${state.launchAngleDeg.toFixed(0)}°</strong> ${dirLabel}`;
       }
 
       // Events
@@ -924,7 +921,7 @@
       el.earthMult.addEventListener('input', e => { state.earthMult = +e.target.value; syncControls(); state.ghost = generateGhost(); updateAimLine(); });
       el.launchSpeed.addEventListener('input', e => { state.launchSpeedMult = +e.target.value; syncControls(); state.ghost = generateGhost(); updateAimLine(); });
       el.launchAngle.addEventListener('input', e => { state.launchAngleDeg = +e.target.value; syncControls(); state.ghost = generateGhost(); updateAimLine(); });
-      el.retroBurn.addEventListener('input', e => { state.retroPct = +e.target.value; syncControls(); state.ghost = generateGhost(); updateAimLine(); });
+      el.retroBurn.addEventListener('input', e => { state.retroKmS = +e.target.value; syncControls(); state.ghost = generateGhost(); updateAimLine(); });
 
       el.launchBtn.addEventListener('click', launch);
       el.playBtn.addEventListener('click', () => { state.running = !state.running; syncControls(); });
