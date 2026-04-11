@@ -276,9 +276,7 @@
       const DAY_S = 86400;
       const K = 0.01720209895; // Gaussian grav. constant
       const MU_SUN = K * K; // AU^3/day^2
-      const MU_EARTH_REAL = 398600.4418 * (DAY_S * DAY_S) / (AU_KM * AU_KM * AU_KM);
-      const EARTH_GRAVITY_SCALE = 500; // scaled up for visual effect in educational sim
-      const MU_EARTH = MU_EARTH_REAL * EARTH_GRAVITY_SCALE;
+      const MU_EARTH = 398600.4418 * (DAY_S * DAY_S) / (AU_KM * AU_KM * AU_KM);
       const EARTH_ORBIT_AU = 1;
       const VENUS_ORBIT_AU = 0.723;
       const SUN_VIS_R = 16; // visual sun radius (CSS px)
@@ -388,9 +386,7 @@
           const e = earthStateAt(t).r;
           const rel = v2.sub(pos, e);
           const d = v2.mag(rel);
-          // extra boost when very close to Earth for visible slingshot effect
-          const closeFactor = d < 0.05 ? 3.0 : 1.0;
-          const earth = v2.mul(rel, -MU_EARTH * closeFactor / (d * d * d + 1e-14));
+          const earth = v2.mul(rel, -MU_EARTH / (d * d * d + 1e-14));
           return v2.add(sun, earth);
         }
         return sun;
