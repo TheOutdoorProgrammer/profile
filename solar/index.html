@@ -552,6 +552,7 @@
       }
 
       function applyPreset(name) {
+        reset(false);
         if (name === 'hitSun') {
           state.launchSpeedMult = 0.3; state.launchAngleDeg = 0; state.retroPct = 0;
         } else if (name === 'orbitSun') {
@@ -565,6 +566,7 @@
         }
         syncControls();
         state.ghost = generateGhost();
+        updateAimLine();
       }
 
       function updatePhysics() {
