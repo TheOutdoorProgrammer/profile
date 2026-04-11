@@ -707,7 +707,7 @@
         }
 
         // aim prediction line (before launch)
-        if (!state.ship && state.showAimLine && state.aimPrediction.length > 1) {
+        if (!state.ship && (state.showAimLine || state.isThrustHeld) && state.aimPrediction.length > 1) {
           ctx.strokeStyle = '#ff66ff';
           ctx.lineWidth = 1.6;
           ctx.setLineDash([6, 4]);
