@@ -225,7 +225,7 @@
             </div>
 
             <div class="row">
-              <label>Auto Venus Assist</label>
+              <label>Toggle Venus</label>
               <button id="autoVenusBtn" class="btn">ON</button>
             </div>
 
@@ -233,7 +233,6 @@
               <button id="launchBtn" class="btn primary">Launch</button>
               <button id="playBtn" class="btn">Pause</button>
               <button id="stepBtn" class="btn">Step</button>
-              <button id="venusAssistBtn" class="btn">Venus Assist</button>
               <button id="aimLineBtn" class="btn">Hide Aim Line</button>
             </div>
             <div class="small">Tip: 0°=toward Sun, 90°=prograde, 180°=away from Sun, 270°=retrograde</div>
@@ -338,7 +337,6 @@
         playBtn: document.getElementById('playBtn'),
         stepBtn: document.getElementById('stepBtn'),
         launchBtn: document.getElementById('launchBtn'),
-        venusAssistBtn: document.getElementById('venusAssistBtn'),
         autoVenusBtn: document.getElementById('autoVenusBtn'),
         aimLineBtn: document.getElementById('aimLineBtn'),
         earthMult: document.getElementById('earthMult'),
@@ -831,7 +829,6 @@
       el.resetBtn.addEventListener('click', () => { reset(true); syncControls(); });
       el.earthGravityBtn.addEventListener('click', () => { state.useEarthGravity = !state.useEarthGravity; syncControls(); state.ghost = generateGhost(); });
       el.unitBtn.addEventListener('click', () => { state.showMph = !state.showMph; syncControls(); updateReadout(); });
-      el.venusAssistBtn.addEventListener('click', venusAssist);
       el.autoVenusBtn.addEventListener('click', () => {
         state.autoVenusAssist = !state.autoVenusAssist;
         state.showVenus = state.autoVenusAssist;
