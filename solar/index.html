@@ -146,6 +146,20 @@
     .small { color: var(--muted); font-size: 0.85rem; }
     .hint { font-size: 0.7rem; opacity: 0.7; margin-top: -4px; }
 
+    .control-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .control-block label {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .control-block .hint {
+      margin-top: 0;
+      margin-bottom: 2px;
+    }
+
     .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
     .chips .btn { font-size: 0.84rem; padding: 8px 10px; }
 
@@ -226,21 +240,29 @@
             <div style="font-size:11px;opacity:0.6;margin-top:4px;">Hold to thrust · 1 sec = 10 min of simulated burn
             </div>
 
-            <div class="row"><label>Earth orbital speed multiplier</label></div>
-            <input id="earthMult" type="range" min="0.5" max="1.5" step="0.01" value="1" />
-            <div class="small hint">Earth's speed around the Sun — <strong id="earthMultVal">1.00×</strong></div>
+            <div class="control-block">
+              <label>Earth orbital speed multiplier</label>
+              <div class="small hint">Earth's speed around the Sun — <strong id="earthMultVal">1.00×</strong></div>
+              <input id="earthMult" type="range" min="0.5" max="1.5" step="0.01" value="1" />
+            </div>
 
-            <div class="row"><label>Launch speed (× Earth escape velocity)</label></div>
-            <input id="launchSpeed" type="range" min="0" max="3" step="0.01" value="1" />
-            <div class="small hint" id="launchSpeedReadout">Speed relative to Earth's escape velocity — <strong id="launchSpeedVal">1.00×</strong> = 11.2 km/s</div>
+            <div class="control-block">
+              <label>Launch speed (× Earth escape velocity)</label>
+              <div class="small hint" id="launchSpeedReadout">Speed relative to Earth's escape velocity — <strong id="launchSpeedVal">1.00×</strong> = 11.2 km/s</div>
+              <input id="launchSpeed" type="range" min="0" max="3" step="0.01" value="1" />
+            </div>
 
-            <div class="row"><label>Launch direction angle</label></div>
-            <input id="launchAngle" type="range" min="0" max="360" step="1" value="245" />
-            <div class="small hint" id="launchAngleDirLabel">Which way you're aiming from Earth — <strong id="launchAngleVal">245°</strong> ← retrograde</div>
+            <div class="control-block">
+              <label>Launch direction angle</label>
+              <div class="small hint" id="launchAngleDirLabel">Which way you're aiming from Earth — <strong id="launchAngleVal">245°</strong> ← retrograde</div>
+              <input id="launchAngle" type="range" min="0" max="360" step="1" value="245" />
+            </div>
 
-            <div class="row"><label>Retro-burn</label></div>
-            <input id="retroBurn" type="range" min="0" max="30" step="0.1" value="0" />
-            <div class="small hint" id="retroBurnHint">Cancel <strong id="retroVal">0.0</strong> km/s of sideways speed to fall toward Sun — <span id="retroBurnReadout">= -0.0 km/s</span></div>
+            <div class="control-block">
+              <label>Retro-burn</label>
+              <div class="small hint" id="retroBurnHint">Cancel <strong id="retroVal">0.0</strong> km/s of sideways speed to fall toward Sun — <span id="retroBurnReadout">= -0.0 km/s</span></div>
+              <input id="retroBurn" type="range" min="0" max="30" step="0.1" value="0" />
+            </div>
 
             <div class="row">
               <label>Earth gravity after launch</label>
