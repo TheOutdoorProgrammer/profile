@@ -830,7 +830,7 @@
 
       el.launchBtn.addEventListener('click', launch);
       el.playBtn.addEventListener('click', () => { state.running = !state.running; syncControls(); });
-      el.stepBtn.addEventListener('click', () => { updatePhysics(); draw(); updateReadout(); });
+      el.stepBtn.addEventListener('click', () => { const wasRunning = state.running; state.running = false; updatePhysics(); draw(); updateReadout(); state.running = wasRunning; });
       el.resetBtn.addEventListener('click', () => { reset(true); syncControls(); });
       el.earthGravityBtn.addEventListener('click', () => { state.useEarthGravity = !state.useEarthGravity; syncControls(); state.ghost = generateGhost(); });
       el.unitBtn.addEventListener('click', () => { state.showMph = !state.showMph; syncControls(); updateReadout(); });
