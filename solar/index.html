@@ -424,9 +424,10 @@
         return { r, v, tang };
       }
 
-      function acceleration(pos, t) {
+      function acceleration(pos, t, skipEarthGravity = false) {
         const r = v2.mag(pos);
         const sun = v2.mul(pos, -MU_SUN / (r * r * r + 1e-12));
+        if (skipEarthGravity) return sun;
         const realGraceActive = state.launchTimeMs !== null && (Date.now() - state.launchTimeMs) < 5000;
         if (state.useEarthGravity === true && !realGraceActive) {
           const e = earthStateAt(t).r;
@@ -518,24 +519,39 @@
         return { r: { ...e.r }, v: vel, dir, relLaunchKmS, cancelKmS: AUdayToKmps(Math.abs(cancel)) };
       }
 
+      function rk4Aim(ship, t, dt) {
+        const p1 = ship.r, v1 = ship.v;
+        const a1 = acceleration(p1, t, true);
+        const p2 = v2.add(p1, v2.mul(v1, dt/2));
+        const v2m = v2.add(v1, v2.mul(a1, dt/2));
+        const a2 = acceleration(p2, t + dt/2, true);
+        const p3 = v2.add(p1, v2.mul(v2m, dt/2));
+        const v3 = v2.add(v1, v2.mul(a2, dt/2));
+        const a3 = acceleration(p3, t + dt/2, true);
+        const p4 = v2.add(p1, v2.mul(v3, dt));
+        const v4 = v2.add(v1, v2.mul(a3, dt));
+        const a4 = acceleration(p4, t + dt, true);
+        const p = v2.add(p1, v2.mul(v2.add(v2.add(v1, v2.mul(v2m,2)), v2.add(v2.mul(v3,2), v4)), dt/6));
+        const v = v2.add(v1, v2.mul(v2.add(v2.add(a1, v2.mul(a2,2)), v2.add(v2.mul(a3,2), a4)), dt/6));
+        return { r: p, v };
+      }
+
       function computeAimPrediction() {
         const savedLaunchTDays = state.launchTDays;
-        const savedLaunchTimeMs = state.launchTimeMs;
         state.launchTDays = state.tDays;
-        state.launchTimeMs = Date.now();
         try {
         const ls = computeLaunchState();
         let s = { r: ls.r, v: ls.v };
         let t = state.tDays;
         const pts = [];
         for (let i = 0; i < 600; i++) {
-          s = rk4(s, t, 0.5);
+          s = rk4Aim(s, t, 0.5);
           t += 0.5;
           if (i % 3 === 0) pts.push({ ...s.r });
           if (v2.mag(s.r) < SUN_COLLIDE_R || v2.mag(s.r) > 3.0) break;
         }
         return pts;
-        } finally { state.launchTDays = savedLaunchTDays; state.launchTimeMs = savedLaunchTimeMs; }
+        } finally { state.launchTDays = savedLaunchTDays; }
       }
 
       function launch() {
