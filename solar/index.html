@@ -572,9 +572,11 @@
       function draw() {
         const w = el.canvas.width, h = el.canvas.height;
         ctx.clearRect(0, 0, w, h);
-        const cx = w / 2, cy = h / 2;
-        // Square canvas → cx === cy → orbit ring fills the view
-        const scale = Math.min(w, h) * 0.43;
+        // Use CSS pixel dimensions (not device pixels) since ctx has dpr transform
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const cssW = w / dpr, cssH = h / dpr;
+        const cx = cssW / 2, cy = cssH / 2;
+        const scale = Math.min(cssW, cssH) * 0.43;
         const toPx = (p) => ({ x: cx + p.x * scale, y: cy + p.y * scale });
 
         // Orbit guide rings
