@@ -389,7 +389,7 @@
       const ctx = el.canvas.getContext('2d');
 
       function fmtSpeed(kms) {
-        return state.showMph ? `${(kms * 2.23694).toFixed(1)} mph` : `${kms.toFixed(2)} km/s`;
+        return state.showMph ? `${(kms * 2236.94).toFixed(0)} mph` : `${kms.toFixed(2)} km/s`;
       }
       function kmpsToAUday(v) { return v * DAY_S / AU_KM; }
       function AUdayToKmps(v) { return v * AU_KM / DAY_S; }
