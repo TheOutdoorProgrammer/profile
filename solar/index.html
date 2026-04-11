@@ -316,6 +316,7 @@
         usedVenusAssists: 0,
         score: null,
         showAimLine: true,
+        isThrustHeld: false,
         showVenus: true,
         autoVenusAssist: true,
         venusAssistFired: false,
@@ -706,7 +707,7 @@
         }
 
         // aim prediction line (before launch)
-        if (!state.ship && state.showAimLine && state.aimPrediction.length > 1) {
+        if (!state.ship && (state.showAimLine || state.isThrustHeld) && state.aimPrediction.length > 1) {
           ctx.strokeStyle = '#ff66ff';
           ctx.lineWidth = 1.6;
           ctx.setLineDash([6, 4]);
@@ -959,10 +960,10 @@
           applyFuel(dvKmS);
         }
       }
-      function thrustOn() { state.thrusting = true; state.thrustStartMs = Date.now(); syncControls(); }
+      function thrustOn() { state.thrusting = true; state.isThrustHeld = true; state.thrustStartMs = Date.now(); syncControls(); }
       function thrustOff() {
         // Thrust is now applied incrementally per-frame, no batch impulse on release
-        state.thrusting = false; state.thrustStartMs = null; syncControls();
+        state.thrusting = false; state.isThrustHeld = false; state.thrustStartMs = null; syncControls();
       }
       el.thrusterBtn.addEventListener('mousedown', thrustOn);
       el.thrusterBtn.addEventListener('touchstart', (e) => { e.preventDefault(); thrustOn(); });
@@ -970,10 +971,10 @@
       el.thrusterBtn.addEventListener('mouseleave', thrustOff);
       el.thrusterBtn.addEventListener('touchend', thrustOff);
       // Retro thruster button
-      function retroOn() { state.retroThrusting = true; state.retroThrustStartMs = Date.now(); syncControls(); }
+      function retroOn() { state.retroThrusting = true; state.isThrustHeld = true; state.retroThrustStartMs = Date.now(); syncControls(); }
       function retroOff() {
         // Thrust is now applied incrementally per-frame, no batch impulse on release
-        state.retroThrusting = false; state.retroThrustStartMs = null; syncControls();
+        state.retroThrusting = false; state.isThrustHeld = false; state.retroThrustStartMs = null; syncControls();
       }
       el.retroThrusterBtn.addEventListener('mousedown', retroOn);
       el.retroThrusterBtn.addEventListener('touchstart', (e) => { e.preventDefault(); retroOn(); });
