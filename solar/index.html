@@ -246,19 +246,12 @@
           </div>
         </details>
 
-        <details class="panel" open>
-          <summary>Readout</summary>
-          <div class="content">
-            <div class="stats">
-              <div class="stat"><div class="small">Earth orbital speed</div><div id="earthSpeedOut">29.78 km/s</div></div>
-              <div class="stat"><div class="small">Spacecraft speed (Sun frame)</div><div id="shipSpeedOut">—</div></div>
-              <div class="stat"><div class="small">Tangential component</div><div id="tanOut">—</div></div>
-              <div class="stat"><div class="small">Radial component</div><div id="radOut">—</div></div>
-              <div class="stat"><div class="small">Perihelion estimate</div><div id="periOut">—</div></div>
-              <div class="stat"><div class="small">Status</div><div id="statusOut" class="status ORBITING">ORBITING</div></div>
-            </div>
-          </div>
-        </details>
+        <!-- Readout now rendered on canvas -->
+        <div style="display:none">
+          <span id="earthSpeedOut"></span><span id="shipSpeedOut"></span>
+          <span id="tanOut"></span><span id="radOut"></span>
+          <span id="periOut"></span><span id="statusOut"></span>
+        </div>
 
         <details class="panel" open>
           <summary>Explanation</summary>
@@ -756,6 +749,44 @@
         ctx.fillStyle = 'rgba(255,255,255,.8)';
         ctx.font = '12px sans-serif';
         ctx.fillText(`Day ${state.tDays.toFixed(1)}`, 12, 18);
+
+        // --- Canvas overlay readouts ---
+        ctx.font = '11px sans-serif';
+        ctx.fillStyle = 'rgba(200,210,255,0.75)';
+        const earthSpeed = BASE_EARTH_SPEED * state.earthMult;
+        let leftY = 34;
+        const lx = 12, lineH = 15;
+        ctx.fillText(`Earth orbital: ${earthSpeed.toFixed(2)} km/s`, lx, leftY); leftY += lineH;
+        if (state.ship) {
+          const rhat = v2.norm(state.ship.r);
+          const that = v2.norm(v2.perp(rhat));
+          const vrC = v2.dot(state.ship.v, rhat);
+          const vtC = v2.dot(state.ship.v, that);
+          const speedC = AUdayToKmps(v2.mag(state.ship.v));
+          ctx.fillText(`Ship speed: ${fmtSpeed(speedC)}`, lx, leftY); leftY += lineH;
+          ctx.fillText(`Tangential: ${fmtSpeed(AUdayToKmps(vtC))}`, lx, leftY); leftY += lineH;
+          ctx.fillText(`Radial: ${fmtSpeed(Math.abs(AUdayToKmps(vrC)))}${vrC < 0 ? ' in' : ' out'}`, lx, leftY);
+        } else {
+          ctx.fillText('Ship speed: —', lx, leftY); leftY += lineH;
+          ctx.fillText('Tangential: —', lx, leftY); leftY += lineH;
+          ctx.fillText('Radial: —', lx, leftY);
+        }
+        // Top-right readouts
+        ctx.textAlign = 'right';
+        const rx = cssW - 12;
+        let rightY = 18;
+        if (state.ship) {
+          const periC = perihelionEstimate(state.ship);
+          const periTxt = periC.escaping ? 'Unbound (escaping)' : `${periC.q.toFixed(3)} AU`;
+          ctx.fillText(`Perihelion: ${periTxt}`, rx, rightY); rightY += lineH;
+        } else {
+          ctx.fillText('Perihelion: —', rx, rightY); rightY += lineH;
+        }
+        const statusColors = { ORBITING: '#62d48f', ESCAPING: '#ffd166', COLLIDING: '#ff6b6b', 'NEAR MISS': '#ffd166' };
+        ctx.fillStyle = statusColors[state.status] || 'rgba(200,210,255,0.75)';
+        ctx.fillText(`Status: ${state.status}`, rx, rightY);
+        ctx.textAlign = 'left';
+        ctx.fillStyle = 'rgba(200,210,255,0.75)';
       }
 
       function updateReadout() {
