@@ -773,6 +773,9 @@
         }
         // Distance readouts
         leftY += 4;
+        ctx.font = 'italic 9px sans-serif';
+        ctx.fillStyle = 'rgba(180,190,220,0.4)';
+        ctx.fillText('distances:', lx, leftY); leftY += lineH;
         ctx.font = '10px sans-serif';
         ctx.fillStyle = 'rgba(180,190,220,0.6)';
         if (state.ship) {
