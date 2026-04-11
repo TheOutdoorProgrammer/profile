@@ -198,7 +198,14 @@
 
     <div class="two-col">
       <div>
-        <div class="canvas-wrap panel">
+        <div class="fuel-bar-wrap" style="background:var(--panel);border:1px solid var(--border);border-radius:12px 12px 0 0;padding:6px 10px 4px;margin:8px 0 0;">
+          <div class="small" style="display:flex;justify-content:space-between;">
+            <span>Fuel: <span id="fuelLabel">35.0 km/s left</span></span>
+            <span id="scoreOut">Score: —</span>
+          </div>
+          <div class="fuel" style="margin-top:4px;"><span id="fuelBar" style="width:100%"></span></div>
+        </div>
+        <div class="canvas-wrap panel" style="border-radius:0 0 14px 14px;margin-top:0;">
           <canvas id="sim" width="900" height="650" aria-label="Orbital simulation"></canvas>
         </div>
       </div>
@@ -268,9 +275,7 @@
         <details class="panel" open>
           <summary>Quick Presets</summary>
           <div class="content">
-            <div class="small">Fuel budget (Δv): <span id="fuelLabel">35.0 km/s left</span></div>
-            <div class="fuel"><span id="fuelBar" style="width:100%"></span></div>
-            <div class="small" style="margin-top:8px;">Pick a scenario to set the sliders, then hit Launch.</div>
+            <div class="small">Pick a scenario to set the sliders, then hit Launch.</div>
             <div class="chips">
               <button class="btn preset" data-preset="hitSun">☀️ Hit the Sun</button>
               <button class="btn preset" data-preset="orbitSun">🪐 Orbit Sun</button>
@@ -278,7 +283,7 @@
               <button class="btn preset" data-preset="slowDown">🔻 Slow Down</button>
               <button class="btn preset" data-preset="return">🔄 Return Trajectory</button>
             </div>
-            <div class="small" id="scoreOut" style="margin-top:8px;">Score: —</div>
+
           </div>
         </details>
       </div>
