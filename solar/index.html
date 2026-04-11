@@ -233,12 +233,24 @@
               <button id="launchBtn" class="btn primary">Launch</button>
               <button id="playBtn" class="btn">Pause</button>
               <button id="thrusterBtn" class="btn">Thrusters</button>
-              <button id="retroThrusterBtn" class="btn">Retro Thrusters</button>
-              <button id="unlimitedFuelBtn" class="btn" style="margin-left:8px;">Unlimited Fuel OFF</button>
-              <button id="aimLineBtn" class="btn" style="margin-left:8px;">Hide Aim Line</button>
+              <button id="retroThrusterBtn" class="btn">Brake</button>
+              <button id="unlimitedFuelBtn" class="btn" style="font-size:0.8rem;opacity:0.7;border-style:dashed;">Unlimited Fuel OFF</button>
+              <button id="aimLineBtn" class="btn" style="font-size:0.8rem;opacity:0.7;border-style:dashed;">Hide Aim Line</button>
             </div>
             <div style="font-size:11px;opacity:0.6;margin-top:4px;">Hold to thrust · 1 sec = 10 min of simulated burn
             </div>
+
+            <div class="row">
+              <label>Earth gravity after launch</label>
+              <button id="earthGravityBtn" class="btn">ON</button>
+            </div>
+            <div class="small hint">Include Earth's pull after you leave</div>
+
+            <div class="row">
+              <label>Toggle Venus</label>
+              <button id="autoVenusBtn" class="btn">ON</button>
+            </div>
+            <div class="small hint">Show/hide Venus from simulation</div>
 
             <div class="control-block">
               <label>Earth orbital speed multiplier</label>
@@ -254,27 +266,15 @@
 
             <div class="control-block">
               <label>Launch direction angle</label>
-              <div class="small hint" id="launchAngleDirLabel">Which way you're aiming from Earth — <strong id="launchAngleVal">245°</strong> ← retrograde</div>
+              <div class="small hint" id="launchAngleDirLabel">Which way you're aiming from Earth — <strong id="launchAngleVal">245°</strong> ← retrograde<br/>Tip: 0°=toward Sun, 90°=prograde, 180°=away from Sun, 270°=retrograde</div>
               <input id="launchAngle" type="range" min="0" max="360" step="1" value="245" />
             </div>
 
             <div class="control-block">
               <label>Retro-burn</label>
-              <div class="small hint" id="retroBurnHint">Cancel <strong id="retroVal">0.0</strong> km/s of sideways speed to fall toward Sun — <span id="retroBurnReadout">= -0.0 km/s</span></div>
+              <div class="small hint" id="retroBurnHint">Launch brake: cancel <strong id="retroVal">0.0</strong> km/s of sideways speed — <span id="retroBurnReadout">= -0.0 km/s</span></div>
               <input id="retroBurn" type="range" min="0" max="30" step="0.1" value="0" />
             </div>
-
-            <div class="row">
-              <label>Earth gravity after launch</label>
-              <button id="earthGravityBtn" class="btn">ON</button>
-            </div>
-            <div class="small hint">Include Earth's pull after you leave</div>
-
-            <div class="row">
-              <label>Toggle Venus</label>
-              <button id="autoVenusBtn" class="btn">ON</button>
-            </div>
-            <div class="small">Tip: 0°=toward Sun, 90°=prograde, 180°=away from Sun, 270°=retrograde</div>
           </div>
         </details>
 
@@ -934,11 +934,11 @@
         el.retroThrusterBtn.disabled = noFuel;
         el.retroThrusterBtn.style.opacity = noFuel ? '0.4' : '1';
         if (state.retroThrusting && !noFuel) {
-          el.retroThrusterBtn.textContent = 'Retro ON';
+          el.retroThrusterBtn.textContent = 'Brake ON';
           el.retroThrusterBtn.style.background = 'var(--bad)';
           el.retroThrusterBtn.style.color = '#fff';
         } else {
-          el.retroThrusterBtn.textContent = 'Retro Thrusters';
+          el.retroThrusterBtn.textContent = 'Brake';
           el.retroThrusterBtn.style.background = '';
           el.retroThrusterBtn.style.color = '';
         }
