@@ -349,6 +349,7 @@
         retroThrusting: false,
         thrustStartMs: null,
         launchTDays: null,
+        launchTimeMs: null,
         retroThrustStartMs: null,
         lastFrameMs: null,
       };
@@ -426,7 +427,8 @@
       function acceleration(pos, t) {
         const r = v2.mag(pos);
         const sun = v2.mul(pos, -MU_SUN / (r * r * r + 1e-12));
-        if (state.useEarthGravity === true) {
+        const realGraceActive = state.launchTimeMs !== null && (Date.now() - state.launchTimeMs) < 5000;
+        if (state.useEarthGravity === true && !realGraceActive) {
           const e = earthStateAt(t).r;
           const rel = v2.sub(pos, e);
           const d = v2.mag(rel);
@@ -518,7 +520,9 @@
 
       function computeAimPrediction() {
         const savedLaunchTDays = state.launchTDays;
+        const savedLaunchTimeMs = state.launchTimeMs;
         state.launchTDays = state.tDays;
+        state.launchTimeMs = Date.now();
         try {
         const ls = computeLaunchState();
         let s = { r: ls.r, v: ls.v };
@@ -531,7 +535,7 @@
           if (v2.mag(s.r) < SUN_COLLIDE_R || v2.mag(s.r) > 3.0) break;
         }
         return pts;
-        } finally { state.launchTDays = savedLaunchTDays; }
+        } finally { state.launchTDays = savedLaunchTDays; state.launchTimeMs = savedLaunchTimeMs; }
       }
 
       function launch() {
@@ -550,6 +554,7 @@
         state.launchArrow = { pos: { ...ls.r }, vel: { ...ls.v } };
         state.launchArrowFrames = 90;
         state.launchTDays = state.tDays;
+        state.launchTimeMs = Date.now();
       }
 
       function venusAssist() {
