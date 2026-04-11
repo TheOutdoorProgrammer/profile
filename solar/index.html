@@ -265,20 +265,7 @@
           </div>
         </details>
 
-        <details class="panel" open>
-          <summary>Quick Presets</summary>
-          <div class="content">
-            <div class="small">Pick a scenario to set the sliders, then hit Launch.</div>
-            <div class="chips">
-              <button class="btn preset" data-preset="hitSun">☀️ Hit the Sun</button>
-              <button class="btn preset" data-preset="orbitSun">🪐 Orbit Sun</button>
-              <button class="btn preset" data-preset="escape">🚀 Escape Solar System</button>
-              <button class="btn preset" data-preset="slowDown">🔻 Slow Down</button>
-              <button class="btn preset" data-preset="return">🔄 Return Trajectory</button>
-            </div>
 
-          </div>
-        </details>
       </div>
     </div>
   </div>
@@ -484,11 +471,11 @@
         let s = { r: ls.r, v: ls.v };
         let t = state.tDays;
         const pts = [];
-        for (let i = 0; i < 180; i++) {
-          s = rk4(s, t, 0.35);
-          t += 0.35;
-          if (i % 2 === 0) pts.push({ ...s.r });
-          if (v2.mag(s.r) < SUN_COLLIDE_R || v2.mag(s.r) > 2.5) break;
+        for (let i = 0; i < 600; i++) {
+          s = rk4(s, t, 0.5);
+          t += 0.5;
+          if (i % 3 === 0) pts.push({ ...s.r });
+          if (v2.mag(s.r) < SUN_COLLIDE_R || v2.mag(s.r) > 3.0) break;
         }
         return pts;
       }
@@ -556,23 +543,7 @@
         }
       }
 
-      function applyPreset(name) {
-        reset(false);
-        if (name === 'hitSun') {
-          state.launchSpeedMult = 0.3; state.launchAngleDeg = 0; state.retroPct = 0;
-        } else if (name === 'orbitSun') {
-          state.launchSpeedMult = 1.0; state.launchAngleDeg = 90; state.retroPct = 0;
-        } else if (name === 'escape') {
-          state.launchSpeedMult = 2.5; state.launchAngleDeg = 180; state.retroPct = 0;
-        } else if (name === 'slowDown') {
-          state.launchSpeedMult = 1.0; state.launchAngleDeg = 270; state.retroPct = 50;
-        } else if (name === 'return') {
-          state.launchSpeedMult = 0.8; state.launchAngleDeg = 180; state.retroPct = 30;
-        }
-        syncControls();
-        state.ghost = generateGhost();
-        updateAimLine();
-      }
+
 
       function updatePhysics() {
         if (!state.running) return;
@@ -929,9 +900,7 @@
       });
       el.aimLineBtn.addEventListener('click', () => { state.showAimLine = !state.showAimLine; el.aimLineBtn.textContent = state.showAimLine ? 'Hide Aim Line' : 'Show Aim Line'; });
 
-      document.querySelectorAll('.preset').forEach(btn => {
-        btn.addEventListener('click', () => applyPreset(btn.dataset.preset));
-      });
+
 
       window.addEventListener('resize', resizeCanvas);
 
