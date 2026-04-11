@@ -32,7 +32,9 @@ I couldn't let this go. I fired up my editor and leaned on some AI to help me qu
 
 The result is a single HTML file canvas app. I built it mobile-first because I figured I would want to mess with it on my phone later. The physics engine uses 2D Newtonian mechanics with an RK4 integrator to keep the orbits stable over time. I hardcoded the real orbital speeds into the system. Earth gets 29.78 km/s. Venus sits closer at 35 km/s. 
 
-You can play with it live right now at [theoutdoorprogrammer.com/solar/](https://theoutdoorprogrammer.com/solar/). You can launch probes, burn fuel, try retrograde braking, or set up your own Venus gravity assists. 
+You can play with it live right now at [theoutdoorprogrammer.com/solar/](https://theoutdoorprogrammer.com/solar/).
+
+![Solar escape sim screenshot](/assets/images/blogposts/2026-04-11-hitting-the-sun-sim.png) You can launch probes, burn fuel, try retrograde braking, or set up your own Venus gravity assists. 
 
 Building it humbled me quickly. I ran into two bugs that made me question if I should even be allowed near a keyboard. The first was a nasty race condition. The prediction logic was computing the entire ghost trajectory of the probe before launchTimeMs was even set in the state. The aim line was practically a random number generator on the first frame. 
 
