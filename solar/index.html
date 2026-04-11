@@ -217,7 +217,6 @@
             <div style="display:flex;gap:8px;flex-wrap:wrap;">
               <button id="launchBtn" class="btn primary">Launch</button>
               <button id="playBtn" class="btn">Pause</button>
-              <button id="stepBtn" class="btn">Step</button>
               <button id="aimLineBtn" class="btn">Hide Aim Line</button>
             </div>
 
@@ -332,7 +331,6 @@
         resetBtn: document.getElementById('resetBtn'),
         earthGravityBtn: document.getElementById('earthGravityBtn'),
         playBtn: document.getElementById('playBtn'),
-        stepBtn: document.getElementById('stepBtn'),
         launchBtn: document.getElementById('launchBtn'),
         autoVenusBtn: document.getElementById('autoVenusBtn'),
         aimLineBtn: document.getElementById('aimLineBtn'),
@@ -881,7 +879,6 @@
 
       el.launchBtn.addEventListener('click', launch);
       el.playBtn.addEventListener('click', () => { state.running = !state.running; syncControls(); });
-      el.stepBtn.addEventListener('click', () => { const wasRunning = state.running; state.running = false; updatePhysics(); draw(); updateReadout(); state.running = wasRunning; });
       el.resetBtn.addEventListener('click', () => { reset(true); syncControls(); });
       el.earthGravityBtn.addEventListener('click', () => { state.useEarthGravity = !state.useEarthGravity; syncControls(); state.ghost = generateGhost(); });
       el.unitBtn.addEventListener('click', () => { state.showMph = !state.showMph; syncControls(); updateReadout(); });
