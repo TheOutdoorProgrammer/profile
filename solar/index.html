@@ -229,6 +229,7 @@
               <button id="playBtn" class="btn">Pause</button>
               <button id="stepBtn" class="btn">Step</button>
               <button id="venusAssistBtn" class="btn">Venus Assist</button>
+              <button id="aimLineBtn" class="btn">Hide Aim Line</button>
             </div>
             <div class="small">Tip: Angle 180° points toward the Sun from Earth.</div>
           </div>
@@ -315,6 +316,10 @@
         fuelLeft: 35,
         usedVenusAssists: 0,
         score: null,
+        showAimLine: true,
+        aimPrediction: [],
+        launchArrow: null,
+        launchArrowFrames: 0,
       };
 
       const el = {
@@ -326,6 +331,7 @@
         stepBtn: document.getElementById('stepBtn'),
         launchBtn: document.getElementById('launchBtn'),
         venusAssistBtn: document.getElementById('venusAssistBtn'),
+        aimLineBtn: document.getElementById('aimLineBtn'),
         earthMult: document.getElementById('earthMult'),
         launchSpeed: document.getElementById('launchSpeed'),
         launchAngle: document.getElementById('launchAngle'),
@@ -446,28 +452,51 @@
         state.fuelLeft = Math.max(0, state.fuelLeft - Math.max(0, dvKmS));
       }
 
-      function launch() {
+      function computeLaunchState() {
         const e = earthStateAt(state.tDays);
         const radialIn = v2.mul(v2.norm(e.r), -1);
         const tang = v2.norm(v2.perp(e.r));
         const theta = (state.launchAngleDeg * Math.PI) / 180;
         const dir = v2.norm(v2.add(v2.mul(radialIn, Math.cos(theta - Math.PI)), v2.mul(tang, Math.sin(theta - Math.PI))));
         const relLaunchKmS = ESCAPE_EARTH_SPEED * state.launchSpeedMult;
-        let v = v2.add(e.v, v2.mul(dir, kmpsToAUday(relLaunchKmS)));
+        let vel = v2.add(e.v, v2.mul(dir, kmpsToAUday(relLaunchKmS)));
 
-        const tanComp = v2.dot(v, tang);
+        const tanComp = v2.dot(vel, tang);
         const cancel = tanComp * (state.retroPct / 100);
         if (cancel > 0) {
-          v = v2.sub(v, v2.mul(tang, cancel));
-          applyFuel(AUdayToKmps(Math.abs(cancel)));
+          vel = v2.sub(vel, v2.mul(tang, cancel));
         }
-        applyFuel(relLaunchKmS * 0.2);
+        return { r: { ...e.r }, v: vel, dir, relLaunchKmS, cancelKmS: cancel > 0 ? AUdayToKmps(Math.abs(cancel)) : 0 };
+      }
 
-        state.ship = { r: { ...e.r }, v };
+      function computeAimPrediction() {
+        const ls = computeLaunchState();
+        let s = { r: ls.r, v: ls.v };
+        let t = state.tDays;
+        const pts = [];
+        for (let i = 0; i < 180; i++) {
+          s = rk4(s, t, 0.35);
+          t += 0.35;
+          if (i % 2 === 0) pts.push({ ...s.r });
+          if (v2.mag(s.r) < SUN_COLLIDE_R || v2.mag(s.r) > 2.5) break;
+        }
+        return pts;
+      }
+
+      function launch() {
+        const ls = computeLaunchState();
+        applyFuel(ls.cancelKmS);
+        applyFuel(ls.relLaunchKmS * 0.2);
+
+        state.ship = { r: ls.r, v: ls.v };
         state.trail = [];
-        state.minR = v2.mag(e.r);
+        state.minR = v2.mag(ls.r);
         state.ghost = generateGhost();
         state.score = null;
+        state.aimPrediction = [];
+        // Store launch arrow info
+        state.launchArrow = { pos: { ...ls.r }, vel: { ...ls.v } };
+        state.launchArrowFrames = 90;
       }
 
       function venusAssist() {
@@ -504,6 +533,9 @@
         state.trail = [];
         state.ghost = [];
         state.minR = Infinity;
+        state.launchArrow = null;
+        state.launchArrowFrames = 0;
+        state.aimPrediction = [];
         setStatus('ORBITING');
         if (full) {
           state.fuelLeft = state.fuelBudget;
@@ -618,6 +650,24 @@
         // radial direction from ship/earth toward sun
         drawArrow(ep, v2.mul(v2.norm(v2.mul(earth.r,-1)), 42), getComputedStyle(document.documentElement).getPropertyValue('--radial'), 1, 'radial in');
 
+        // aim prediction line (before launch)
+        if (!state.ship && state.showAimLine && state.aimPrediction.length > 1) {
+          ctx.strokeStyle = '#ff66ff';
+          ctx.lineWidth = 1.6;
+          ctx.setLineDash([6, 4]);
+          ctx.beginPath();
+          state.aimPrediction.forEach((p, i) => { const pp = toPx(p); if (i === 0) ctx.moveTo(pp.x, pp.y); else ctx.lineTo(pp.x, pp.y); });
+          ctx.stroke();
+          ctx.setLineDash([]);
+          // label
+          if (state.aimPrediction.length > 10) {
+            const lp = toPx(state.aimPrediction[Math.min(20, state.aimPrediction.length - 1)]);
+            ctx.fillStyle = '#ff66ff';
+            ctx.font = '11px sans-serif';
+            ctx.fillText('aim line', lp.x + 6, lp.y - 6);
+          }
+        }
+
         // ghost
         if (state.ghost.length > 1) {
           ctx.strokeStyle = 'rgba(255,255,255,0.25)';
@@ -642,6 +692,14 @@
           const sp = toPx(state.ship.r);
           ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--ship');
           ctx.beginPath(); ctx.arc(sp.x, sp.y, 4.5, 0, Math.PI * 2); ctx.fill();
+
+          // Launch direction arrow (fades out)
+          if (state.launchArrow && state.launchArrowFrames > 0) {
+            const alpha = Math.min(1, state.launchArrowFrames / 30);
+            const launchSpeed = AUdayToKmps(v2.mag(state.launchArrow.vel));
+            drawArrow(sp, v2.mul(state.launchArrow.vel, 800), `rgba(255,200,80,${alpha})`, 1, state.launchArrowFrames > 15 ? `${launchSpeed.toFixed(1)} km/s` : '');
+            if (state.running) state.launchArrowFrames--;
+          }
 
           drawArrow(sp, v2.mul(state.ship.v, 800), 'white', 1, 'v_ship');
           const sTang = v2.norm(v2.perp(state.ship.r));
@@ -719,10 +777,11 @@
       }
 
       // Events
-      el.earthMult.addEventListener('input', e => { state.earthMult = +e.target.value; syncControls(); state.ghost = generateGhost(); });
-      el.launchSpeed.addEventListener('input', e => { state.launchSpeedMult = +e.target.value; syncControls(); state.ghost = generateGhost(); });
-      el.launchAngle.addEventListener('input', e => { state.launchAngleDeg = +e.target.value; syncControls(); state.ghost = generateGhost(); });
-      el.retroBurn.addEventListener('input', e => { state.retroPct = +e.target.value; syncControls(); state.ghost = generateGhost(); });
+      function updateAimLine() { if (!state.ship) state.aimPrediction = computeAimPrediction(); }
+      el.earthMult.addEventListener('input', e => { state.earthMult = +e.target.value; syncControls(); state.ghost = generateGhost(); updateAimLine(); });
+      el.launchSpeed.addEventListener('input', e => { state.launchSpeedMult = +e.target.value; syncControls(); state.ghost = generateGhost(); updateAimLine(); });
+      el.launchAngle.addEventListener('input', e => { state.launchAngleDeg = +e.target.value; syncControls(); state.ghost = generateGhost(); updateAimLine(); });
+      el.retroBurn.addEventListener('input', e => { state.retroPct = +e.target.value; syncControls(); state.ghost = generateGhost(); updateAimLine(); });
 
       el.launchBtn.addEventListener('click', launch);
       el.playBtn.addEventListener('click', () => { state.running = !state.running; syncControls(); });
@@ -731,6 +790,7 @@
       el.earthGravityBtn.addEventListener('click', () => { state.useEarthGravity = !state.useEarthGravity; syncControls(); state.ghost = generateGhost(); });
       el.unitBtn.addEventListener('click', () => { state.showMph = !state.showMph; syncControls(); updateReadout(); });
       el.venusAssistBtn.addEventListener('click', venusAssist);
+      el.aimLineBtn.addEventListener('click', () => { state.showAimLine = !state.showAimLine; el.aimLineBtn.textContent = state.showAimLine ? 'Hide Aim Line' : 'Show Aim Line'; });
 
       document.querySelectorAll('.preset').forEach(btn => {
         btn.addEventListener('click', () => applyPreset(btn.dataset.preset));
@@ -748,6 +808,7 @@
       syncControls();
       resizeCanvas();
       reset(true);
+      state.aimPrediction = computeAimPrediction();
       loop();
     })();
   </script>
