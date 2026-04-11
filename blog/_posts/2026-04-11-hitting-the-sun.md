@@ -36,9 +36,7 @@ You can play with it live right now at [theoutdoorprogrammer.com/solar/](https:/
 
 ![Solar escape sim screenshot](/assets/images/blogposts/2026-04-11-hitting-the-sun-sim.png) You can launch probes, burn fuel, try retrograde braking, or set up your own Venus gravity assists. 
 
-Building it humbled me quickly. I ran into two bugs that made me question if I should even be allowed near a keyboard. The first was a nasty race condition. The prediction logic was computing the entire ghost trajectory of the probe before launchTimeMs was even set in the state. The aim line was practically a random number generator on the first frame. 
-
-The second bug was a dumb typo in my `fmtSpeed()` function that made the spacecraft appear to crawl through the void at the speed of a riding lawnmower.
+Building it humbled me quickly. There were bugs. A dumb typo in my `fmtSpeed()` function had every speed readout off by a factor of a thousand, making the spacecraft appear to crawl through the void at the speed of a riding lawnmower.
 
 I finally got it working right around 2 AM. The sim proves the math on the screen. You burn retrograde, watch your fuel gauge empty instantly, and you barely dent your orbit. You burn prograde, and your trajectory line shoots off the screen and never comes back.
 
