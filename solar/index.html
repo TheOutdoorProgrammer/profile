@@ -220,8 +220,9 @@
               <button id="playBtn" class="btn">Pause</button>
               <button id="thrusterBtn" class="btn">Thrusters</button>
               <button id="retroThrusterBtn" class="btn">Retro Thrusters</button>
+              <button id="unlimitedFuelBtn" class="btn" style="margin-left:8px;">Unlimited Fuel OFF</button>
             </div>
-            <div style="font-size:11px;opacity:0.6;margin-top:4px;">Hold to thrust · 1 sec = 10 min of simulated burn
+            <div style="font-size:11px;opacity:0.6;margin-top:4px;">Hold to thrust · 1 sec = 10 min of simulated burn · <span id="unlimitedFuelHint" style="opacity:0.5;">No fuel cost while enabled</span>
               <button id="aimLineBtn" class="btn">Hide Aim Line</button>
             </div>
 
@@ -311,6 +312,7 @@
         status: 'ORBITING',
         fuelBudget: 35,
         fuelLeft: 35,
+        unlimitedFuel: false,
         usedVenusAssists: 0,
         score: null,
         showAimLine: true,
@@ -334,6 +336,7 @@
         playBtn: document.getElementById('playBtn'),
         thrusterBtn: document.getElementById('thrusterBtn'),
         retroThrusterBtn: document.getElementById('retroThrusterBtn'),
+        unlimitedFuelBtn: document.getElementById('unlimitedFuelBtn'),
         launchSpeedReadout: document.getElementById('launchSpeedReadout'),
         launchAngleDirLabel: document.getElementById('launchAngleDirLabel'),
         retroBurnReadout: document.getElementById('retroBurnReadout'),
@@ -459,6 +462,7 @@
       }
 
       function applyFuel(dvKmS) {
+        if (state.unlimitedFuel) return;
         state.fuelLeft = Math.max(0, state.fuelLeft - Math.max(0, dvKmS));
       }
 
@@ -877,6 +881,11 @@
           el.thrusterBtn.style.color = '';
         }
         if (noFuel) { state.thrusting = false; state.retroThrusting = false; }
+        // Unlimited fuel button state
+        el.unlimitedFuelBtn.textContent = state.unlimitedFuel ? 'Unlimited Fuel ON' : 'Unlimited Fuel OFF';
+        el.unlimitedFuelBtn.style.background = state.unlimitedFuel ? 'var(--good)' : '';
+        el.unlimitedFuelBtn.style.color = state.unlimitedFuel ? '#000' : '';
+        el.unlimitedFuelBtn.style.opacity = state.unlimitedFuel ? '1' : '0.5';
         // Retro thruster button state
         el.retroThrusterBtn.disabled = noFuel;
         el.retroThrusterBtn.style.opacity = noFuel ? '0.4' : '1';
@@ -953,6 +962,7 @@
       el.retroThrusterBtn.addEventListener('touchend', retroOff);
       el.earthGravityBtn.addEventListener('click', () => { state.useEarthGravity = !state.useEarthGravity; syncControls(); state.ghost = generateGhost(); });
       el.unitBtn.addEventListener('click', () => { state.showMph = !state.showMph; syncControls(); updateReadout(); });
+      el.unlimitedFuelBtn.addEventListener('click', () => { state.unlimitedFuel = !state.unlimitedFuel; syncControls(); });
       el.autoVenusBtn.addEventListener('click', () => {
         state.autoVenusAssist = !state.autoVenusAssist;
         state.showVenus = state.autoVenusAssist;
