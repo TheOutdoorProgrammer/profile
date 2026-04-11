@@ -433,7 +433,7 @@
           let earth = v2.mul(rel, -MU_EARTH / (d * d * d + 1e-14));
           // Proximity boost: make Earth gravity visible within 0.15 AU
           // Skip boost for first 5 seconds after launch so ship can escape cleanly
-          const boostActive = !state.launchTimeMs || (Date.now() - state.launchTimeMs) >= 5000;
+          const boostActive = !state.ship || !state.launchTimeMs || (Date.now() - state.launchTimeMs) >= 5000;
           if (d < 0.15 && boostActive) {
             const boostFactor = 200;
             earth = v2.mul(earth, boostFactor * (0.15 - d) / 0.15 + 1);
@@ -585,6 +585,7 @@
         state.launchArrowFrames = 0;
         state.venusAssistFired = false;
         state.aimPrediction = [];
+        state.launchTimeMs = null;
         setStatus('ORBITING');
         if (full) {
           state.fuelLeft = state.fuelBudget;
