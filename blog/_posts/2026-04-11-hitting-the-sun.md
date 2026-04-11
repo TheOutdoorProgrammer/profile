@@ -8,7 +8,11 @@ icon: "mdi:white-balance-sunny"
 tags: [physics, simulation, space, javascript, ai]
 ---
 
-So I stumbled into this fact a while back and it kicked around in my head until it wouldn't leave: it's harder to hit the Sun than to escape the solar system. Not just a little harder. Like, significantly harder. And the reason is one of those things that's obvious once someone explains it but somehow never clicked for me.
+I was answering a question on [r/askastronomy](https://www.reddit.com/r/askastronomy/s/RPRPtMeeTr) a while back and halfway through typing my reply I realized I didn't actually *feel* the physics — I just understood it abstractly. That annoyed me enough that I built something.
+
+The question was about why you can't just point at the Sun and go. My answer was correct but unsatisfying: there are two extremes, orbiting in a circle versus freefalling in a straight line, and getting from one to the other costs a lot of fuel. That answer is right. It didn't help me picture it.
+
+Here's the thing that kicked around in my head until it wouldn't leave: it's harder to hit the Sun than to escape the solar system. Not just a little harder. Like, significantly harder. And the reason is one of those things that's obvious once someone explains it but somehow never clicked for me.
 
 Earth is moving. Really moving. We're whipping around the Sun at about 29.78 kilometers per second sideways. That's roughly 66,000 miles per hour for anyone still on imperial. When you launch from Earth, you inherit that velocity whether you like it or not. You're already falling around the Sun—you've just learned to ignore it because the floor stays solid under your feet.
 
