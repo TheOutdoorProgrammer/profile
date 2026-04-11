@@ -765,12 +765,30 @@
           const speedC = AUdayToKmps(v2.mag(state.ship.v));
           ctx.fillText(`Ship speed: ${fmtSpeed(speedC)}`, lx, leftY); leftY += lineH;
           ctx.fillText(`Tangential: ${fmtSpeed(AUdayToKmps(vtC))}`, lx, leftY); leftY += lineH;
-          ctx.fillText(`Radial: ${fmtSpeed(Math.abs(AUdayToKmps(vrC)))}${vrC < 0 ? ' in' : ' out'}`, lx, leftY);
+          ctx.fillText(`Radial: ${fmtSpeed(Math.abs(AUdayToKmps(vrC)))}${vrC < 0 ? ' in' : ' out'}`, lx, leftY); leftY += lineH;
         } else {
           ctx.fillText('Ship speed: —', lx, leftY); leftY += lineH;
           ctx.fillText('Tangential: —', lx, leftY); leftY += lineH;
-          ctx.fillText('Radial: —', lx, leftY);
+          ctx.fillText('Radial: —', lx, leftY); leftY += lineH;
         }
+        // Distance readouts
+        leftY += 4;
+        ctx.font = '10px sans-serif';
+        ctx.fillStyle = 'rgba(180,190,220,0.6)';
+        if (state.ship) {
+          const sunDist = v2.mag(state.ship.r);
+          const earthDist = v2.mag(v2.sub(state.ship.r, earthStateAt(state.tDays).r));
+          const venusDist = v2.mag(v2.sub(state.ship.r, venusStateAt(state.tDays).r));
+          ctx.fillText(`Sun: ${sunDist.toFixed(3)} AU (${(sunDist*AU_KM/1e6).toFixed(1)}M km)`, lx, leftY); leftY += lineH;
+          ctx.fillText(`Earth: ${earthDist.toFixed(3)} AU (${(earthDist*AU_KM/1e6).toFixed(1)}M km)`, lx, leftY); leftY += lineH;
+          ctx.fillText(`Venus: ${venusDist.toFixed(3)} AU (${(venusDist*AU_KM/1e6).toFixed(1)}M km)`, lx, leftY);
+        } else {
+          ctx.fillText('Sun: — AU', lx, leftY); leftY += lineH;
+          ctx.fillText('Earth: — AU', lx, leftY); leftY += lineH;
+          ctx.fillText('Venus: — AU', lx, leftY);
+        }
+        ctx.font = '11px sans-serif';
+        ctx.fillStyle = 'rgba(200,210,255,0.75)';
         // Top-right readouts
         ctx.textAlign = 'right';
         const rx = cssW - 12;
