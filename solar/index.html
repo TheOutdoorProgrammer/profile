@@ -231,7 +231,7 @@
               <button id="venusAssistBtn" class="btn">Venus Assist</button>
               <button id="aimLineBtn" class="btn">Hide Aim Line</button>
             </div>
-            <div class="small">Tip: Angle 180° points toward the Sun from Earth.</div>
+            <div class="small">Tip: 0°=toward Sun, 90°=prograde, 180°=away from Sun, 270°=retrograde</div>
           </div>
         </details>
 
@@ -457,7 +457,7 @@
         const radialIn = v2.mul(v2.norm(e.r), -1);
         const tang = v2.norm(v2.perp(e.r));
         const theta = (state.launchAngleDeg * Math.PI) / 180;
-        const dir = v2.norm(v2.add(v2.mul(radialIn, Math.cos(theta - Math.PI)), v2.mul(tang, Math.sin(theta - Math.PI))));
+        const dir = v2.norm(v2.add(v2.mul(radialIn, Math.cos(theta)), v2.mul(tang, Math.sin(theta))));
         const relLaunchKmS = ESCAPE_EARTH_SPEED * state.launchSpeedMult;
         let vel = v2.add(e.v, v2.mul(dir, kmpsToAUday(relLaunchKmS)));
 
@@ -550,11 +550,11 @@
         } else if (name === 'escape') {
           state.launchSpeedMult = 1.0; state.launchAngleDeg = 180; state.retroPct = 0;
         } else if (name === 'straight') {
-          state.launchSpeedMult = 1.2; state.launchAngleDeg = 180; state.retroPct = 0;
+          state.launchSpeedMult = 1.2; state.launchAngleDeg = 0; state.retroPct = 0;
         } else if (name === 'retro') {
-          state.launchSpeedMult = 1.1; state.launchAngleDeg = 220; state.retroPct = 35;
+          state.launchSpeedMult = 1.1; state.launchAngleDeg = 270; state.retroPct = 35;
         } else if (name === 'parker') {
-          state.launchSpeedMult = 0.8; state.launchAngleDeg = 250; state.retroPct = 18;
+          state.launchSpeedMult = 0.8; state.launchAngleDeg = 270; state.retroPct = 18;
         } else if (name === 'zeroTan') {
           state.launchSpeedMult = 0.2; state.launchAngleDeg = 180; state.retroPct = 100;
         }
