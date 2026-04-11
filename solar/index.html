@@ -589,7 +589,6 @@
         state.ship = { r: ls.r, v: ls.v };
         state.trail = [];
         state.minR = v2.mag(ls.r);
-        state.ghost = generateGhost();
         state.score = null;
         state.aimPrediction = [];
         // Store launch arrow info
@@ -597,6 +596,7 @@
         state.launchArrowFrames = 90;
         state.launchTDays = state.tDays;
         state.launchTimeMs = Date.now();
+        state.ghost = generateGhost();
       }
 
       function venusAssist() {
