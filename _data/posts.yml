@@ -1,6 +1,35 @@
 ---
 feed:
 - post:
+    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mk7dsvmgps2a
+    cid: bafyreigwl5aevwzgwmwwyk4f2qrtrpv5sp6if7nrqli7epwf5jgbyfckga
+    author:
+      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
+      handle: theoutdoorprogrammer.com
+      displayName: Joey Stout
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
+      associated:
+        activitySubscription:
+          allowSubscriptions: followers
+      labels: []
+      createdAt: '2024-11-20T19:09:51.653Z'
+    record:
+      "$type": app.bsky.feed.post
+      createdAt: '2026-04-24T01:11:27.076Z'
+      langs:
+      - en
+      text: 'Does AI make anyone else feel existential? I like it, its fascinating
+        and a real leap. But the water, the electricity, the pace its accelerating.
+        And the stuff we cant control: people getting hurt by it, it escaping, every
+        news article is negative. Excited for where its going, but also very worried.'
+    bookmarkCount: 0
+    replyCount: 0
+    repostCount: 0
+    likeCount: 0
+    quoteCount: 0
+    indexedAt: '2026-04-24T01:11:27.348Z'
+    labels: []
+- post:
     uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mjwfoc6ql22o
     cid: bafyreiebb4vfyqpmfkr3vxidhv45jyeuvbia477jsq6kydm4krbvaw7pdm
     author:
@@ -312,30 +341,4 @@ feed:
     quoteCount: 0
     indexedAt: '2026-04-02T20:26:45.457Z'
     labels: []
-- post:
-    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mihrxgpork2t
-    cid: bafyreifcujyjv4xa4is44eyfip6lwm2gejj4g4lfycevnpyli2ai2pnuya
-    author:
-      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-      handle: theoutdoorprogrammer.com
-      displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
-      associated:
-        activitySubscription:
-          allowSubscriptions: followers
-      labels: []
-      createdAt: '2024-11-20T19:09:51.653Z'
-    record:
-      "$type": app.bsky.feed.post
-      createdAt: '2026-04-01T22:55:26.263Z'
-      langs:
-      - en
-      text: Neil would be proud. Buzz is.
-    bookmarkCount: 0
-    replyCount: 0
-    repostCount: 0
-    likeCount: 0
-    quoteCount: 0
-    indexedAt: '2026-04-01T22:55:26.459Z'
-    labels: []
-cursor: '2026-04-01T22:55:26.263Z'
+cursor: '2026-04-02T20:26:45.111Z'
