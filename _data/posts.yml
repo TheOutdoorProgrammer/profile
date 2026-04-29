@@ -1,6 +1,54 @@
 ---
 feed:
 - post:
+    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mkn4ayssik2e
+    cid: bafyreihxelcpjhxlpedqw35em7vv5tr3k2uzbbjdbfzamuyu7i45ydlwn4
+    author:
+      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
+      handle: theoutdoorprogrammer.com
+      displayName: Joey Stout
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
+      associated:
+        activitySubscription:
+          allowSubscriptions: followers
+      labels: []
+      createdAt: '2024-11-20T19:09:51.653Z'
+    record:
+      "$type": app.bsky.feed.post
+      createdAt: '2026-04-29T12:33:26.595Z'
+      embed:
+        "$type": app.bsky.embed.external
+        external:
+          description: ''
+          title: Ghostty Is Leaving GitHub
+          uri: https://mitchellh.com/writing/ghostty-leaving-github
+      facets:
+      - features:
+        - "$type": app.bsky.richtext.facet#link
+          uri: https://mitchellh.com/writing/ghostty-leaving-github
+        index:
+          byteEnd: 48
+          byteStart: 19
+      langs:
+      - en
+      text: |-
+        I def agree here.
+
+        mitchellh.com/writing/ghos...
+    embed:
+      external:
+        uri: https://mitchellh.com/writing/ghostty-leaving-github
+        title: Ghostty Is Leaving GitHub
+        description: ''
+      "$type": app.bsky.embed.external#view
+    bookmarkCount: 0
+    replyCount: 0
+    repostCount: 0
+    likeCount: 0
+    quoteCount: 0
+    indexedAt: '2026-04-29T12:33:26.862Z'
+    labels: []
+- post:
     uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mk7dsvmgps2a
     cid: bafyreigwl5aevwzgwmwwyk4f2qrtrpv5sp6if7nrqli7epwf5jgbyfckga
     author:
@@ -315,30 +363,4 @@ feed:
     quoteCount: 0
     indexedAt: '2026-04-03T20:22:39.251Z'
     labels: []
-- post:
-    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mik24icka22z
-    cid: bafyreiafxbg4ooqal3ygfswep2ukhvmm7x4ctjumqvhk43pmg3gcbeeyii
-    author:
-      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-      handle: theoutdoorprogrammer.com
-      displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
-      associated:
-        activitySubscription:
-          allowSubscriptions: followers
-      labels: []
-      createdAt: '2024-11-20T19:09:51.653Z'
-    record:
-      "$type": app.bsky.feed.post
-      createdAt: '2026-04-02T20:26:45.111Z'
-      langs:
-      - en
-      text: Do you think when Trump fires folks he does it like hes still on The Apprentice?
-    bookmarkCount: 0
-    replyCount: 0
-    repostCount: 0
-    likeCount: 0
-    quoteCount: 0
-    indexedAt: '2026-04-02T20:26:45.457Z'
-    labels: []
-cursor: '2026-04-02T20:26:45.111Z'
+cursor: '2026-04-03T20:22:38.094Z'
