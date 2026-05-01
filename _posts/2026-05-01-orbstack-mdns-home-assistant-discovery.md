@@ -4,6 +4,7 @@ title: "Bridging mDNS Across OrbStack and Your LAN: A Home Assistant Discovery F
 date: 2026-05-01 18:00:00 -0400
 description: "How I got Home Assistant running in Kubernetes on OrbStack to discover Apple TVs, Hue bridges, and other LAN devices by building a bidirectional mDNS reflector with macOS-native tools."
 categories: [homelab, kubernetes]
+tags: [mdns, orbstack, home-assistant, macos, networking]
 icon: "twemoji:house-with-garden"
 ---
 
@@ -13,17 +14,17 @@ Home Assistant's auto-discovery is one of its killer features. Plug in a Hue bri
 
 Then you throw Kubernetes into the mix on OrbStack and everything breaks.
 
-OrbStack creates a virtual bridge network (typically `bridge100` in the `192.168.139.x` range) that's completely isolated from your physical LAN (`192.168.1.x` or `192.168.x.x` depending on your router). Your Mac sits on both networks, but the mDNS multicast that makes zero-config discovery work doesn't cross between them.
+OrbStack creates a virtual bridge network (`bridge100`, with a subnet it assigns dynamically) that's completely isolated from your physical LAN. Your Mac sits on both networks, but mDNS multicast doesn't cross between them.
 
-The result: Home Assistant (running inside an OrbStack pod) can see exactly nothing on the LAN. No Hue bridges. No Apple TVs. No Sonos speakers. Meanwhile, devices on the LAN can't discover HA's API either.
+The result: Home Assistant running inside an OrbStack pod can't see anything on the LAN. No Hue bridge, no Apple TVs, nothing. And devices on the LAN can't discover HA's API either.
 
 ## Why mDNS Is the Culprit
 
-mDNS (Multicast DNS) is the backbone of zero-config device discovery. When an Apple TV wants to advertise itself, it sends a multicast UDP packet to `224.0.0.251:5353`. Any device on the same network segment listening on that address gets the announcement. No DNS server, no configuration — just multicast.
+mDNS (Multicast DNS) is how zero-config device discovery works. When an Apple TV wants to announce itself, it sends a multicast UDP packet to `224.0.0.251:5353`. Anything on the same network segment listening on that address picks it up. No DNS server needed.
 
-The problem is that multicast doesn't route. **224.0.0.251 never leaves the subnet it originated from.** Since OrbStack's virtual network and your physical LAN are separate subnets with a bridge between them (rather than a router, but the effect is the same for multicast), the mDNS packets never make the crossing.
+The catch is that multicast doesn't route. Per RFC 6762, mDNS packets use TTL=1, so **they never leave the L2 broadcast domain they originated from.** OrbStack's virtual network and your physical LAN are separate broadcast domains, so the packets can't cross.
 
-This is a known limitation: OrbStack's `hostNetwork: true` option binds pods to the virtual bridge interface rather than the physical Ethernet interface. There's an open issue ([orbstack/orbstack#1691](https://github.com/orbstack/orbstack/issues/1691)) tracking this exact problem.
+This is a known OrbStack limitation. When you use `hostNetwork: true`, your pods share the network namespace of OrbStack's Linux VM, which presents outward through `bridge100` rather than through your Mac's physical `en0`. There's an open issue ([orbstack/orbstack#1691](https://github.com/orbstack/orbstack/issues/1691)) and a longer-standing feature request ([orbstack/orbstack#342](https://github.com/orbstack/orbstack/issues/342)) tracking this.
 
 ## The Network Topology
 
@@ -32,7 +33,7 @@ Here's what we're working with:
 ```
 ┌─────────────────────────────────┬─────────────────────────────────┐
 │         Physical LAN             │     OrbStack Virtual Network    │
-│    (192.168.1.x / 192.168.x.x)   │       (192.168.139.x)           │
+│    (192.168.1.x / 192.168.x.x)   │     (dynamically assigned)      │
 │                                 │                                 │
 │  🍎 Apple TV                    │                                 │
 │  💡 Hue Bridge                  │     [HA Pod]                    │
@@ -49,56 +50,53 @@ Here's what we're working with:
            networks
 ```
 
-The Mac itself is on both networks. Its `mDNSResponder` process (the macOS mDNS daemon) responds to queries on every interface, which is the key to the solution.
+The Mac itself is on both networks. Its `mDNSResponder` process (the macOS mDNS daemon) responds to queries on every interface. That's what makes this whole thing possible.
 
 ## The Solution: A Bidirectional mDNS Reflector
 
-Since the Mac sits on both networks and its `mDNSResponder` already works across all interfaces, we can use it as a relay. The idea:
+Since the Mac sits on both networks and `mDNSResponder` already works across all interfaces, we can use the Mac as a relay. Here's the approach:
 
 1. Browse for mDNS services on each interface using macOS's built-in `dns-sd` command (no sudo needed)
 2. Detect which services are *only* on the OrbStack side and proxy them to the LAN
 3. Detect which services are *only* on the LAN side and proxy them into OrbStack so HA can discover them
-4. Use `dns-sd -P` to register proxy service records — these get picked up by `mDNSResponder` and become visible on *all* interfaces, including `bridge100`
+4. Use `dns-sd -P` to register proxy service records, which `mDNSResponder` picks up and makes visible on *all* interfaces including `bridge100`
 
-This is bidirectional by design: devices in OrbStack need to advertise to the LAN (e.g. Homebridge), and LAN devices need to be discoverable from within OrbStack (e.g. Hue, Apple TV).
+It's bidirectional by design: OrbStack services need to advertise to the LAN (e.g. Homebridge), and LAN devices need to be discoverable from within OrbStack (e.g. Hue, Apple TV).
 
 ## Key Configuration: Home Assistant Pod
 
-Before the script will help, HA itself needs to be configured to operate correctly in this dual-network environment. Two critical settings in the pod spec:
+Before the script will help, HA itself needs the right pod configuration for this dual-network environment:
 
 ```yaml
 spec:
   template:
     spec:
       hostNetwork: true        # Bind to host's network namespace (bridge100)
-      dnsPolicy: ClusterFirstWithHostNet  # Use host DNS, not cluster DNS
 ```
 
-If you're using Helm, patch the HelmRelease with kubectl:
+If you're using Helm via Flux, add `hostNetwork: true` to your HelmRelease values. Or patch it with kubectl:
 
 ```bash
-# Patch hostNetwork
 kubectl patch helmrelease home-assistant -n home-assistant \
-  --type=merge \
-  -p '{"spec":{"template":{"spec":{"hostNetwork":true}}}}'
-
-# Patch dnsPolicy
-kubectl patch helmrelease home-assistant -n home-assistant \
-  --type=merge \
-  -p '{"spec":{"template":{"spec":{"dnsPolicy":"ClusterFirstWithHostNet"}}}}'
+  --type=json \
+  -p '[{"op": "add", "path": "/spec/values/hostNetwork", "value": true}]'
 ```
 
-**Note:** `hostNetwork: true` causes port conflicts if you have other pods trying to bind the same ports. Home Assistant needs ports `8123` (API) and potentially `4357` (MQTT) — keep those reserved exclusively for HA.
+**Note on dnsPolicy:** Kubernetes docs say that `hostNetwork: true` pods should use `dnsPolicy: ClusterFirstWithHostNet` if they need to resolve cluster service names (like `my-service.my-namespace.svc.cluster.local`). Without it, you fall back to the host's DNS. In my case, HA only talks to LAN devices and doesn't need in-cluster DNS, so I left it at the default. If your HA pod needs to reach other Kubernetes services by name, add `dnsPolicy: ClusterFirstWithHostNet` to the pod spec.
+
+**Note on port conflicts:** `hostNetwork: true` means your pod binds directly to the host's ports. Home Assistant needs port `8123` (API), so make sure nothing else is using it.
 
 ## The Script
 
-The reflector is a Python script that runs as a background process on macOS (no LaunchDaemon or systemd needed — just `launchctl` or `brew services` if you want it managed). It uses `dns-sd -B` to browse services, `dns-sd -L` to look up details, and `dns-sd -P` to register proxy records. No external Python packages required — just the standard library.
+The reflector is a Python script that runs as a background process on macOS. It shells out to `dns-sd -B` to browse services, `dns-sd -L` to look up details, and `dns-sd -P` to register proxy records. No external packages needed, just the standard library.
+
+A quick note on trade-offs: `dns-sd` is a diagnostic tool, and parsing its output is inherently fragile. A more robust approach would be to use [`python-zeroconf`](https://github.com/jstasiak/python-zeroconf) (which is what Home Assistant itself uses under the hood). I went with `dns-sd` here because it works with zero dependencies and leverages macOS's native `mDNSResponder` directly, but if you're building on top of this, `python-zeroconf` is the better long-term choice.
 
 ### How It Works
 
 1. **Service discovery:** Every `CHECK_INTERVAL` seconds, it runs `dns-sd -B _services._dns-sd._udp local.` — the mDNS meta-query that returns *all* service types registered on the network. This means it automatically picks up new device types without hardcoding them.
 
-2. **Interface-aware browsing:** For each service type, it browses and tracks which interface index each instance appeared on. In macOS, interface indices below 20 are typically physical interfaces (en0, en1) and indices 20+ are virtual (bridge100, utun, etc.) — this gives us a reliable way to separate LAN vs. OrbStack services without knowing interface names in advance.
+2. **Interface-aware browsing:** For each service type, it browses and tracks which interface index each instance appeared on. The script uses a rough heuristic: interface indices below 20 are treated as physical (en0, en1) and 20+ as virtual (bridge100, utun, etc.). Fair warning: macOS assigns interface indices based on driver initialization order at boot, so this isn't guaranteed to be stable across machines. You might need to adjust the threshold or, better yet, modify the script to check interface names directly via `networksetup -listallhardwareports`.
 
 3. **Bidirectional proxying:**
    - **OrbStack → LAN:** Services discovered only on high-numbered interfaces (OrbStack side) get registered as `dns-sd -P` records pointing at the Mac's LAN IP. The Mac's `mDNSResponder` then advertises them on the physical LAN.
@@ -564,20 +562,20 @@ launchctl load ~/Library/LaunchAgents/com.user.orbstack-mdns-reflector.plist
 
 After the reflector starts, HA's integration discovery panel will find devices on the physical LAN. A few things to keep in mind:
 
-**Hostname matching:** If you already have device entries in `configuration.yaml` using `.local` hostnames, you'll want to update them to use the `NETWORK_DOMAIN` hostnames (e.g., `apple-tv.home.lan` instead of `apple-tv.local`), or set up a local DNS resolver that handles both. The script translates `.local` to your network domain so the names will be consistent once you configure HA to use the translated names.
+**Hostname matching:** If you have device entries in `configuration.yaml` using `.local` hostnames, you'll want to update them to use `NETWORK_DOMAIN` hostnames instead (e.g. `apple-tv.home.lan` instead of `apple-tv.local`), or set up a local DNS resolver that handles both.
 
-**TXT record preservation:** The script passes along TXT records (used by things like HomeKit compatibility, Hue discovery, etc.) via `dns-sd -P`. Most services should work without additional configuration.
+**TXT records:** The script passes TXT records along via `dns-sd -P`, so things like HomeKit compatibility flags and Hue discovery metadata come through intact. Most services should just work.
 
-**Device persistence:** The reflector re-registers proxy records every `CHECK_INTERVAL` seconds. This is fine for discovery — HA will find devices each time it scans. For long-running operations (like media playback), the connection is direct IP-to-IP once discovery is done, so the reflector isn't in the data path.
+**Persistence:** The proxy records created by `dns-sd -P` only live as long as the process does. The reflector re-registers them every `CHECK_INTERVAL` seconds, which is fine for discovery. Once HA discovers a device and connects, the connection is direct IP-to-IP, so the reflector isn't in the data path.
 
 ## Why Not Just Use `hostNetwork: false`?
 
-You might wonder why we don't just run HA without `hostNetwork: true` and let it live entirely inside OrbStack's network. The problem is that OrbStack's DNS doesn't resolve LAN hostnames. Even if we configured cluster DNS to forward `.lan` queries, mDNS multicast still wouldn't work — the underlying issue is the network isolation, not DNS.
+You might wonder why we don't skip `hostNetwork: true` entirely and let HA live inside OrbStack's regular pod network. The problem is that mDNS multicast still wouldn't work. Even if you configured cluster DNS to forward `.lan` queries, the multicast packets that power discovery can't leave the pod's network namespace.
 
-By keeping `hostNetwork: true` and `dnsPolicy: ClusterFirstWithHostNet`, HA gets the OrbStack IP (for cluster communication) but also inherits the host's full network stack including `mDNSResponder` visibility. The reflector then fills in the gaps that multicast alone can't bridge.
+With `hostNetwork: true`, HA at least shares the OrbStack VM's network namespace and can talk to the Mac's `mDNSResponder`. The reflector handles the rest, proxying LAN device records into the bridge network so HA's zeroconf integration can pick them up.
 
-## Wrapping Up
+## Wrapping up
 
-This approach leans entirely on macOS-native tools — `dns-sd` is the same utility that `discoveryd` and other system services use. No kernel extensions, no sudo, no third-party daemons. The script just sits there, quietly proxying mDNS between the two network segments every 30 seconds.
+The whole thing is about 250 lines of Python, most of it defensive error handling and logging. No kernel extensions, no sudo, no third-party daemons. It just shells out to `dns-sd`, which is the same tool macOS system services use internally.
 
-The whole thing is about 250 lines of Python, most of which is defensive error handling and logging. If OrbStack ever fixes [issue #1691](https://github.com/orbstack/orbstack/issues/1691) so `hostNetwork: true` binds to the physical interface, this script becomes unnecessary. Until then, it bridges the gap.
+If OrbStack ever ships proper macvlan-style bridging ([issue #342](https://github.com/orbstack/orbstack/issues/342)) or fixes [#1691](https://github.com/orbstack/orbstack/issues/1691) so `hostNetwork: true` binds to the physical interface, this script becomes unnecessary. Until then, it gets the job done.
