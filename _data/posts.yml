@@ -1,6 +1,152 @@
 ---
 feed:
 - post:
+    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3ml22pow25k2e
+    cid: bafyreicznnt3wjrjix3ap3oetfk23ydizldyog5hi4ea2jk3z2mjlejm2e
+    author:
+      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
+      handle: theoutdoorprogrammer.com
+      displayName: Joey Stout
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
+      associated:
+        activitySubscription:
+          allowSubscriptions: followers
+      labels: []
+      createdAt: '2024-11-20T19:09:51.653Z'
+    record:
+      "$type": app.bsky.feed.post
+      createdAt: '2026-05-04T16:10:28.647Z'
+      langs:
+      - en
+      reply:
+        parent:
+          cid: bafyreid5qffvvzo5ppzik5eciyrb6vpdnjzo4okodaor7xau6cwvtcrtoa
+          uri: at://did:plc:votoxezmeqpu2rifzmbcaamp/app.bsky.feed.post/3mkyyerk5dc2a
+        root:
+          cid: bafyreihssaim67dabc7yrmqyv3vfp6hfn6i5sschhhzp4b5dn7vkhemlbe
+          uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mkyon325n22x
+      text: "This is hilarious and I see this in my future because I put Shelly relays
+        behind ever single switch in my house so I will probably forget about switches
+        too \U0001F602"
+    bookmarkCount: 0
+    replyCount: 0
+    repostCount: 0
+    likeCount: 0
+    quoteCount: 0
+    indexedAt: '2026-05-04T16:10:28.973Z'
+    labels: []
+  reply:
+    root:
+      uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mkyon325n22x
+      cid: bafyreihssaim67dabc7yrmqyv3vfp6hfn6i5sschhhzp4b5dn7vkhemlbe
+      author:
+        did: did:plc:7e7cnwumaewg7s2ryywfu3qe
+        handle: theoutdoorprogrammer.com
+        displayName: Joey Stout
+        avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
+        associated:
+          activitySubscription:
+            allowSubscriptions: followers
+        labels: []
+        createdAt: '2024-11-20T19:09:51.653Z'
+      record:
+        "$type": app.bsky.feed.post
+        createdAt: '2026-05-04T03:01:36.060Z'
+        langs:
+        - en
+        text: I spent the last like 5 days setting up home assistant and I really
+          hope it was worth it. So far both very happy and very impressed. Spent more
+          money on it than I should in controllers and hubs but it's damn near perfect
+          now.
+      bookmarkCount: 0
+      replyCount: 1
+      repostCount: 0
+      likeCount: 1
+      quoteCount: 0
+      indexedAt: '2026-05-04T03:01:36.366Z'
+      labels: []
+      "$type": app.bsky.feed.defs#postView
+    parent:
+      uri: at://did:plc:votoxezmeqpu2rifzmbcaamp/app.bsky.feed.post/3mkyyerk5dc2a
+      cid: bafyreid5qffvvzo5ppzik5eciyrb6vpdnjzo4okodaor7xau6cwvtcrtoa
+      author:
+        did: did:plc:votoxezmeqpu2rifzmbcaamp
+        handle: extectic.bsky.social
+        displayName: ''
+        avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:votoxezmeqpu2rifzmbcaamp/bafkreiayzu2f4bbsez2hwnt62at3rdv4tjp4ljhages7gynyp27f7kxhuu
+        associated:
+          activitySubscription:
+            allowSubscriptions: followers
+        labels:
+        - src: did:plc:votoxezmeqpu2rifzmbcaamp
+          uri: at://did:plc:votoxezmeqpu2rifzmbcaamp/app.bsky.actor.profile/self
+          cid: bafyreib2lgwny7n3osmg5ly5yzl52odluzp4zoqzlfarbazdnhd6ssaveu
+          val: "!no-unauthenticated"
+          cts: '1970-01-01T00:00:00.000Z'
+        createdAt: '2023-08-20T19:03:48.099Z'
+      record:
+        "$type": app.bsky.feed.post
+        createdAt: '2026-05-04T05:55:55.082Z'
+        langs:
+        - en
+        reply:
+          parent:
+            cid: bafyreihssaim67dabc7yrmqyv3vfp6hfn6i5sschhhzp4b5dn7vkhemlbe
+            uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mkyon325n22x
+          root:
+            cid: bafyreihssaim67dabc7yrmqyv3vfp6hfn6i5sschhhzp4b5dn7vkhemlbe
+            uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mkyon325n22x
+        text: It just becomes part of your life. I rebooted mine yesterday and for
+          a couple minutes it was down; I went to the bathroom and found myself standing
+          in the dark in the hallway, wondering why I was standing in the dark. So
+          I pushed the wall switch - like some pleb.
+      bookmarkCount: 0
+      replyCount: 1
+      repostCount: 0
+      likeCount: 1
+      quoteCount: 0
+      indexedAt: '2026-05-04T05:55:58.265Z'
+      labels: []
+      "$type": app.bsky.feed.defs#postView
+    grandparentAuthor:
+      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
+      handle: theoutdoorprogrammer.com
+      displayName: Joey Stout
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
+      associated:
+        activitySubscription:
+          allowSubscriptions: followers
+      labels: []
+      createdAt: '2024-11-20T19:09:51.653Z'
+- post:
+    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3ml22n67w7s2e
+    cid: bafyreic32jqelzaodkxnlhxhkm2ruo5xaqrdegpauvmaijan2sxkbw462y
+    author:
+      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
+      handle: theoutdoorprogrammer.com
+      displayName: Joey Stout
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
+      associated:
+        activitySubscription:
+          allowSubscriptions: followers
+      labels: []
+      createdAt: '2024-11-20T19:09:51.653Z'
+    record:
+      "$type": app.bsky.feed.post
+      createdAt: '2026-05-04T16:09:04.035Z'
+      langs:
+      - en
+      text: Sickness is so nasty when you think about how its transmitted. Like sickness
+        is terrible to begin with but what do you mean your nose bugers/spit/whatever
+        carried the germ from you to me went into my body???
+    bookmarkCount: 0
+    replyCount: 0
+    repostCount: 0
+    likeCount: 0
+    quoteCount: 0
+    indexedAt: '2026-05-04T16:09:04.459Z'
+    labels: []
+- post:
     uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mkyon325n22x
     cid: bafyreihssaim67dabc7yrmqyv3vfp6hfn6i5sschhhzp4b5dn7vkhemlbe
     author:
@@ -286,56 +432,4 @@ feed:
     quoteCount: 0
     indexedAt: '2026-04-08T01:25:45.871Z'
     labels: []
-- post:
-    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mitxnykkcs22
-    cid: bafyreie4phxovoalodck7zipaa4jbgpalh5vixnrdzxxuuol2bzszekzm4
-    author:
-      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-      handle: theoutdoorprogrammer.com
-      displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
-      associated:
-        activitySubscription:
-          allowSubscriptions: followers
-      labels: []
-      createdAt: '2024-11-20T19:09:51.653Z'
-    record:
-      "$type": app.bsky.feed.post
-      createdAt: '2026-04-06T19:09:28.736Z'
-      langs:
-      - en
-      text: I was officially diagnosed with ADHD this past week lmao explains a lot
-    bookmarkCount: 0
-    replyCount: 0
-    repostCount: 0
-    likeCount: 0
-    quoteCount: 0
-    indexedAt: '2026-04-06T19:09:29.053Z'
-    labels: []
-- post:
-    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mipoi55jvs2c
-    cid: bafyreiamawfn7hjweuy2vjzvtah2gdimykwmlupdw7blq5iprf6d4ksqjy
-    author:
-      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-      handle: theoutdoorprogrammer.com
-      displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
-      associated:
-        activitySubscription:
-          allowSubscriptions: followers
-      labels: []
-      createdAt: '2024-11-20T19:09:51.653Z'
-    record:
-      "$type": app.bsky.feed.post
-      createdAt: '2026-04-05T02:14:29.596Z'
-      langs:
-      - en
-      text: Ed Kemper is still alive? Wow.
-    bookmarkCount: 0
-    replyCount: 0
-    repostCount: 0
-    likeCount: 0
-    quoteCount: 0
-    indexedAt: '2026-04-05T02:14:30.254Z'
-    labels: []
-cursor: '2026-04-05T02:14:29.596Z'
+cursor: '2026-04-08T01:25:45.571Z'
