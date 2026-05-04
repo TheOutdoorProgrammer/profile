@@ -1,6 +1,34 @@
 ---
 feed:
 - post:
+    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mkyon325n22x
+    cid: bafyreihssaim67dabc7yrmqyv3vfp6hfn6i5sschhhzp4b5dn7vkhemlbe
+    author:
+      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
+      handle: theoutdoorprogrammer.com
+      displayName: Joey Stout
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
+      associated:
+        activitySubscription:
+          allowSubscriptions: followers
+      labels: []
+      createdAt: '2024-11-20T19:09:51.653Z'
+    record:
+      "$type": app.bsky.feed.post
+      createdAt: '2026-05-04T03:01:36.060Z'
+      langs:
+      - en
+      text: I spent the last like 5 days setting up home assistant and I really hope
+        it was worth it. So far both very happy and very impressed. Spent more money
+        on it than I should in controllers and hubs but it's damn near perfect now.
+    bookmarkCount: 0
+    replyCount: 0
+    repostCount: 0
+    likeCount: 0
+    quoteCount: 0
+    indexedAt: '2026-05-04T03:01:36.366Z'
+    labels: []
+- post:
     uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mkn4ayssik2e
     cid: bafyreihxelcpjhxlpedqw35em7vv5tr3k2uzbbjdbfzamuyu7i45ydlwn4
     author:
@@ -310,57 +338,4 @@ feed:
     quoteCount: 0
     indexedAt: '2026-04-05T02:14:30.254Z'
     labels: []
-- post:
-    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mimke26uqc2z
-    cid: bafyreigjavbqu3q6mv6bxz4537nivrq23i67wtjynt4lk5w5tnzt5ufzt4
-    author:
-      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-      handle: theoutdoorprogrammer.com
-      displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
-      associated:
-        activitySubscription:
-          allowSubscriptions: followers
-      labels: []
-      createdAt: '2024-11-20T19:09:51.653Z'
-    record:
-      "$type": app.bsky.feed.post
-      createdAt: '2026-04-03T20:22:38.094Z'
-      embed:
-        "$type": app.bsky.embed.external
-        external:
-          description: YouTube video by Joey Stout
-          thumb:
-            "$type": blob
-            ref:
-              "$link": bafkreif6zn6wbnldzrws7cd3xag7ealrzdmxxzzc477p2myl7x2ssidaai
-            mimeType: image/jpeg
-            size: 83657
-          title: 'The Anatomy of a Meltdown: A Deep-Dive into MCP via Selective Sabotage'
-          uri: https://www.youtube.com/watch?v=0LxyoVvqELg
-      facets:
-      - features:
-        - "$type": app.bsky.richtext.facet#link
-          uri: https://www.youtube.com/watch?v=0LxyoVvqELg
-        index:
-          byteEnd: 105
-          byteStart: 74
-      langs:
-      - en
-      text: "My talk at MCP Dev Summit in NY was today. You can see it on youtube
-        \U0001F60A www.youtube.com/watch?v=0Lxy..."
-    embed:
-      external:
-        uri: https://www.youtube.com/watch?v=0LxyoVvqELg
-        title: 'The Anatomy of a Meltdown: A Deep-Dive into MCP via Selective Sabotage'
-        description: YouTube video by Joey Stout
-        thumb: https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreif6zn6wbnldzrws7cd3xag7ealrzdmxxzzc477p2myl7x2ssidaai
-      "$type": app.bsky.embed.external#view
-    bookmarkCount: 0
-    replyCount: 0
-    repostCount: 0
-    likeCount: 0
-    quoteCount: 0
-    indexedAt: '2026-04-03T20:22:39.251Z'
-    labels: []
-cursor: '2026-04-03T20:22:38.094Z'
+cursor: '2026-04-05T02:14:29.596Z'
