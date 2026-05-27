@@ -1,5 +1,10 @@
 ---
 videos:
+- id: 4y1j_uoPXuk
+  title: 'The Anatomy of a Meltdown: A Deep-Dive into MCP via Selective Sabotage'
+  date: 2026-05-27
+  description: 'What happens when an AI agent loses its senses one by one? In this talk from MCP Dev Summit 2026, Joey builds a live ...'
+  type: video
 - id: 3pY8r1rFpIY
   title: 'Wheelies'
   date: 2026-04-28
@@ -14,11 +19,6 @@ videos:
   title: 'Minibike Madness #frp #coleman #minibikes'
   date: 2026-04-20
   type: short
-- id: 0LxyoVvqELg
-  title: 'The Anatomy of a Meltdown: A Deep-Dive into MCP via Selective Sabotage'
-  date: 2026-04-03
-  description: 'What happens when an AI agent loses its senses one by one? In this talk from MCP Dev Summit 2026, Joey builds a live ...'
-  type: video
 - id: XjLZNLu1wRM
   title: 'IaC Flow'
   date: 2026-03-31
