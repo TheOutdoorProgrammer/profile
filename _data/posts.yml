@@ -75,11 +75,11 @@ feed:
           height: 842
           width: 1170
       "$type": app.bsky.embed.images#view
-    bookmarkCount: 237
-    replyCount: 62
-    repostCount: 1403
-    likeCount: 7510
-    quoteCount: 164
+    bookmarkCount: 231
+    replyCount: 60
+    repostCount: 1399
+    likeCount: 7523
+    quoteCount: 163
     indexedAt: '2026-06-10T19:45:29.471Z'
     labels: []
   reason:
