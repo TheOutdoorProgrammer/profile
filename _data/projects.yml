@@ -7,10 +7,25 @@ projects:
     description: "Easy-to-use Kubernetes documentation browser supporting multiple specs including Kubernetes, Istio, Flux, Cert-Manager, and more."
     icon: noto:clipboard
 
-  - title: WTC The Game
-    url: https://www.wtc-the-game.org/
-    description: "A browser-based game set in the World Trade Center."
-    icon: jam:building
+  - title: Crate
+    url: https://github.com/TheOutdoorProgrammer/crate
+    description: "Self-hosted music manager — search, stream, and download your library through pluggable gRPC providers."
+    icon: noto:musical-notes
+
+  - title: Couchpilot
+    url: https://github.com/TheOutdoorProgrammer/couchpilot
+    description: "Manage Claude Code remote-control sessions from your phone, over iMessage."
+    icon: noto:couch-and-lamp
+
+  - title: Boating Accident
+    url: https://github.com/TheOutdoorProgrammer/boating-accident
+    description: "Self-hosted, encrypted inventory vault for your gear — envelope encryption behind a 6-digit PIN."
+    icon: mdi:safe
+
+  - title: Kubagachi Glance
+    url: https://github.com/TheOutdoorProgrammer/kubagachi-glance
+    description: "Animated Kubernetes 'cluster vitals' critter widget for the Glance dashboard, with an in-widget cluster switcher."
+    icon: logos:kubernetes
 
   - title: The Situation Room (NHL)
     url: https://situationroom.apollorion.com/
@@ -31,11 +46,6 @@ projects:
     url: https://fishid.theoutdoorprogrammer.com
     description: "AI-powered Ohio fish identification tool."
     icon: twemoji:fish
-
-  - title: Little Lizards Live
-    url: https://littlelizards.live
-    description: "Live stream page for pet lizards swimming around."
-    icon: twemoji:lizard
 
   - title: 'Hooked: Crestwater Bay'
     url: https://crestwaterbay.com/
@@ -71,11 +81,6 @@ projects:
     url: https://github.com/TheOutdoorProgrammer/bankmap
     description: "Data visualization of FDIC bank failures by state using Python and US shapefiles."
     icon: mdi:map-marker-multiple
-
-  - title: Day2DevOps Podcast
-    url: https://packetpushers.net/podcasts/day-two-devops/0423-d2do270-spacelift-is-your-infrastructure-glue-sponsored/
-    description: "I was on a podcast about Spacelift and how it's used to glue infrastructure together."
-    icon: el:podcast
 
   - title: MRPICKLE
     url: https://github.com/TheOutdoorProgrammer/MRPICKLE
