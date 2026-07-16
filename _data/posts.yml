@@ -75,7 +75,7 @@ feed:
           height: 842
           width: 1170
       "$type": app.bsky.embed.images#view
-    bookmarkCount: 228
+    bookmarkCount: 227
     replyCount: 59
     repostCount: 1397
     likeCount: 7515
