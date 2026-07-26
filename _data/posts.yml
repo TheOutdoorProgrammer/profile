@@ -77,8 +77,8 @@ feed:
       "$type": app.bsky.embed.images#view
     bookmarkCount: 227
     replyCount: 59
-    repostCount: 1397
-    likeCount: 7515
+    repostCount: 1396
+    likeCount: 7512
     quoteCount: 163
     indexedAt: '2026-06-10T19:45:29.471Z'
     labels: []
