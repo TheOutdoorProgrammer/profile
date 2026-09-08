@@ -15,6 +15,8 @@ if [[ "$IS_CLOUDFLARE_PAGES" != "true" ]]; then
     python3 scripts/fetch_youtube_videos.py
 
 else
+    npm ci
+    npm run build:telemetry
     # Ensure gems are installed (Cloudflare build images don't include project gems by default)
     echo "Installing Ruby gems..."
     bundle check || bundle install --jobs 4 --retry 3
