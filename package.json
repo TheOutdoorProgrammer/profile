@@ -6,6 +6,7 @@
     "build": "npm run build:telemetry && bundle exec jekyll build"
   },
   "dependencies": {
+    "@nerdswhofish/philosophies": "https://github.com/NerdsWhoFish/philosophies/archive/a511b732e8cfe4f79206f86f8b6ae60c6f722c22.tar.gz",
     "@nerdswhofish/browser-telemetry": "https://github.com/NerdsWhoFish/dusk/releases/download/v1.21.0/nerdswhofish-browser-telemetry-0.1.0.tgz"
   }
 }

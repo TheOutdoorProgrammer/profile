@@ -7,3 +7,5 @@ Gemfile.lock
 node_modules/
 assets/telemetry.js
 assets/telemetry.js.map
+assets/philosophies.css
+philosophies/index.html
