@@ -1,6 +1,91 @@
 ---
 feed:
 - post:
+    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mv6kmjx43s2i
+    cid: bafyreigi4jnzy7t6gt2yusrh52llg36dftte35p2fwvol6u6e6mt2oih44
+    author:
+      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
+      handle: theoutdoorprogrammer.com
+      displayName: Joey Stout
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
+      associated:
+        activitySubscription:
+          allowSubscriptions: followers
+      labels: []
+      createdAt: '2024-11-20T19:09:51.653Z'
+    record:
+      "$type": app.bsky.feed.post
+      createdAt: '2026-09-10T17:17:37.875Z'
+      embed:
+        "$type": app.bsky.embed.external
+        external:
+          description: Podcast · Spacelift · missionCTRL is a podcast hosted by Emin
+            Alemdar and Joey Stout, two DevOps engineers who agree that most infra
+            content is boring. If you're a platform engineer, DevOps practition...
+          thumb:
+            "$type": blob
+            ref:
+              "$link": bafkreid4gbx75fdbyeq7wkpwebe55ngramo56clrwjztm2hrmusgmdaiem
+            mimeType: image/jpeg
+            size: 104250
+          title: missionCTRL
+          uri: https://open.spotify.com/show/0dNIjleb0cx9tuyt9PDEeO
+      facets:
+      - features:
+        - "$type": app.bsky.richtext.facet#tag
+          tag: openpolicyagent
+        index:
+          byteEnd: 141
+          byteStart: 125
+      - features:
+        - "$type": app.bsky.richtext.facet#tag
+          tag: opa
+        index:
+          byteEnd: 146
+          byteStart: 142
+      - features:
+        - "$type": app.bsky.richtext.facet#tag
+          tag: rego
+        index:
+          byteEnd: 152
+          byteStart: 147
+      - features:
+        - "$type": app.bsky.richtext.facet#link
+          uri: https://open.spotify.com/show/0dNIjleb0cx9tuyt9PDEeO
+        index:
+          byteEnd: 233
+          byteStart: 201
+      - features:
+        - "$type": app.bsky.richtext.facet#link
+          uri: https://www.youtube.com/playlist?list=PLU6u8-Cd4LUY
+        index:
+          byteEnd: 275
+          byteStart: 244
+      langs:
+      - en
+      text: |-
+        GUYS! Im in a podcast! Its awesome! Watch our first episode if you are interested in nerd stuff! This first episode is about #openpolicyagent #opa #rego and we talk about how not-hard it is!
+
+        Spotify: open.spotify.com/show/0dNIjle...
+
+        Youtube: www.youtube.com/playlist?lis...
+    embed:
+      external:
+        uri: https://open.spotify.com/show/0dNIjleb0cx9tuyt9PDEeO
+        title: missionCTRL
+        description: Podcast · Spacelift · missionCTRL is a podcast hosted by Emin
+          Alemdar and Joey Stout, two DevOps engineers who agree that most infra content
+          is boring. If you're a platform engineer, DevOps practition...
+        thumb: https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreid4gbx75fdbyeq7wkpwebe55ngramo56clrwjztm2hrmusgmdaiem
+      "$type": app.bsky.embed.external#view
+    bookmarkCount: 0
+    replyCount: 0
+    repostCount: 0
+    likeCount: 0
+    quoteCount: 0
+    indexedAt: '2026-09-10T17:17:39.474Z'
+    labels: []
+- post:
     uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mt4sx7rk3222
     cid: bafyreibvhkjs6fk6yzy42hsxwvviz35aeepuykk45eemtie4hez77epfia
     author:
@@ -129,10 +214,10 @@ feed:
           height: 842
           width: 1170
       "$type": app.bsky.embed.images#view
-    bookmarkCount: 224
+    bookmarkCount: 223
     replyCount: 59
     repostCount: 1395
-    likeCount: 7496
+    likeCount: 7495
     quoteCount: 163
     indexedAt: '2026-06-10T19:45:29.471Z'
     labels: []
@@ -402,30 +487,4 @@ feed:
     quoteCount: 0
     indexedAt: '2026-04-24T01:11:27.348Z'
     labels: []
-- post:
-    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mjwfoc6ql22o
-    cid: bafyreiebb4vfyqpmfkr3vxidhv45jyeuvbia477jsq6kydm4krbvaw7pdm
-    author:
-      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-      handle: theoutdoorprogrammer.com
-      displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
-      associated:
-        activitySubscription:
-          allowSubscriptions: followers
-      labels: []
-      createdAt: '2024-11-20T19:09:51.653Z'
-    record:
-      "$type": app.bsky.feed.post
-      createdAt: '2026-04-20T11:50:42.325Z'
-      langs:
-      - en
-      text: 'Things a Clownfish would say: "The anemone of my enemy is my anemone"'
-    bookmarkCount: 0
-    replyCount: 0
-    repostCount: 0
-    likeCount: 0
-    quoteCount: 0
-    indexedAt: '2026-04-20T11:50:42.551Z'
-    labels: []
-cursor: '2026-04-20T11:50:42.325Z'
+cursor: '2026-04-24T01:11:27.076Z'
