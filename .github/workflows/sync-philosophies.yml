@@ -1,0 +1,35 @@
+name: Sync reviewed philosophies
+on:
+  schedule:
+    - cron: '23 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: sync-philosophies
+  cancel-in-progress: false
+jobs:
+  sync:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: node scripts/sync-philosophies.mjs
+      - run: npm run build:telemetry
+      - name: Publish only the verified content mirror
+        env:
+          CONTENT_FILE: philosophies.json
+        run: |
+          if git diff --quiet -- "$CONTENT_FILE"; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$CONTENT_FILE"
+          git commit -m 'docs(philosophies): synchronize reviewed canonical content'
+          git pull --rebase origin main
+          git push origin HEAD:main
