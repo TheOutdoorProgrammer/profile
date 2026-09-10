@@ -68,7 +68,7 @@
     border-color: rgba(60, 202, 224, 0.15);
 }
 
-.site-nav-link.active {
+.site-nav-link.active, .site-nav-link[aria-current="page"] {
     color: var(--color-accent-cyan);
     background: rgba(60, 202, 224, 0.1);
     border-color: rgba(60, 202, 224, 0.25);
@@ -124,7 +124,7 @@
     width: 100%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
     .site-nav-links {
         display: none;
     }
@@ -136,6 +136,10 @@
     .site-nav-inner {
         padding: 0 1rem;
     }
+}
+
+@media (max-width: 380px) {
+    .site-nav-logo-text span { display: none; }
 }
 /* Homepage nav: hide logo, center links at top */
 .site-nav.home-nav .site-nav-inner {
@@ -192,14 +196,14 @@
             <a href="/about/" class="site-nav-link">
                 <span class="iconify-inline" data-icon="mdi:account-outline"></span> About
             </a>
-            <a href="/philosophies/" class="site-nav-link">Philosophies</a>
+            <a href="/philosophies/" class="site-nav-link" {% if page.url contains '/philosophies/' %}aria-current="page"{% endif %}>Philosophies</a>
         </div>
         
-        <button class="site-nav-mobile-toggle" aria-label="Toggle menu" onclick="this.nextElementSibling.classList.toggle('open')">
+        <button class="site-nav-mobile-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav-mobile-menu">
             <span class="iconify-inline" data-icon="mdi:menu"></span>
         </button>
         
-        <div class="site-nav-mobile-menu">
+        <div class="site-nav-mobile-menu" id="site-nav-mobile-menu">
             <a href="https://shop.theoutdoorprogrammer.com" class="site-nav-link site-nav-link-primary">
                 <span class="iconify-inline" data-icon="mdi:shopping-outline"></span> Shop
             </a>
@@ -218,7 +222,7 @@
             <a href="/about/" class="site-nav-link">
                 <span class="iconify-inline" data-icon="mdi:account-outline"></span> About
             </a>
-            <a href="/philosophies/" class="site-nav-link">Philosophies</a>
+            <a href="/philosophies/" class="site-nav-link" {% if page.url contains '/philosophies/' %}aria-current="page"{% endif %}>Philosophies</a>
         </div>
     </div>
 </nav>

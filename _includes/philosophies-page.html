@@ -16,18 +16,28 @@ description: The principles I apply across my professional and personal work, sh
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.theoutdoorprogrammer.com/philosophies/">
   <meta property="og:image" content="https://www.theoutdoorprogrammer.com/assets/images/og-image.png">
+  <link rel="shortcut icon" href="{{ site.favicon.path | relative_url }}" type="image/{{ site.favicon.type }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto:wght@400;500&family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/style.css">
   <link rel="stylesheet" href="/assets/philosophies.css">
+  <link rel="stylesheet" href="/assets/philosophies-page.css">
+  <script defer src="https://code.iconify.design/2/2.0.0/iconify.min.js"></script>
   {% include faro.html %}
+  {% include posthog.html %}
 </head>
 <body>
+  {% include nav.html %}
   <main class="philosophies-page">
-    <nav class="philosophies-intro" aria-label="Philosophies navigation">
-      <p><a href="/">Joey Stout</a> / My philosophies</p>
+    <header class="philosophies-intro">
+      <p class="philosophies-eyebrow">My philosophies</p>
       <p>I apply these principles across my professional and personal work. They're the commitments we share at Nerds Who Fish.</p>
       <p><a href="https://github.com/NerdsWhoFish/philosophies">Read the source and its history on GitHub</a></p>
-    </nav>
+    </header>
     <article class="philosophies-document" data-philosophies>{{PHILOSOPHIES}}</article>
   </main>
+  {% include footer.html %}
+  <script src="/assets/script.js"></script>
 </body>
 </html>

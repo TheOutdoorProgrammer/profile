@@ -12,4 +12,6 @@ The shared Faro package comes from an immutable Dusk release and is bundled loca
 
 `/philosophies/` contains complete initial HTML from the [canonical NWF philosophies](https://github.com/NerdsWhoFish/philosophies), with a self-referencing canonical URL and ordinary headings and links. The asset build combines `_includes/philosophies-page.html` with the verified `philosophies.json` mirror before Jekyll runs. Run `npm run build`, not a bare Jekyll build, when preparing publication.
 
+The page uses the site's shared `nav.html` and `footer.html` includes, native fonts, and theme variables. `assets/philosophies-page.css` adapts the document typography to that shell. Canonical synchronization updates only the article content, preserving the surrounding website and its navigation.
+
 The hourly `sync-philosophies` workflow commits only verified, already reviewed canonical content and lets the existing Cloudflare integration rebuild the site. The browser can refresh the text between deployments and retains the full static document if GitHub is unavailable. Rendering code remains pinned; code changes need independent human review. Propose wording changes upstream, never in generated content. GitHub schedules, caches, and deployment queues can delay propagation; investigate failed Actions runs.
