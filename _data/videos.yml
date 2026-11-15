@@ -1,5 +1,10 @@
 ---
 videos:
+- id: jEVDMEodpMo
+  title: 'I Cleaned My Shower With a PRESSURE WASHER… Bad Idea?'
+  date: 2026-10-19
+  description: 'I needed to clean my shower and I was bored so I used a power washer.'
+  type: video
 - id: 4y1j_uoPXuk
   title: 'The Anatomy of a Meltdown: A Deep-Dive into MCP via Selective Sabotage'
   date: 2026-05-27
@@ -62,9 +67,4 @@ videos:
   title: 'Unboxing Firewalla Gold Pro'
   date: 2024-07-19
   description: 'I just got my Firewalla Gold Pro, wanted to do an unboxing video. Never done one before. Firewalla is a cyber security device for ...'
-  type: video
-- id: 9I_E51fB14k
-  title: 'Hacking an LED moon'
-  date: 2020-05-25
-  description: 'Changed an LED moon to show the current moon phase based on the date.'
   type: video
