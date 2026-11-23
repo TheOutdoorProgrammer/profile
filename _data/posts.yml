@@ -1,6 +1,34 @@
 ---
 feed:
 - post:
+    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3n2zddwxyr22k
+    cid: bafyreiafguiw3pats5ufcm3a4vahehl6q744vtw7j5qunvha2iijgup6na
+    author:
+      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
+      handle: theoutdoorprogrammer.com
+      displayName: Joey Stout
+      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
+      associated:
+        activitySubscription:
+          allowSubscriptions: followers
+      labels: []
+      createdAt: '2024-11-20T19:09:51.653Z'
+    record:
+      "$type": app.bsky.feed.post
+      createdAt: '2026-11-23T23:55:24.426Z'
+      langs:
+      - en
+      text: As an athiest, I wish more than anything to be wrong. But as someone living
+        right now. Why do kids get cancer? That god just doesnt feel very almighty
+        to me when I see tiktoks of 9 year old children dying. Its not fair.
+    bookmarkCount: 0
+    replyCount: 0
+    repostCount: 0
+    likeCount: 0
+    quoteCount: 0
+    indexedAt: '2026-11-23T23:55:24.656Z'
+    labels: []
+- post:
     uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3n2ejevabvk2s
     cid: bafyreie6eswvmjrujma3ttshc7o3d2xpni3yvktsmfb2pupypmfsp4lkka
     author:
@@ -269,8 +297,8 @@ feed:
       "$type": app.bsky.embed.images#view
     bookmarkCount: 222
     replyCount: 58
-    repostCount: 1390
-    likeCount: 7468
+    repostCount: 1388
+    likeCount: 7464
     quoteCount: 163
     indexedAt: '2026-06-10T19:45:29.471Z'
     labels: []
@@ -435,32 +463,4 @@ feed:
     quoteCount: 0
     indexedAt: '2026-05-04T16:09:04.459Z'
     labels: []
-- post:
-    uri: at://did:plc:7e7cnwumaewg7s2ryywfu3qe/app.bsky.feed.post/3mkyon325n22x
-    cid: bafyreihssaim67dabc7yrmqyv3vfp6hfn6i5sschhhzp4b5dn7vkhemlbe
-    author:
-      did: did:plc:7e7cnwumaewg7s2ryywfu3qe
-      handle: theoutdoorprogrammer.com
-      displayName: Joey Stout
-      avatar: https://cdn.bsky.app/img/avatar/plain/did:plc:7e7cnwumaewg7s2ryywfu3qe/bafkreickft3dfyhc5v4yrsrl6jw742hg4huasepimy6vg4gj5ua2us6qhu
-      associated:
-        activitySubscription:
-          allowSubscriptions: followers
-      labels: []
-      createdAt: '2024-11-20T19:09:51.653Z'
-    record:
-      "$type": app.bsky.feed.post
-      createdAt: '2026-05-04T03:01:36.060Z'
-      langs:
-      - en
-      text: I spent the last like 5 days setting up home assistant and I really hope
-        it was worth it. So far both very happy and very impressed. Spent more money
-        on it than I should in controllers and hubs but it's damn near perfect now.
-    bookmarkCount: 0
-    replyCount: 1
-    repostCount: 0
-    likeCount: 1
-    quoteCount: 0
-    indexedAt: '2026-05-04T03:01:36.366Z'
-    labels: []
-cursor: '2026-05-04T03:01:36.06Z'
+cursor: '2026-05-04T16:09:04.035Z'
